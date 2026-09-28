@@ -114,6 +114,7 @@ import io.motohub.android.feature.update.GithubUpdateInstaller
 import io.motohub.android.feature.update.GithubUpdateRepository
 import io.motohub.android.feature.update.latestNewerApkRelease
 import io.motohub.android.session.ProjectionSessionService
+import io.motohub.android.session.ResumeRetryingStart
 import io.motohub.android.feature.diagnostics.report.CrashDiagnosticsConsentDialog
 import io.motohub.android.feature.diagnostics.report.DiagnosticReportScheduler
 import io.motohub.android.feature.diagnostics.report.PrivacyNoticeDialog
@@ -548,13 +549,18 @@ class MainActivity : ComponentActivity() {
                 // The consent result can arrive before the activity is resumed, and some ROMs
                 // refuse the foreground start in that window (WB-27). The consent is then held and
                 // tried once more on the next resume; a second refusal ends it as a cancellation.
-                var pendingProjectionConsent by remember { mutableStateOf<Pair<Int, Intent>?>(null) }
                 val startMirroringSession: (Int, Intent) -> Boolean = { resultCode, data ->
                     if (ProjectionSessionService.start(context, resultCode, data)) {
                         viewModel.onProjectionRequested()
                         true
                     } else {
                         false
+                    }
+                }
+                val currentStartMirroringSession by rememberUpdatedState(startMirroringSession)
+                val mirroringStart = remember {
+                    ResumeRetryingStart<Pair<Int, Intent>> { (resultCode, data) ->
+                        currentStartMirroringSession(resultCode, data)
                     }
                 }
                 val projectionLauncher = rememberLauncherForActivityResult(
@@ -565,26 +571,21 @@ class MainActivity : ComponentActivity() {
                         "Screen capture consent returned resultCode=${result.resultCode}, hasData=${result.data != null}."
                     )
                     if (result.resultCode == Activity.RESULT_OK && result.data != null) {
-                        if (!startMirroringSession(result.resultCode, result.data!!)) {
+                        if (!mirroringStart.request(result.resultCode to result.data!!)) {
                             ProjectionEventLog.warning(
                                 "MIRROR",
                                 "Mirroring start refused before the app was in front; retrying on resume."
                             )
-                            pendingProjectionConsent = result.resultCode to result.data!!
                         }
                     } else {
                         viewModel.onProjectionCancelled()
                     }
                 }
-                val currentStartMirroringSession by rememberUpdatedState(startMirroringSession)
                 val projectionRetryLifecycleOwner = LocalLifecycleOwner.current
                 DisposableEffect(projectionRetryLifecycleOwner) {
                     val observer = LifecycleEventObserver { _, event ->
-                        if (event == Lifecycle.Event.ON_RESUME) {
-                            pendingProjectionConsent?.let { (resultCode, data) ->
-                                pendingProjectionConsent = null
-                                if (!currentStartMirroringSession(resultCode, data)) viewModel.onProjectionCancelled()
-                            }
+                        if (event == Lifecycle.Event.ON_RESUME && mirroringStart.onResume() == false) {
+                            viewModel.onProjectionCancelled()
                         }
                     }
                     projectionRetryLifecycleOwner.lifecycle.addObserver(observer)
