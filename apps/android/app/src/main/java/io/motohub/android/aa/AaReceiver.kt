@@ -52,6 +52,15 @@ class AaReceiver(
          */
         const val HEAD_UNIT_SERVER_PORT = 5277
         private const val HEAD_UNIT_SERVER_POLL_MS = 1_500L
+        private const val HEAD_UNIT_SERVER_MAX_BACKOFF_MS = 12_000L
+
+        /** 1.5s, then 3, 6, 12s and no further, for consecutive failed handshakes. */
+        internal fun headUnitServerBackoffMillis(failedHandshakes: Int): Long =
+            if (failedHandshakes <= 0) HEAD_UNIT_SERVER_POLL_MS
+            else minOf(
+                HEAD_UNIT_SERVER_POLL_MS shl failedHandshakes.coerceAtMost(4),
+                HEAD_UNIT_SERVER_MAX_BACKOFF_MS
+            )
         private const val HEAD_UNIT_SERVER_CONNECT_TIMEOUT_MS = 400
 
         /** How often the decoder's per-second frame rate is summarised into the log. */
@@ -106,15 +115,15 @@ class AaReceiver(
      * for the rest of the ride. On the accept thread it would also reach Android's default handler
      * and take the process down mid-ride, the same way the head unit server poller guards against.
      */
-    private fun runSession(socket: Socket) {
+    private fun runSession(socket: Socket): Boolean =
         try {
             handleConnection(socket)
         } catch (failure: Exception) {
             log("[AA] session failed to start: ${failure.message}")
             try { socket.close() } catch (_: Exception) {}
             releaseSession()
+            false
         }
-    }
     @Volatile private var connection: SocketAccessoryConnection? = null
     @Volatile private var videoReadyFired = false
     /**
@@ -133,7 +142,16 @@ class AaReceiver(
      * once. What the session service waits on when it holds a dropped session open instead of
      * tearing it down - see AndroidAutoSessionService.handleAndroidAutoDrop.
      */
-    val hasLiveSession: Boolean get() = transport != null
+    val hasLiveSession: Boolean get() = sessionLive
+
+    /**
+     * Set once the handshake has completed, not when the socket is accepted. A socket Android Auto
+     * accepts and then never answers is not a session: counted as one, the watchdog called it
+     * "attached again" half a second after every dial and closed its reattach window, and the
+     * handshake failing a few seconds later opened a fresh 90s one - so the 90s never ran out
+     * (CBA0-E67D-4F3D, 2026-09-21: 53 dials over seven minutes with nothing on the TFT, WB-25).
+     */
+    @Volatile private var sessionLive = false
     @Volatile private var input: AaInput? = null
     private val videoDecoder = VideoDecoder().apply {
         fallbackWidth = capabilityProfile.video.width
@@ -286,6 +304,7 @@ class AaReceiver(
 
     fun stop() {
         running = false
+        sessionLive = false
         AaInputBridge.clear(input)
         input = null
         try { transport?.stop() } catch (_: Exception) {
@@ -318,6 +337,7 @@ class AaReceiver(
      */
     private fun headUnitServerLoop() {
         var announced = false
+        var failedHandshakes = 0
         while (running) {
             if (transport != null) {
                 if (!awaitNextPoll()) return
@@ -344,7 +364,7 @@ class AaReceiver(
             log("[AA] <<< connected to Android Auto's head unit server on :$HEAD_UNIT_SERVER_PORT")
             androidAutoConnected = true
             androidAutoConnectedSinceStart = true
-            runSession(socket)
+            val started = runSession(socket)
             // Deliberately NOT a return. A session that ends - Android Auto restarting, the phone
             // going to sleep, the bike's Wi-Fi taking the process route down with it - leaves this
             // receiver running with `transport` back to null, and on a release that exports no
@@ -356,7 +376,18 @@ class AaReceiver(
             // `announced` is reset with the session so the next dry spell is reported once more:
             // "the server is not running" is a different fact each time the rider stops it.
             announced = false
-            if (!awaitNextPoll()) return
+            // A server that accepts and then never answers keeps doing so: dialling it again
+            // every 1.5s only rebuilds a whole transport each time. Back off while that lasts,
+            // and go straight back to the normal pace once a handshake works.
+            failedHandshakes = if (started) 0 else failedHandshakes + 1
+            val wait = headUnitServerBackoffMillis(failedHandshakes)
+            if (failedHandshakes > 0) {
+                log(
+                    "[AA] Android Auto's head unit server accepted and did not complete the " +
+                        "handshake ($failedHandshakes in a row); next dial in ${wait}ms"
+                )
+            }
+            if (!awaitNextPoll(wait)) return
         }
     }
 
@@ -365,8 +396,8 @@ class AaReceiver(
      * thread, so an interrupt is the normal way the loop ends — and an InterruptedException left
      * to escape it would reach Android's default handler and kill the process.
      */
-    private fun awaitNextPoll(): Boolean = try {
-        Thread.sleep(HEAD_UNIT_SERVER_POLL_MS)
+    private fun awaitNextPoll(millis: Long = HEAD_UNIT_SERVER_POLL_MS): Boolean = try {
+        Thread.sleep(millis)
         true
     } catch (_: InterruptedException) {
         Thread.currentThread().interrupt()
@@ -460,7 +491,8 @@ class AaReceiver(
         }
     }
 
-    private fun handleConnection(client: Socket) {
+    /** True when the handshake completed and the session is running. */
+    private fun handleConnection(client: Socket): Boolean {
         val conn = SocketAccessoryConnection(client)
         connection = conn
         val t = AapTransport(
@@ -471,6 +503,7 @@ class AaReceiver(
         t.nightMode = AndroidAutoNightModeStore(context).load()
         t.onQuit = { clean ->
             val userExit = t.wasUserExit
+            sessionLive = false
             log("[AA] transport quit (clean=$clean, userExit=$userExit)")
             AaInputBridge.clear(input)
             input = null
@@ -498,13 +531,15 @@ class AaReceiver(
             connection = null
             // Nothing else will: onQuit only fires for a transport that started.
             releaseSession()
-            return
+            return false
         }
+        sessionLive = true
         AaInputBridge.install(checkNotNull(input))
         log("[AA] handshake OK — pointing decoder at encoder surface and starting read loop")
         videoDecoder.setSurface(encoderSurface)
         t.startReading()
         log("[AA] read loop started — expecting ServiceDiscovery then video")
+        return true
     }
 
     /**
