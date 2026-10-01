@@ -38,7 +38,11 @@ class CoreAndroidAutoCoreBridge(private val context: Context) : AndroidAutoCoreB
             return
         }
         ProjectionEventLog.record("ANDROID_AUTO", "User requested Android Auto startup.")
-        AndroidAutoSessionService.start(context)
+        if (!AndroidAutoSessionService.start(context)) {
+            launchPending.set(false)
+            onFailure("Android refused to start Android Auto while MOTO-HUB was in the background.")
+            return
+        }
         scope.launch {
             val state = withTimeoutOrNull(RECEIVER_READY_TIMEOUT_MS) {
                 // A foreground service is started asynchronously. Ignore terminal state left by

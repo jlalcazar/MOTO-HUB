@@ -1692,12 +1692,27 @@ class AndroidAutoSessionService : Service(), AndroidAutoPreviewController {
          */
         private const val STILL_SILENCE_FATAL_MS = 15_000L
 
-        fun start(context: Context) {
-            if (io.motohub.android.proFeatureUnavailable(context, "Android Auto")) return
-            ContextCompat.startForegroundService(
-                context,
-                Intent(context, AndroidAutoSessionService::class.java)
-            )
+        /**
+         * False only when Android refuses the start, instead of letting the refusal crash the
+         * app. The autostart on connect fires when the T-Box link comes up, often with the app
+         * in the background, and Android 12+ refuses a foreground start from there
+         * (ForegroundServiceStartNotAllowedException - WB-28, Android 16, rider 3EEF-3BDC-0A19).
+         */
+        fun start(context: Context): Boolean {
+            if (io.motohub.android.proFeatureUnavailable(context, "Android Auto")) return true
+            return runCatching {
+                ContextCompat.startForegroundService(
+                    context,
+                    Intent(context, AndroidAutoSessionService::class.java)
+                )
+            }.onFailure { failure ->
+                ProjectionEventLog.error(
+                    "ANDROID_AUTO",
+                    "Android refused to start the Android Auto service " +
+                        "(${failure.javaClass.simpleName}: ${failure.message}).",
+                    failure
+                )
+            }.isSuccess
         }
 
         /**

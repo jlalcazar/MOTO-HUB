@@ -1382,7 +1382,10 @@ class IpcBridgeService : Service() {
             }
             if (AndroidAutoRuntime.isActive()) return true
             ensureFullSessionStateForwarding()
-            AndroidAutoSessionService.start(this@IpcBridgeService)
+            if (!AndroidAutoSessionService.start(this@IpcBridgeService)) {
+                publishState(AndroidAutoIpcState.FAILED, "Android refused to start the Android Auto service.")
+                return false
+            }
             // Core's own UI (MainActivity) normally fires the self-mode trigger once the receiver
             // is ready. When a companion app drives the session over AIDL, that Activity isn't in
             // the loop, so trigger it here instead — the broadcast fallback works from a service.

@@ -59,6 +59,18 @@ class ResumeRetryingStartTest {
     }
 
     @Test
+    fun aDiscardedStartIsNeverRetried() {
+        // WB-28: the link dropped while the app was away, so the held autostart is dropped too.
+        val starter = FakeStarter(false)
+        val retrying = ResumeRetryingStart(starter::start)
+        assertFalse(retrying.request("autostart"))
+        assertTrue(retrying.discard())
+        assertNull(retrying.onResume())
+        assertFalse(retrying.discard())
+        assertEquals(listOf("autostart"), starter.calls)
+    }
+
+    @Test
     fun aNewConsentReplacesAHeldOne() {
         val starter = FakeStarter(false, true)
         val retrying = ResumeRetryingStart(starter::start)
