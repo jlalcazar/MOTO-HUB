@@ -6,6 +6,7 @@ package io.motohub.android.tbox
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.SystemClock
+import io.motohub.android.feature.controls.MediaButtonBridge
 import io.motohub.android.session.ProjectionEventLog
 import java.io.IOException
 import java.io.OutputStream
@@ -492,11 +493,14 @@ class ThinkerRideTransport(context: Context) : TBoxTransport {
             Thread({
                 val buffer = ByteArray(4096)
                 var handshakeSent = false
+                val scanner = ThinkerRideProtocol.JsonObjectScanner()
                 val input = runCatching { socket.getInputStream() }.getOrNull() ?: return@Thread
                 while (!closed.get()) {
                     val read = runCatching { input.read(buffer) }.getOrDefault(-1)
                     if (read <= 0) break
                     logControlPayload(buffer, read)
+                    scanner.feed(String(buffer, 0, read, StandardCharsets.UTF_8))
+                        .forEach(::handleControlObject)
                     val probes = ThinkerRideProtocol.keepaliveProbeCount(buffer, read)
                     if (probes > 0) {
                         // One echo per probe, as one write: the dash counts them.
@@ -519,6 +523,26 @@ class ThinkerRideTransport(context: Context) : TBoxTransport {
                     }
                 }
             }, "MotoHubThinkerRideControl").apply { isDaemon = true }.start()
+        }
+
+        /**
+         * The dash reports its media buttons as MUSIC control objects on this channel and never
+         * as Bluetooth media keys we could hear, so they are fed to the handlebar bridge here:
+         * the rider's own mapping then decides what each one does.
+         */
+        private fun handleControlObject(jsonObject: String) {
+            val status = ThinkerRideProtocol.parseMusicControlStatus(jsonObject) ?: return
+            val gesture = ThinkerRideProtocol.gestureForMusicControl(status)
+            if (gesture == null) {
+                ProjectionEventLog.warning("THINKERRIDE", "Dash MUSIC control with unknown status=$status; ignored.")
+                return
+            }
+            val delivered = MediaButtonBridge.injectGestureToActive(gesture)
+            ProjectionEventLog.record(
+                "THINKERRIDE",
+                "Dash MUSIC control status=$status -> ${gesture.label}" +
+                    if (delivered) "." else " (no handlebar bridge live; dropped)."
+            )
         }
 
         private fun runHeartbeat(socket: Socket) {

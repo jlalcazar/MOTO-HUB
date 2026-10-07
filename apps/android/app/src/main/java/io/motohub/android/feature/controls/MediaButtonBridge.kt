@@ -1777,6 +1777,17 @@ class MediaButtonBridge(
             return true
         }
 
+        /**
+         * Delivers a gesture that did not come through AVRCP to whichever bridge is live, for a
+         * transport that hears the handlebar on its own channel and has no idea which session
+         * (Android Auto or Ride Dashboard) owns the buttons right now. False when none is live.
+         */
+        fun injectGestureToActive(gesture: HandlebarGesture): Boolean {
+            val live = bridges.values.firstOrNull() ?: return false
+            live.injectSimulatorGesture(gesture)
+            return true
+        }
+
         /** Routes one HID key event to whichever live bridge is capturing (see
          *  [HandlebarHidCaptureService]). Returns true once any bridge claims the keycode, so
          *  the Accessibility Service can consume it and stop it reaching the focused app. */

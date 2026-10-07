@@ -3,6 +3,7 @@
 // Part of MOTO-HUB. Free software under the GNU AGPL v3; see LICENSE.
 package io.motohub.android.tbox
 
+import io.motohub.android.feature.controls.HandlebarGesture
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -261,6 +262,15 @@ class ThinkerRideProtocolTest {
     }
 
     @Test
+    fun readsTheActivationFlagFromATabFormattedReply() {
+        // Verbatim shape from a rider's capture (2026-09-14): pretty-printed, tab after each colon.
+        val reply = "{\n\t\"msg_id\":\t27,\n\t\"func\":\t\"TUC\",\n\t\"act\":\t\"SEND\",\n" +
+            "\t\"tuc\":\t\"0001347e69c23d83\",\n\t\"tucs\":\t1\n}"
+
+        assertEquals(1, ThinkerRideProtocol.parseActivationFlag(reply))
+    }
+
+    @Test
     fun ignoresPayloadsThatCarryNoActivationFlag() {
         // A TUC reply without the field is old firmware, not an unactivated dash - the caller
         // must not be able to tell those apart by accident.
@@ -308,6 +318,69 @@ class ThinkerRideProtocolTest {
         // Neither byte may collide with the frame head or tail, which is what the 0x80 is for.
         assertTrue(checksum.none { it == ThinkerRideProtocol.BYTE_CAT_HEAD })
         assertTrue(checksum.none { it == ThinkerRideProtocol.BYTE_CAT_TAIL })
+    }
+
+    /** Verbatim from the rider's capture: pretty-printed, a tab after every colon. */
+    private val musicControlNext =
+        "{\n\t\"msg_id\":\t27,\n\t\"func\":\t\"MUSIC\",\n\t\"act\":\t\"control\",\n\t\"status\":\t3\n}"
+
+    @Test
+    fun readsTheStatusOfATabFormattedMusicControl() {
+        assertEquals(3, ThinkerRideProtocol.parseMusicControlStatus(musicControlNext))
+        assertEquals(
+            0,
+            ThinkerRideProtocol.parseMusicControlStatus(
+                """{"msg_id":27,"func":"MUSIC","act":"control","status":0}"""
+            )
+        )
+    }
+
+    @Test
+    fun playbackReportsAreNotButtonPresses() {
+        assertNull(
+            ThinkerRideProtocol.parseMusicControlStatus(
+                """{"msg_id":27,"func":"MUSIC","act":"ret_status","status":1}"""
+            )
+        )
+        assertNull(ThinkerRideProtocol.parseMusicControlStatus("""{"msg_id":27,"func":"TUC","act":"GET"}"""))
+    }
+
+    @Test
+    fun mapsMusicControlStatusesToHandlebarGestures() {
+        assertEquals(HandlebarGesture.ENTER, ThinkerRideProtocol.gestureForMusicControl(0))
+        assertEquals(HandlebarGesture.ENTER, ThinkerRideProtocol.gestureForMusicControl(1))
+        assertEquals(HandlebarGesture.TRACK_BACK, ThinkerRideProtocol.gestureForMusicControl(2))
+        assertEquals(HandlebarGesture.TRACK_FORWARD, ThinkerRideProtocol.gestureForMusicControl(3))
+        assertNull(ThinkerRideProtocol.gestureForMusicControl(9))
+    }
+
+    @Test
+    fun scannerSplitsObjectsAndCarriesAnUnfinishedOneToTheNextRead() {
+        val scanner = ThinkerRideProtocol.JsonObjectScanner()
+
+        val first = scanner.feed("""{"a":1}{"func":"MUSIC","act":"con""")
+        val second = scanner.feed("""trol","status":2}""")
+
+        assertEquals(listOf("""{"a":1}"""), first)
+        assertEquals(listOf("""{"func":"MUSIC","act":"control","status":2}"""), second)
+    }
+
+    @Test
+    fun scannerIgnoresFramingBytesAndBracesInsideStrings() {
+        val scanner = ThinkerRideProtocol.JsonObjectScanner()
+
+        val objects = scanner.feed("îý\u0000\u0000{\"lyrics\":\"a } b\",\"status\":1}ÿ")
+
+        assertEquals(listOf("{\"lyrics\":\"a } b\",\"status\":1}"), objects)
+    }
+
+    @Test
+    fun scannerRecoversFromAStrayBraceInBinaryData() {
+        val scanner = ThinkerRideProtocol.JsonObjectScanner()
+
+        val objects = scanner.feed("""x{garbage {"func":"MUSIC","act":"control","status":3}""")
+
+        assertEquals(listOf("""{"func":"MUSIC","act":"control","status":3}"""), objects)
     }
 
     /**

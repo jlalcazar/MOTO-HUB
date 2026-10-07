@@ -3,6 +3,7 @@
 // Part of MOTO-HUB. Free software under the GNU AGPL v3; see LICENSE.
 package io.motohub.android.tbox
 
+import io.motohub.android.feature.controls.HandlebarGesture
 import java.nio.ByteBuffer
 import java.nio.charset.StandardCharsets
 
@@ -294,11 +295,16 @@ object ThinkerRideProtocol {
      * Null when the payload is not a TUC reply or carries no `tucs` at all; only an explicit
      * value is worth acting on, and older firmware that omits the field is not "unactivated".
      */
+    private val tucFuncPattern = Regex(""""func"\s*:\s*"TUC"""")
+
     fun parseActivationFlag(payload: String): Int? {
         // Substring work rather than JSON parsing: the control channel hands this up with its
         // framing bytes still attached (`EE FD <len> … FF`), so the payload is not valid JSON
         // and a parser would reject the very reply we need.
-        if (!payload.contains("\"func\":\"TUC\"")) return null
+        // Whitespace-tolerant because some firmware pretty-prints its replies with a tab after
+        // every colon (`"func":\t"TUC"`); a literal `"func":"TUC"` never matched those, so the
+        // activation check silently never ran on them (rider capture, 2026-09-14).
+        if (!tucFuncPattern.containsMatchIn(payload)) return null
         val key = payload.indexOf(""""tucs"""")
         if (key < 0) return null
         var index = key + 6
@@ -311,6 +317,107 @@ object ThinkerRideProtocol {
 
     /** The activation value the dash must report before it will ever open [VIDEO_PORT]. */
     const val ACTIVATED_TUCS = 1
+
+    /**
+     * The handlebar's media buttons, as the dash reports them: `{"func":"MUSIC","act":"control",
+     * "status":N}` on the control channel (capture from a rider's KOVE, 2026-09-14). The dash
+     * formats it pretty-printed with tabs, so every key is followed by `:\t` rather than `:`.
+     *
+     * Status meanings are read off the capture's playback replies, not from documentation:
+     * 1 started playback, 3 changed the track forward, 2 restarted the track, 0 stopped it.
+     */
+    const val MUSIC_CONTROL_PAUSE = 0
+    const val MUSIC_CONTROL_PLAY = 1
+    const val MUSIC_CONTROL_PREVIOUS = 2
+    const val MUSIC_CONTROL_NEXT = 3
+
+    private val musicFuncPattern = Regex(""""func"\s*:\s*"MUSIC"""")
+    private val controlActPattern = Regex(""""act"\s*:\s*"control"""")
+    private val statusPattern = Regex(""""status"\s*:\s*(-?\d+)""")
+
+    /**
+     * The `status` of a MUSIC control object, or null for any other object, including the
+     * `ret_status` replies the dash also sends under `func:MUSIC`.
+     */
+    fun parseMusicControlStatus(jsonObject: String): Int? {
+        if (!musicFuncPattern.containsMatchIn(jsonObject)) return null
+        if (!controlActPattern.containsMatchIn(jsonObject)) return null
+        return statusPattern.find(jsonObject)?.groupValues?.get(1)?.toIntOrNull()
+    }
+
+    /**
+     * The handlebar gesture a MUSIC control status stands for, so a KOVE rider's buttons run
+     * through the same mapping as every other handlebar. Play and pause are both the
+     * play/pause gesture: that gesture is a toggle, and the dash sends the state it wants.
+     * Null for a status nobody has seen, which is logged rather than guessed at.
+     */
+    fun gestureForMusicControl(status: Int): HandlebarGesture? = when (status) {
+        MUSIC_CONTROL_PLAY, MUSIC_CONTROL_PAUSE -> HandlebarGesture.ENTER
+        MUSIC_CONTROL_NEXT -> HandlebarGesture.TRACK_FORWARD
+        MUSIC_CONTROL_PREVIOUS -> HandlebarGesture.TRACK_BACK
+        else -> null
+    }
+
+    /**
+     * Cuts the control channel's text stream into complete JSON objects.
+     *
+     * A read can end in the middle of an object, and several objects can arrive in one read, so
+     * the tail that is not yet complete is carried to the next [feed]. The protocol's objects are
+     * flat, which is what keeps this robust against the binary frames sharing the channel: a `{`
+     * inside one of those starts over instead of nesting, so a stray byte cannot swallow the
+     * next real message.
+     */
+    class JsonObjectScanner {
+        private val pending = StringBuilder()
+        private var inString = false
+        private var escaped = false
+
+        fun feed(text: String): List<String> {
+            val complete = ArrayList<String>()
+            for (char in text) {
+                if (pending.length > MAX_PENDING_OBJECT_CHARS) pending.setLength(0)
+                if (pending.isEmpty()) {
+                    if (char == '{') {
+                        pending.append(char)
+                        inString = false
+                        escaped = false
+                    }
+                    continue
+                }
+                if (inString) {
+                    pending.append(char)
+                    when {
+                        escaped -> escaped = false
+                        char == '\\' -> escaped = true
+                        char == '"' -> inString = false
+                    }
+                    continue
+                }
+                when (char) {
+                    '{' -> {
+                        pending.setLength(0)
+                        pending.append(char)
+                    }
+                    '}' -> {
+                        pending.append(char)
+                        complete.add(pending.toString())
+                        pending.setLength(0)
+                    }
+                    '"' -> {
+                        pending.append(char)
+                        inString = true
+                    }
+                    else -> pending.append(char)
+                }
+            }
+            return complete
+        }
+
+        private companion object {
+            /** Larger than any object this protocol sends; a runaway `{` is dropped past this. */
+            const val MAX_PENDING_OBJECT_CHARS = 8 * 1024
+        }
+    }
 
     /**
      * The binary command burst sent 100 ms after the dash's first control packet, followed by
