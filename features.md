@@ -184,6 +184,8 @@ standalone app. CORE has no GPS features and requests no location updates.
 - Check GitHub releases and pre-releases for newer APK builds.
 - Show update release notes and pre-release status before installing.
 - Provide an About page with a project description, safety disclaimer, and GitHub link.
+- Optionally keep the phone screen on while the app is in the foreground.
+- Choose kilometers or miles for distances shown in the app.
 - Run in English, Italian, Portuguese, Korean, French, Spanish, German, Dutch, Czech, Turkish, or
   Russian, or follow the phone language.
 - Expose the T-Box transport and the Android Auto receiver to a companion app through an AIDL

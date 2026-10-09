@@ -299,6 +299,8 @@ class MainActivity : ComponentActivity() {
         handleHandlebarBluetoothRequestIntent(intent)
         handleTBoxScanPermissionRequestIntent(intent)
 
+        io.motohub.android.session.applyKeepScreenOn(this)
+
         setContent {
             MotoHubTheme {
                 val state by viewModel.uiState.collectAsStateWithLifecycle()

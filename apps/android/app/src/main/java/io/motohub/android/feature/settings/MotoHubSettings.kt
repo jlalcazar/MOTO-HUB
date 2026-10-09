@@ -506,10 +506,8 @@ object MotoHubSettings {
     /**
      * Hold the phone's screen awake while a MOTO-HUB screen is in the foreground.
      *
-     * No screen in this edition writes it, so it reads false and the diagnostics report says so -
-     * which is the truth about a CORE install rather than a gap in it. It lives here, and not
-     * behind an edition check at the one place that reads it, so the two copies of this shared
-     * file keep the same surface.
+     * Off by default. Settings > General writes it and
+     * [io.motohub.android.session.applyKeepScreenOn] applies it to the activity window.
      */
     fun keepScreenOn(context: Context): Boolean =
         preferences(context).getBoolean(KEY_KEEP_SCREEN_ON, false)

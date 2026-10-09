@@ -67,6 +67,8 @@ import io.motohub.android.ui.components.MotoHubDetailScreen
 import io.motohub.android.ui.components.MotoHubRadioRow
 import io.motohub.android.feature.controls.HandlebarPressHud
 import io.motohub.android.ui.components.ToggleRow
+import io.motohub.android.session.applyKeepScreenOn
+import io.motohub.android.session.findActivity
 
 private enum class SettingsDetail {
     GENERAL, LANGUAGE, AUTOSTART, VIDEO, ANDROID_AUTO, ANDROID_AUTO_RESOLUTION, ANDROID_AUTO_DENSITY, HANDLEBAR, HANDLEBAR_MAPPING, AUTOMATION,
@@ -315,6 +317,8 @@ private fun GeneralDetail(
 ) {
     val context = LocalContext.current
     var autoUpdateChecks by remember { mutableStateOf(MotoHubSettings.autoUpdateChecks(context)) }
+    var keepScreenOn by remember { mutableStateOf(MotoHubSettings.keepScreenOn(context)) }
+    var distanceUnits by remember { mutableStateOf(MotoHubSettings.distanceUnits(context)) }
     val autostartEnabled = MotoHubSettings.autostartEnabled(context)
     val autostartService = MotoHubSettings.autostartService(context)
     MotoHubDetailScreen(
@@ -356,6 +360,36 @@ private fun GeneralDetail(
             checked = seamlessResumeEnabled,
             onCheckedChange = onSeamlessResumeChanged
         )
+        ToggleRow(
+            title = motoHubText("Keep the screen on"),
+            description = motoHubText("Hold the phone screen awake while this app is in front. Uses more battery."),
+            checked = keepScreenOn,
+            onCheckedChange = {
+                keepScreenOn = it
+                MotoHubSettings.setKeepScreenOn(context, it)
+                context.findActivity()?.let { activity -> applyKeepScreenOn(activity, it) }
+                ProjectionEventLog.record("SETTINGS", "Keep the screen on changed to enabled=$it.")
+            }
+        )
+        HorizontalDivider()
+        MonoLabel(motoHubText("DISTANCE UNITS"))
+        Text(
+            motoHubText("Used for the tank range in the motorcycle profile."),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        DistanceUnits.entries.forEach { candidate ->
+            MotoHubRadioRow(
+                title = context.getString(candidate.labelRes),
+                description = context.getString(candidate.descriptionRes),
+                selected = distanceUnits == candidate,
+                onClick = {
+                    distanceUnits = candidate
+                    MotoHubSettings.setDistanceUnits(context, candidate)
+                    ProjectionEventLog.record("SETTINGS", "Distance units changed to ${candidate.name}.")
+                }
+            )
+        }
     }
 }
 
