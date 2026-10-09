@@ -144,6 +144,8 @@ standalone app. CORE has no GPS features and requests no location updates.
 - Optionally start mirroring or Android Auto automatically as soon as the motorcycle connects.
 - Monitor outgoing Android Auto TFT frames with an optional recovery watchdog.
 - Detect supported stream stalls, encoder failures, and T-Box network losses.
+- Detect an Android Auto stream the dashboard is starving, with frames refused and under one a second
+  delivered for 15 seconds, and rebuild it.
 - Reacquire the network, repeat EasyConn discovery and handshake, and rebuild the encoder when
   recovery is possible.
 - Optionally use seamless resume to park and resume a projection after longer T-Box interruptions.

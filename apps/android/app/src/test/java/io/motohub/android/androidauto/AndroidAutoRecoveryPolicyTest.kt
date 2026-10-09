@@ -93,4 +93,40 @@ class AndroidAutoRecoveryPolicyTest {
             )
         )
     }
+
+    @Test
+    fun `a stream that loses frames and delivers under one a second is starved after three ticks`() {
+        var ticks = 0
+        repeat(ANDROID_AUTO_STARVED_TICKS - 1) {
+            ticks = nextAndroidAutoStarvedTicks(ticks, acceptedThisTick = 1, lostThisTick = 1)
+            assertFalse(isAndroidAutoStreamStarved(ticks))
+        }
+        ticks = nextAndroidAutoStarvedTicks(ticks, acceptedThisTick = 1, lostThisTick = 1)
+        assertTrue(isAndroidAutoStreamStarved(ticks))
+    }
+
+    /** Android Auto sends very little while the map is still; with nothing lost, that is not a fault. */
+    @Test
+    fun `a quiet screen is not a starved stream`() {
+        var ticks = 0
+        repeat(10) { ticks = nextAndroidAutoStarvedTicks(ticks, acceptedThisTick = 0, lostThisTick = 0) }
+        assertEquals(0, ticks)
+    }
+
+    /** The adaptive controller owns this case: frames are lost, but a picture still arrives. */
+    @Test
+    fun `a lossy link that still carries a picture is not starved`() {
+        var ticks = 0
+        repeat(10) { ticks = nextAndroidAutoStarvedTicks(ticks, acceptedThisTick = 60, lostThisTick = 40) }
+        assertEquals(0, ticks)
+    }
+
+    @Test
+    fun `one healthy tick clears the streak`() {
+        var ticks = nextAndroidAutoStarvedTicks(0, acceptedThisTick = 0, lostThisTick = 2)
+        ticks = nextAndroidAutoStarvedTicks(ticks, acceptedThisTick = 1, lostThisTick = 1)
+        assertEquals(2, ticks)
+        ticks = nextAndroidAutoStarvedTicks(ticks, acceptedThisTick = 90, lostThisTick = 0)
+        assertEquals(0, ticks)
+    }
 }

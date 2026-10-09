@@ -47,3 +47,37 @@ internal fun isAndroidAutoWatchdogStalled(
     lastProgressElapsed: Long,
     thresholdMillis: Long
 ): Boolean = lastProgressElapsed > 0L && nowElapsed - lastProgressElapsed >= thresholdMillis
+
+/** Fewer accepted frames than this in one watchdog tick is under one frame a second. */
+internal const val ANDROID_AUTO_STARVED_FRAMES_PER_TICK = 5L
+
+/** How many starved ticks in a row make a stream worth rebuilding. */
+internal const val ANDROID_AUTO_STARVED_TICKS = 3
+
+/**
+ * Counts consecutive watchdog ticks in which the stream was starved: the transport was refusing
+ * or dropping frames, and barely any got through.
+ *
+ * The stall check above only sees a stream that has stopped completely. A T-Box that accepts one
+ * frame and then blocks the next for the five seconds `pushFrame()` is allowed looks alive to it
+ * forever - a frame did arrive inside every window - while the TFT shows a slideshow. That is the
+ * congestion RIDEDAEMON_EOF_FIX.md describes, with the counters it added and nothing reading them.
+ *
+ * Both conditions are needed. Few frames alone is a quiet screen: Android Auto sends little when
+ * the map is not moving, and nothing is lost. Lost frames alone is a busy link the adaptive
+ * controller is already backing off for, and one that still carries a picture.
+ *
+ * @return the new streak; it is back to zero the first tick the stream is not starved.
+ */
+internal fun nextAndroidAutoStarvedTicks(
+    previousTicks: Int,
+    acceptedThisTick: Long,
+    lostThisTick: Long
+): Int = if (lostThisTick > 0L && acceptedThisTick < ANDROID_AUTO_STARVED_FRAMES_PER_TICK) {
+    previousTicks + 1
+} else {
+    0
+}
+
+internal fun isAndroidAutoStreamStarved(starvedTicks: Int): Boolean =
+    starvedTicks >= ANDROID_AUTO_STARVED_TICKS

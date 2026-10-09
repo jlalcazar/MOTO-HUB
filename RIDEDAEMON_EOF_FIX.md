@@ -121,9 +121,12 @@ The app keeps streaming with some frame loss instead of crashing.
 
 ## Open Improvements
 
-1. **Watchdog check** on `frameTimeouts` crossing a threshold, to trigger recovery before the
-   stream has visibly stalled. The counters are reported but nothing acts on them yet.
-2. **Tune `PUSH_FRAME_TIMEOUT_MS`** down if field logs show the T-Box link is consistently faster.
+1. **Tune `PUSH_FRAME_TIMEOUT_MS`** down if field logs show the T-Box link is consistently faster.
+
+The Android Auto watchdog now acts on a starved stream, not only a stopped one: when the transport
+refuses or drops frames and fewer than one a second gets through for three watchdog ticks in a row
+(15 seconds), it rebuilds the stream. See `nextAndroidAutoStarvedTicks` in
+`AndroidAutoRecoveryPolicy.kt`. Screen mirroring has no equivalent check.
 
 ---
 

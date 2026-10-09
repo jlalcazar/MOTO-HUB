@@ -144,6 +144,8 @@ class AndroidAutoSessionService : Service(), AndroidAutoPreviewController {
     @Volatile private var hasReachedStreaming = false
     @Volatile private var lastWatchdogFrameCount = 0L
     @Volatile private var lastWatchdogProgressAt = 0L
+    @Volatile private var lastWatchdogLostCount = 0L
+    @Volatile private var watchdogStarvedTicks = 0
     private var screenMarginsListener: SharedPreferences.OnSharedPreferenceChangeListener? = null
 
     @Volatile
@@ -1140,6 +1142,24 @@ class AndroidAutoSessionService : Service(), AndroidAutoPreviewController {
                     continue
                 }
                 val currentFrames = framesAccepted.get()
+                val currentLost = lostFramesTotal()
+                // A rebuilt encoder starts its counters again, hence the floor at zero.
+                watchdogStarvedTicks = nextAndroidAutoStarvedTicks(
+                    previousTicks = watchdogStarvedTicks,
+                    acceptedThisTick = (currentFrames - lastWatchdogFrameCount).coerceAtLeast(0L),
+                    lostThisTick = (currentLost - lastWatchdogLostCount).coerceAtLeast(0L)
+                )
+                lastWatchdogLostCount = currentLost
+                if (isAndroidAutoStreamStarved(watchdogStarvedTicks)) {
+                    watchdogStarvedTicks = 0
+                    handleRecoverableFailure(
+                        "Android Auto TFT stream starved for " +
+                            "${ANDROID_AUTO_STARVED_TICKS * WATCHDOG_TICK_MS / 1_000L} seconds: the " +
+                            "dashboard is refusing frames and under one a second gets through."
+                    )
+                    lastWatchdogFrameCount = currentFrames
+                    continue
+                }
                 if (currentFrames > lastWatchdogFrameCount) {
                     lastWatchdogFrameCount = currentFrames
                     lastWatchdogProgressAt = SystemClock.elapsedRealtime()
@@ -1160,7 +1180,13 @@ class AndroidAutoSessionService : Service(), AndroidAutoPreviewController {
     private fun markWatchdogProgress() {
         lastWatchdogFrameCount = framesAccepted.get()
         lastWatchdogProgressAt = SystemClock.elapsedRealtime()
+        lastWatchdogLostCount = lostFramesTotal()
+        watchdogStarvedTicks = 0
     }
+
+    /** Frames the transport refused or accepted and then dropped, as the adaptive controller counts them. */
+    private fun lostFramesTotal(): Long =
+        encoder?.let { it.rejectedAccessUnitsTotal() + it.transportDroppedFramesTotal() } ?: 0L
 
     /**
      * Routes a transport failure event, unless the handshake that produced it is still running and
