@@ -21,6 +21,9 @@ import android.os.SystemClock
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import io.motohub.android.androidauto.ANDROID_AUTO_STARVED_TICKS
+import io.motohub.android.androidauto.isAndroidAutoStreamStarved
+import io.motohub.android.androidauto.nextAndroidAutoStarvedTicks
 import io.motohub.android.R
 import io.motohub.android.encoding.AdaptiveVideoController
 import io.motohub.android.encoding.AvcEncoder
@@ -115,6 +118,10 @@ class ProjectionSessionService : Service() {
      */
     private val capturing = AtomicBoolean(false)
     private val framesAccepted = AtomicLong(0)
+    // Touched only from the adaptive tick coroutine.
+    private var starvedTicks = 0
+    private var lastStarvationFrameCount = 0L
+    private var lastStarvationLostCount = 0L
     private val frameLogThrottle = FrameLogThrottle()
     private val capabilityStore by lazy { TBoxCapabilityStore(this) }
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -394,12 +401,50 @@ class ProjectionSessionService : Service() {
                         encoder = encoder,
                         linkDown = transportUnavailable.get() || recoveryRequested.get()
                     )
+                    checkForStarvedStream()
                 }
             }
             scheduleAutoDim()
         } catch (failure: Throwable) {
             ProjectionEventLog.error("MIRROR", "Screen capture setup threw an exception.", failure)
             fail("Screen capture did not start: ${failure.message}")
+        }
+    }
+
+    /**
+     * The same starvation check the Android Auto watchdog runs, on the same five-second tick: the
+     * dashboard is refusing or dropping frames and fewer than one a second gets through. Mirroring
+     * had no stall detection of its own at all - it recovered only when the transport reported an
+     * error - so a T-Box that kept the socket open while taking nothing left a frozen TFT.
+     *
+     * A still screen is not starvation: a mirrored display that is not changing produces almost
+     * no frames, and none of them is lost.
+     */
+    private fun checkForStarvedStream() {
+        val currentFrames = framesAccepted.get()
+        val currentLost = encoder?.let { it.rejectedAccessUnitsTotal() + it.transportDroppedFramesTotal() } ?: 0L
+        val watching = MotoHubSettings.autoRecovery(this) &&
+            ProjectionRuntime.state.value is ProjectionRuntimeState.Streaming &&
+            !transportUnavailable.get() && !recoveryRequested.get()
+        starvedTicks = if (watching) {
+            nextAndroidAutoStarvedTicks(
+                previousTicks = starvedTicks,
+                // A rebuilt encoder starts its counters again, hence the floor at zero.
+                acceptedThisTick = (currentFrames - lastStarvationFrameCount).coerceAtLeast(0L),
+                lostThisTick = (currentLost - lastStarvationLostCount).coerceAtLeast(0L)
+            )
+        } else {
+            0
+        }
+        lastStarvationFrameCount = currentFrames
+        lastStarvationLostCount = currentLost
+        if (isAndroidAutoStreamStarved(starvedTicks)) {
+            starvedTicks = 0
+            handleRecoverableFailure(
+                "Mirroring TFT stream starved for " +
+                    "${ANDROID_AUTO_STARVED_TICKS * ADAPTIVE_TICK_MS / 1_000L} seconds: the dashboard " +
+                    "is refusing frames and under one a second gets through."
+            )
         }
     }
 

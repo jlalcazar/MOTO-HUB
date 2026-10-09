@@ -126,7 +126,7 @@ The app keeps streaming with some frame loss instead of crashing.
 The Android Auto watchdog now acts on a starved stream, not only a stopped one: when the transport
 refuses or drops frames and fewer than one a second gets through for three watchdog ticks in a row
 (15 seconds), it rebuilds the stream. See `nextAndroidAutoStarvedTicks` in
-`AndroidAutoRecoveryPolicy.kt`. Screen mirroring has no equivalent check.
+`AndroidAutoRecoveryPolicy.kt`. Screen mirroring runs the same check on its adaptive tick.
 
 ---
 
