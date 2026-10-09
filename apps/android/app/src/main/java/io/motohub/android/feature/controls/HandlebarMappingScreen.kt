@@ -1062,6 +1062,9 @@ private fun HandlebarActionPicker(
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         ActionFamily.entries.forEach { family ->
+            // Nothing in CORE runs a Ride Dashboard, so these could be picked and would then do
+            // nothing. A mapping a companion app wrote with one of them is still shown as it is.
+            if (family == ActionFamily.DASHBOARD && !io.motohub.android.BuildConfig.IS_PRO) return@forEach
             val actions = HandlebarAction.entries.filter { it.family() == family }
             if (actions.isEmpty()) return@forEach
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
