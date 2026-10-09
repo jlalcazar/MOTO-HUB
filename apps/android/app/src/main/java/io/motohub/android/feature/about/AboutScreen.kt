@@ -156,7 +156,7 @@ fun AboutScreen(
             // also where a rider learns that nobody at Google stands behind the Android Auto part.
             Text(
                 text = motoHubText(
-                    "kurva is a modified version of MOTO-HUB CORE, maintained at " +
+                    "MotoVisor is a modified version of MOTO-HUB CORE, maintained at " +
                         "github.com/jlalcazar/MOTO-HUB. It is not the original app and its " +
                         "original author does not support it. Its Android Auto feature has no " +
                         "support, approval or warranty from Google."

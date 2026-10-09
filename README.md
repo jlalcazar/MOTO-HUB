@@ -1,7 +1,7 @@
 > [!IMPORTANT]
-> **This is kurva, a modified version of MOTO-HUB CORE.** It is a fork maintained at [jlalcazar/MOTO-HUB](https://github.com/jlalcazar/MOTO-HUB) since 9 October 2026, based on [vincenzobpt/MOTO-HUB](https://github.com/vincenzobpt/MOTO-HUB) 1.1.120 by Vincenzo Buonomano and the MOTO-HUB contributors. It is not the original app, and the original author does not support it.
+> **This is MotoVisor, a modified version of MOTO-HUB CORE.** It is a fork maintained at [jlalcazar/MOTO-HUB](https://github.com/jlalcazar/MOTO-HUB) since 9 October 2026, based on [vincenzobpt/MOTO-HUB](https://github.com/vincenzobpt/MOTO-HUB) 1.1.120 by Vincenzo Buonomano and the MOTO-HUB contributors. It is not the original app, and the original author does not support it.
 >
-> - **What changed:** the app is named `kurva` and installs as `io.motohup.android`, beside the original instead of over it. It is signed with a different key, so it cannot update an official MOTO-HUB install. A few unused settings were removed and the documentation was brought up to date; see the [commit history](https://github.com/jlalcazar/MOTO-HUB/commits/main).
+> - **What changed:** the app is named `MotoVisor` and installs as `io.motohup.android`, beside the original instead of over it. It is signed with a different key, so it cannot update an official MOTO-HUB install. A few unused settings were removed and the documentation was brought up to date; see the [commit history](https://github.com/jlalcazar/MOTO-HUB/commits/main).
 > - **No support from Google.** Android Auto, when a build includes it, works through an open-source head-unit receiver. Google has not certified, approved or licensed this app, gives no support or warranty for it, and may stop accepting it in any Android Auto update.
 > - **No warranty.** The software is provided as is, under the [AGPL-3.0](LICENSE).
 >
