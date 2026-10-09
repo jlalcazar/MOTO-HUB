@@ -25,7 +25,7 @@ object IpcBridgeContract {
     const val BIND_ACTION_ANDROID_AUTO_RECEIVER = "io.motohub.android.ipc.BIND_ANDROID_AUTO_RECEIVER"
 
     /** Signature-level permission a caller must hold to bind IpcBridgeService. */
-    const val BIND_PERMISSION = "io.motohub.android.permission.BIND_CORE_SERVICE"
+    const val BIND_PERMISSION = "io.motohup.android.permission.BIND_CORE_SERVICE"
 
     /**
      * Revision of ITBoxTransportService this build implements, answered by getContractVersion().
@@ -315,7 +315,7 @@ object IpcBridgeContract {
     /** Core refused before trying: it is already driving this dash for someone else. */
     const val CONNECT_STAGE_REFUSED = 3
 
-    const val CORE_PACKAGE_NAME = "io.motohub.android"
+    const val CORE_PACKAGE_NAME = "io.motohup.android"
 
     /**
      * The companion app's package. Here beside Core's because the pair identifies the two halves

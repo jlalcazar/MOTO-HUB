@@ -16,12 +16,12 @@ import android.view.Surface
  * decoded output Surface for PRO's embedded Dashboard, see IAndroidAutoReceiverService.aidl).
  * The caller's OWN manifest must still declare (neither can
  * be enforced from here — omitting either fails differently):
- *   <queries><package android:name="io.motohub.android"/></queries>            (or bindService() silently returns false)
- *   <uses-permission android:name="io.motohub.android.permission.BIND_CORE_SERVICE"/>  (or bindService() throws SecurityException)
+ *   <queries><package android:name="io.motohup.android"/></queries>            (or bindService() silently returns false)
+ *   <uses-permission android:name="io.motohup.android.permission.BIND_CORE_SERVICE"/>  (or bindService() throws SecurityException)
  */
 class AndroidAutoReceiverClient(
     private val context: Context,
-    private val corePackage: String = "io.motohub.android",
+    private val corePackage: String = "io.motohup.android",
     private val onStateChanged: (state: Int, message: String) -> Unit = { _, _ -> }
 ) {
     private var service: IAndroidAutoReceiverService? = null

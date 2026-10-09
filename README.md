@@ -1,3 +1,12 @@
+> [!IMPORTANT]
+> **This is kurva, a modified version of MOTO-HUB CORE.** It is a fork maintained at [jlalcazar/MOTO-HUB](https://github.com/jlalcazar/MOTO-HUB) since 9 October 2026, based on [vincenzobpt/MOTO-HUB](https://github.com/vincenzobpt/MOTO-HUB) 1.1.120 by Vincenzo Buonomano and the MOTO-HUB contributors. It is not the original app, and the original author does not support it.
+>
+> - **What changed:** the app is named `kurva` and installs as `io.motohup.android`, beside the original instead of over it. It is signed with a different key, so it cannot update an official MOTO-HUB install. A few unused settings were removed and the documentation was brought up to date; see the [commit history](https://github.com/jlalcazar/MOTO-HUB/commits/main).
+> - **No support from Google.** Android Auto, when a build includes it, works through an open-source head-unit receiver. Google has not certified, approved or licensed this app, gives no support or warranty for it, and may stop accepting it in any Android Auto update.
+> - **No warranty.** The software is provided as is, under the [AGPL-3.0](LICENSE).
+>
+> The rest of this README is the original project's, and still says MOTO-HUB where it describes the app.
+
 > [!NOTE]
 > **MOTO-HUB CORE carries on** as the free, open-source app for the basics: pairing, Android Auto, screen mirroring and handlebar buttons.
 > **Want the full experience?** Get **[MOTO-HUB ADV-SOLO](https://github.com/vincenzobpt/MOTO-HUB-ADV-SOLO-releases)**: everything CORE does, plus the Ride Dashboard, navigation, trips, OBD and much more, in one free app for Android 14+. It replaces MOTO-HUB ADVANCED, which is retired.
@@ -14,7 +23,7 @@
 [![Downloads](https://img.shields.io/github/downloads/jlalcazar/MOTO-HUB/total?color=44cc11)](https://github.com/jlalcazar/MOTO-HUB/releases)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
 [![Android 12+](https://img.shields.io/badge/Android-12%2B-3DDC84?logo=android&logoColor=white)](#requirements)
-[![6 languages](https://img.shields.io/badge/languages-6-orange)](#what-moto-hub-does)
+[![11 languages](https://img.shields.io/badge/languages-11-orange)](#what-moto-hub-does)
 [![Discord](https://img.shields.io/badge/Discord-join%20the%20community-5865F2?logo=discord&logoColor=white)](https://discord.gg/FzhXZtPhC8)
 [![Website](https://img.shields.io/badge/website-motohub.techub.eu-111111)](https://motohub.techub.eu)
 

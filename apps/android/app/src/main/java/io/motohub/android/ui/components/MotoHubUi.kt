@@ -419,7 +419,7 @@ fun MotoHubHeader(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = if (io.motohub.android.BuildConfig.IS_PRO) "MOTO-HUB ADVANCED" else "MOTO-HUB",
+            text = if (io.motohub.android.BuildConfig.IS_PRO) "MOTO-HUB ADVANCED" else "kurva",
             fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.Bold,
             style = MaterialTheme.typography.bodySmall,

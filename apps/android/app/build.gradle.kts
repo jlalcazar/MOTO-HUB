@@ -90,7 +90,10 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "io.motohub.android"
+        // This fork installs beside the original MOTO-HUB instead of replacing it, so it has its
+        // own application id. The namespace above - and with it every Kotlin package and class
+        // name - is deliberately unchanged.
+        applicationId = "io.motohup.android"
         // 31 = Android 12: everything Android-12-specific is behind SDK_INT gates, so on 14+
         // the executed code paths are identical to the old minSdk-34 builds.
         minSdk = 31
@@ -109,7 +112,7 @@ android {
         // silently does not arrive is worse than none, and there is no other way to see whether
         // a session was started, dropped or rejected: the SDK says nothing at all by default.
         buildConfigField("boolean", "SENTRY_DEBUG", sentryDebug.toString())
-        manifestPlaceholders["appLabel"] = "MOTO-HUB"
+        manifestPlaceholders["appLabel"] = "kurva"
     }
 
     signingConfigs {

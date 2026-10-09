@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <permission
-        android:name="io.motohub.android.permission.BIND_CORE_SERVICE"
+        android:name="io.motohup.android.permission.BIND_CORE_SERVICE"
         android:protectionLevel="signature" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
@@ -145,7 +145,7 @@
             android:name=".ipc.IpcBridgeService"
             android:exported="true"
             android:foregroundServiceType="connectedDevice"
-            android:permission="io.motohub.android.permission.BIND_CORE_SERVICE">
+            android:permission="io.motohup.android.permission.BIND_CORE_SERVICE">
             <intent-filter>
                 <action android:name="io.motohub.android.ipc.BIND_TBOX_TRANSPORT" />
             </intent-filter>

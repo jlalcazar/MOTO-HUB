@@ -12,6 +12,24 @@ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
 --------------------------------------------------------------------------------
+Modified version
+--------------------------------------------------------------------------------
+
+This repository (https://github.com/jlalcazar/MOTO-HUB) is a modified version of
+MOTO-HUB, forked from https://github.com/vincenzobpt/MOTO-HUB at version 1.1.120
+and changed from 9 October 2026 onwards. Modifications are Copyright (C) 2026
+Jose Luis Alcazar and are released under the same license, AGPL-3.0.
+
+The modified app is distributed under the name "kurva" with the application id
+io.motohup.android. It is not the original MOTO-HUB, and neither the original
+author nor the original project supports or endorses it. The changes are
+recorded in the Git history of this repository.
+
+Android Auto is a trademark of Google LLC. This software is not certified,
+approved, licensed or supported by Google, and comes with no warranty from
+Google or from anyone else.
+
+--------------------------------------------------------------------------------
 Why AGPL-3.0
 --------------------------------------------------------------------------------
 

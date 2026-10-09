@@ -15,12 +15,12 @@ import android.util.Log
 /**
  * Binds to Core's IpcBridgeService for T-Box transport access. The caller's OWN manifest must
  * still declare (neither can be enforced from here — omitting either fails differently):
- *   <queries><package android:name="io.motohub.android"/></queries>            (or bindService() silently returns false)
- *   <uses-permission android:name="io.motohub.android.permission.BIND_CORE_SERVICE"/>  (or bindService() throws SecurityException)
+ *   <queries><package android:name="io.motohup.android"/></queries>            (or bindService() silently returns false)
+ *   <uses-permission android:name="io.motohup.android.permission.BIND_CORE_SERVICE"/>  (or bindService() throws SecurityException)
  */
 class TBoxTransportClient(
     private val context: Context,
-    private val corePackage: String = "io.motohub.android",
+    private val corePackage: String = "io.motohup.android",
     private val onSessionReady: () -> Unit = {},
     private val onSessionLost: () -> Unit = {},
     /**
