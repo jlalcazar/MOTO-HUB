@@ -35,7 +35,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import io.motohub.android.BuildConfig
 import io.motohub.android.i18n.motoHubText
 
-private const val CORE_PACKAGE_NAME = "io.motohup.android"
+private const val CORE_PACKAGE_NAME = "io.motovisor.android"
 private const val CORE_RELEASES_URL = "https://github.com/jlalcazar/MOTO-HUB/releases/latest"
 
 /** Advanced-only: Core doesn't depend on itself, so this is always false in the Core flavor. */

@@ -62,7 +62,7 @@ class DiagnosticReport(
  */
 object DiagnosticReportBuilder {
     private const val GEARHEAD_PACKAGE = "com.google.android.projection.gearhead"
-    private const val CORE_PACKAGE = "io.motohup.android"
+    private const val CORE_PACKAGE = "io.motovisor.android"
     /** Generous: BluetoothStatus.query gives up on its own well inside this. */
     private const val RADIO_QUERY_TIMEOUT_MS = 3_000L
 

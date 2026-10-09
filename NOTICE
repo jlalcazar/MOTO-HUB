@@ -21,7 +21,7 @@ and changed from 9 October 2026 onwards. Modifications are Copyright (C) 2026
 Jose Luis Alcazar and are released under the same license, AGPL-3.0.
 
 The modified app is distributed under the name "MotoVisor" with the application id
-io.motohup.android. It is not the original MOTO-HUB, and neither the original
+io.motovisor.android. It is not the original MOTO-HUB, and neither the original
 author nor the original project supports or endorses it. The changes are
 recorded in the Git history of this repository.
 

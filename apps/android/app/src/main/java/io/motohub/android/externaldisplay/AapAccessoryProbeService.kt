@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
  * Diagnostic-only: opens the USB AOA accessory and runs [AapPhoneHandshake] to confirm the
  * physical head unit accepts MOTO-HUB as a real AAP phone-role peer, before any video channel
  * work is built on top. Not wired to the UI - triggered manually via
- * `adb shell am start-foreground-service -n io.motohup.android/io.motohub.android.externaldisplay.AapAccessoryProbeService`
+ * `adb shell am start-foreground-service -n io.motovisor.android/io.motohub.android.externaldisplay.AapAccessoryProbeService`
  * and read back from the app's diagnostics log (Settings > Diagnostics).
  */
 class AapAccessoryProbeService : Service() {
