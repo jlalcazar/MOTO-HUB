@@ -1,6 +1,6 @@
 # MOTO-HUB Features
 
-Current version: `1.1.120 (214)`, Android 12+.
+Current version: `1.1.121 (215)`, Android 12+.
 
 This document describes implemented functionality of MOTO-HUB CORE, the open-source app in this
 repository. It must be updated whenever a feature is added, removed, renamed, or materially
