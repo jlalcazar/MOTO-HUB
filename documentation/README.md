@@ -54,9 +54,10 @@ final app.
 ## Documentation Rules
 
 - A feature not tested on a motorcycle must be marked `To validate`.
-- A change at the app/library boundary requires an ADR in `decisions/`.
-- Observable requirements belong in `PRODUCT_REQUIREMENTS.md`; code details
-  belong in `ANDROID_IMPLEMENTATION.md`.
+- Implemented functionality is listed in `../features.md`; code details belong
+  in `ANDROID_IMPLEMENTATION.md`.
+- The ADR decision log and the product requirements are kept privately and are
+  not part of this repository.
 - Video values confirmed by tests must also be updated in
   `TBOX_STREAMING_CONTRACT.md`.
 - GitHub publication is manual unless explicitly stated otherwise. Do not

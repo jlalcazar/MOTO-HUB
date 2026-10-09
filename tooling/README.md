@@ -27,13 +27,3 @@ MOTO-HUB configures RideDaemon in live-only mode. The historical stream under
 `assets/` is retained as a diagnostic fixture but is not packaged in the APK or
 used as a runtime fallback because its fixed geometry is not portable across
 T-Box displays.
-
-## Navigation Routing Key
-
-Native turn-by-turn navigation calls the Stadia Maps hosted Valhalla routing
-API. There is no bundled or shared key: every rider enters their own free
-Stadia Maps API key in **Settings > Navigation** inside the app. It is
-encrypted on-device with Android Keystore the same way the T-Box Wi-Fi
-password is (`NavigationSettingsStore`), and is never part of the build or
-the repository. Without a key configured, route requests fail explicitly
-with a message pointing back to Settings.

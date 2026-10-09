@@ -119,7 +119,7 @@ The open-source core is a complete product on its own:
 - **Bulletproof sessions** — auto-connect on launch, a recovery watchdog that rebuilds a stalled stream, and seamless resume across longer dropouts.
 - **Diagnostics that respect you** — network tests, a full local log you can share as a file, and a master switch that turns all logging off.
 - **In-app updates** — the app checks GitHub releases and shows the notes before installing.
-- **6 languages** — English, Italian, Spanish, French, Portuguese, Korean.
+- **11 languages** — English, Italian, Portuguese, Korean, French, Spanish, German, Dutch, Czech, Turkish, Russian.
 
 <a id="requirements"></a>**Requirements:** Android 12 or newer and a motorcycle with a compatible dashboard (see below). [MOTO-HUB ADV-SOLO](https://github.com/vincenzobpt/MOTO-HUB-ADV-SOLO-releases), which replaces ADVANCED, requires Android 14+.
 
@@ -207,28 +207,7 @@ The same instructions are in the app under `Settings ▸ Android Auto does not s
 
 ### Everything MOTO-HUB does
 
-- Pair with a motorcycle T-Box by scanning its QR code, importing a photo of it, or entering the network manually.
-- Read the QR dialects other manufacturers use — such as Moto Morini's MotoFun code — and accept an unrecognized one after a warning rather than refusing it.
-- Store multiple motorcycle profiles and select the active motorcycle.
-- Store a private motorcycle photo and use it throughout the app UI.
-- Connect to the T-Box Wi-Fi access point without requiring manual SSID entry, with a separate Wi-Fi Direct path for dashboards that advertise a `DIRECT-` network.
-- Discover the EasyConn service and establish the T-Box session.
-- Mirror the entire phone screen or a single Android app.
-- Start Android Auto through an embedded local head-unit receiver, including on Android Auto versions that no longer accept a direct start request.
-- Drive Android Auto from the motorcycle's handlebar buttons, after a short guided calibration, with per-motorcycle mappings for press, double press and hold.
-- Control music volume, jump to a saved destination, or open the assistant from the handlebar without touching the phone.
-- Stream the phone screen to a USB (AOA) external display, independently of the T-Box.
-- Choose the Android Auto TFT layout per motorcycle: `FIT` (preserve the complete image, black bars when necessary), `STRETCH` (use the complete TFT area with geometric stretching), or `CROP` (use the complete TFT area without stretching, cropping edges when necessary).
-- Calibrate per-motorcycle TFT safe margins so Android Auto video and touch stay inside the projection area not occupied by native motorcycle UI.
-- Let Android Auto lay out at the dashboard's real shape instead of a letterboxed band inside it.
-- Keep the phone preview available for Android Auto touch control, or disable the touchscreen entirely and ride with focus and handlebar controls.
-- Select Smoother, Balanced or Sharper image detail, and a Smooth/Balanced/Saver/adaptive power behavior for the next stream.
-- Override Android Auto with landscape or portrait SD/HD source resolutions, or keep automatic selection.
-- Optionally connect to the saved motorcycle when MOTO-HUB opens.
-- Optionally recover or seamlessly resume a stalled or dropped TFT stream when the T-Box returns.
-- Show persistent diagnostics, run network tests, and share application logs as an exported file for troubleshooting.
-- Check GitHub releases and pre-releases from inside the app, showing release notes before installing a newer APK.
-- Run in English, Italian, Spanish, French, Portuguese or Korean, or follow the phone language.
+The complete, itemised list of what this app does is kept in [features.md](features.md), grouped by area: pairing and connection, the garage, screen mirroring, Android Auto, the USB external display, handlebar controls, video quality, recovery and diagnostics. The sections below explain how the main parts work.
 
 ### Motorcycle Garage
 
@@ -256,7 +235,7 @@ Music volume is expressed in **presses**, not steps, because that is how the das
 
 `Video quality` sets image detail against the negotiated base bitrate: `Balanced` is the recommended default, `Smoother` uses 70% and `Sharper` 160%. `Power mode` selects `Auto` (adapt bitrate and frame rate to phone temperature and Wi-Fi quality), `Smooth` (30 FPS), `Balanced` (24 FPS) or `Saver` (20 FPS). `Disable touchscreen` lets the rider use focus and handlebar controls even on a dashboard that reports a touch display.
 
-`Android Auto` selects the source resolution — `Auto` (dynamic orientation from the learned T-Box geometry), 800 x 480, 1280 x 720, 720 x 1280 or 1080 x 1920 — and how content insets are advertised. The T-Box output canvas is still negotiated at runtime and is not replaced by the Android Auto source resolution.
+`Android Auto` selects the source resolution — `Auto` (dynamic orientation from the learned T-Box geometry), or a fixed landscape or portrait source from 800 x 480 up to 3840 x 2160 — the interface size, from 120 to 480 dpi, and how content insets are advertised. `Auto` only ever picks 800 x 480, 1280 x 720, 720 x 1280 or 1080 x 1920; the larger sources are marked experimental and have not been validated on any known dashboard. The T-Box output canvas is still negotiated at runtime and is not replaced by the Android Auto source resolution.
 
 `Connection & automation` holds auto-connect, which requests the saved motorcycle network and discovers EasyConn on app launch and after deliberate projection stops, and the optional recovery watchdog, which monitors outgoing TFT frame progress and rebuilds the T-Box network, discovery, handshake, and encoder path after a post-start stall while keeping the local Android Auto receiver alive. Seamless resume can park a projection across a longer T-Box interruption and resume when the motorcycle network returns.
 
@@ -310,7 +289,7 @@ The app should continue to open normally. Only the related feature is unavailabl
 
 MOTO-HUB is designed to operate without an account or proprietary telemetry service. It handles screen content, T-Box credentials, and diagnostic data on the phone. Wi-Fi passwords are encrypted with Android Keystore. Screen frames are processed in memory for the active projection and are not intentionally recorded to disk.
 
-This app contacts two Internet hosts on its own: GitHub, to check for a newer release when you ask it to or when launch-time update checks are enabled, and Sentry, for crash and error reporting (see below). It has no maps, geocoding, routing or weather features, requests no location updates, and sends no ride or position data anywhere. Anything Android Auto itself does over the network is Android Auto's own traffic, under your Google account, not MOTO-HUB's.
+This app contacts two Internet hosts on its own: GitHub, to check for a newer release when you ask it to or when launch-time update checks are enabled, and Sentry, for crash and error reporting (see below). A third, the MOTO-HUB support collector, is contacted only after you choose to send a diagnostic report (see below). It has no maps, geocoding, routing or weather features, requests no location updates, and sends no ride or position data anywhere. Anything Android Auto itself does over the network is Android Auto's own traffic, under your Google account, not MOTO-HUB's.
 
 ### Crash and error reporting
 
@@ -328,6 +307,18 @@ What is not sent: Sentry's "default PII" collection is switched off, so no accou
 Turning off `Settings ▸ Diagnostics ▸ Enable logging` stops the diagnostic log entirely, and with it the error events described above. Crash reports are handled by the Sentry SDK itself and are not covered by that switch.
 
 **Builds from this source send nothing.** The Sentry DSN is supplied at build time from a private properties file or CI secret, exactly like the Android Auto identity. A source build without it has telemetry disabled outright, not merely unconfigured.
+
+### Diagnostic reports to support
+
+Separately from Sentry, `Settings ▸ Diagnostics` can send a diagnostic report to the MOTO-HUB support collector. Nothing is sent unless you ask for it:
+
+- `Send diagnostics now` sends one report at your request.
+- `Send diagnostics automatically` is **off by default**. When you turn it on, a report goes out on the first launch of a new version, at most once a day otherwise, and straight after a crash.
+- With automatic reports off, the launch that follows a crash asks whether to send that one report. It goes only on a yes.
+
+A report carries the application log and a description of the setup: the motorcycle as the dashboard reported it, the phone model, the versions of Android, Android Auto and MOTO-HUB, and a Support ID that identifies this phone and motorcycle so you can quote it when asking for help. It does not carry the T-Box password, the dashboard's MAC address, or the raw Android ID, which is sent only as a hash. The `What gets sent` and `How your data is handled` notices on the same screen are the authoritative description.
+
+Like the Sentry DSN, the collector address is supplied at build time. A build from this source has none, so the buttons report that no collector is configured and nothing is uploaded.
 
 Review [Security and Privacy](documentation/SECURITY_AND_PRIVACY.md) before distributing an APK outside personal use.
 
@@ -350,7 +341,8 @@ MOTO-HUB/
 ├── packages/contracts/     Future platform-neutral contracts
 ├── tooling/                AAR build metadata and reproducibility helpers
 ├── translations/           Source strings and their translations
-├── documentation/          Architecture, decisions, security, testing, and roadmap
+├── documentation/          Architecture, T-Box contract, security, testing, and release process
+├── features.md             Itemised list of implemented functionality
 └── README.md               Project overview and setup instructions
 ```
 

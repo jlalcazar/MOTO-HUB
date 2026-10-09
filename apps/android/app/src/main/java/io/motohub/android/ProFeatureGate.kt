@@ -16,8 +16,11 @@ import io.motohub.android.i18n.MotoHubStrings
  * AIDL stub transport (empty discovery/negotiation) and crash with `NoSuchElementException`.
  *
  * Until Stage 2 routes each of these through Core, PRO must not run the local path. This is the
- * single choke point: every service `start()` companion calls it, so no UI/intent/auto entry path
- * can slip through. In CORE it always returns false and changes nothing.
+ * choke point a service `start()` companion calls so no UI/intent/auto entry path can slip
+ * through. In CORE it always returns false and changes nothing.
+ *
+ * This repository builds only CORE (`IS_PRO` is a constant `false`), so here the gate never
+ * fires; `AndroidAutoSessionService.start` is its one remaining caller.
  *
  * @return true if the feature is unavailable in this flavor (caller must not proceed).
  */
