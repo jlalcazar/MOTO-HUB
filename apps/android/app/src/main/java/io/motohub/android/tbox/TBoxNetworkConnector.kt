@@ -502,7 +502,7 @@ class TBoxNetworkConnector(context: Context) {
                 "$live T-Box network connectors now hold a Wi-Fi request at the same time. They " +
                     "compete for the same association and releasing one drops the others, so " +
                     "expect connections that are granted and lost within a second. This is a " +
-                    "MOTO-HUB fault, not the dash.",
+                    "MotoVisor fault, not the dash.",
                 LogLevel.ERROR,
                 reportToTelemetry = firstInProcess
             )
@@ -1046,7 +1046,7 @@ class TBoxNetworkConnector(context: Context) {
                     }
                     val bindFailure = runCatching {
                         check(connectivityManager.bindProcessToNetwork(network)) {
-                            "Android cannot bind MOTO-HUB to the T-Box network."
+                            "Android cannot bind MotoVisor to the T-Box network."
                         }
                     }.exceptionOrNull()
                     // bindProcessToNetwork answers a bare false, so the failure above is a
@@ -1171,7 +1171,7 @@ class TBoxNetworkConnector(context: Context) {
                             "Android dropped the ${profile.ssid} network before it became usable."
                         refusedAsBackground ->
                             "Android refused the request for ${profile.ssid} without trying it: " +
-                                "MOTO-HUB was in the background when it was made. Open MOTO-HUB " +
+                                "MotoVisor was in the background when it was made. Open MotoVisor " +
                                 "and tap Connect again."
                         else ->
                             "Android gave up connecting to ${profile.ssid}: either the dash was " +
@@ -1468,11 +1468,11 @@ class TBoxNetworkConnector(context: Context) {
                             waitingForForeground = true
                             ProjectionEventLog.warning(
                                 "NETWORK",
-                                "Not asking Android for ${profile.ssid} yet: MOTO-HUB is in the " +
+                                "Not asking Android for ${profile.ssid} yet: MotoVisor is in the " +
                                     "background (importance=$importanceNow), and a request made " +
                                     "from there is refused without the AP ever being looked " +
                                     "for. Waiting up to ${REJOIN_GIVE_UP_MS / 1_000L}s for " +
-                                    "MOTO-HUB to come back to the foreground - open it to " +
+                                    "MotoVisor to come back to the foreground - open it to " +
                                     "reconnect now."
                             )
                         }
@@ -1490,9 +1490,9 @@ class TBoxNetworkConnector(context: Context) {
                             if (attempt == 0) {
                                 "Giving up on the T-Box Wi-Fi after " +
                                     "${REJOIN_GIVE_UP_MS / 1_000L}s without ever being able to " +
-                                    "ask: MOTO-HUB stayed in the background the whole time, " +
+                                    "ask: MotoVisor stayed in the background the whole time, " +
                                     "where Android refuses the request. Releasing the network " +
-                                    "request; open MOTO-HUB and tap Connect."
+                                    "request; open MotoVisor and tap Connect."
                             } else {
                                 "Giving up on the T-Box Wi-Fi after $attempt rejoin attempt(s) " +
                                     "over ${REJOIN_GIVE_UP_MS / 1_000L}s; releasing the network " +
@@ -1519,7 +1519,7 @@ class TBoxNetworkConnector(context: Context) {
                         waitingForForeground = false
                         ProjectionEventLog.record(
                             "NETWORK",
-                            "MOTO-HUB is back in the foreground; resuming the T-Box Wi-Fi rejoin."
+                            "MotoVisor is back in the foreground; resuming the T-Box Wi-Fi rejoin."
                         )
                     }
                     attempt++

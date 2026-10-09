@@ -50,7 +50,7 @@ object TBoxPortScanner {
             val connector = TBoxNetworkConnectors.tryAcquireForDiagnostics(context, OWNER, profile.ssid)
                 ?: return@withContext Result.failure(
                     IllegalStateException(
-                        "MOTO-HUB is connected to a different motorcycle right now. " +
+                        "MotoVisor is connected to a different motorcycle right now. " +
                             "Disconnect it first, then scan."
                     )
                 )

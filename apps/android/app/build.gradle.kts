@@ -294,7 +294,7 @@ val exportPublicApk by tasks.registering(Copy::class) {
     dependsOn("assembleRelease")
     from(layout.buildDirectory.file("outputs/apk/release/app-release.apk"))
     into(rootProject.projectDir.resolve("../../artifacts"))
-    rename { "MOTO-HUB-${android.defaultConfig.versionName}-${android.defaultConfig.versionCode}-public.apk" }
+    rename { "MotoVisor-${android.defaultConfig.versionName}-${android.defaultConfig.versionCode}-public.apk" }
     doFirst {
         check(hasLocalReleaseSigning) {
             "The persistent MOTO-HUB release keystore and release-signing.properties are required."
@@ -313,7 +313,7 @@ val exportPublicApk by tasks.registering(Copy::class) {
     }
     doLast {
         val exported = destinationDir.resolve(
-            "MOTO-HUB-${android.defaultConfig.versionName}-${android.defaultConfig.versionCode}-public.apk"
+            "MotoVisor-${android.defaultConfig.versionName}-${android.defaultConfig.versionCode}-public.apk"
         )
         // Belt and braces: verify the bytes that were actually copied, so a stale or
         // hand-placed APK can never be published with the identity inside it.
@@ -329,7 +329,7 @@ val exportPrivateAndroidAutoApk by tasks.registering(Copy::class) {
     dependsOn("assembleRelease")
     from(layout.buildDirectory.file("outputs/apk/release/app-release.apk"))
     into(rootProject.projectDir.resolve("../../artifacts"))
-    rename { "MOTO-HUB-${android.defaultConfig.versionName}-${android.defaultConfig.versionCode}-android-auto-private.apk" }
+    rename { "MotoVisor-${android.defaultConfig.versionName}-${android.defaultConfig.versionCode}-android-auto-private.apk" }
     doFirst {
         check(hasLocalReleaseSigning) {
             "The persistent MOTO-HUB release keystore and release-signing.properties are required."

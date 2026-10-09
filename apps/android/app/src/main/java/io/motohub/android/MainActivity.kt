@@ -209,7 +209,7 @@ class MainActivity : ComponentActivity() {
         }
         ProjectionEventLog.record(
             "CONNECTION",
-            "Connect ($reason) deferred: MOTO-HUB is not in the foreground yet " +
+            "Connect ($reason) deferred: MotoVisor is not in the foreground yet " +
                 "(importance=${processImportance()}); Android would refuse the Wi-Fi request."
         )
         lifecycleScope.launch {
@@ -676,7 +676,7 @@ class MainActivity : ComponentActivity() {
                     if (!androidAutoStart.request(Unit)) {
                         ProjectionEventLog.warning(
                             "AUTOSTART",
-                            "Android Auto refused while MOTO-HUB is in the background; " +
+                            "Android Auto refused while MotoVisor is in the background; " +
                                 "starting it when the app is back in front."
                         )
                     }
@@ -1226,7 +1226,7 @@ class MainActivity : ComponentActivity() {
                         onCopy = {
                             val text = ProjectionEventLog.exportText()
                             context.getSystemService(ClipboardManager::class.java).setPrimaryClip(
-                                ClipData.newPlainText(motoHubText("MOTO-HUB diagnostics"), text)
+                                ClipData.newPlainText(motoHubText("MotoVisor diagnostics"), text)
                             )
                             ProjectionEventLog.record("LOG", "Diagnostic log copied to the clipboard.")
                             Toast.makeText(context, motoHubText("Log copied to clipboard"), Toast.LENGTH_SHORT).show()
@@ -1241,7 +1241,7 @@ class MainActivity : ComponentActivity() {
                             }.getOrNull()
                             if (shareIntent != null) {
                                 ProjectionEventLog.record("LOG", "Diagnostic log file share sheet opened.")
-                                context.startActivity(Intent.createChooser(shareIntent, "Share MOTO-HUB log"))
+                                context.startActivity(Intent.createChooser(shareIntent, "Share MotoVisor log"))
                             }
                         },
                         onClear = ProjectionEventLog::clear,

@@ -113,7 +113,7 @@ internal class EcBtpTimeLink(
             // Worth its own line: without this grant the scan below throws and the rider sees a
             // setting that is on and does nothing at all.
             log(
-                "EC-BTP: " + ThinkerRideGate.missingPermissionMessage("MOTO-HUB") +
+                "EC-BTP: " + ThinkerRideGate.missingPermissionMessage("MotoVisor") +
                     " Until then the dash clock cannot be set over Bluetooth."
             )
             return 0

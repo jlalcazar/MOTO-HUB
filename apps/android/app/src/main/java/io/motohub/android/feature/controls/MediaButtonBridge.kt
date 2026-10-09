@@ -137,7 +137,7 @@ class MediaButtonBridge(
         handler.post {
             if (session != null) return@post
             try {
-                session = MediaSession(context, "MOTO-HUB handlebar controls").apply {
+                session = MediaSession(context, "MotoVisor handlebar controls").apply {
                     setCallback(callback)
                     setPlaybackState(
                         PlaybackState.Builder()
@@ -1684,7 +1684,7 @@ class MediaButtonBridge(
         if (appearancePublished && !force) return
         session?.setMetadata(
             MediaMetadata.Builder()
-                .putString(MediaMetadata.METADATA_KEY_TITLE, "MOTO-HUB controls")
+                .putString(MediaMetadata.METADATA_KEY_TITLE, "MotoVisor controls")
                 .putString(MediaMetadata.METADATA_KEY_ARTIST, "Handlebar controls for $targetName")
                 .putLong(MediaMetadata.METADATA_KEY_DURATION, TRACK_DURATION_MS)
                 .build()
@@ -1709,7 +1709,7 @@ class MediaButtonBridge(
                 NOTIFICATION_ID,
                 Notification.Builder(context, CHANNEL_ID)
                     .setSmallIcon(R.drawable.ic_notification)
-                    .setContentTitle(motoHubText("MOTO-HUB controls"))
+                    .setContentTitle(motoHubText("MotoVisor controls"))
                     .setContentText(motoHubText("Motorcycle buttons control %1\$s", targetName))
                     .setStyle(Notification.MediaStyle().setMediaSession(session?.sessionToken))
                     .setOngoing(true)

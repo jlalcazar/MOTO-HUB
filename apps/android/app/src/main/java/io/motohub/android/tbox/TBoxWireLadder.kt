@@ -209,7 +209,7 @@ object TBoxWireLadder {
                 ProjectionEventLog.record(
                     "WIRE",
                     "Adopted this motorcycle's existing wire-ladder progress under its network " +
-                        "name so both halves of MOTO-HUB now read the same record."
+                        "name so both halves of MotoVisor now read the same record."
                 )
                 parseProgress(record.raw)
             }

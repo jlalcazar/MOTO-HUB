@@ -40,7 +40,7 @@ class CoreAndroidAutoCoreBridge(private val context: Context) : AndroidAutoCoreB
         ProjectionEventLog.record("ANDROID_AUTO", "User requested Android Auto startup.")
         if (!AndroidAutoSessionService.start(context)) {
             launchPending.set(false)
-            onFailure("Android refused to start Android Auto while MOTO-HUB was in the background.")
+            onFailure("Android refused to start Android Auto while MotoVisor was in the background.")
             return
         }
         scope.launch {

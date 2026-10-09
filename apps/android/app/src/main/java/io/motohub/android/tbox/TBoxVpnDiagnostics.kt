@@ -124,7 +124,7 @@ internal object TBoxVpnDiagnostics {
     fun blockingMessage(routing: VpnRouting?): String {
         val tunnel = routing?.label?.let { " ($it)" }.orEmpty()
         return "$VPN_ROUTING_MARKER$tunnel is routing the motorcycle's network into its tunnel, so " +
-            "Android will not let MOTO-HUB reach the dash. Turn the VPN off while you ride, switch " +
+            "Android will not let MotoVisor reach the dash. Turn the VPN off while you ride, switch " +
             "off its exit node / full-tunnel mode, or turn on its \"allow local network access\" " +
             "option, then retry."
     }
@@ -155,7 +155,7 @@ internal object TBoxVpnDiagnostics {
     fun lockdownMessage(routing: VpnRouting?): String {
         val tunnel = routing?.label?.let { " ($it)" }.orEmpty()
         return "$VPN_ROUTING_MARKER$tunnel is set to block connections that do not go through " +
-            "it, so Android will not let MOTO-HUB use the motorcycle's Wi-Fi at all - the dash " +
+            "it, so Android will not let MotoVisor use the motorcycle's Wi-Fi at all - the dash " +
             "is only reachable there. Turn off \"Block connections without VPN\" for it in " +
             "Android's VPN settings, or turn the VPN off while you ride, then retry."
     }

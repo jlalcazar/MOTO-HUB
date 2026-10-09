@@ -558,7 +558,7 @@ internal class ThinkerRideBleLink(
     }
 
     private fun missingPermissionFailure(): IllegalStateException = IllegalStateException(
-        "MOTO-HUB does not have the \"Nearby devices\" (Bluetooth) permission, which this " +
+        "MotoVisor does not have the \"Nearby devices\" (Bluetooth) permission, which this " +
             "dashboard needs for pairing. Allow it in the app settings, then connect again."
     )
 

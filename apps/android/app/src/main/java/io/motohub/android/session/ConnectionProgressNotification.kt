@@ -39,7 +39,7 @@ object ConnectionProgressNotification {
         manager.createNotificationChannel(
             NotificationChannel(
                 CHANNEL_ID,
-                motoHubText("MOTO-HUB connection progress"),
+                motoHubText("MotoVisor connection progress"),
                 NotificationManager.IMPORTANCE_LOW
             )
         )
@@ -52,7 +52,7 @@ object ConnectionProgressNotification {
                     motoHubText("Connecting to %1\$s", ssid)
                 }
             )
-            .setContentText(motoHubText("Keep MOTO-HUB open - closing it stops the search."))
+            .setContentText(motoHubText("Keep MotoVisor open - closing it stops the search."))
             .setCategory(NotificationCompat.CATEGORY_PROGRESS)
             .setProgress(0, 0, true)
             .setOngoing(true)

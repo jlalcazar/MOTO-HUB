@@ -83,7 +83,7 @@ internal fun ProfileTrialConfirmation(
                     HorizontalDivider()
                     Text(
                         motoHubText(
-                            "You have just found out something MOTO-HUB could not work out by " +
+                            "You have just found out something MotoVisor could not work out by " +
                                 "itself: which profile this dashboard actually accepts. Sending " +
                                 "your log shares that, so the next rider with your motorcycle " +
                                 "gets it right the first time."

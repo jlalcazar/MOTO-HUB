@@ -63,7 +63,7 @@ object AapPhoneHandshake {
             val ssl = AapSslContext(SingleKeyKeyManager(context), useClientMode = true)
             ProjectionEventLog.record(TAG, "Starting SSL handshake (TLS client mode).")
             if (!ssl.performHandshake(connection)) {
-                return Outcome(false, "SSL handshake failed - the dongle likely rejected MOTO-HUB's certificate.")
+                return Outcome(false, "SSL handshake failed - the dongle likely rejected MotoVisor's certificate.")
             }
             ssl.postHandshakeReset()
             ProjectionEventLog.record(TAG, "SSL handshake complete.")

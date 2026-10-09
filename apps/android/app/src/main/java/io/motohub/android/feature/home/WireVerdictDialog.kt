@@ -38,7 +38,7 @@ fun WireVerdictDialog(
                 Text(
                     motoHubText(
                         "Last time you connected to %1\$s, everything looked right from this phone. " +
-                            "MOTO-HUB has no way to see the dashboard's screen, so this is the one " +
+                            "MotoVisor has no way to see the dashboard's screen, so this is the one " +
                             "thing it has to ask you.",
                         motorcycleName
                     ),
@@ -46,7 +46,7 @@ fun WireVerdictDialog(
                 )
                 Text(
                     motoHubText(
-                        "If it stayed on the pairing screen, MOTO-HUB keeps trying video formats " +
+                        "If it stayed on the pairing screen, MotoVisor keeps trying video formats " +
                             "until one works. When other riders with the same dashboard have " +
                             "already confirmed this one, it asks you once more before moving on."
                     ),
@@ -84,7 +84,7 @@ fun WireNeedsAndroidAutoDialog(onDismiss: () -> Unit) {
             MotoHubDialogBody {
                 Text(
                     motoHubText(
-                        "MOTO-HUB is still looking for a video format your dashboard can display, " +
+                        "MotoVisor is still looking for a video format your dashboard can display, " +
                             "but it can only test one while Android Auto is running - the Ride " +
                             "Dashboard always sends its own format."
                     ),

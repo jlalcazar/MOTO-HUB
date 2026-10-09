@@ -140,7 +140,7 @@ fun ConnectionRail(state: ConnectionState, modifier: Modifier = Modifier) {
 @Composable
 private fun EditionWaveText(modifier: Modifier = Modifier) {
     val isPro = io.motohub.android.BuildConfig.IS_PRO
-    val label = if (isPro) "MOTO-HUB ADVANCED" else "MOTO-HUB CORE"
+    val label = if (isPro) "MOTO-HUB ADVANCED" else "MOTOVISOR"
     val accentColor = if (isPro) EDITION_ADVANCED_RED else MaterialTheme.colorScheme.primary
 
     val offsetY = remember { Animatable(-64f) }

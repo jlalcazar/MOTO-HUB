@@ -150,7 +150,7 @@ fun MotorcycleDetailsScreen(
         AlertDialog(
             onDismissRequest = { showDeleteConfirmation = false },
             title = { Text(motoHubText("Remove motorcycle?")) },
-            text = { Text(motoHubText("The saved connection profile and its photo will be removed from MOTO-HUB.")) },
+            text = { Text(motoHubText("The saved connection profile and its photo will be removed from MotoVisor.")) },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -278,7 +278,7 @@ private fun MotorcycleDetailsMainList(
                     modifier = Modifier.fillMaxWidth()
                 )
                 Text(
-                    motoHubText("The name is only used inside MOTO-HUB."),
+                    motoHubText("The name is only used inside MotoVisor."),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

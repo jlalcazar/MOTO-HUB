@@ -72,7 +72,7 @@ class AoaExternalService : Service() {
                 CHANNEL_ID,
                 getString(R.string.projection_channel_name),
                 NotificationManager.IMPORTANCE_DEFAULT
-            ).apply { description = motoHubText("MOTO-HUB external display streaming") }
+            ).apply { description = motoHubText("MotoVisor external display streaming") }
         )
     }
 

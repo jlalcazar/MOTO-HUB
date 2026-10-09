@@ -69,7 +69,7 @@ fun AndroidAutoHelpScreen(onBack: () -> Unit) {
             // it stays on the full-contrast content colour rather than the muted variant.
             Text(
                 motoHubText(
-                    "Android Auto 17.4 removed the way an app can ask it to project. MOTO-HUB still " +
+                    "Android Auto 17.4 removed the way an app can ask it to project. MotoVisor still " +
                         "tries, and on older versions it works — but when it does not, the four " +
                         "steps below start Android Auto from its own developer menu instead. This " +
                         "is the part that works when nothing else does, and you do not need to " +
@@ -106,7 +106,7 @@ fun AndroidAutoHelpScreen(onBack: () -> Unit) {
             HelpStep(
                 number = "4",
                 text = motoHubText(
-                    "Go back to MOTO-HUB and start Android Auto. It connects on its own within a " +
+                    "Go back to MotoVisor and start Android Auto. It connects on its own within a " +
                         "couple of seconds — there is nothing else to press."
                 )
             )
@@ -135,9 +135,9 @@ fun AndroidAutoHelpScreen(onBack: () -> Unit) {
             MonoLabel(motoHubText("WHY"))
             Text(
                 motoHubText(
-                    "Normally MOTO-HUB waits and asks Android Auto to connect to it. Version 17.4 " +
+                    "Normally MotoVisor waits and asks Android Auto to connect to it. Version 17.4 " +
                         "closed that door for every app of this kind, not just this one. The head " +
-                        "unit server reverses the direction — Android Auto waits and MOTO-HUB " +
+                        "unit server reverses the direction — Android Auto waits and MotoVisor " +
                         "connects to it — which is a door Google left open for its own testing tools."
                 ),
                 style = MaterialTheme.typography.bodyMedium

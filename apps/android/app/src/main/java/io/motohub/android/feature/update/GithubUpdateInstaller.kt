@@ -205,7 +205,7 @@ object GithubUpdateInstaller {
         if (network == null) {
             return DownloadNetwork(
                 description = "the phone's default network - no validated Internet network was " +
-                    "found, so this may fail if MOTO-HUB is bound to the motorcycle's Wi-Fi",
+                    "found, so this may fail if MotoVisor is bound to the motorcycle's Wi-Fi",
                 metered = false
             )
         }

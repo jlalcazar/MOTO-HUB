@@ -93,12 +93,12 @@ class ProjectionForegroundService : Service() {
         manager.createNotificationChannel(
             NotificationChannel(
                 CHANNEL_ID,
-                "MOTO-HUB projection service",
+                "MotoVisor projection service",
                 NotificationManager.IMPORTANCE_LOW
             )
         )
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle(motoHubText("MOTO-HUB"))
+            .setContentTitle(motoHubText("MotoVisor"))
             .setContentText(motoHubText("Projection is running"))
             .setSmallIcon(R.drawable.ic_notification)
             .setOngoing(true)

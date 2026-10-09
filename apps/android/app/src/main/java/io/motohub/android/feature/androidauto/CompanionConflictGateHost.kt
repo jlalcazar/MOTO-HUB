@@ -117,7 +117,7 @@ fun CompanionConflictGateDialog(state: CompanionConflictGateState) {
             MotoHubDialogBody {
                 Text(
                     motoHubText(
-                        "The three local ports MOTO-HUB needs for the dashboard (%1\$s) are in " +
+                        "The three local ports MotoVisor needs for the dashboard (%1\$s) are in " +
                             "use right now, so the connection would fail.",
                         pending.conflict.busyPorts.joinToString()
                     ),

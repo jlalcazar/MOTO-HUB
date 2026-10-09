@@ -70,7 +70,7 @@ fun SafetyDisclaimerDialog(
             MotoHubDialogBody(spacing = 14.dp) {
                 Text(
                     text = motoHubText(
-                        "Riding requires your full attention. Never interact with MOTO-HUB, " +
+                        "Riding requires your full attention. Never interact with MotoVisor, " +
                             "Android Auto, navigation, mirroring, trip recording, or any on-screen " +
                             "control while the motorcycle is moving."
                     ),
@@ -87,7 +87,7 @@ fun SafetyDisclaimerDialog(
                 )
                 Text(
                     text = motoHubText(
-                        "MOTO-HUB is not a safety device and cannot prevent distraction, crashes, " +
+                        "MotoVisor is not a safety device and cannot prevent distraction, crashes, " +
                             "injury, or damage. You are solely responsible for riding safely and obeying " +
                             "all applicable laws."
                     ),

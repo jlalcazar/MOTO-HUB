@@ -468,7 +468,7 @@ object TBoxLinkResolver {
                 "NETWORK",
                 "${profile.ssid} answered on its access point while saved as \"My phone hosts " +
                     "the hotspot\" ($streak of $AP_FALLBACKS_BEFORE_REWRITE in a row). One more " +
-                    "and MOTO-HUB will correct the saved mode by itself."
+                    "and MotoVisor will correct the saved mode by itself."
             )
             return
         }

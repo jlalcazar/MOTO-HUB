@@ -48,7 +48,7 @@ class PhoneDisplayDimmer(context: Context) {
             alpha = OVERLAY_ALPHA
             screenBrightness = MIN_DIM_BRIGHTNESS
             buttonBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
-            title = motoHubText("MOTO-HUB display dimmer")
+            title = motoHubText("MotoVisor display dimmer")
         }
 
         return runCatching {

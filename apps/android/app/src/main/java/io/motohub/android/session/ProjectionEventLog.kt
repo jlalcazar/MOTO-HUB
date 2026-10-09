@@ -265,7 +265,7 @@ object ProjectionEventLog {
         }
         record(
             source = "APP",
-            message = "Process started: MOTO-HUB ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE}), " +
+            message = "Process started: MotoVisor ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE}), " +
                 "Android ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT}), " +
                 "${Build.MANUFACTURER} ${Build.MODEL}."
         )
@@ -471,7 +471,7 @@ object ProjectionEventLog {
             ring.toList()
         }
         return buildString {
-            appendLine("MOTO-HUB diagnostics")
+            appendLine("MotoVisor diagnostics")
             appendLine("App: ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
             appendLine("Device: ${Build.MANUFACTURER} ${Build.MODEL}")
             appendLine("Android: ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")

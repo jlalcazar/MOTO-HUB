@@ -53,7 +53,7 @@ fun SystemKillNotice(modifier: Modifier = Modifier) {
     val appName = remember {
         runCatching {
             context.applicationInfo.loadLabel(context.packageManager).toString()
-        }.getOrDefault("MOTO-HUB")
+        }.getOrDefault("MotoVisor")
     }
     // Read once per composition of this notice, not per recomposition: the rider may change the
     // setting and come back, and re-reading on every frame would make the text flicker between

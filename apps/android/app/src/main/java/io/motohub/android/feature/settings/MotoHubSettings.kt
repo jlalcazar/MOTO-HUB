@@ -16,7 +16,7 @@ enum class VideoQuality(
     private val bitrateMultiplier: Float
 ) {
     SMOOTHER("Smoother", "Lower bitrate, less heat and network load.", R.string.video_quality_smoother, R.string.video_quality_smoother_description, 0.7f),
-    BALANCED("Balanced", "Current MOTO-HUB quality and recommended default.", R.string.video_quality_balanced, R.string.video_quality_balanced_description, 1.0f),
+    BALANCED("Balanced", "Current MotoVisor quality and recommended default.", R.string.video_quality_balanced, R.string.video_quality_balanced_description, 1.0f),
     SHARPER("Sharper", "Higher bitrate for crisper maps and text.", R.string.video_quality_sharper, R.string.video_quality_sharper_description, 1.6f);
 
     fun bitrateFor(baseBitrate: Int): Int = (baseBitrate * bitrateMultiplier).roundToInt()
@@ -57,7 +57,7 @@ enum class AndroidAutoResolutionMode(
 ) {
     AUTO(
         "Auto",
-        "Keep MOTO-HUB automatic orientation based on the learned T-Box geometry.",
+        "Keep MotoVisor automatic orientation based on the learned T-Box geometry.",
         R.string.android_auto_resolution_auto,
         R.string.android_auto_resolution_auto_description,
         null

@@ -91,7 +91,7 @@ fun AboutScreen(
                 )
                 Text(
                     text = motoHubText(
-                        "MOTO-HUB connects an Android 12+ phone to a motorcycle dashboard that " +
+                        "MotoVisor connects an Android 12+ phone to a motorcycle dashboard that " +
                             "pairs over EasyConn — the Carbit software several manufacturers ship, " +
                             "CFMOTO among them. It supports screen and app mirroring, Android Auto " +
                             "projection, saved motorcycle profiles, and on-device diagnostics."
@@ -167,7 +167,7 @@ fun AboutScreen(
 
             Text(
                 text = motoHubText(
-                    "MOTO-HUB is an independent project. It is not affiliated with, endorsed by, " +
+                    "MotoVisor is an independent project. It is not affiliated with, endorsed by, " +
                         "or sponsored by Carbit, CFMOTO, any other manufacturer whose dashboard uses " +
                         "EasyConn, Google, or Android Auto. All product names and marks belong to " +
                         "their respective owners."
@@ -306,7 +306,7 @@ private fun DisclaimerCard() {
         ) {
             MonoLabel(motoHubText("EXPERIMENTAL SOFTWARE"))
             Text(
-                text = motoHubText("MOTO-HUB is an experimental proof-of-concept, not a production-grade product."),
+                text = motoHubText("MotoVisor is an experimental proof-of-concept, not a production-grade product."),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )

@@ -693,7 +693,7 @@ class HubViewModel(application: Application) : AndroidViewModel(application) {
                             TBoxConnectionMode.PHONE_HOTSPOT ->
                                 motoHubText(
                                     "Hotspot is up. Searching it for the dashboard - this can take " +
-                                        "up to 90 seconds, so keep MOTO-HUB open."
+                                        "up to 90 seconds, so keep MotoVisor open."
                                 )
                             else -> motoHubText("Network connected. Searching for the EasyConn service.")
                         }
@@ -796,7 +796,7 @@ class HubViewModel(application: Application) : AndroidViewModel(application) {
                         "CONNECTION",
                         "Connection attempt was cancelled during " +
                             "${mutableUiState.value.session.phase}, either by the rider or by " +
-                            "MOTO-HUB being closed. The search does not outlive the app, so " +
+                            "MotoVisor being closed. The search does not outlive the app, so " +
                             "whatever this step was about to report is missing from this log."
                     )
                 }
@@ -1011,7 +1011,7 @@ class HubViewModel(application: Application) : AndroidViewModel(application) {
 
     fun onNotificationPermissionDenied() {
         ProjectionEventLog.warning("PERMISSION", "Notification permission denied.")
-        showError(motoHubText("Allow MOTO-HUB notifications to keep streaming visible and controllable."))
+        showError(motoHubText("Allow MotoVisor notifications to keep streaming visible and controllable."))
     }
 
     fun onCameraPermissionDenied() {

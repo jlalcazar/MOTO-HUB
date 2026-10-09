@@ -136,7 +136,7 @@ object ProcessExitReport {
     private fun report(exit: ApplicationExitInfo) {
         val when_ = TIMESTAMP_FORMAT.format(Date(exit.timestamp))
         val detail = buildString {
-            append("A previous MOTO-HUB process ended at $when_: ${reasonName(exit.reason)}")
+            append("A previous MotoVisor process ended at $when_: ${reasonName(exit.reason)}")
             exit.description?.takeIf { it.isNotBlank() }?.let { append(" ($it)") }
             append(". process=${exit.processName}, importance=${importanceName(exit.importance)}")
             // The memory footprint at the moment of death is what separates a kill for memory

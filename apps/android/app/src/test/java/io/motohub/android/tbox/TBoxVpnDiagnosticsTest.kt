@@ -46,7 +46,7 @@ class TBoxVpnDiagnosticsTest {
      */
     @Test
     fun doesNotBlameAVpnThatDoesNotClaimTheRouteToTheDash() {
-        val error = IllegalStateException("Android cannot bind MOTO-HUB to the T-Box network.")
+        val error = IllegalStateException("Android cannot bind MotoVisor to the T-Box network.")
 
         assertNull(TBoxVpnDiagnostics.userFacingMessage(error, routing()))
     }
@@ -54,7 +54,7 @@ class TBoxVpnDiagnosticsTest {
     @Test
     fun blamesAFullTunnelVpn() {
         val message = TBoxVpnDiagnostics.userFacingMessage(
-            error = IllegalStateException("Android cannot bind MOTO-HUB to the T-Box network."),
+            error = IllegalStateException("Android cannot bind MotoVisor to the T-Box network."),
             routing = routing(capturesDefaultRoute = true)
         )
 
@@ -67,7 +67,7 @@ class TBoxVpnDiagnosticsTest {
     @Test
     fun blamesAVpnThatClaimsOnlyTheDashSubnet() {
         val message = TBoxVpnDiagnostics.userFacingMessage(
-            error = IllegalStateException("Android cannot bind MOTO-HUB to the T-Box network."),
+            error = IllegalStateException("Android cannot bind MotoVisor to the T-Box network."),
             routing = routing(capturesDash = true)
         )
 

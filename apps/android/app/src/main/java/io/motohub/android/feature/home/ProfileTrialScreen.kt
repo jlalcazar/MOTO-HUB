@@ -56,7 +56,7 @@ internal fun ProfileTrialScreen(
                 "The connection to your motorcycle is fine - the dashboard is simply refusing " +
                     "the picture in the format it is being sent. A different profile changes " +
                     "that format. Picking one reconnects straight away, and if the dashboard " +
-                    "starts showing it, MOTO-HUB will ask whether to keep it."
+                    "starts showing it, MotoVisor will ask whether to keep it."
             ),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,

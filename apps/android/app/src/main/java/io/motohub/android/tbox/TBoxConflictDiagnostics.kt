@@ -13,7 +13,7 @@ internal object TBoxConflictDiagnostics {
      */
     const val PORT_CONFLICT_MESSAGE =
         "Another EasyConn session is already using the local connection ports (10920-10922). " +
-            "Stop any active MOTO-HUB session, or force-stop your motorcycle's own companion app " +
+            "Stop any active MotoVisor session, or force-stop your motorcycle's own companion app " +
             "(CFMOTO, Zontes Smart, Carbit Ride and the equivalents other brands ship), then " +
             "retry the connection."
 
@@ -23,7 +23,7 @@ internal object TBoxConflictDiagnostics {
             PORT_CONFLICT_MESSAGE
         } else {
             "Another EasyConn session is already using the local connection ports " +
-                "(10920-10922). Stop any active MOTO-HUB session, or force-stop $companionAppName " +
+                "(10920-10922). Stop any active MotoVisor session, or force-stop $companionAppName " +
                 "from its App info page, then retry the connection."
         }
 

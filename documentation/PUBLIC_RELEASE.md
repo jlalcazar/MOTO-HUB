@@ -11,7 +11,7 @@ Release APKs are built and published by hand. They are signed with this fork's o
 The release asset is named:
 
 ```text
-MOTO-HUB-<versionName>-<versionCode>-public.apk
+MotoVisor-<versionName>-<versionCode>-public.apk
 ```
 
 with a matching `.sha256` checksum file. It is the obfuscated `release` variant, arm64 only.
@@ -85,7 +85,7 @@ signed with a different key, so losing it means every rider has to uninstall bef
    uploads it with its checksum:
 
    ```bash
-   tooling/publish-release.sh v1.1.121 artifacts/MOTO-HUB-1.1.121-215-public.apk
+   tooling/publish-release.sh v1.1.121 artifacts/MotoVisor-1.1.121-215-public.apk
    ```
 
 Do not upload an APK with `gh release upload` directly: that command attaches whatever file it is

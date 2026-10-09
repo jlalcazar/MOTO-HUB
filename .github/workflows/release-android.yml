@@ -114,7 +114,7 @@ jobs:
 
           release_dir="$RUNNER_TEMP/motohub-release/assets"
           mkdir -p "$release_dir"
-          apk_name="MOTO-HUB-${version_name}-${version_code}-public.apk"
+          apk_name="MotoVisor-${version_name}-${version_code}-public.apk"
           apk_path="$release_dir/$apk_name"
 
           "$build_tools/zipalign" -p -f 4 "$unsigned_apk" "$aligned_apk"

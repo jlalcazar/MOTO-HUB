@@ -756,7 +756,7 @@ class TBoxWifiDirectConnector(
     /** This app's own display name, so a permission message names the app the rider must open. */
     private fun appName(): String = runCatching {
         appContext.applicationInfo.loadLabel(appContext.packageManager).toString()
-    }.getOrDefault("MOTO-HUB")
+    }.getOrDefault("MotoVisor")
 
     /** Runs one framework state query and waits briefly for its callback; null when it never answers. */
     private suspend fun <T> awaitQuery(query: (resume: (T?) -> Unit) -> Unit): T? =

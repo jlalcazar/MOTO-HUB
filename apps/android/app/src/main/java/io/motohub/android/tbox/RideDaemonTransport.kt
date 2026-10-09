@@ -741,10 +741,10 @@ class RideDaemonTransport(
         val decidedAt = SystemClock.elapsedRealtime()
         val budgetMs = ReversePortProbe.waitBudgetMs(decidedAt)
         val because = if (ReversePortProbe.waitingOnOurOwnHandoff(decidedAt)) {
-            "a MOTO-HUB session was stopped moments ago, so these are probably its own sockets " +
+            "a MotoVisor session was stopped moments ago, so these are probably its own sockets " +
                 "still closing"
         } else {
-            "no MOTO-HUB session of ours has stopped recently, so another app is holding them " +
+            "no MotoVisor session of ours has stopped recently, so another app is holding them " +
                 "and waiting cannot change that"
         }
         ProjectionEventLog.warning(
@@ -1413,7 +1413,7 @@ class RideDaemonTransport(
                 "Hosted-network sweep: ${candidates.size} addresses to try on port " +
                     "$WAKE_PROBE_PORT, up to " +
                     "${candidates.size * HOSTED_SWEEP_CONNECT_TIMEOUT_MS / 1000}s if every one of " +
-                    "them stays silent. Leaving MOTO-HUB now ends it."
+                    "them stays silent. Leaving MotoVisor now ends it."
             )
             for ((index, candidate) in candidates.withIndex()) {
                 kotlinx.coroutines.currentCoroutineContext().ensureActive()
@@ -1471,7 +1471,7 @@ class RideDaemonTransport(
                     "Hosted-network sweep: nothing answered $WAKE_PROBE_PORT on " +
                         "${candidates.size} addresses in " +
                         "${SystemClock.elapsedRealtime() - sweepStartedAtMs}ms. Either the dash " +
-                        "has not joined the hotspot yet, or it speaks on a port MOTO-HUB does " +
+                        "has not joined the hotspot yet, or it speaks on a port MotoVisor does " +
                         "not know."
                 } else {
                     "Hosted-network sweep: ${reachable.joinToString { it.hostAddress.orEmpty() }} " +
@@ -1769,7 +1769,7 @@ class RideDaemonTransport(
                         ProjectionEventLog.warning(
                             "DISCOVERY",
                             "Ignoring EasyConn candidate ${resolved.serviceName}: " +
-                                "it is not an identified MOTO-HUB simulator preset (modelId=$advertisedModelId)."
+                                "it is not an identified MotoVisor simulator preset (modelId=$advertisedModelId)."
                         )
                         releaseSlot()
                         return
@@ -2132,7 +2132,7 @@ class RideDaemonTransport(
                     ProjectionEventLog.record(
                         "TBOX",
                         "This dashboard ($sessionDashFingerprint) asks for the time itself; from " +
-                            "the next connection MOTO-HUB will only answer, never offer."
+                            "the next connection MotoVisor will only answer, never offer."
                     )
                 }
                 // The daemon answers this on its own, immediately; all that is kept here is that
@@ -2396,7 +2396,7 @@ class RideDaemonTransport(
         )
         mutableEvents.tryEmit(
             TBoxEvent.FatalError(
-                "The dash stopped responding while MOTO-HUB was still sending video. Put the bike " +
+                "The dash stopped responding while MotoVisor was still sending video. Put the bike " +
                     "on its phone-connection screen, make sure no other app is connected to the " +
                     "T-Box, and connect again."
             )

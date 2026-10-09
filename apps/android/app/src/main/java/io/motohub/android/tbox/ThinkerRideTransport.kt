@@ -85,7 +85,7 @@ class ThinkerRideTransport(context: Context) : TBoxTransport {
         withContext(Dispatchers.IO) {
             runCatching {
                 if (!ThinkerRideGate.hasBlePermissions(appContext)) {
-                    error(ThinkerRideGate.missingPermissionMessage("MOTO-HUB"))
+                    error(ThinkerRideGate.missingPermissionMessage("MotoVisor"))
                 }
                 reusableSession(link)?.let { alive ->
                     ProjectionEventLog.record(
@@ -227,7 +227,7 @@ class ThinkerRideTransport(context: Context) : TBoxTransport {
             } ?: error(
                 "The dashboard acknowledged the session but never opened the video connection. " +
                     "On these dashboards projection is started FROM THE DASH: press and hold the " +
-                    "UP button on it while MOTO-HUB is connecting. If that does nothing, " +
+                    "UP button on it while MotoVisor is connecting. If that does nothing, " +
                     "power-cycle the dash screen and connect again."
             )
             // The dash may have dropped and reopened the channel since the first accept; the

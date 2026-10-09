@@ -105,7 +105,7 @@ internal class PhoneHostedHotspot(context: Context, private val log: (String) ->
             return Result.failure(
                 when (failure) {
                     is SecurityException -> IllegalStateException(
-                        "MOTO-HUB is not allowed to create a hotspot on this phone. Allow its " +
+                        "MotoVisor is not allowed to create a hotspot on this phone. Allow its " +
                             "location permission, then connect again."
                     )
                     // The documented signal for "this app already has one" and for a phone whose

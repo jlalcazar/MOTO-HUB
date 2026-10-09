@@ -232,7 +232,7 @@ fun AdvancedPromoScreen(onBack: () -> Unit) {
                     fontWeight = FontWeight.SemiBold
                 )
                 Text(
-                    motoHubText("Everything MOTO-HUB does, and a full riding computer."),
+                    motoHubText("Everything MotoVisor does, and a full riding computer."),
                     style = MaterialTheme.typography.headlineMedium,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -304,7 +304,7 @@ fun AdvancedPromoScreen(onBack: () -> Unit) {
                 )
                 Text(
                     motoHubText(
-                        "Install it and connect your motorcycle there, then remove MOTO-HUB - " +
+                        "Install it and connect your motorcycle there, then remove MotoVisor - " +
                             "ADV-SOLO offers to do it. Motorcycles paired here do not move across: " +
                             "pair them again in ADV-SOLO."
                     ),
@@ -355,7 +355,7 @@ fun AdvancedPromoScreen(onBack: () -> Unit) {
                 onClick = { open(MOTO_HUB_DISCORD_URL) }
             )
             HeroOptionRow(
-                title = "MOTO-HUB source code",
+                title = "MotoVisor source code",
                 description = "This app is free software, AGPL v3. Read it, build it, fork it.",
                 icon = "Search",
                 color = MotoHubMirror,

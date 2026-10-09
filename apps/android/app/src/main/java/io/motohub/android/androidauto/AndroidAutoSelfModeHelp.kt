@@ -53,12 +53,12 @@ object AndroidAutoSelfModeHelp {
      * APK. MOTO-HUB keeps polling for it, so the rider can start it without restarting anything.
      */
     const val NEVER_CONNECTED_MESSAGE =
-        "Google Android Auto never connected to MOTO-HUB. Newer Android Auto releases removed the " +
+        "Google Android Auto never connected to MotoVisor. Newer Android Auto releases removed the " +
             "way apps ask it to project, so start it from Android Auto itself. Open the Android " +
             "Auto app's settings, scroll to the bottom and tap \"Version\" ten times to unlock its " +
             "developer options. Then, on that same settings screen, open the three-dot menu at " +
             "the top right and choose \"Start head unit server\" - the menu is on Android Auto's " +
-            "normal settings screen, not inside Developer settings. Leave MOTO-HUB running: it " +
+            "normal settings screen, not inside Developer settings. Leave MotoVisor running: it " +
             "connects on its own within a couple of seconds, and you can leave the server running " +
             "for next time."
 
@@ -79,11 +79,11 @@ object AndroidAutoSelfModeHelp {
      * [acceptedButSilentMessage] rather than by hand.
      */
     const val ACCEPTED_BUT_SILENT_MESSAGE =
-        "Google Android Auto took MOTO-HUB's request and then ignored it. That is what it does " +
+        "Google Android Auto took MotoVisor's request and then ignored it. That is what it does " +
             "with a head unit it has not been told to trust. Open the Android Auto app's " +
             "settings, scroll to the bottom and tap \"Version\" ten times to unlock its developer " +
             "options, open Developer settings and turn on \"Add new cars to Android Auto\" (older " +
-            "builds call it \"Unknown sources\"), then start Android Auto from MOTO-HUB again. If " +
+            "builds call it \"Unknown sources\"), then start Android Auto from MotoVisor again. If " +
             "it still does nothing, go back to the Android Auto settings screen and use the " +
             "three-dot menu at the top right: \"Start head unit server\"."
 
@@ -101,12 +101,12 @@ object AndroidAutoSelfModeHelp {
      * sentence of a message whose first sentence sent him somewhere else.
      */
     const val ACCEPTED_BUT_SILENT_ON_CLOSED_RELEASE_MESSAGE =
-        "Google Android Auto took MOTO-HUB's request and then ignored it, which is all this " +
+        "Google Android Auto took MotoVisor's request and then ignored it, which is all this " +
             "release does with it: Android Auto 17.3 and newer removed the way an app can ask it " +
             "to project. Start it from Android Auto instead. Open the Android Auto app's " +
             "settings, scroll to the bottom and tap \"Version\" ten times to unlock its developer " +
             "options, then open the three-dot menu at the top right of that same settings screen " +
-            "and choose \"Start head unit server\". Leave MOTO-HUB running: it connects on its own " +
+            "and choose \"Start head unit server\". Leave MotoVisor running: it connects on its own " +
             "within a couple of seconds. While you are in there, \"Add new cars to Android Auto\" " +
             "in Developer settings should be on too."
 

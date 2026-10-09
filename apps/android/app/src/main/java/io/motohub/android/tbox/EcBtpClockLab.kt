@@ -99,7 +99,7 @@ internal class EcBtpClockLab(
             return
         }
         if (!ThinkerRideGate.hasBlePermissions(appContext)) {
-            log(ThinkerRideGate.missingPermissionMessage("MOTO-HUB") + " The lab cannot run until then.")
+            log(ThinkerRideGate.missingPermissionMessage("MotoVisor") + " The lab cannot run until then.")
             finish()
             return
         }
@@ -113,7 +113,7 @@ internal class EcBtpClockLab(
             // unfiltered LE scan are exactly the kind of neighbour a dash streaming over 2.4GHz
             // Wi-Fi Direct cannot absorb. The experiment can wait; the rider's ride cannot.
             log(
-                "The lab will not run while MOTO-HUB is connected to " +
+                "The lab will not run while MotoVisor is connected to " +
                     "${live.motorcycle.displayName ?: live.motorcycle.ssid}: opening every " +
                     "Bluetooth device and scanning for 20s has ended a live session before. " +
                     "Disconnect the motorcycle first, leave the dash powered on, and run the " +

@@ -2,7 +2,7 @@
 <resources>
     <!-- Locale: fr-FR. Translated from the en-US catalogue, which stays the source of truth. -->
     <!-- Application identity -->
-    <string name="app_name">MOTO-HUB</string>
+    <string name="app_name">MotoVisor</string>
 
     <!-- Settings > General > Language. Names are kept in their native form. -->
     <string name="language_system_default">Paramètre du système</string>
@@ -18,13 +18,13 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_russian">Русский</string>
     <string name="language_title">Langue</string>
-    <string name="language_description">Choisissez la langue utilisée par MOTO-HUB</string>
-    <string name="language_detail_description">MOTO-HUB suit la langue du téléphone par défaut. Choisissez une langue ci-dessous pour la remplacer dans cette application.</string>
+    <string name="language_description">Choisissez la langue utilisée par MotoVisor</string>
+    <string name="language_detail_description">MotoVisor suit la langue du téléphone par défaut. Choisissez une langue ci-dessous pour la remplacer dans cette application.</string>
 
     <!-- Settings main page -->
     <string name="legacy_download_anyway_c17b27fb">Télécharger quand même</string>
     <string name="legacy_download_over_1_s_23fdd550">Télécharger via %1$s ?</string>
-    <string name="legacy_moto_hub_1_s_is_2_s_and_right_now_the_only_conne_8ebbc51c">MOTO-HUB %1$s pèse %2$s, et la seule connexion qui atteint Internet en ce moment est %3$s, que votre opérateur facture. Sur la moto c\'est normal : le Wi-Fi du tableau de bord n\'a pas d\'Internet du tout.</string>
+    <string name="legacy_motovisor_1_s_is_2_s_and_right_now_the_only_conn_d746e81b">MotoVisor %1$s pèse %2$s, et la seule connexion qui atteint Internet en ce moment est %3$s, que votre opérateur facture. Sur la moto c\'est normal : le Wi-Fi du tableau de bord n\'a pas d\'Internet du tout.</string>
     <string name="legacy_waiting_for_wi_fi_costs_nothing_the_update_stays_3f38fec8">Attendre le Wi-Fi ne coûte rien : la mise à jour reste dans cette liste.</string>
     <string name="settings_configuration">CONFIGURATION</string>
     <string name="settings_title">Réglages</string>
@@ -43,7 +43,7 @@
     <string name="video_quality_smoother">Plus fluide</string>
     <string name="video_quality_smoother_description">Débit plus faible, moins de chaleur et de charge réseau.</string>
     <string name="video_quality_balanced">Équilibré</string>
-    <string name="video_quality_balanced_description">Qualité MOTO-HUB actuelle, valeur recommandée.</string>
+    <string name="video_quality_balanced_description">Qualité MotoVisor actuelle, valeur recommandée.</string>
     <string name="video_quality_sharper">Plus net</string>
     <string name="video_quality_sharper_description">Débit plus élevé pour des cartes et un texte plus nets.</string>
     <string name="video_power_auto">Auto</string>
@@ -57,7 +57,7 @@
     <string name="video_power_eco">Éco</string>
     <string name="video_power_eco_description">15 IPS pour une chaleur et une consommation minimales. Le mouvement est visiblement moins fluide.</string>
     <string name="android_auto_resolution_auto">Auto</string>
-    <string name="android_auto_resolution_auto_description">Conserver l\'orientation automatique de MOTO-HUB d\'après la géométrie apprise du T-Box.</string>
+    <string name="android_auto_resolution_auto_description">Conserver l\'orientation automatique de MotoVisor d\'après la géométrie apprise du T-Box.</string>
     <string name="android_auto_resolution_landscape_sd">Paysage 800 x 480</string>
     <string name="android_auto_resolution_landscape_sd_description">Source Android Auto paysage standard.</string>
     <string name="android_auto_resolution_landscape_hd">Paysage 1280 x 720</string>
@@ -106,9 +106,9 @@
     <string name="core_bridge_notification_text">Au service de MOTO-HUB Pro.</string>
 
     <!-- Projection notifications -->
-    <string name="projection_channel_name">Projection MOTO-HUB</string>
+    <string name="projection_channel_name">Projection MotoVisor</string>
     <string name="projection_channel_description">État de la diffusion vers l\'écran de la moto</string>
-    <string name="projection_notification_title">MOTO-HUB est actif</string>
+    <string name="projection_notification_title">MotoVisor est actif</string>
     <string name="projection_notification_text">La projection d\'écran est active.</string>
     <string name="projection_notification_dimmed_text">Projection active, écran du téléphone atténué.</string>
     <string name="stop_projection">Arrêter</string>
@@ -116,9 +116,9 @@
     <string name="restore_phone_display">Rétablir l\'écran</string>
 
     <!-- Android Auto notifications -->
-    <string name="android_auto_channel_name">MOTO-HUB Android Auto</string>
-    <string name="android_auto_notification_title">Session MOTO-HUB Android Auto</string>
-    <string name="android_auto_notification_text">Session active. Ouvrez MOTO-HUB pour l\'état de projection en direct.</string>
+    <string name="android_auto_channel_name">MotoVisor Android Auto</string>
+    <string name="android_auto_notification_title">Session MotoVisor Android Auto</string>
+    <string name="android_auto_notification_text">Session active. Ouvrez MotoVisor pour l\'état de projection en direct.</string>
     <string name="stop_android_auto">Arrêter Android Auto</string>
 
     <!-- Ride Dashboard notifications -->
@@ -128,7 +128,7 @@
     <string name="ride_dashboard_notification_text">La télémétrie GPS et la diffusion du tableau de bord sont actives.</string>
     <string name="stop_ride_dashboard">Arrêter le tableau de bord</string>
     <!-- Source: MainActivity.kt -->
-    <string name="legacy_moto_hub_diagnostics_ba6420b1">Diagnostics MOTO-HUB</string>
+    <string name="legacy_motovisor_diagnostics_90af08d2">Diagnostics MotoVisor</string>
     <!-- Source: feature/about/AboutScreen.kt -->
     <string name="legacy_about_the_project_2feef1f7">À PROPOS DU PROJET</string>
     <!-- Source: feature/about/AboutScreen.kt -->
@@ -280,9 +280,9 @@
     <!-- Source: feature/garage/MotorcycleDetailsScreen.kt -->
     <string name="legacy_the_wi_fi_password_is_stored_securely_on_this_ph_b6fb6382">Le mot de passe Wi-Fi est stocké de façon sécurisée sur ce téléphone.</string>
     <!-- Source: feature/garage/MotorcycleDetailsScreen.kt -->
-    <string name="legacy_the_name_is_only_used_inside_moto_hub_10a5f3a4">Le nom n\'est utilisé qu\'à l\'intérieur de MOTO-HUB.</string>
+    <string name="legacy_the_name_is_only_used_inside_motovisor_6d69728d">Le nom n\'est utilisé qu\'à l\'intérieur de MotoVisor.</string>
     <!-- Source: feature/garage/MotorcycleDetailsScreen.kt -->
-    <string name="legacy_the_saved_connection_profile_and_its_photo_will__c6d581e2">Le profil de connexion enregistré et sa photo seront supprimés de MOTO-HUB.</string>
+    <string name="legacy_the_saved_connection_profile_and_its_photo_will__7d2bac0f">Le profil de connexion enregistré et sa photo seront supprimés de MotoVisor.</string>
     <!-- Source: feature/garage/TBoxCapabilityScreen.kt -->
     <string name="legacy_could_not_derive_a_peer_ip_this_network_may_not__3fa3f2d0">Impossible de déduire une IP de pair - ce réseau n\'a peut-être pas encore de route utilisable.</string>
     <!-- Source: feature/garage/TBoxCapabilityScreen.kt -->
@@ -526,7 +526,7 @@
     <!-- Source: feature/settings/SettingsScreen.kt -->
     <string name="legacy_android_auto_content_insets_7046c7dd">MARGES DE CONTENU ANDROID AUTO</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
-    <string name="legacy_choose_image_detail_and_how_moto_hub_balances_sm_577123e1">Choisissez le niveau de détail de l\'image et la façon dont MOTO-HUB équilibre fluidité, chaleur, batterie et charge Wi-Fi.</string>
+    <string name="legacy_choose_image_detail_and_how_motovisor_balances_s_22f12d4e">Choisissez le niveau de détail de l\'image et la façon dont MotoVisor équilibre fluidité, chaleur, batterie et charge Wi-Fi.</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
     <string name="legacy_default_route_type_b528b630">TYPE D\'ITINÉRAIRE PAR DÉFAUT</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
@@ -600,7 +600,7 @@
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
     <string name="legacy_checking_github_releases_7e509ccb">Vérification des versions GitHub...</string>
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
-    <string name="legacy_moto_hub_updates_c98ab24f">Mises à jour MOTO-HUB</string>
+    <string name="legacy_motovisor_updates_c308d2f0">Mises à jour MotoVisor</string>
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
     <string name="legacy_no_apk_asset_attached_to_this_release_7a89904d">Aucun APK n\'est attaché à cette version.</string>
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
@@ -694,7 +694,7 @@
     <!-- Source: feature/navigation/NavigationScreen.kt -->
     <string name="legacy_take_me_home_bb1e43ee">Rentrer à la maison</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
-    <string name="legacy_about_moto_hub_6966e1f8">À propos de MOTO-HUB</string>
+    <string name="legacy_about_motovisor_954eaf53">À propos de MotoVisor</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
     <string name="legacy_android_auto_cb210d00">Android Auto</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
@@ -778,7 +778,7 @@
     <!-- Source: feature/trips/TripRecordingService.kt -->
     <string name="legacy_gps_ride_recording_and_trip_statistics_28992d34">Enregistrement GPS des sorties et statistiques</string>
     <!-- Source: session/PhoneDisplayDimmer.kt -->
-    <string name="legacy_moto_hub_display_dimmer_57b6244b">Atténuateur d\'écran MOTO-HUB</string>
+    <string name="legacy_motovisor_display_dimmer_ceb13c8a">Atténuateur d\'écran MotoVisor</string>
     <!-- Dynamic UI templates. Keep positional placeholders unchanged. -->
     <string name="legacy_filter_1_d_497daa14">FILTRE %1$d</string>
     <string name="legacy_recording_1_s_b01f3573">ENREGISTREMENT · %1$s</string>
@@ -793,9 +793,9 @@
     <string name="legacy_1_d_km_h_6ce8c40f">%1$d KM/H</string>
     <!-- Weather forecast wind speed when the rider selects miles. -->
     <string name="legacy_1_d_mph_669c2f51">%1$d MPH</string>
-    <string name="legacy_moto_hub_258caaa5">MOTO-HUB</string>
+    <string name="legacy_motovisor_5de1fc46">MotoVisor</string>
     <string name="legacy_recording_this_ride_1aceedab">Enregistrement de cette sortie</string>
-    <string name="legacy_moto_hub_controls_f72ba5d1">Commandes MOTO-HUB</string>
+    <string name="legacy_motovisor_controls_2d719950">Commandes MotoVisor</string>
     <!-- Source: localized UI literal / enum label -->
     <string name="legacy_1_d_available_e7e32615">%1$d disponibles</string>
     <!-- Source: localized UI literal / enum label -->
@@ -1197,7 +1197,7 @@
     <!-- Source: localized UI literal / enum label -->
     <string name="legacy_1_s_is_ready_to_connect_6b95609b">%1$s est prêt à se connecter.</string>
     <!-- Source: localized UI literal / enum label -->
-    <string name="legacy_allow_moto_hub_notifications_to_keep_streaming_v_4700fc1e">Autorisez les notifications MOTO-HUB pour garder la diffusion visible et contrôlable.</string>
+    <string name="legacy_allow_motovisor_notifications_to_keep_streaming__83643cb1">Autorisez les notifications MotoVisor pour garder la diffusion visible et contrôlable.</string>
     <!-- Source: localized UI literal / enum label -->
     <string name="legacy_allow_nearby_devices_and_location_to_detect_the__a4c1fa2c">Autorisez Appareils à proximité et Position pour détecter le réseau Wi-Fi du T-Box.</string>
     <!-- Source: localized UI literal / enum label -->
@@ -1305,7 +1305,7 @@
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
     <string name="legacy_unfamiliar_pairing_code_714f8ce7">Code d\'appairage inhabituel</string>
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
-    <string name="legacy_this_code_carries_wi_fi_details_for_1_s_but_it_w_422a5994">Ce code contient les informations Wi-Fi de %1$s, mais il n\'a pas été émis par une adresse Carbit comme les tableaux de bord que MOTO-HUB connaît.</string>
+    <string name="legacy_this_code_carries_wi_fi_details_for_1_s_but_it_w_29b6478d">Ce code contient les informations Wi-Fi de %1$s, mais il n\'a pas été émis par une adresse Carbit comme les tableaux de bord que MotoVisor connaît.</string>
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
     <string name="legacy_several_manufacturers_ship_the_same_dashboard_so_49305d38">Plusieurs constructeurs livrent le même logiciel de tableau de bord sous leur propre marque, il peut donc très bien s\'agir de votre moto. Ne continuez que si vous l\'avez scanné depuis votre propre tableau de bord.</string>
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
@@ -1335,11 +1335,11 @@
     <string name="legacy_android_auto_17_4_removed_the_way_an_app_can_ask_890c8f24">Android Auto 17.4 a supprimé la façon dont une application peut demander à projeter. MOTO-HUB essaie quand même, et sur les versions antérieures cela fonctionne — mais quand ce n\'est pas le cas, Android Auto peut être lancé depuis son propre menu développeur. Vous n\'avez rien à installer.</string>
     <string name="legacy_android_auto_does_not_start_2266b70e">Android Auto ne démarre pas</string>
     <string name="legacy_every_time_android_auto_will_not_start_18ff3ab9">CHAQUE FOIS QU\'ANDROID AUTO NE DÉMARRE PAS</string>
-    <string name="legacy_go_back_to_moto_hub_and_start_android_auto_it_co_ff8cc50d">Revenez à MOTO-HUB et lancez Android Auto. La connexion se fait seule en quelques secondes : il n\'y a rien d\'autre à appuyer.</string>
+    <string name="legacy_go_back_to_motovisor_and_start_android_auto_it_c_d4c74e6">Revenez à MotoVisor et lancez Android Auto. La connexion se fait seule en quelques secondes : il n\'y a rien d\'autre à appuyer.</string>
     <string name="legacy_in_android_auto_s_developer_settings_open_the_me_1ea3a8cf">Dans les réglages Développeur d\'Android Auto, ouvrez le menu ⋮ en haut à droite et choisissez « Démarrer le serveur d\'unité principale ». C\'est dans ce menu, pas dans la liste de réglages en dessous.</string>
     <string name="legacy_in_developer_settings_turn_on_add_new_cars_to_an_19f79566">Dans les réglages Développeur, activez « Ajouter de nouvelles voitures à Android Auto » (les anciennes versions parlent de « Sources inconnues »).</string>
     <string name="legacy_jumps_straight_to_the_app_where_the_menu_above_l_7c8b2093">Ouvre directement l\'application où se trouve le menu ci-dessus</string>
-    <string name="legacy_normally_moto_hub_waits_and_asks_android_auto_to_6c183bab">Normalement MOTO-HUB attend et demande à Android Auto de s\'y connecter. La version 17.4 a fermé cette porte à toutes les applications de ce type, pas seulement à celle-ci. Le serveur d\'unité principale inverse le sens — Android Auto attend et MOTO-HUB se connecte à lui — et c\'est une porte que Google a laissée ouverte pour ses propres outils de test.</string>
+    <string name="legacy_normally_motovisor_waits_and_asks_android_auto_t_5cc1e93b">Normalement MotoVisor attend et demande à Android Auto de s\'y connecter. La version 17.4 a fermé cette porte à toutes les applications de ce type, pas seulement à celle-ci. Le serveur d\'unité principale inverse le sens — Android Auto attend et MotoVisor se connecte à lui — et c\'est une porte que Google a laissée ouverte pour ses propres outils de test.</string>
     <string name="legacy_one_time_setup_ca24c531">CONFIGURATION UNIQUE</string>
     <string name="legacy_open_android_auto_settings_48a5120d">Ouvrir les réglages d\'Android Auto</string>
     <string name="legacy_open_the_android_auto_app_scroll_to_the_bottom_a_69ae9e53">Ouvrez l\'application Android Auto, descendez tout en bas et appuyez dix fois sur « Version ». Les réglages Développeur apparaissent.</string>
@@ -1432,20 +1432,20 @@
     <string name="legacy_requires_the_phone_paired_to_the_motorcycle_s_bl_dda6960a">Nécessite que le téléphone soit appairé au Bluetooth de la moto. La musique continue, mais ses touches sont captées pendant qu\'une session tourne.</string>
     <string name="legacy_set_the_dash_clock_over_bluetooth_experimental_3431b284">Régler l\'horloge du tableau de bord par Bluetooth (expérimental)</string>
     <string name="legacy_set_the_dash_clock_over_wi_fi_292a2ca5">Régler l\'horloge du tableau de bord par Wi-Fi</string>
-    <string name="legacy_on_by_default_and_what_sets_the_time_on_most_das_6234cd82">Activé par défaut, et c\'est ce qui met à l\'heure la plupart des tableaux de bord. À désactiver uniquement si votre tableau de bord demande l\'heure à MOTO-HUB, ignore la réponse et affiche quand même 01.01.1970 : sur ces appareils, écrire l\'horloge ne change rien et peut écraser une heure que vous avez réglée à la main sur le tableau de bord lui-même. Désactivé, la moto se connecte normalement, on ne lui dit simplement jamais quelle heure il est.</string>
+    <string name="legacy_on_by_default_and_what_sets_the_time_on_most_das_6f81e1b7">Activé par défaut, et c\'est ce qui met à l\'heure la plupart des tableaux de bord. À désactiver uniquement si votre tableau de bord demande l\'heure à MotoVisor, ignore la réponse et affiche quand même 01.01.1970 : sur ces appareils, écrire l\'horloge ne change rien et peut écraser une heure que vous avez réglée à la main sur le tableau de bord lui-même. Désactivé, la moto se connecte normalement, on ne lui dit simplement jamais quelle heure il est.</string>
     <string name="legacy_your_dashboard_has_been_seen_asking_for_the_time_c02f4d97">Votre tableau de bord a été vu demander l\'heure, recevoir une réponse et continuer malgré tout à compter depuis sa propre mise sous tension. Ce réglage n\'y change rien dans aucune position : cette horloge est tenue par le tableau de bord, pas par le téléphone.</string>
     <string name="legacy_settings_595d2043">Réglages</string>
-    <string name="legacy_some_dashboards_ask_for_the_time_over_bluetooth__b44ce43b">Certains tableaux de bord demandent l\'heure par Bluetooth plutôt que par Wi-Fi, et restent à 00:00 sans elle. Il faut que la moto soit déjà appairée à ce téléphone dans les réglages Bluetooth d\'Android. Désactivé par défaut ; MOTO-HUB ne répond jamais qu\'à un appareil qui interroge dans le protocole propre au tableau de bord.</string>
+    <string name="legacy_some_dashboards_ask_for_the_time_over_bluetooth__6c2af1b0">Certains tableaux de bord demandent l\'heure par Bluetooth plutôt que par Wi-Fi, et restent à 00:00 sans elle. Il faut que la moto soit déjà appairée à ce téléphone dans les réglages Bluetooth d\'Android. Désactivé par défaut ; MotoVisor ne répond jamais qu\'à un appareil qui interroge dans le protocole propre au tableau de bord.</string>
     <string name="legacy_some_dashboards_forget_settings_like_the_clock_w_76d95842">Certains tableaux de bord oublient des réglages comme l\'horloge quand la liaison Wi-Fi Direct tombe complètement. Garde le téléphone associé au réseau de la moto jusqu\'à ce que vous quittiez l\'application ou coupiez le Wi-Fi. Désactivé par défaut ; à n\'activer que si votre tableau de bord perd l\'heure après la déconnexion.</string>
     <string name="legacy_start_automatically_2cb44c45">Démarrer automatiquement</string>
     <string name="legacy_start_on_connect_94487a47">Démarrer à la connexion</string>
     <string name="legacy_stay_linked_to_the_bike_s_wi_fi_after_disconnect_81b0e941">Rester sur le Wi-Fi de la moto après la déconnexion</string>
-    <string name="legacy_the_motorcycle_s_buttons_reach_the_phone_over_bl_356cbf0d">Les touches de la moto arrivent au téléphone par Bluetooth sous forme de touches multimédia. Pendant qu\'une session diffuse, MOTO-HUB peut les capter et piloter la navigation Android Auto au lieu du lecteur de musique.</string>
+    <string name="legacy_the_motorcycle_s_buttons_reach_the_phone_over_bl_6649e638">Les touches de la moto arrivent au téléphone par Bluetooth sous forme de touches multimédia. Pendant qu\'une session diffuse, MotoVisor peut les capter et piloter la navigation Android Auto au lieu du lecteur de musique.</string>
     <string name="legacy_what_each_press_double_press_and_hold_does_97201ad9">Ce que font l\'appui simple, l\'appui double et l\'appui long</string>
     <string name="legacy_what_to_do_when_android_auto_refuses_to_project_fa692d1b">Que faire quand Android Auto refuse de projeter</string>
     <string name="legacy_what_to_start_5b78fc39">QUOI DÉMARRER</string>
     <string name="legacy_while_capture_is_on_the_volume_buttons_navigate__9e410bf">Tant que la capture est active, les touches de volume servent à naviguer au lieu de régler le volume — définissez ici votre niveau d\'écoute.</string>
-    <string name="legacy_with_this_on_moto_hub_skips_the_what_should_i_sh_498b0614">Avec cette option, MOTO-HUB saute l\'écran « qu\'est-ce que j\'affiche ? » et met l\'écran choisi sur le TFT dès que la liaison avec la moto s\'établit. Cela vaut une fois par lancement de l\'application : arrêtez un écran et vous reprenez la main.</string>
+    <string name="legacy_with_this_on_motovisor_skips_the_what_should_i_s_ba70b7e9">Avec cette option, MotoVisor saute l\'écran « qu\'est-ce que j\'affiche ? » et met l\'écran choisi sur le TFT dès que la liaison avec la moto s\'établit. Cela vaut une fois par lancement de l\'application : arrêtez un écran et vous reprenez la main.</string>
 
     <!-- Source: ui/components/SystemKillNotice.kt -->
     <string name="legacy_dismiss_c6dc4a6a">Ignorer</string>
@@ -1575,7 +1575,7 @@
          Handlebar HID mode, phone-only Android Auto and the teach
          prerequisite dialog (PR #8, rebased 2026-08-18).
          ================================================================== -->
-    <string name="handlebar_hid_capture_description">Permet à MOTO-HUB de lire les appuis du D-pad d\'une télécommande HID Bluetooth au guidon tant que le mode HID est sélectionné dans les réglages Boutons au guidon.</string>
+    <string name="handlebar_hid_capture_description">Permet à MotoVisor de lire les appuis du D-pad d\'une télécommande HID Bluetooth au guidon tant que le mode HID est sélectionné dans les réglages Boutons au guidon.</string>
     <string name="legacy_android_auto_isn_t_running_9f167e30">Android Auto n\'est pas lancé</string>
     <string name="legacy_teaching_the_handlebar_needs_a_live_android_auto_697217d0">Apprendre les commandes au guidon demande une session Android Auto active pour capter les appuis. Connectez-vous à la moto, ou lancez-la sur ce téléphone sans T-Box.</string>
     <string name="legacy_connect_to_1_s_579387aa">Se connecter à %1$s</string>
@@ -1587,19 +1587,19 @@
     <string name="legacy_android_auto_straight_to_your_phone_f0cc540c">Android Auto — directement sur le téléphone</string>
     <string name="legacy_input_protocol_8ff4fe4e">PROTOCOLE D\'ENTRÉE</string>
     <string name="legacy_most_dashboards_send_buttons_as_avrcp_media_keys_6e1dd82c">La plupart des tableaux de bord envoient les boutons comme touches multimédia AVRCP — laissez AVRCP. Choisissez HID seulement si la télécommande s\'associe comme clavier Bluetooth et que ses appuis n\'apparaissent jamais ci-dessous.</string>
-    <string name="legacy_hid_mode_also_needs_moto_hub_s_accessibility_ser_c0cdf4cc">Le mode HID nécessite aussi que le service d\'Accessibilité de MOTO-HUB soit activé, sinon les appuis ne sont pas vus.</string>
+    <string name="legacy_hid_mode_also_needs_motovisor_s_accessibility_se_54bb7675">Le mode HID nécessite aussi que le service d\'Accessibilité de MotoVisor soit activé, sinon les appuis ne sont pas vus.</string>
     <string name="legacy_open_accessibility_settings_a01c954b">Ouvrir les réglages d\'Accessibilité</string>
-    <string name="legacy_turn_on_moto_hub_so_handlebar_presses_reach_the__b41c5310">Activez MOTO-HUB pour que les appuis au guidon atteignent l\'application depuis n\'importe quel écran</string>
-    <string name="legacy_was_moto_hub_s_switch_greyed_out_android_blocks__b5233420">L\'interrupteur de MOTO-HUB était-il grisé ? Android le bloque pour les applications qui n\'ont pas été installées depuis une boutique, et MOTO-HUB se télécharge depuis GitHub. Ouvrez Infos sur l\'application, appuyez sur ⋮ en haut à droite, choisissez « Autoriser les paramètres restreints », puis revenez activer l\'interrupteur.</string>
+    <string name="legacy_turn_on_motovisor_so_handlebar_presses_reach_the_d15fa1cb">Activez MotoVisor pour que les appuis au guidon atteignent l\'application depuis n\'importe quel écran</string>
+    <string name="legacy_was_motovisor_s_switch_greyed_out_android_blocks_a7780e44">L\'interrupteur de MotoVisor était-il grisé ? Android le bloque pour les applications qui n\'ont pas été installées depuis une boutique, et MotoVisor se télécharge depuis GitHub. Ouvrez Infos sur l\'application, appuyez sur ⋮ en haut à droite, choisissez « Autoriser les paramètres restreints », puis revenez activer l\'interrupteur.</string>
     <string name="legacy_open_app_info_7c77c863">Ouvrir Infos sur l\'application</string>
     <string name="legacy_where_allow_restricted_settings_lives_8f29fea1">Où se trouve « Autoriser les paramètres restreints »</string>
     <string name="legacy_avrcp_media_keys_f50e20c7">AVRCP (touches multimédia)</string>
     <string name="legacy_hid_d_pad_a247f04a">HID (D-pad)</string>
     <string name="legacy_default_the_dashboard_sends_bluetooth_media_key__ccbdfbf7">Par défaut. Le tableau de bord envoie des commandes Bluetooth de touche multimédia pour lecture/pause, piste et volume.</string>
-    <string name="legacy_for_remotes_that_pair_as_a_bluetooth_keyboard_an_25055a66">Pour les télécommandes qui s\'associent comme clavier Bluetooth et envoient des appuis de D-pad. Nécessite d\'activer le service d\'Accessibilité de MOTO-HUB ci-dessous.</string>
+    <string name="legacy_for_remotes_that_pair_as_a_bluetooth_keyboard_an_86ec244b">Pour les télécommandes qui s\'associent comme clavier Bluetooth et envoient des appuis de D-pad. Nécessite d\'activer le service d\'Accessibilité de MotoVisor ci-dessous.</string>
 
     <!-- External display service (USB AOA) - notification channel and ongoing notification -->
-    <string name="legacy_moto_hub_external_display_streaming_1be823ca">Diffusion MOTO-HUB vers l\'écran externe</string>
+    <string name="legacy_motovisor_external_display_streaming_ed3dd589">Diffusion MotoVisor vers l\'écran externe</string>
     <string name="legacy_streaming_to_external_display_via_usb_ab5c31c6">Diffusion vers l\'écran externe via USB</string>
     <string name="legacy_stop_external_display_c050e9ab">Arrêter l\'écran externe</string>
     <string name="legacy_aap_accessory_probe_running_bcf6ccd1">Sonde d\'accessoire AAP en cours</string>
@@ -1607,7 +1607,7 @@
     <!-- About screen -->
     <string name="legacy_your_phone_your_motorcycle_display_c5956fcb">Votre téléphone.\nL\'écran de votre moto.</string>
     <string name="legacy_follow_development_join_our_community_report_iss_b8b8fffa">Suivez le développement, rejoignez la communauté, signalez des problèmes et téléchargez les versions.</string>
-    <string name="legacy_moto_hub_is_an_independent_project_it_is_not_aff_9e4c2633">MOTO-HUB est un projet indépendant. Il n\'est ni affilié, ni approuvé, ni parrainé par Carbit, CFMOTO, tout autre constructeur dont le tableau de bord utilise EasyConn, Google ou Android Auto. Tous les noms de produits et les marques appartiennent à leurs propriétaires respectifs.</string>
+    <string name="legacy_motovisor_is_an_independent_project_it_is_not_af_e24e06b2">MotoVisor est un projet indépendant. Il n\'est ni affilié, ni approuvé, ni parrainé par Carbit, CFMOTO, tout autre constructeur dont le tableau de bord utilise EasyConn, Google ou Android Auto. Tous les noms de produits et les marques appartiennent à leurs propriétaires respectifs.</string>
     <string name="legacy_motovisor_is_a_modified_version_of_moto_hub_core_95293cd0">MotoVisor est une version modifiée de MOTO-HUB CORE, maintenue sur github.com/jlalcazar/MOTO-HUB. Ce n\'est pas l\'application d\'origine et son auteur d\'origine n\'en assure pas le support. Sa fonction Android Auto ne bénéficie d\'aucun support, approbation ni garantie de Google.</string>
     <string name="legacy_save_debug_files_automatically_563a4baa">Enregistrer automatiquement les fichiers de débogage</string>
     <string name="legacy_copies_the_log_to_download_motovisor_when_a_sess_96da979b">Copie le journal dans Download/MotoVisor à la fin d\'une session ou quand on quitte l\'application. Conserve le plus récent et les 10 dernières sessions.</string>
@@ -1619,7 +1619,7 @@
     <string name="legacy_hold_the_phone_screen_awake_while_this_app_is_in_358a4269">Garde l\'écran du téléphone allumé tant que cette application est au premier plan. Consomme plus de batterie.</string>
     <string name="legacy_distance_units_3cd36364">UNITÉS DE DISTANCE</string>
     <string name="legacy_used_for_the_tank_range_in_the_motorcycle_profil_ad68d85a">Utilisées pour l\'autonomie du réservoir dans le profil de la moto.</string>
-    <string name="legacy_moto_hub_is_an_experimental_proof_of_concept_not_34b4b321">MOTO-HUB est une preuve de concept expérimentale, pas un produit de qualité commerciale.</string>
+    <string name="legacy_motovisor_is_an_experimental_proof_of_concept_no_d52ec620">MotoVisor est une preuve de concept expérimentale, pas un produit de qualité commerciale.</string>
     <string name="legacy_development_and_testing_happen_on_a_cfmoto_700mt_ac58afbf">Le développement et les tests se font sur un tableau de bord CFMOTO 700MT-ADV avec des téléphones OnePlus 13 / Galaxy Z Fold4. D\'autres motos, d\'autres marques, d\'autres versions du micrologiciel T-Box et d\'autres téléphones n\'ont pas été testés ici : attendez-vous à un comportement différent, à des tentatives répétées ou à aucune connexion. Si le tableau de bord affiche un code QR d\'appairage, cela vaut la peine d\'essayer.</string>
     <string name="legacy_do_not_rely_on_it_as_your_only_source_of_critica_39775433">N\'en faites pas votre unique source de navigation critique. Configurez la navigation à l\'arrêt et utilisez le logiciel à vos propres risques.</string>
 
@@ -1662,7 +1662,7 @@
     <string name="legacy_head_unit_name_1d44c987">Nom de l\'unité principale</string>
     <string name="legacy_vehicle_brand_1ca30d73">Marque du véhicule</string>
     <string name="legacy_vehicle_model_1d3cbd15">Modèle du véhicule</string>
-    <string name="legacy_these_values_are_shown_exactly_as_reported_by_th_16427b8c">Ces valeurs sont affichées telles que le T-Box les communique. MOTO-HUB ne déduit pas le modèle de la moto à partir du code QR ni du nom du réseau.</string>
+    <string name="legacy_these_values_are_shown_exactly_as_reported_by_th_2ef15817">Ces valeurs sont affichées telles que le T-Box les communique. MotoVisor ne déduit pas le modèle de la moto à partir du code QR ni du nom du réseau.</string>
     <string name="legacy_software_protocol_2108716b">LOGICIEL ET PROTOCOLE</string>
     <string name="legacy_pxc_version_5fba84f3">Version PXC</string>
     <string name="legacy_sdk_version_aacf3ed2">Version du SDK</string>
@@ -1712,9 +1712,9 @@
 
     <!-- Safety disclaimer shown on first launch -->
     <string name="legacy_safety_warning_243ef82e">AVERTISSEMENT DE SÉCURITÉ</string>
-    <string name="legacy_riding_requires_your_full_attention_never_intera_96038a24">La conduite exige toute votre attention. N\'interagissez jamais avec MOTO-HUB, Android Auto, la navigation, la recopie d\'écran, l\'enregistrement du trajet ou une commande à l\'écran pendant que la moto roule.</string>
+    <string name="legacy_riding_requires_your_full_attention_never_intera_f95090d5">La conduite exige toute votre attention. N\'interagissez jamais avec MotoVisor, Android Auto, la navigation, la recopie d\'écran, l\'enregistrement du trajet ou une commande à l\'écran pendant que la moto roule.</string>
     <string name="legacy_configure_and_verify_everything_only_while_parke_57e1b31b">Configurez et vérifiez tout uniquement à l\'arrêt. N\'utilisez cette application que dans une situation parfaitement sûre et maîtrisée. Si les conditions ne sont pas totalement sûres, ne l\'utilisez pas.</string>
-    <string name="legacy_moto_hub_is_not_a_safety_device_and_cannot_preve_a3d43f2f">MOTO-HUB n\'est pas un dispositif de sécurité et ne peut pas empêcher la distraction, les accidents, les blessures ou les dommages. Vous êtes seul responsable de rouler en sécurité et de respecter toutes les lois applicables.</string>
+    <string name="legacy_motovisor_is_not_a_safety_device_and_cannot_prev_2b8075ae">MotoVisor n\'est pas un dispositif de sécurité et ne peut pas empêcher la distraction, les accidents, les blessures ou les dommages. Vous êtes seul responsable de rouler en sécurité et de respecter toutes les lois applicables.</string>
     <string name="legacy_i_understand_do_not_show_this_warning_again_e4526192">J\'ai compris — ne plus afficher cet avertissement</string>
 
     <!-- GitHub update dialog -->
@@ -1745,23 +1745,23 @@
     <!-- The "MOTO-HUB is still looking" notification shown while a connection attempt runs,
          and the hosted-network wording that tells the rider not to close the app. %1$s is
          the motorcycle network name. -->
-    <string name="legacy_moto_hub_connection_progress_c260af34">Progression de la connexion MOTO-HUB</string>
+    <string name="legacy_motovisor_connection_progress_d015e655">Progression de la connexion MotoVisor</string>
     <string name="legacy_looking_for_1_s_9983a22f">Recherche de %1$s</string>
     <string name="legacy_connecting_to_1_s_2f10e3b8">Connexion à %1$s</string>
-    <string name="legacy_keep_moto_hub_open_closing_it_stops_the_search_54ec507">Gardez MOTO-HUB ouvert : le fermer arrête la recherche.</string>
-    <string name="legacy_hotspot_is_up_searching_it_for_the_dashboard_thi_caab4cd3">Le point d\'accès est actif. Recherche du tableau de bord : cela peut prendre jusqu\'à 90 secondes, gardez donc MOTO-HUB ouvert.</string>
+    <string name="legacy_keep_motovisor_open_closing_it_stops_the_search_7113fc52">Gardez MotoVisor ouvert : le fermer arrête la recherche.</string>
+    <string name="legacy_hotspot_is_up_searching_it_for_the_dashboard_thi_f0a60920">Le point d\'accès est actif. Recherche du tableau de bord : cela peut prendre jusqu\'à 90 secondes, gardez donc MotoVisor ouvert.</string>
     <!-- Asked once per video format tried, after a session that looked healthy from the phone:
          only the rider can see whether the dashboard actually displayed it. %1$s is the
          motorcycle name. -->
     <string name="legacy_did_it_show_up_on_the_dashboard_f341c05">Est-ce que ça s\'est affiché sur le tableau de bord ?</string>
-    <string name="legacy_last_time_you_connected_to_1_s_everything_looked_46fc9a09">La dernière fois que vous vous êtes connecté à %1$s, tout semblait correct depuis ce téléphone. MOTO-HUB ne peut pas voir l\'écran du tableau de bord : c\'est la seule chose qu\'il doit vous demander.</string>
+    <string name="legacy_last_time_you_connected_to_1_s_everything_looked_cabe6d9a">La dernière fois que vous vous êtes connecté à %1$s, tout semblait correct depuis ce téléphone. MotoVisor ne peut pas voir l\'écran du tableau de bord : c\'est la seule chose qu\'il doit vous demander.</string>
     <string name="legacy_if_it_stayed_on_the_pairing_screen_moto_hub_will_40398b69">S\'il est resté sur l\'écran d\'appairage, MOTO-HUB essaiera un autre format vidéo à la prochaine sortie et continuera jusqu\'à ce que l\'un d\'eux fonctionne.</string>
     <string name="legacy_yes_i_saw_it_625527f4">Oui, je l\'ai vu</string>
     <string name="legacy_no_nothing_appeared_f92c88fc">Non, rien ne s\'est affiché</string>
     <!-- Shown when the video-format search cannot progress because every session so far ran the
          Ride Dashboard, which sends its own format. -->
     <string name="legacy_the_video_format_search_is_waiting_ac28c9a">La recherche du format vidéo est en attente</string>
-    <string name="legacy_moto_hub_is_still_looking_for_a_video_format_you_44b4c53c">MOTO-HUB cherche encore un format vidéo que votre tableau de bord sait afficher, mais il ne peut en tester un que pendant qu\'Android Auto fonctionne : le Ride Dashboard envoie toujours son propre format.</string>
+    <string name="legacy_motovisor_is_still_looking_for_a_video_format_yo_5dbe0cbb">MotoVisor cherche encore un format vidéo que votre tableau de bord sait afficher, mais il ne peut en tester un que pendant qu\'Android Auto fonctionne : le Ride Dashboard envoie toujours son propre format.</string>
     <string name="legacy_connect_once_with_android_auto_and_the_search_mo_71871380">Connectez-vous une fois avec Android Auto et la recherche continue toute seule.</string>
     <string name="legacy_got_it_7f79855f">Compris</string>
 
@@ -1785,7 +1785,7 @@
     <string name="legacy_take_a_photo_cefc733a">Prendre une photo</string>
 
     <!-- Source: feature/about/AboutScreen.kt -->
-    <string name="legacy_moto_hub_connects_an_android_12_phone_to_a_motor_b791c32e">MOTO-HUB relie un téléphone Android 12+ à un tableau de bord moto qui s\'appaire via EasyConn, le logiciel Carbit qu\'embarquent plusieurs constructeurs, dont CFMOTO. Il prend en charge la recopie de l\'écran et des applications, la projection Android Auto, les profils de moto enregistrés et les diagnostics sur l\'appareil.</string>
+    <string name="legacy_motovisor_connects_an_android_12_phone_to_a_moto_6a32f2ed">MotoVisor relie un téléphone Android 12+ à un tableau de bord moto qui s\'appaire via EasyConn, le logiciel Carbit qu\'embarquent plusieurs constructeurs, dont CFMOTO. Il prend en charge la recopie de l\'écran et des applications, la projection Android Auto, les profils de moto enregistrés et les diagnostics sur l\'appareil.</string>
 
     <!-- Source: feature/controls — a controller button stands in for a handlebar press -->
     <string name="legacy_handlebar_presses_32db65bc">APPUIS DU GUIDON</string>
@@ -1857,7 +1857,7 @@
 
     <!-- Source: feature/controls — the three input sources, and which one is live -->
     <string name="legacy_motorcycle_handlebar_dc90fcfc">GUIDON DE LA MOTO</string>
-    <string name="legacy_android_auto_17_4_removed_the_way_an_app_can_ask_217ec1b2">Android Auto 17.4 a supprimé la façon dont une application peut demander à projeter. MOTO-HUB essaie quand même, et sur les versions antérieures cela fonctionne — mais quand ce n\'est pas le cas, les quatre étapes ci-dessous lancent Android Auto depuis son propre menu développeur. C\'est ce qui marche quand rien d\'autre ne marche, et vous n\'avez rien à installer.</string>
+    <string name="legacy_android_auto_17_4_removed_the_way_an_app_can_ask_5c8e73c7">Android Auto 17.4 a supprimé la façon dont une application peut demander à projeter. MotoVisor essaie quand même, et sur les versions antérieures cela fonctionne — mais quand ce n\'est pas le cas, les quatre étapes ci-dessous lancent Android Auto depuis son propre menu développeur. C\'est ce qui marche quand rien d\'autre ne marche, et vous n\'avez rien à installer.</string>
     <string name="legacy_start_android_auto_yourself_3b0dffe1">LANCEZ ANDROID AUTO VOUS-MÊME</string>
     <string name="legacy_open_the_android_auto_app_s_settings_scroll_to_t_4ef36207">Ouvrez les réglages de l\'application Android Auto, allez tout en bas et touchez « Version » dix fois. Cela déverrouille ses options pour développeurs — à faire une seule fois.</string>
     <string name="legacy_stay_on_that_same_android_auto_settings_screen_o_2c08cebc">Restez sur ce même écran de réglages d\'Android Auto, ouvrez le menu à trois points en haut à droite et choisissez « Démarrer le serveur d\'unité principale ». C\'est dans ce menu, pas dans les réglages Développeur. C\'est cette étape qui fait tout.</string>
@@ -1872,10 +1872,10 @@
     <string name="legacy_preparing_android_auto_db146bea">Préparation d\'Android Auto…</string>
     <string name="legacy_waiting_for_android_auto_to_start_projecting_b7646bd0">En attente du début de la projection d\'Android Auto…</string>
     <string name="legacy_live_preview_touch_enabled_73752c4b">Aperçu en direct · tactile activé</string>
-    <string name="legacy_google_android_auto_never_connected_to_moto_hub__bd46b5a3">Google Android Auto ne s\'est jamais connecté à MOTO-HUB. Les versions récentes d\'Android Auto ont supprimé la façon dont les applications demandent à projeter : lancez-le donc depuis Android Auto lui-même. Ouvrez les réglages de l\'application Android Auto, allez tout en bas et touchez « Version » dix fois pour déverrouiller ses options pour développeurs. Puis, sur ce même écran de réglages, ouvrez le menu à trois points en haut à droite et choisissez « Démarrer le serveur d\'unité principale » - ce menu se trouve sur l\'écran de réglages normal d\'Android Auto, pas dans les réglages Développeur. Laissez MOTO-HUB ouvert : il se connecte tout seul en deux secondes, et vous pouvez laisser le serveur actif pour la prochaine fois.</string>
-    <string name="legacy_google_android_auto_took_moto_hub_s_request_and__ae0978d0">Google Android Auto a accepté la demande de MOTO-HUB puis l\'a ignorée. C\'est ce qu\'il fait avec une unité principale à laquelle on ne lui a pas dit de faire confiance. Ouvrez les réglages de l\'application Android Auto, allez tout en bas et touchez « Version » dix fois pour déverrouiller ses options pour développeurs, ouvrez les réglages Développeur et activez « Ajouter de nouvelles voitures à Android Auto » (les anciennes versions parlent de « Sources inconnues »), puis relancez Android Auto depuis MOTO-HUB. Si rien ne se passe toujours, revenez à l\'écran de réglages d\'Android Auto et utilisez le menu à trois points en haut à droite : « Démarrer le serveur d\'unité principale ».</string>
-    <string name="legacy_google_android_auto_took_moto_hub_s_request_and__3e12afc0">Google Android Auto a accepté la demande de MOTO-HUB puis l\'a ignorée, et c\'est tout ce que cette version en fait : Android Auto 17.3 et suivants ont supprimé la façon dont une application peut demander à projeter. Lancez-le plutôt depuis Android Auto. Ouvrez les réglages de l\'application Android Auto, allez tout en bas et touchez « Version » dix fois pour déverrouiller ses options pour développeurs, puis ouvrez le menu à trois points en haut à droite de ce même écran et choisissez « Démarrer le serveur d\'unité principale ». Laissez MOTO-HUB ouvert : il se connecte tout seul en deux secondes. Pendant que vous y êtes, « Ajouter de nouvelles voitures à Android Auto » dans les réglages Développeur devrait aussi être activé.</string>
-    <string name="legacy_another_easyconn_session_is_already_using_the_lo_fa50b26f">Une autre session EasyConn utilise déjà les ports de connexion locaux (10920-10922). Arrêtez toute session MOTO-HUB active, ou forcez l\'arrêt de l\'application companion de votre moto (CFMOTO, Zontes Smart, Carbit Ride et les équivalents des autres marques), puis réessayez la connexion.</string>
+    <string name="legacy_google_android_auto_never_connected_to_motovisor_cb33ff3">Google Android Auto ne s\'est jamais connecté à MotoVisor. Les versions récentes d\'Android Auto ont supprimé la façon dont les applications demandent à projeter : lancez-le donc depuis Android Auto lui-même. Ouvrez les réglages de l\'application Android Auto, allez tout en bas et touchez « Version » dix fois pour déverrouiller ses options pour développeurs. Puis, sur ce même écran de réglages, ouvrez le menu à trois points en haut à droite et choisissez « Démarrer le serveur d\'unité principale » - ce menu se trouve sur l\'écran de réglages normal d\'Android Auto, pas dans les réglages Développeur. Laissez MotoVisor ouvert : il se connecte tout seul en deux secondes, et vous pouvez laisser le serveur actif pour la prochaine fois.</string>
+    <string name="legacy_google_android_auto_took_motovisor_s_request_and_4ecfaa3c">Google Android Auto a accepté la demande de MotoVisor puis l\'a ignorée. C\'est ce qu\'il fait avec une unité principale à laquelle on ne lui a pas dit de faire confiance. Ouvrez les réglages de l\'application Android Auto, allez tout en bas et touchez « Version » dix fois pour déverrouiller ses options pour développeurs, ouvrez les réglages Développeur et activez « Ajouter de nouvelles voitures à Android Auto » (les anciennes versions parlent de « Sources inconnues »), puis relancez Android Auto depuis MotoVisor. Si rien ne se passe toujours, revenez à l\'écran de réglages d\'Android Auto et utilisez le menu à trois points en haut à droite : « Démarrer le serveur d\'unité principale ».</string>
+    <string name="legacy_google_android_auto_took_motovisor_s_request_and_5ebb3be0">Google Android Auto a accepté la demande de MotoVisor puis l\'a ignorée, et c\'est tout ce que cette version en fait : Android Auto 17.3 et suivants ont supprimé la façon dont une application peut demander à projeter. Lancez-le plutôt depuis Android Auto. Ouvrez les réglages de l\'application Android Auto, allez tout en bas et touchez « Version » dix fois pour déverrouiller ses options pour développeurs, puis ouvrez le menu à trois points en haut à droite de ce même écran et choisissez « Démarrer le serveur d\'unité principale ». Laissez MotoVisor ouvert : il se connecte tout seul en deux secondes. Pendant que vous y êtes, « Ajouter de nouvelles voitures à Android Auto » dans les réglages Développeur devrait aussi être activé.</string>
+    <string name="legacy_another_easyconn_session_is_already_using_the_lo_57b41478">Une autre session EasyConn utilise déjà les ports de connexion locaux (10920-10922). Arrêtez toute session MotoVisor active, ou forcez l\'arrêt de l\'application companion de votre moto (CFMOTO, Zontes Smart, Carbit Ride et les équivalents des autres marques), puis réessayez la connexion.</string>
     <string name="legacy_phone_wi_fi_is_off_turn_it_on_then_tap_connect_a_5fd21cc0">Le Wi-Fi du téléphone est désactivé. Activez-le, puis touchez de nouveau Connecter.</string>
     <string name="legacy_phone_hotspot_is_off_turn_it_on_then_tap_connect_683a58f1">Le point d\'accès du téléphone est désactivé. Activez-le, puis touchez de nouveau Connecter.</string>
     <string name="legacy_action_needed_a446e8df">ACTION REQUISE</string>
@@ -1916,13 +1916,13 @@
     <string name="legacy_a_report_sent_now_carries_that_log_so_it_says_no_cb65d9dc">Un rapport envoyé maintenant contient ce journal-là, il ne dit donc rien de ce que fait l\'application aujourd\'hui. Pour signaler un problème, réactivez Activer la journalisation, reproduisez le problème, puis envoyez.</string>
     <string name="legacy_that_worked_keep_it_b0100883">Ça a marché - on le garde ?</string>
     <string name="legacy_your_dashboard_is_now_accepting_the_picture_on_t_a2e41389">Votre tableau de bord accepte maintenant l\'image avec le profil %1$s. Continuer à l\'utiliser pour cette moto ?</string>
-    <string name="legacy_you_have_just_found_out_something_moto_hub_could_5d173f67">Vous venez de découvrir quelque chose que MOTO-HUB ne pouvait pas déterminer seul : quel profil ce tableau de bord accepte réellement. Envoyer votre journal le partage, et le prochain motard avec votre moto tombera juste du premier coup.</string>
+    <string name="legacy_you_have_just_found_out_something_motovisor_coul_8f344c42">Vous venez de découvrir quelque chose que MotoVisor ne pouvait pas déterminer seul : quel profil ce tableau de bord accepte réellement. Envoyer votre journal le partage, et le prochain motard avec votre moto tombera juste du premier coup.</string>
     <string name="legacy_send_my_log_now_80f590fe">Envoyer mon journal maintenant</string>
     <string name="legacy_send_logs_automatically_from_now_on_1efdfbe9">Envoyer les journaux automatiquement à partir de maintenant</string>
     <string name="legacy_keep_it_318f8786">Le garder</string>
     <string name="legacy_undo_284d04">Annuler</string>
     <string name="legacy_try_another_profile_2632e907">Essayer un autre profil</string>
-    <string name="legacy_the_connection_to_your_motorcycle_is_fine_the_da_6a78bba4">La connexion à votre moto est bonne : le tableau de bord refuse simplement l\'image dans le format où elle est envoyée. Un autre profil change ce format. En choisir un reconnecte aussitôt, et si le tableau de bord se met à l\'afficher, MOTO-HUB vous demandera si vous voulez le garder.</string>
+    <string name="legacy_the_connection_to_your_motorcycle_is_fine_the_da_2a93ff2b">La connexion à votre moto est bonne : le tableau de bord refuse simplement l\'image dans le format où elle est envoyée. Un autre profil change ce format. En choisir un reconnecte aussitôt, et si le tableau de bord se met à l\'afficher, MotoVisor vous demandera si vous voulez le garder.</string>
     <string name="legacy_your_dashboard_is_not_showing_this_9765fbe3">VOTRE TABLEAU DE BORD NE L\'AFFICHE PAS</string>
     <string name="legacy_connected_but_the_picture_is_being_refused_tap_t_b17b1097">Connecté, mais l\'image est refusée. Touchez pour essayer un autre profil.</string>
     <string name="legacy_connected_not_displaying_53b322ca">CONNECTÉ, PAS D\'AFFICHAGE</string>
@@ -1942,7 +1942,7 @@
     <string name="legacy_show_button_presses_on_the_dashboard_4ed2cd5e">Afficher les appuis sur le tableau de bord</string>
 
     <!-- Source: feature/controls — the handlebar page after the Bluetooth controller was removed -->
-    <string name="legacy_your_motorcycle_s_own_handlebar_drives_moto_hub__f19519f3">Le guidon de ta moto pilote MOTO-HUB. Apprends-le une fois, puis donne à chaque bouton l\'action que tu veux.</string>
+    <string name="legacy_your_motorcycle_s_own_handlebar_drives_motovisor_362a1496">Le guidon de ta moto pilote MotoVisor. Apprends-le une fois, puis donne à chaque bouton l\'action que tu veux.</string>
     <string name="legacy_presses_still_arrive_and_still_show_up_on_this_p_62dfa27d">Les appuis arrivent toujours et s\'affichent toujours sur cette page - simplement, rien n\'est exécuté.</string>
     <string name="legacy_every_handlebar_press_432fb397">Chaque appui au guidon </string>
     <!-- Home: MOTO-HUB ADVANCED promo card and dialog -->
@@ -1972,13 +1972,13 @@
     <string name="legacy_1_s_is_holding_the_dashboard_connection_f85acc07">%1$s occupe la connexion au tableau de bord</string>
     <string name="legacy_another_app_is_holding_the_dashboard_connection_2f8f3870">Une autre application occupe la connexion au tableau de bord</string>
     <string name="legacy_force_stop_your_motorcycle_s_own_companion_app_f_47bc5899">Forcez l\'arrêt de l\'application compagnon de votre moto depuis sa page Informations sur l\'appli, puis réessayez : Android ne laisse pas une application libérer la connexion d\'une autre.</string>
-    <string name="legacy_if_it_stayed_on_the_pairing_screen_moto_hub_keep_74219a6">S\'il est resté sur l\'écran d\'appairage, MOTO-HUB continue d\'essayer des formats vidéo jusqu\'à ce que l\'un d\'eux fonctionne. Si d\'autres motards avec le même tableau de bord ont déjà confirmé celui-ci, il vous le demande une fois de plus avant de passer au suivant.</string>
+    <string name="legacy_if_it_stayed_on_the_pairing_screen_motovisor_kee_2fbe3f89">S\'il est resté sur l\'écran d\'appairage, MotoVisor continue d\'essayer des formats vidéo jusqu\'à ce que l\'un d\'eux fonctionne. Si d\'autres motards avec le même tableau de bord ont déjà confirmé celui-ci, il vous le demande une fois de plus avant de passer au suivant.</string>
     <string name="legacy_if_your_other_moto_hub_app_is_running_a_session__263cbf82">Si votre autre application MOTO-HUB a une session en cours sur ce téléphone, arrêtez celle-là.</string>
     <string name="legacy_import_qr_from_an_image_65acae9a">Importer un QR depuis une image</string>
     <string name="legacy_moto_hub_will_connect_on_its_own_when_the_dashbo_9f3fe52b">MOTO-HUB se connectera tout seul quand le tableau de bord s\'allumera.</string>
     <string name="legacy_on_this_phone_that_is_almost_always_1_s_force_st_26b6b463">Sur ce téléphone c\'est presque toujours %1$s. Forcez son arrêt depuis sa page Informations sur l\'appli, puis réessayez : Android ne laisse pas une application libérer la connexion d\'une autre.</string>
     <string name="legacy_shown_while_moto_hub_watches_for_the_motorcycle__5410550d">Affiché pendant que MOTO-HUB guette le Wi-Fi de la moto.</string>
-    <string name="legacy_the_three_local_ports_moto_hub_needs_for_the_das_ac32b51a">Les trois ports locaux dont MOTO-HUB a besoin pour le tableau de bord (%1$s) sont occupés en ce moment, la connexion échouerait.</string>
+    <string name="legacy_the_three_local_ports_motovisor_needs_for_the_da_45d18c81">Les trois ports locaux dont MotoVisor a besoin pour le tableau de bord (%1$s) sont occupés en ce moment, la connexion échouerait.</string>
     <string name="legacy_try_anyway_909523a8">Essayer quand même</string>
     <string name="legacy_waiting_for_s_c5c92cf8">En attente de %s</string>
     <string name="legacy_waiting_for_the_motorcycle_24d361aa">En attente de la moto</string>
@@ -1994,12 +1994,12 @@
     <string name="legacy_free_app_that_replaces_this_one_dashboard_naviga_f14ef8b3">App gratuite qui remplace celle-ci : tableau de bord, navigation, trajets et plus.</string>
     <string name="legacy_installed_on_this_phone_136503e7">INSTALLÉE SUR CE TÉLÉPHONE</string>
     <string name="legacy_free_app_d2eb824d">APP GRATUITE</string>
-    <string name="legacy_everything_moto_hub_does_and_a_full_riding_compu_5afce456">Tout ce que fait MOTO-HUB, et un véritable ordinateur de bord.</string>
+    <string name="legacy_everything_motovisor_does_and_a_full_riding_comp_81647d">Tout ce que fait MotoVisor, et un véritable ordinateur de bord.</string>
     <string name="legacy_moto_hub_adv_solo_is_a_free_app_that_replaces_th_9d1bc46c">MOTO-HUB ADV-SOLO est une app gratuite qui remplace celle-ci et transforme votre TFT en véritable ordinateur de bord : son propre tableau de bord, la navigation, les trajets enregistrés. Sans abonnement, sans compte et sans matériel supplémentaire - elle utilise la T-Box que vous avez déjà.</string>
     <string name="legacy_what_it_adds_cdd0b86b">CE QU\'ELLE AJOUTE</string>
     <string name="legacy_moving_to_adv_solo_21f5a90c">PASSER À ADV-SOLO</string>
     <string name="legacy_adv_solo_connects_to_the_motorcycle_on_its_own_p_ad9d6a7e">ADV-SOLO se connecte seule à la moto : appairage, connexion Wi-Fi, boutons du guidon et Android Auto fonctionnent tous à l\'intérieur. Elle n\'a pas besoin de cette app.</string>
-    <string name="legacy_install_it_and_connect_your_motorcycle_there_the_526ab2e">Installez-la et connectez-y votre moto, puis supprimez MOTO-HUB - ADV-SOLO vous le propose. Les motos appairées ici ne sont pas transférées : appairez-les à nouveau dans ADV-SOLO.</string>
+    <string name="legacy_install_it_and_connect_your_motorcycle_there_the_d1d1f4ad">Installez-la et connectez-y votre moto, puis supprimez MotoVisor - ADV-SOLO vous le propose. Les motos appairées ici ne sont pas transférées : appairez-les à nouveau dans ADV-SOLO.</string>
     <string name="legacy_links_4515799">LIENS</string>
     <string name="legacy_more_ways_to_start_dfa7360e">AUTRES FAÇONS DE COMMENCER</string>
     <string name="legacy_one_step_is_waiting_for_you_ad249079">Une étape vous attend</string>

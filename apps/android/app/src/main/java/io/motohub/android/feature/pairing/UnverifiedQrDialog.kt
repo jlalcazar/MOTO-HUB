@@ -32,7 +32,7 @@ fun UnverifiedQrDialog(
                 Text(
                     motoHubText(
                         "This code carries Wi-Fi details for %1\$s, but it was not issued by a " +
-                            "Carbit address like the dashboards MOTO-HUB knows.",
+                            "Carbit address like the dashboards MotoVisor knows.",
                         payload.ssid
                     ),
                     style = MaterialTheme.typography.bodyMedium

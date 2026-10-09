@@ -146,7 +146,7 @@ fun TBoxCapabilityScreen(
                 InspectorRow(motoHubText("Vehicle model"), capabilities?.carModel)
                 Text(
                     text = motoHubText(
-                        "These values are shown exactly as reported by the T-Box. MOTO-HUB does not " +
+                        "These values are shown exactly as reported by the T-Box. MotoVisor does not " +
                             "infer a motorcycle model from the QR code or network name."
                     ),
                     style = MaterialTheme.typography.bodySmall,

@@ -242,7 +242,7 @@ private fun SettingsMainList(
                 onClick = onOpenAndroidAutoHelp
             )
             MotoHubActionRow(
-                title = motoHubText("About MOTO-HUB"),
+                title = motoHubText("About MotoVisor"),
                 description = "v${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
                 onClick = onOpenAbout
             )
@@ -269,7 +269,7 @@ private fun VideoQualityDetail(onBack: () -> Unit) {
     var disableTouchscreen by remember { mutableStateOf(MotoHubSettings.disableTouchscreen(context)) }
     MotoHubDetailScreen(title = motoHubText("Video quality"), backLabel = motoHubText("‹ Settings"), onBack = onBack) {
         Text(
-            motoHubText("Choose image detail and how MOTO-HUB balances smoothness, heat, battery, and Wi-Fi load."),
+            motoHubText("Choose image detail and how MotoVisor balances smoothness, heat, battery, and Wi-Fi load."),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -412,7 +412,7 @@ private fun AutostartDetail(onBack: () -> Unit) {
     ) {
         Text(
             motoHubText(
-                "With this on, MOTO-HUB skips the \"what should I show?\" screen and puts the " +
+                "With this on, MotoVisor skips the \"what should I show?\" screen and puts the " +
                     "chosen screen on the TFT as soon as the motorcycle link comes up. It runs " +
                     "once per app launch - stop a screen and you are back in control."
             ),
@@ -584,7 +584,7 @@ private fun AutomationDetail(onBack: () -> Unit) {
             } else {
                 motoHubText(
                     "On by default, and what sets the time on most dashboards. Turn it off only if " +
-                        "your dash asks MOTO-HUB for the time, ignores the answer, and shows " +
+                        "your dash asks MotoVisor for the time, ignores the answer, and shows " +
                         "01.01.1970 anyway: on those units writing the clock changes nothing and can " +
                         "overwrite a time you set by hand on the dashboard itself. With this off the " +
                         "bike connects normally, it is simply never told what time it is."
@@ -602,7 +602,7 @@ private fun AutomationDetail(onBack: () -> Unit) {
             description = motoHubText(
                 "Some dashboards ask for the time over Bluetooth instead of Wi-Fi, and sit at " +
                     "00:00 without it. Needs the bike already paired to this phone in Android's " +
-                    "Bluetooth settings. Off by default; MOTO-HUB only ever replies to a device " +
+                    "Bluetooth settings. Off by default; MotoVisor only ever replies to a device " +
                     "that asks in the dashboard's own protocol."
             ),
             checked = bluetoothClock,
@@ -688,7 +688,7 @@ private fun DiagnosticsDetail(
             title = motoHubText("Enable logging"),
             description = motoHubText("Master switch for the diagnostic log. Off means nothing is recorded ") +
                 "at all - not just less detail. On by default; turn off only if you don't want " +
-                "MOTO-HUB keeping any local diagnostic history.",
+                "MotoVisor keeping any local diagnostic history.",
             checked = loggingEnabled,
             onCheckedChange = {
                 // Record the "why" before flipping off, and after flipping back on - the
@@ -779,7 +779,7 @@ private fun HandlebarControlsDetail(onBack: () -> Unit, onOpenMapping: () -> Uni
         Text(
             motoHubText(
                 "The motorcycle's buttons reach the phone over Bluetooth as media keys. " +
-                    "While a session is streaming, MOTO-HUB can capture them and drive " +
+                    "While a session is streaming, MotoVisor can capture them and drive " +
                     "Android Auto navigation instead of the music player."
             ),
             style = MaterialTheme.typography.bodyMedium,
@@ -832,7 +832,7 @@ private fun HandlebarControlsDetail(onBack: () -> Unit, onOpenMapping: () -> Uni
             if (!hidServiceEnabled) {
                 Text(
                     motoHubText(
-                        "HID mode also needs MOTO-HUB's Accessibility Service turned on, or " +
+                        "HID mode also needs MotoVisor's Accessibility Service turned on, or " +
                             "presses will not be seen."
                     ),
                     style = MaterialTheme.typography.bodyMedium,
@@ -842,7 +842,7 @@ private fun HandlebarControlsDetail(onBack: () -> Unit, onOpenMapping: () -> Uni
             MotoHubActionRow(
                 title = motoHubText("Open Accessibility settings"),
                 description = motoHubText(
-                    "Turn on MOTO-HUB so handlebar presses reach the app from any screen"
+                    "Turn on MotoVisor so handlebar presses reach the app from any screen"
                 ),
                 onClick = {
                     openedAccessibilitySettings = true
@@ -857,8 +857,8 @@ private fun HandlebarControlsDetail(onBack: () -> Unit, onOpenMapping: () -> Uni
             if (openedAccessibilitySettings && !hidServiceEnabled) {
                 Text(
                     motoHubText(
-                        "Was MOTO-HUB's switch greyed out? Android blocks it for apps that " +
-                            "were not installed from a store, and MOTO-HUB is downloaded from " +
+                        "Was MotoVisor's switch greyed out? Android blocks it for apps that " +
+                            "were not installed from a store, and MotoVisor is downloaded from " +
                             "GitHub. Open App info, tap ⋮ at the top right, choose \"Allow " +
                             "restricted settings\", then come back and turn the switch on."
                     ),

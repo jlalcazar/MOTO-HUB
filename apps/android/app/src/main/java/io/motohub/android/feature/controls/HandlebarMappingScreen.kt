@@ -277,7 +277,7 @@ private fun HandlebarListContent(
         val currentRevision = revision
         Text(
             motoHubText(
-                "Your motorcycle's own handlebar drives MOTO-HUB. Teach it once, then give " +
+                "Your motorcycle's own handlebar drives MotoVisor. Teach it once, then give " +
                     "each button the action you want."
             ),
             style = MaterialTheme.typography.bodySmall,

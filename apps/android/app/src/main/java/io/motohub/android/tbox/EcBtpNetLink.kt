@@ -211,7 +211,7 @@ internal class EcBtpNetLink(
                         return Result.failure(
                             IllegalStateException(
                                 "This dashboard's Bluetooth link does not offer to set up a " +
-                                    "network, so MOTO-HUB has no way to reach it."
+                                    "network, so MotoVisor has no way to reach it."
                             )
                         )
                     }
@@ -499,7 +499,7 @@ internal class EcBtpNetLink(
                             IllegalStateException(
                                 if (variant) {
                                     "This dashboard speaks a variant of the EasyConn Bluetooth " +
-                                        "setup protocol that MOTO-HUB does not implement yet. " +
+                                        "setup protocol that MotoVisor does not implement yet. " +
                                         "Please send us a log."
                                 } else {
                                     "This Bluetooth device is not an EasyConn dashboard."
@@ -789,7 +789,7 @@ internal class EcBtpNetLink(
     }
 
     private fun missingPermissionMessage(): String =
-        ThinkerRideGate.missingPermissionMessage("MOTO-HUB")
+        ThinkerRideGate.missingPermissionMessage("MotoVisor")
 
     companion object {
         /**

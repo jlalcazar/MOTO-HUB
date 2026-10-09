@@ -65,7 +65,7 @@ fun GithubUpdateDialog(
     val networkScope = rememberCoroutineScope()
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(motoHubText("MOTO-HUB updates")) },
+        title = { Text(motoHubText("MotoVisor updates")) },
         text = {
             MotoHubDialogBody {
                 Text(
@@ -161,7 +161,7 @@ private fun MeteredDownloadDialog(
             MotoHubDialogBody {
                 Text(
                     motoHubText(
-                        "MOTO-HUB %1\$s is %2\$s, and right now the only connection that reaches " +
+                        "MotoVisor %1\$s is %2\$s, and right now the only connection that reaches " +
                             "the Internet is %3\$s, which your operator charges for. On the " +
                             "motorcycle that is normal - the dashboard's Wi-Fi has no Internet " +
                             "at all.",

@@ -2,7 +2,7 @@
 <resources>
     <!-- Locale: tr-TR. -->
     <!-- Application identity -->
-    <string name="app_name">MOTO-HUB</string>
+    <string name="app_name">MotoVisor</string>
 
     <!-- Settings > General > Language. Names are kept in their native form. -->
     <string name="language_system_default">Sistem varsayılanı</string>
@@ -18,13 +18,13 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_russian">Русский</string>
     <string name="language_title">Dil</string>
-    <string name="language_description">MOTO-HUB\'un kullandığı dili seçin</string>
-    <string name="language_detail_description">MOTO-HUB varsayılan olarak telefonun dilini izler. Yalnızca bu uygulama için değiştirmek üzere aşağıdan bir dil seçin.</string>
+    <string name="language_description">MotoVisor\'un kullandığı dili seçin</string>
+    <string name="language_detail_description">MotoVisor varsayılan olarak telefonun dilini izler. Yalnızca bu uygulama için değiştirmek üzere aşağıdan bir dil seçin.</string>
 
     <!-- Settings main page -->
     <string name="legacy_download_anyway_c17b27fb">Yine de indir</string>
     <string name="legacy_download_over_1_s_23fdd550">%1$s üzerinden indirilsin mi?</string>
-    <string name="legacy_moto_hub_1_s_is_2_s_and_right_now_the_only_conne_8ebbc51c">MOTO-HUB %1$s %2$s boyutunda ve şu anda İnternet\'e ulaşan tek bağlantı, operatörünüzün ücretlendirdiği %3$s. Motosiklet üzerindeyken bu normaldir: gösterge panelinin Wi-Fi ağında hiç İnternet yoktur.</string>
+    <string name="legacy_motovisor_1_s_is_2_s_and_right_now_the_only_conn_d746e81b">MotoVisor %1$s %2$s boyutunda ve şu anda İnternet\'e ulaşan tek bağlantı, operatörünüzün ücretlendirdiği %3$s. Motosiklet üzerindeyken bu normaldir: gösterge panelinin Wi-Fi ağında hiç İnternet yoktur.</string>
     <string name="legacy_waiting_for_wi_fi_costs_nothing_the_update_stays_3f38fec8">Wi-Fi beklemenin bir bedeli yok: güncelleme bu listede kalır.</string>
     <string name="settings_configuration">YAPILANDIRMA</string>
     <string name="settings_title">Ayarlar</string>
@@ -43,7 +43,7 @@
     <string name="video_quality_smoother">Daha akıcı</string>
     <string name="video_quality_smoother_description">Daha düşük bit hızı, daha az ısı ve ağ yükü.</string>
     <string name="video_quality_balanced">Dengeli</string>
-    <string name="video_quality_balanced_description">Geçerli MOTO-HUB kalitesi ve önerilen varsayılan.</string>
+    <string name="video_quality_balanced_description">Geçerli MotoVisor kalitesi ve önerilen varsayılan.</string>
     <string name="video_quality_sharper">Daha keskin</string>
     <string name="video_quality_sharper_description">Daha net harita ve yazı için daha yüksek bit hızı.</string>
     <string name="video_power_auto">Otomatik</string>
@@ -57,7 +57,7 @@
     <string name="video_power_eco">Eko</string>
     <string name="video_power_eco_description">En düşük ısı ve pil tüketimi için 15 FPS. Hareket gözle görülür biçimde daha az akıcıdır.</string>
     <string name="android_auto_resolution_auto">Otomatik</string>
-    <string name="android_auto_resolution_auto_description">Öğrenilen T-Box geometrisine dayanan otomatik MOTO-HUB yönlendirmesini koru.</string>
+    <string name="android_auto_resolution_auto_description">Öğrenilen T-Box geometrisine dayanan otomatik MotoVisor yönlendirmesini koru.</string>
     <string name="android_auto_resolution_landscape_sd">Yatay 800 x 480</string>
     <string name="android_auto_resolution_landscape_sd_description">Standart yatay Android Auto kaynağı.</string>
     <string name="android_auto_resolution_landscape_hd">Yatay 1280 x 720</string>
@@ -106,9 +106,9 @@
     <string name="core_bridge_notification_text">MOTO-HUB Pro\'ya hizmet veriyor.</string>
 
     <!-- Projection notifications -->
-    <string name="projection_channel_name">MOTO-HUB yansıtma</string>
+    <string name="projection_channel_name">MotoVisor yansıtma</string>
     <string name="projection_channel_description">Motosiklet ekranı için yayın durumu</string>
-    <string name="projection_notification_title">MOTO-HUB etkin</string>
+    <string name="projection_notification_title">MotoVisor etkin</string>
     <string name="projection_notification_text">Ekran yansıtma etkin.</string>
     <string name="projection_notification_dimmed_text">Yansıtma etkin, telefon ekranı karartıldı.</string>
     <string name="stop_projection">Durdur</string>
@@ -116,9 +116,9 @@
     <string name="restore_phone_display">Ekranı geri getir</string>
 
     <!-- Android Auto notifications -->
-    <string name="android_auto_channel_name">MOTO-HUB Android Auto</string>
-    <string name="android_auto_notification_title">MOTO-HUB Android Auto oturumu</string>
-    <string name="android_auto_notification_text">Oturum etkin. Canlı yansıtma durumu için MOTO-HUB\'u açın.</string>
+    <string name="android_auto_channel_name">MotoVisor Android Auto</string>
+    <string name="android_auto_notification_title">MotoVisor Android Auto oturumu</string>
+    <string name="android_auto_notification_text">Oturum etkin. Canlı yansıtma durumu için MotoVisor\'u açın.</string>
     <string name="stop_android_auto">Android Auto\'yu durdur</string>
 
     <!-- Ride Dashboard notifications -->
@@ -128,7 +128,7 @@
     <string name="ride_dashboard_notification_text">GPS telemetrisi ve kontrol paneli yayını etkin.</string>
     <string name="stop_ride_dashboard">Kontrol panelini durdur</string>
     <!-- Source: MainActivity.kt -->
-    <string name="legacy_moto_hub_diagnostics_ba6420b1">MOTO-HUB tanılama</string>
+    <string name="legacy_motovisor_diagnostics_90af08d2">MotoVisor tanılama</string>
     <!-- Source: feature/about/AboutScreen.kt -->
     <string name="legacy_about_the_project_2feef1f7">PROJE HAKKINDA</string>
     <!-- Source: feature/about/AboutScreen.kt -->
@@ -280,9 +280,9 @@
     <!-- Source: feature/garage/MotorcycleDetailsScreen.kt -->
     <string name="legacy_the_wi_fi_password_is_stored_securely_on_this_ph_b6fb6382">Wi-Fi parolası bu telefonda güvenli biçimde saklanır.</string>
     <!-- Source: feature/garage/MotorcycleDetailsScreen.kt -->
-    <string name="legacy_the_name_is_only_used_inside_moto_hub_10a5f3a4">Ad yalnızca MOTO-HUB içinde kullanılır.</string>
+    <string name="legacy_the_name_is_only_used_inside_motovisor_6d69728d">Ad yalnızca MotoVisor içinde kullanılır.</string>
     <!-- Source: feature/garage/MotorcycleDetailsScreen.kt -->
-    <string name="legacy_the_saved_connection_profile_and_its_photo_will__c6d581e2">Kayıtlı bağlantı profili ve fotoğrafı MOTO-HUB\'dan kaldırılacak.</string>
+    <string name="legacy_the_saved_connection_profile_and_its_photo_will__7d2bac0f">Kayıtlı bağlantı profili ve fotoğrafı MotoVisor\'dan kaldırılacak.</string>
     <!-- Source: feature/garage/TBoxCapabilityScreen.kt -->
     <string name="legacy_could_not_derive_a_peer_ip_this_network_may_not__3fa3f2d0">Bir eş IP adresi türetilemedi - bu ağda henüz kullanılabilir bir yol olmayabilir.</string>
     <!-- Source: feature/garage/TBoxCapabilityScreen.kt -->
@@ -526,7 +526,7 @@
     <!-- Source: feature/settings/SettingsScreen.kt -->
     <string name="legacy_android_auto_content_insets_7046c7dd">ANDROID AUTO İÇERİK KENAR BOŞLUKLARI</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
-    <string name="legacy_choose_image_detail_and_how_moto_hub_balances_sm_577123e1">Görüntü ayrıntısını ve MOTO-HUB\'un akıcılık, ısı, pil ve Wi-Fi yükü arasındaki dengeyi nasıl kuracağını seçin.</string>
+    <string name="legacy_choose_image_detail_and_how_motovisor_balances_s_22f12d4e">Görüntü ayrıntısını ve MotoVisor\'un akıcılık, ısı, pil ve Wi-Fi yükü arasındaki dengeyi nasıl kuracağını seçin.</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
     <string name="legacy_default_route_type_b528b630">VARSAYILAN ROTA TÜRÜ</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
@@ -600,7 +600,7 @@
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
     <string name="legacy_checking_github_releases_7e509ccb">GitHub sürümleri denetleniyor...</string>
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
-    <string name="legacy_moto_hub_updates_c98ab24f">MOTO-HUB güncellemeleri</string>
+    <string name="legacy_motovisor_updates_c308d2f0">MotoVisor güncellemeleri</string>
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
     <string name="legacy_no_apk_asset_attached_to_this_release_7a89904d">Bu sürüme ekli APK dosyası yok.</string>
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
@@ -694,7 +694,7 @@
     <!-- Source: feature/navigation/NavigationScreen.kt -->
     <string name="legacy_take_me_home_bb1e43ee">Beni eve götür</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
-    <string name="legacy_about_moto_hub_6966e1f8">MOTO-HUB hakkında</string>
+    <string name="legacy_about_motovisor_954eaf53">MotoVisor hakkında</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
     <string name="legacy_android_auto_cb210d00">Android Auto</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
@@ -778,7 +778,7 @@
     <!-- Source: feature/trips/TripRecordingService.kt -->
     <string name="legacy_gps_ride_recording_and_trip_statistics_28992d34">GPS sürüş kaydı ve yolculuk istatistikleri</string>
     <!-- Source: session/PhoneDisplayDimmer.kt -->
-    <string name="legacy_moto_hub_display_dimmer_57b6244b">MOTO-HUB ekran karartıcı</string>
+    <string name="legacy_motovisor_display_dimmer_ceb13c8a">MotoVisor ekran karartıcı</string>
     <!-- Dynamic UI templates. Keep positional placeholders unchanged. -->
     <string name="legacy_filter_1_d_497daa14">FİLTRE %1$d</string>
     <string name="legacy_recording_1_s_b01f3573">KAYIT · %1$s</string>
@@ -793,9 +793,9 @@
     <string name="legacy_1_d_km_h_6ce8c40f">%1$d KM/H</string>
     <!-- Weather forecast wind speed when the rider selects miles. -->
     <string name="legacy_1_d_mph_669c2f51">%1$d MİL/SAAT</string>
-    <string name="legacy_moto_hub_258caaa5">MOTO-HUB</string>
+    <string name="legacy_motovisor_5de1fc46">MotoVisor</string>
     <string name="legacy_recording_this_ride_1aceedab">Bu sürüş kaydediliyor</string>
-    <string name="legacy_moto_hub_controls_f72ba5d1">MOTO-HUB kontrolleri</string>
+    <string name="legacy_motovisor_controls_2d719950">MotoVisor kontrolleri</string>
     <!-- Source: localized UI literal / enum label -->
     <string name="legacy_1_d_available_e7e32615">%1$d kullanılabilir</string>
     <!-- Source: localized UI literal / enum label -->
@@ -1197,7 +1197,7 @@
     <!-- Source: localized UI literal / enum label -->
     <string name="legacy_1_s_is_ready_to_connect_6b95609b">%1$s bağlanmaya hazır.</string>
     <!-- Source: localized UI literal / enum label -->
-    <string name="legacy_allow_moto_hub_notifications_to_keep_streaming_v_4700fc1e">Yayının görünür ve denetlenebilir kalması için MOTO-HUB bildirimlerine izin verin.</string>
+    <string name="legacy_allow_motovisor_notifications_to_keep_streaming__83643cb1">Yayının görünür ve denetlenebilir kalması için MotoVisor bildirimlerine izin verin.</string>
     <!-- Source: localized UI literal / enum label -->
     <string name="legacy_allow_nearby_devices_and_location_to_detect_the__a4c1fa2c">T-Box Wi-Fi ağını algılamak için Yakındaki cihazlar ve Konum izinlerini verin.</string>
     <!-- Source: localized UI literal / enum label -->
@@ -1305,7 +1305,7 @@
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
     <string name="legacy_unfamiliar_pairing_code_714f8ce7">Tanıdık olmayan eşleştirme kodu</string>
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
-    <string name="legacy_this_code_carries_wi_fi_details_for_1_s_but_it_w_422a5994">Bu kod %1$s için Wi-Fi bilgilerini taşıyor, ancak MOTO-HUB\'un tanıdığı gösterge panellerindeki gibi bir Carbit adresi tarafından verilmemiş.</string>
+    <string name="legacy_this_code_carries_wi_fi_details_for_1_s_but_it_w_29b6478d">Bu kod %1$s için Wi-Fi bilgilerini taşıyor, ancak MotoVisor\'un tanıdığı gösterge panellerindeki gibi bir Carbit adresi tarafından verilmemiş.</string>
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
     <string name="legacy_several_manufacturers_ship_the_same_dashboard_so_49305d38">Birkaç üretici aynı gösterge paneli yazılımını kendi markasıyla dağıtır, dolayısıyla bu sizin motosikletiniz olabilir. Yalnızca kendi gösterge panelinizden taradıysanız devam edin.</string>
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
@@ -1334,11 +1334,11 @@
     <string name="legacy_android_auto_17_4_removed_the_way_an_app_can_ask_890c8f24">Android Auto 17.4, bir uygulamanın yansıtma istemesini sağlayan yolu kaldırdı. MOTO-HUB yine de dener ve eski sürümlerde çalışır — ancak çalışmadığında Android Auto kendi geliştirici menüsünden başlatılabilir. Hiçbir şey kurmanız gerekmez.</string>
     <string name="legacy_android_auto_does_not_start_2266b70e">Android Auto başlamıyor</string>
     <string name="legacy_every_time_android_auto_will_not_start_18ff3ab9">ANDROID AUTO HER BAŞLAMADIĞINDA</string>
-    <string name="legacy_go_back_to_moto_hub_and_start_android_auto_it_co_ff8cc50d">MOTO-HUB\'a dönüp Android Auto\'yu başlatın. Birkaç saniye içinde kendiliğinden bağlanır — başka bir şeye basmanız gerekmez.</string>
+    <string name="legacy_go_back_to_motovisor_and_start_android_auto_it_c_d4c74e6">MotoVisor\'a dönüp Android Auto\'yu başlatın. Birkaç saniye içinde kendiliğinden bağlanır — başka bir şeye basmanız gerekmez.</string>
     <string name="legacy_in_android_auto_s_developer_settings_open_the_me_1ea3a8cf">Android Auto\'nun Geliştirici ayarlarında sağ üstteki ⋮ menüsünü açın ve \"Start head unit server\" seçeneğini seçin. Altındaki ayar listesinde değil, o menüdedir.</string>
     <string name="legacy_in_developer_settings_turn_on_add_new_cars_to_an_19f79566">Geliştirici ayarlarında \"Add new cars to Android Auto\" seçeneğini açın (eski sürümlerde adı \"Unknown sources\").</string>
     <string name="legacy_jumps_straight_to_the_app_where_the_menu_above_l_7c8b2093">Yukarıdaki menünün bulunduğu uygulamaya doğrudan gider</string>
-    <string name="legacy_normally_moto_hub_waits_and_asks_android_auto_to_6c183bab">Normalde MOTO-HUB bekler ve Android Auto\'dan kendisine bağlanmasını ister. 17.4 sürümü bu kapıyı yalnızca bu uygulamaya değil, bu türden her uygulamaya kapattı. Head unit sunucusu yönü tersine çevirir — Android Auto bekler, MOTO-HUB ona bağlanır — ve bu, Google\'ın kendi test araçları için açık bıraktığı bir kapıdır.</string>
+    <string name="legacy_normally_motovisor_waits_and_asks_android_auto_t_5cc1e93b">Normalde MotoVisor bekler ve Android Auto\'dan kendisine bağlanmasını ister. 17.4 sürümü bu kapıyı yalnızca bu uygulamaya değil, bu türden her uygulamaya kapattı. Head unit sunucusu yönü tersine çevirir — Android Auto bekler, MotoVisor ona bağlanır — ve bu, Google\'ın kendi test araçları için açık bıraktığı bir kapıdır.</string>
     <string name="legacy_one_time_setup_ca24c531">TEK SEFERLİK KURULUM</string>
     <string name="legacy_open_android_auto_settings_48a5120d">Android Auto ayarlarını aç</string>
     <string name="legacy_open_the_android_auto_app_scroll_to_the_bottom_a_69ae9e53">Android Auto uygulamasını açın, en alta inin ve \"Version\" ögesine on kez dokunun. Geliştirici ayarları görünür.</string>
@@ -1431,20 +1431,20 @@
     <string name="legacy_requires_the_phone_paired_to_the_motorcycle_s_bl_dda6960a">Telefonun motosikletin Bluetooth\'una eşleştirilmiş olmasını gerektirir. Müzik çalmayı sürdürür, ancak bir oturum sürerken düğmeleri yakalanır.</string>
     <string name="legacy_set_the_dash_clock_over_bluetooth_experimental_3431b284">Gösterge paneli saatini Bluetooth üzerinden ayarla (deneysel)</string>
     <string name="legacy_set_the_dash_clock_over_wi_fi_292a2ca5">Gösterge paneli saatini Wi-Fi üzerinden ayarla</string>
-    <string name="legacy_on_by_default_and_what_sets_the_time_on_most_das_6234cd82">Varsayılan olarak açıktır ve çoğu gösterge panelinde saati bu ayarlar. Yalnızca gösterge paneliniz MOTO-HUB\'dan saati isteyip yanıtı yok sayıyor ve yine 01.01.1970 gösteriyorsa kapatın: bu ünitelerde saati yazmak hiçbir şeyi değiştirmez ve gösterge panelinde elle ayarladığınız saatin üzerine yazabilir. Bu kapalıyken motosiklet normal bağlanır, yalnızca saatin kaç olduğu ona hiç söylenmez.</string>
+    <string name="legacy_on_by_default_and_what_sets_the_time_on_most_das_6f81e1b7">Varsayılan olarak açıktır ve çoğu gösterge panelinde saati bu ayarlar. Yalnızca gösterge paneliniz MotoVisor\'dan saati isteyip yanıtı yok sayıyor ve yine 01.01.1970 gösteriyorsa kapatın: bu ünitelerde saati yazmak hiçbir şeyi değiştirmez ve gösterge panelinde elle ayarladığınız saatin üzerine yazabilir. Bu kapalıyken motosiklet normal bağlanır, yalnızca saatin kaç olduğu ona hiç söylenmez.</string>
     <string name="legacy_your_dashboard_has_been_seen_asking_for_the_time_c02f4d97">Gösterge panelinizin saati sorduğu, yanıt aldığı ve buna rağmen kendi açılışından itibaren saymayı sürdürdüğü görüldü. Bu anahtar her iki konumda da panelde hiçbir şeyi değiştirmez: o saati telefon değil, gösterge paneli tutar.</string>
     <string name="legacy_settings_595d2043">Ayarlar</string>
-    <string name="legacy_some_dashboards_ask_for_the_time_over_bluetooth__b44ce43b">Bazı gösterge panelleri saati Wi-Fi yerine Bluetooth üzerinden ister ve o olmadan 00:00\'da kalır. Motosikletin bu telefona Android\'in Bluetooth ayarlarında zaten eşleştirilmiş olması gerekir. Varsayılan olarak kapalıdır; MOTO-HUB yalnızca gösterge panelinin kendi protokolüyle soran bir aygıta yanıt verir.</string>
+    <string name="legacy_some_dashboards_ask_for_the_time_over_bluetooth__6c2af1b0">Bazı gösterge panelleri saati Wi-Fi yerine Bluetooth üzerinden ister ve o olmadan 00:00\'da kalır. Motosikletin bu telefona Android\'in Bluetooth ayarlarında zaten eşleştirilmiş olması gerekir. Varsayılan olarak kapalıdır; MotoVisor yalnızca gösterge panelinin kendi protokolüyle soran bir aygıta yanıt verir.</string>
     <string name="legacy_some_dashboards_forget_settings_like_the_clock_w_76d95842">Bazı gösterge panelleri, Wi-Fi Direct bağlantısı tümüyle koptuğunda saat gibi ayarları unutur. Bu seçenek, siz uygulamadan çıkana veya Wi-Fi\'yi kapatana kadar telefonu motosikletin ağına bağlı tutar. Varsayılan olarak kapalıdır; yalnızca gösterge paneliniz bağlantı kesildikten sonra saati yitiriyorsa açın.</string>
     <string name="legacy_start_automatically_2cb44c45">Otomatik başlat</string>
     <string name="legacy_start_on_connect_94487a47">Bağlanınca başlat</string>
     <string name="legacy_stay_linked_to_the_bike_s_wi_fi_after_disconnect_81b0e941">Bağlantı kesildikten sonra motosikletin Wi-Fi ağına bağlı kal</string>
-    <string name="legacy_the_motorcycle_s_buttons_reach_the_phone_over_bl_356cbf0d">Motosikletin düğmeleri telefona Bluetooth üzerinden medya tuşu olarak ulaşır. Bir oturum akarken MOTO-HUB bunları yakalayıp müzik çalar yerine Android Auto navigasyonunu kullanabilir.</string>
+    <string name="legacy_the_motorcycle_s_buttons_reach_the_phone_over_bl_6649e638">Motosikletin düğmeleri telefona Bluetooth üzerinden medya tuşu olarak ulaşır. Bir oturum akarken MotoVisor bunları yakalayıp müzik çalar yerine Android Auto navigasyonunu kullanabilir.</string>
     <string name="legacy_what_each_press_double_press_and_hold_does_97201ad9">Her basış, çift basış ve basılı tutmanın ne yaptığı</string>
     <string name="legacy_what_to_do_when_android_auto_refuses_to_project_fa692d1b">Android Auto yansıtmayı reddettiğinde ne yapmalı</string>
     <string name="legacy_what_to_start_5b78fc39">NE BAŞLATILSIN</string>
     <string name="legacy_while_capture_is_on_the_volume_buttons_navigate__9e410bf">Yakalama açıkken ses düğmeleri ses düzeyini değiştirmek yerine gezinmeyi sağlar — dinleme düzeyinizi buradan ayarlayın.</string>
-    <string name="legacy_with_this_on_moto_hub_skips_the_what_should_i_sh_498b0614">Bu açıkken MOTO-HUB \"ne göstereyim?\" ekranını atlar ve motosiklet bağlantısı kurulur kurulmaz seçilen ekranı TFT\'ye koyar. Uygulama açılışı başına bir kez çalışır - bir ekranı durdurduğunuzda denetim yine sizde olur.</string>
+    <string name="legacy_with_this_on_motovisor_skips_the_what_should_i_s_ba70b7e9">Bu açıkken MotoVisor \"ne göstereyim?\" ekranını atlar ve motosiklet bağlantısı kurulur kurulmaz seçilen ekranı TFT\'ye koyar. Uygulama açılışı başına bir kez çalışır - bir ekranı durdurduğunuzda denetim yine sizde olur.</string>
 
     <!-- Source: ui/components/SystemKillNotice.kt -->
     <string name="legacy_dismiss_c6dc4a6a">Kapat</string>
@@ -1571,7 +1571,7 @@
     <string name="legacy_gps_only_e6f03982">YALNIZCA GPS</string>
          description; rendered outside the app's own Compose runtime, so it is a plain string
          resource rather than a motoHubText() call). -->
-    <string name="handlebar_hid_capture_description">Gidon düğmeleri ayarlarında HID modu seçiliyken, MOTO-HUB\'un bir Bluetooth HID gidon kumandasından yön tuşu basışlarını okumasını sağlar.</string>
+    <string name="handlebar_hid_capture_description">Gidon düğmeleri ayarlarında HID modu seçiliyken, MotoVisor\'un bir Bluetooth HID gidon kumandasından yön tuşu basışlarını okumasını sağlar.</string>
 
     <!-- ==================================================================
          Handlebar HID mode, phone-only Android Auto and the teach
@@ -1588,19 +1588,19 @@
     <string name="legacy_android_auto_straight_to_your_phone_f0cc540c">Android Auto — doğrudan telefonunuza</string>
     <string name="legacy_input_protocol_8ff4fe4e">GİRİŞ PROTOKOLÜ</string>
     <string name="legacy_most_dashboards_send_buttons_as_avrcp_media_keys_6e1dd82c">Çoğu gösterge paneli düğmeleri AVRCP medya tuşu olarak gönderir — bunu AVRCP\'de bırakın. HID\'yi yalnızca kumanda Bluetooth klavye olarak eşleşiyorsa ve basışları aşağıda hiç görünmüyorsa seçin.</string>
-    <string name="legacy_hid_mode_also_needs_moto_hub_s_accessibility_ser_c0cdf4cc">HID modu ayrıca MOTO-HUB\'un Erişilebilirlik Hizmeti\'nin açık olmasını gerektirir, yoksa basışlar görülmez.</string>
+    <string name="legacy_hid_mode_also_needs_motovisor_s_accessibility_se_54bb7675">HID modu ayrıca MotoVisor\'un Erişilebilirlik Hizmeti\'nin açık olmasını gerektirir, yoksa basışlar görülmez.</string>
     <string name="legacy_open_accessibility_settings_a01c954b">Erişilebilirlik ayarlarını aç</string>
-    <string name="legacy_turn_on_moto_hub_so_handlebar_presses_reach_the__b41c5310">Gidon basışlarının her ekrandan uygulamaya ulaşması için MOTO-HUB\'u açın</string>
-    <string name="legacy_was_moto_hub_s_switch_greyed_out_android_blocks__b5233420">MOTO-HUB\'un anahtarı soluk mu görünüyordu? Android bunu mağazadan kurulmamış uygulamalar için engeller ve MOTO-HUB GitHub\'dan indirilir. Uygulama bilgisi\'ni açın, sağ üstteki ⋮ simgesine dokunun, \"Kısıtlı ayarlara izin ver\" seçeneğini seçin, sonra geri dönüp anahtarı açın.</string>
+    <string name="legacy_turn_on_motovisor_so_handlebar_presses_reach_the_d15fa1cb">Gidon basışlarının her ekrandan uygulamaya ulaşması için MotoVisor\'u açın</string>
+    <string name="legacy_was_motovisor_s_switch_greyed_out_android_blocks_a7780e44">MotoVisor\'un anahtarı soluk mu görünüyordu? Android bunu mağazadan kurulmamış uygulamalar için engeller ve MotoVisor GitHub\'dan indirilir. Uygulama bilgisi\'ni açın, sağ üstteki ⋮ simgesine dokunun, \"Kısıtlı ayarlara izin ver\" seçeneğini seçin, sonra geri dönüp anahtarı açın.</string>
     <string name="legacy_open_app_info_7c77c863">Uygulama bilgisini aç</string>
     <string name="legacy_where_allow_restricted_settings_lives_8f29fea1">\"Kısıtlı ayarlara izin ver\" nerede</string>
     <string name="legacy_avrcp_media_keys_f50e20c7">AVRCP (medya tuşları)</string>
     <string name="legacy_hid_d_pad_a247f04a">HID (yön tuşu)</string>
     <string name="legacy_default_the_dashboard_sends_bluetooth_media_key__ccbdfbf7">Varsayılan. Gösterge paneli çal/duraklat, parça ve ses düzeyi için Bluetooth medya tuşu komutları gönderir.</string>
-    <string name="legacy_for_remotes_that_pair_as_a_bluetooth_keyboard_an_25055a66">Bluetooth klavye olarak eşleşen ve yön tuşu basışları gönderen kumandalar için. Aşağıdaki MOTO-HUB Erişilebilirlik Hizmeti\'nin açılmasını gerektirir.</string>
+    <string name="legacy_for_remotes_that_pair_as_a_bluetooth_keyboard_an_86ec244b">Bluetooth klavye olarak eşleşen ve yön tuşu basışları gönderen kumandalar için. Aşağıdaki MotoVisor Erişilebilirlik Hizmeti\'nin açılmasını gerektirir.</string>
 
     <!-- External display service (USB AOA) - notification channel and ongoing notification -->
-    <string name="legacy_moto_hub_external_display_streaming_1be823ca">MOTO-HUB harici ekran akışı</string>
+    <string name="legacy_motovisor_external_display_streaming_ed3dd589">MotoVisor harici ekran akışı</string>
     <string name="legacy_streaming_to_external_display_via_usb_ab5c31c6">USB üzerinden harici ekrana yayın</string>
     <string name="legacy_stop_external_display_c050e9ab">Harici ekranı durdur</string>
     <string name="legacy_aap_accessory_probe_running_bcf6ccd1">AAP aksesuar yoklaması çalışıyor</string>
@@ -1608,7 +1608,7 @@
     <!-- About screen -->
     <string name="legacy_your_phone_your_motorcycle_display_c5956fcb">Telefonunuz.\nMotosiklet ekranınız.</string>
     <string name="legacy_follow_development_join_our_community_report_iss_b8b8fffa">Geliştirmeyi izleyin, topluluğumuza katılın, sorun bildirin ve sürümleri indirin.</string>
-    <string name="legacy_moto_hub_is_an_independent_project_it_is_not_aff_9e4c2633">MOTO-HUB bağımsız bir projedir. Carbit, CFMOTO, gösterge panelinde EasyConn kullanan başka bir üretici, Google veya Android Auto ile bağlantılı değildir, onlar tarafından onaylanmamış ve desteklenmemektedir. Tüm ürün adları ve markalar kendi sahiplerine aittir.</string>
+    <string name="legacy_motovisor_is_an_independent_project_it_is_not_af_e24e06b2">MotoVisor bağımsız bir projedir. Carbit, CFMOTO, gösterge panelinde EasyConn kullanan başka bir üretici, Google veya Android Auto ile bağlantılı değildir, onlar tarafından onaylanmamış ve desteklenmemektedir. Tüm ürün adları ve markalar kendi sahiplerine aittir.</string>
     <string name="legacy_motovisor_is_a_modified_version_of_moto_hub_core_95293cd0">MotoVisor, MOTO-HUB CORE uygulamasının değiştirilmiş bir sürümüdür ve github.com/jlalcazar/MOTO-HUB adresinde sürdürülür. Özgün uygulama değildir ve özgün yazarı tarafından desteklenmez. Android Auto özelliği için Google tarafından verilen bir destek, onay veya garanti yoktur.</string>
     <string name="legacy_save_debug_files_automatically_563a4baa">Hata ayıklama dosyalarını otomatik kaydet</string>
     <string name="legacy_copies_the_log_to_download_motovisor_when_a_sess_96da979b">Bir oturum bittiğinde veya uygulamadan çıkıldığında günlüğü Download/MotoVisor klasörüne kopyalar. En son dosyayı ve son 10 oturumu saklar.</string>
@@ -1620,7 +1620,7 @@
     <string name="legacy_hold_the_phone_screen_awake_while_this_app_is_in_358a4269">Bu uygulama öndeyken telefon ekranını açık tutar. Daha fazla pil kullanır.</string>
     <string name="legacy_distance_units_3cd36364">MESAFE BİRİMLERİ</string>
     <string name="legacy_used_for_the_tank_range_in_the_motorcycle_profil_ad68d85a">Motosiklet profilindeki depo menzili için kullanılır.</string>
-    <string name="legacy_moto_hub_is_an_experimental_proof_of_concept_not_34b4b321">MOTO-HUB deneysel bir kavram kanıtıdır, üretim düzeyinde bir ürün değildir.</string>
+    <string name="legacy_motovisor_is_an_experimental_proof_of_concept_no_d52ec620">MotoVisor deneysel bir kavram kanıtıdır, üretim düzeyinde bir ürün değildir.</string>
     <string name="legacy_development_and_testing_happen_on_a_cfmoto_700mt_ac58afbf">Geliştirme ve sınama, OnePlus 13 / Galaxy Z Fold4 telefonlarla bir CFMOTO 700MT-ADV gösterge panelinde yapılır. Başka motosikletler, markalar, T-Box yazılım sürümleri ve telefonlar burada denenmemiştir: farklı davranış, yeniden denemeler ya da hiç bağlantı kurulamaması beklenebilir. Gösterge paneli bir eşleştirme QR kodu gösteriyorsa denemeye değer.</string>
     <string name="legacy_do_not_rely_on_it_as_your_only_source_of_critica_39775433">Kritik navigasyon için tek kaynağınız olarak buna güvenmeyin. Navigasyonu park hâlindeyken yapılandırın ve yazılımı kendi sorumluluğunuzda kullanın.</string>
 
@@ -1663,7 +1663,7 @@
     <string name="legacy_head_unit_name_1d44c987">Ana ünite adı</string>
     <string name="legacy_vehicle_brand_1ca30d73">Araç markası</string>
     <string name="legacy_vehicle_model_1d3cbd15">Araç modeli</string>
-    <string name="legacy_these_values_are_shown_exactly_as_reported_by_th_16427b8c">Bu değerler T-Box\'ın bildirdiği biçimde gösterilir. MOTO-HUB, QR kodundan veya ağ adından bir motosiklet modeli çıkarmaz.</string>
+    <string name="legacy_these_values_are_shown_exactly_as_reported_by_th_2ef15817">Bu değerler T-Box\'ın bildirdiği biçimde gösterilir. MotoVisor, QR kodundan veya ağ adından bir motosiklet modeli çıkarmaz.</string>
     <string name="legacy_software_protocol_2108716b">YAZILIM &amp; PROTOKOL</string>
     <string name="legacy_pxc_version_5fba84f3">PXC sürümü</string>
     <string name="legacy_sdk_version_aacf3ed2">SDK sürümü</string>
@@ -1713,9 +1713,9 @@
 
     <!-- Safety disclaimer shown on first launch -->
     <string name="legacy_safety_warning_243ef82e">GÜVENLİK UYARISI</string>
-    <string name="legacy_riding_requires_your_full_attention_never_intera_96038a24">Motosiklet sürmek tüm dikkatinizi ister. Motosiklet hareket hâlindeyken MOTO-HUB, Android Auto, navigasyon, aynalama, yolculuk kaydı veya ekrandaki herhangi bir denetimle asla etkileşime girmeyin.</string>
+    <string name="legacy_riding_requires_your_full_attention_never_intera_f95090d5">Motosiklet sürmek tüm dikkatinizi ister. Motosiklet hareket hâlindeyken MotoVisor, Android Auto, navigasyon, aynalama, yolculuk kaydı veya ekrandaki herhangi bir denetimle asla etkileşime girmeyin.</string>
     <string name="legacy_configure_and_verify_everything_only_while_parke_57e1b31b">Her şeyi yalnızca park hâlindeyken yapılandırın ve doğrulayın. Bu uygulamayı yalnızca tümüyle güvenli ve denetimli bir durumda kullanın. Koşullar tümüyle güvenli değilse kullanmayın.</string>
-    <string name="legacy_moto_hub_is_not_a_safety_device_and_cannot_preve_a3d43f2f">MOTO-HUB bir güvenlik aygıtı değildir ve dikkat dağınıklığını, kazaları, yaralanmayı veya hasarı önleyemez. Güvenli sürmekten ve geçerli tüm yasalara uymaktan yalnızca siz sorumlusunuz.</string>
+    <string name="legacy_motovisor_is_not_a_safety_device_and_cannot_prev_2b8075ae">MotoVisor bir güvenlik aygıtı değildir ve dikkat dağınıklığını, kazaları, yaralanmayı veya hasarı önleyemez. Güvenli sürmekten ve geçerli tüm yasalara uymaktan yalnızca siz sorumlusunuz.</string>
     <string name="legacy_i_understand_do_not_show_this_warning_again_e4526192">Anladım — bu uyarıyı bir daha gösterme</string>
 
     <!-- GitHub update dialog -->
@@ -1746,23 +1746,23 @@
     <!-- The "MOTO-HUB is still looking" notification shown while a connection attempt runs,
          and the hosted-network wording that tells the rider not to close the app. %1$s is
          the motorcycle network name. -->
-    <string name="legacy_moto_hub_connection_progress_c260af34">MOTO-HUB bağlantı ilerlemesi</string>
+    <string name="legacy_motovisor_connection_progress_d015e655">MotoVisor bağlantı ilerlemesi</string>
     <string name="legacy_looking_for_1_s_9983a22f">%1$s aranıyor</string>
     <string name="legacy_connecting_to_1_s_2f10e3b8">%1$s ağına bağlanılıyor</string>
-    <string name="legacy_keep_moto_hub_open_closing_it_stops_the_search_54ec507">MOTO-HUB\'u açık tutun - kapatmak aramayı durdurur.</string>
-    <string name="legacy_hotspot_is_up_searching_it_for_the_dashboard_thi_caab4cd3">Hotspot açık. Gösterge paneli için taranıyor - bu 90 saniyeye kadar sürebilir, bu yüzden MOTO-HUB\'u açık tutun.</string>
+    <string name="legacy_keep_motovisor_open_closing_it_stops_the_search_7113fc52">MotoVisor\'u açık tutun - kapatmak aramayı durdurur.</string>
+    <string name="legacy_hotspot_is_up_searching_it_for_the_dashboard_thi_f0a60920">Hotspot açık. Gösterge paneli için taranıyor - bu 90 saniyeye kadar sürebilir, bu yüzden MotoVisor\'u açık tutun.</string>
     <!-- Asked once per video format tried, after a session that looked healthy from the phone:
          only the rider can see whether the dashboard actually displayed it. %1$s is the
          motorcycle name. -->
     <string name="legacy_did_it_show_up_on_the_dashboard_f341c05">Gösterge panelinde göründü mü?</string>
-    <string name="legacy_last_time_you_connected_to_1_s_everything_looked_46fc9a09">%1$s ağına en son bağlandığınızda bu telefondan bakıldığında her şey doğru görünüyordu. MOTO-HUB\'un gösterge panelinin ekranını görmesi olanaksız, bu yüzden size sorması gereken tek şey bu.</string>
+    <string name="legacy_last_time_you_connected_to_1_s_everything_looked_cabe6d9a">%1$s ağına en son bağlandığınızda bu telefondan bakıldığında her şey doğru görünüyordu. MotoVisor\'un gösterge panelinin ekranını görmesi olanaksız, bu yüzden size sorması gereken tek şey bu.</string>
     <string name="legacy_if_it_stayed_on_the_pairing_screen_moto_hub_will_40398b69">Eşleştirme ekranında kaldıysa, MOTO-HUB bir sonraki sürüşte farklı bir video biçimi deneyecek ve biri çalışana kadar sürdürecek.</string>
     <string name="legacy_yes_i_saw_it_625527f4">Evet, gördüm</string>
     <string name="legacy_no_nothing_appeared_f92c88fc">Hayır, hiçbir şey görünmedi</string>
     <!-- Shown when the video-format search cannot progress because every session so far ran the
          Ride Dashboard, which sends its own format. -->
     <string name="legacy_the_video_format_search_is_waiting_ac28c9a">Video biçimi araması bekliyor</string>
-    <string name="legacy_moto_hub_is_still_looking_for_a_video_format_you_44b4c53c">MOTO-HUB hâlâ gösterge panelinizin gösterebileceği bir video biçimi arıyor, ancak bunu yalnızca Android Auto çalışırken sınayabilir - Ride Dashboard her zaman kendi biçimini gönderir.</string>
+    <string name="legacy_motovisor_is_still_looking_for_a_video_format_yo_5dbe0cbb">MotoVisor hâlâ gösterge panelinizin gösterebileceği bir video biçimi arıyor, ancak bunu yalnızca Android Auto çalışırken sınayabilir - Ride Dashboard her zaman kendi biçimini gönderir.</string>
     <string name="legacy_connect_once_with_android_auto_and_the_search_mo_71871380">Android Auto ile bir kez bağlanın, arama kendiliğinden ilerlesin.</string>
     <string name="legacy_got_it_7f79855f">Anladım</string>
 
@@ -1786,7 +1786,7 @@
     <string name="legacy_take_a_photo_cefc733a">Fotoğraf çek</string>
 
     <!-- Source: feature/about/AboutScreen.kt -->
-    <string name="legacy_moto_hub_connects_an_android_12_phone_to_a_motor_b791c32e">MOTO-HUB, Android 12+ bir telefonu EasyConn üzerinden eşleşen bir motosiklet gösterge paneline bağlar — birçok üreticinin, aralarında CFMOTO\'nun da bulunduğu, dağıttığı Carbit yazılımı. Ekran ve uygulama aynalama, Android Auto yansıtma, kayıtlı motosiklet profilleri ve aygıt üzerinde tanılama destekler.</string>
+    <string name="legacy_motovisor_connects_an_android_12_phone_to_a_moto_6a32f2ed">MotoVisor, Android 12+ bir telefonu EasyConn üzerinden eşleşen bir motosiklet gösterge paneline bağlar — birçok üreticinin, aralarında CFMOTO\'nun da bulunduğu, dağıttığı Carbit yazılımı. Ekran ve uygulama aynalama, Android Auto yansıtma, kayıtlı motosiklet profilleri ve aygıt üzerinde tanılama destekler.</string>
 
     <!-- Source: feature/controls — a controller button stands in for a handlebar press -->
     <string name="legacy_handlebar_presses_32db65bc">GİDON BASIŞLARI</string>
@@ -1858,7 +1858,7 @@
 
     <!-- Source: feature/controls — the three input sources, and which one is live -->
     <string name="legacy_motorcycle_handlebar_dc90fcfc">MOTOSİKLET GİDONU</string>
-    <string name="legacy_android_auto_17_4_removed_the_way_an_app_can_ask_217ec1b2">Android Auto 17.4, bir uygulamanın yansıtma istemesini sağlayan yolu kaldırdı. MOTO-HUB yine de dener ve eski sürümlerde çalışır — ancak çalışmadığında aşağıdaki dört adım, Android Auto\'yu kendi geliştirici menüsünden başlatır. Başka hiçbir şey işe yaramadığında işe yarayan bölüm budur ve hiçbir şey kurmanız gerekmez.</string>
+    <string name="legacy_android_auto_17_4_removed_the_way_an_app_can_ask_5c8e73c7">Android Auto 17.4, bir uygulamanın yansıtma istemesini sağlayan yolu kaldırdı. MotoVisor yine de dener ve eski sürümlerde çalışır — ancak çalışmadığında aşağıdaki dört adım, Android Auto\'yu kendi geliştirici menüsünden başlatır. Başka hiçbir şey işe yaramadığında işe yarayan bölüm budur ve hiçbir şey kurmanız gerekmez.</string>
     <string name="legacy_start_android_auto_yourself_3b0dffe1">ANDROID AUTO\'YU KENDİNİZ BAŞLATIN</string>
     <string name="legacy_open_the_android_auto_app_s_settings_scroll_to_t_4ef36207">Android Auto uygulamasının ayarlarını açın, en alta inin ve \"Version\" ögesine on kez dokunun. Bu, geliştirici seçeneklerini açar — yalnızca bir kez yapmanız yeter.</string>
     <string name="legacy_stay_on_that_same_android_auto_settings_screen_o_2c08cebc">Aynı Android Auto ayarlar ekranında kalın, sağ üstteki üç nokta menüsünü açın ve \"Start head unit server\" seçeneğini seçin. Geliştirici ayarlarının içinde değil, o menüdedir. İşi yapan adım budur.</string>
@@ -1881,10 +1881,10 @@
 
     <!-- Source: failure text the home screen's error banner draws. Declared as constants and compared by
          identity on the way there, so the catalogue is the only place they can be translated -->
-    <string name="legacy_google_android_auto_never_connected_to_moto_hub__bd46b5a3">Google Android Auto MOTO-HUB\'a hiç bağlanmadı. Yeni Android Auto sürümleri, uygulamaların yansıtma istemesini sağlayan yolu kaldırdı; bu yüzden onu Android Auto\'nun kendisinden başlatın. Android Auto uygulamasının ayarlarını açın, en alta inin ve geliştirici seçeneklerini açmak için \"Version\" ögesine on kez dokunun. Sonra aynı ayarlar ekranında sağ üstteki üç nokta menüsünü açıp \"Start head unit server\" seçeneğini seçin - menü, Geliştirici ayarlarının içinde değil, Android Auto\'nun normal ayarlar ekranındadır. MOTO-HUB\'u çalışır bırakın: birkaç saniye içinde kendiliğinden bağlanır ve sunucuyu bir sonraki sefer için açık bırakabilirsiniz.</string>
-    <string name="legacy_google_android_auto_took_moto_hub_s_request_and__ae0978d0">Google Android Auto, MOTO-HUB\'un isteğini aldı ve sonra yok saydı. Güvenmesi söylenmemiş bir ana üniteye yaptığı budur. Android Auto uygulamasının ayarlarını açın, en alta inin ve geliştirici seçeneklerini açmak için \"Version\" ögesine on kez dokunun, Geliştirici ayarlarını açıp \"Add new cars to Android Auto\" seçeneğini açın (eski derlemelerde adı \"Unknown sources\"), sonra Android Auto\'yu MOTO-HUB\'dan yeniden başlatın. Yine hiçbir şey olmazsa Android Auto ayarlar ekranına dönüp sağ üstteki üç nokta menüsünü kullanın: \"Start head unit server\".</string>
-    <string name="legacy_google_android_auto_took_moto_hub_s_request_and__3e12afc0">Google Android Auto, MOTO-HUB\'un isteğini aldı ve sonra yok saydı; bu sürümün onunla yaptığı tek şey bu: Android Auto 17.3 ve sonrası, bir uygulamanın yansıtma istemesini sağlayan yolu kaldırdı. Onun yerine Android Auto\'dan başlatın. Android Auto uygulamasının ayarlarını açın, en alta inin ve geliştirici seçeneklerini açmak için \"Version\" ögesine on kez dokunun, sonra aynı ayarlar ekranının sağ üstündeki üç nokta menüsünü açıp \"Start head unit server\" seçeneğini seçin. MOTO-HUB\'u çalışır bırakın: birkaç saniye içinde kendiliğinden bağlanır. Oradayken Geliştirici ayarlarındaki \"Add new cars to Android Auto\" da açık olmalı.</string>
-    <string name="legacy_another_easyconn_session_is_already_using_the_lo_fa50b26f">Başka bir EasyConn oturumu yerel bağlantı noktalarını (10920-10922) zaten kullanıyor. Etkin MOTO-HUB oturumlarını durdurun ya da motosikletinizin kendi eşlik eden uygulamasını (CFMOTO, Zontes Smart, Carbit Ride ve diğer markaların dağıttığı eşdeğerleri) zorla durdurun, sonra bağlantıyı yeniden deneyin.</string>
+    <string name="legacy_google_android_auto_never_connected_to_motovisor_cb33ff3">Google Android Auto MotoVisor\'a hiç bağlanmadı. Yeni Android Auto sürümleri, uygulamaların yansıtma istemesini sağlayan yolu kaldırdı; bu yüzden onu Android Auto\'nun kendisinden başlatın. Android Auto uygulamasının ayarlarını açın, en alta inin ve geliştirici seçeneklerini açmak için \"Version\" ögesine on kez dokunun. Sonra aynı ayarlar ekranında sağ üstteki üç nokta menüsünü açıp \"Start head unit server\" seçeneğini seçin - menü, Geliştirici ayarlarının içinde değil, Android Auto\'nun normal ayarlar ekranındadır. MotoVisor\'u çalışır bırakın: birkaç saniye içinde kendiliğinden bağlanır ve sunucuyu bir sonraki sefer için açık bırakabilirsiniz.</string>
+    <string name="legacy_google_android_auto_took_motovisor_s_request_and_4ecfaa3c">Google Android Auto, MotoVisor\'un isteğini aldı ve sonra yok saydı. Güvenmesi söylenmemiş bir ana üniteye yaptığı budur. Android Auto uygulamasının ayarlarını açın, en alta inin ve geliştirici seçeneklerini açmak için \"Version\" ögesine on kez dokunun, Geliştirici ayarlarını açıp \"Add new cars to Android Auto\" seçeneğini açın (eski derlemelerde adı \"Unknown sources\"), sonra Android Auto\'yu MotoVisor\'dan yeniden başlatın. Yine hiçbir şey olmazsa Android Auto ayarlar ekranına dönüp sağ üstteki üç nokta menüsünü kullanın: \"Start head unit server\".</string>
+    <string name="legacy_google_android_auto_took_motovisor_s_request_and_5ebb3be0">Google Android Auto, MotoVisor\'un isteğini aldı ve sonra yok saydı; bu sürümün onunla yaptığı tek şey bu: Android Auto 17.3 ve sonrası, bir uygulamanın yansıtma istemesini sağlayan yolu kaldırdı. Onun yerine Android Auto\'dan başlatın. Android Auto uygulamasının ayarlarını açın, en alta inin ve geliştirici seçeneklerini açmak için \"Version\" ögesine on kez dokunun, sonra aynı ayarlar ekranının sağ üstündeki üç nokta menüsünü açıp \"Start head unit server\" seçeneğini seçin. MotoVisor\'u çalışır bırakın: birkaç saniye içinde kendiliğinden bağlanır. Oradayken Geliştirici ayarlarındaki \"Add new cars to Android Auto\" da açık olmalı.</string>
+    <string name="legacy_another_easyconn_session_is_already_using_the_lo_57b41478">Başka bir EasyConn oturumu yerel bağlantı noktalarını (10920-10922) zaten kullanıyor. Etkin MotoVisor oturumlarını durdurun ya da motosikletinizin kendi eşlik eden uygulamasını (CFMOTO, Zontes Smart, Carbit Ride ve diğer markaların dağıttığı eşdeğerleri) zorla durdurun, sonra bağlantıyı yeniden deneyin.</string>
     <string name="legacy_phone_wi_fi_is_off_turn_it_on_then_tap_connect_a_5fd21cc0">Telefonun Wi-Fi bağlantısı kapalı. Açın, sonra yeniden Bağlan\'a dokunun.</string>
     <string name="legacy_phone_hotspot_is_off_turn_it_on_then_tap_connect_683a58f1">Telefonun hotspot\'u kapalı. Açın, sonra yeniden Bağlan\'a dokunun.</string>
     <string name="legacy_action_needed_a446e8df">EYLEM GEREKİYOR</string>
@@ -1925,13 +1925,13 @@
     <string name="legacy_a_report_sent_now_carries_that_log_so_it_says_no_cb65d9dc">Şimdi gönderilen bir rapor o günlüğü taşır, dolayısıyla uygulamanın bugün ne yaptığı hakkında hiçbir şey söylemez. Bir sorunu bildirmek için Günlük kaydını etkinleştir seçeneğini yeniden açın, sorunu yeniden yaşatın, sonra gönderin.</string>
     <string name="legacy_that_worked_keep_it_b0100883">İşe yaradı - kalsın mı?</string>
     <string name="legacy_your_dashboard_is_now_accepting_the_picture_on_t_a2e41389">Gösterge paneliniz artık görüntüyü %1$s profilinde kabul ediyor. Bu motosiklet için kullanmayı sürdürelim mi?</string>
-    <string name="legacy_you_have_just_found_out_something_moto_hub_could_5d173f67">MOTO-HUB\'un kendi başına bulamadığı bir şeyi az önce öğrendiniz: bu gösterge panelinin gerçekte hangi profili kabul ettiğini. Günlüğünüzü göndermek bunu paylaşır, böylece sizin motosikletinize sahip bir sonraki sürücü ilk seferde doğrusunu bulur.</string>
+    <string name="legacy_you_have_just_found_out_something_motovisor_coul_8f344c42">MotoVisor\'un kendi başına bulamadığı bir şeyi az önce öğrendiniz: bu gösterge panelinin gerçekte hangi profili kabul ettiğini. Günlüğünüzü göndermek bunu paylaşır, böylece sizin motosikletinize sahip bir sonraki sürücü ilk seferde doğrusunu bulur.</string>
     <string name="legacy_send_my_log_now_80f590fe">Günlüğümü şimdi gönder</string>
     <string name="legacy_send_logs_automatically_from_now_on_1efdfbe9">Bundan sonra günlükleri otomatik gönder</string>
     <string name="legacy_keep_it_318f8786">Kalsın</string>
     <string name="legacy_undo_284d04">Geri al</string>
     <string name="legacy_try_another_profile_2632e907">Başka bir profil dene</string>
-    <string name="legacy_the_connection_to_your_motorcycle_is_fine_the_da_6a78bba4">Motosikletinizle bağlantı sorunsuz - gösterge paneli yalnızca görüntüyü gönderildiği biçimde kabul etmiyor. Farklı bir profil o biçimi değiştirir. Birini seçmek hemen yeniden bağlanır ve gösterge paneli görüntüyü göstermeye başlarsa MOTO-HUB size onu tutmak isteyip istemediğinizi sorar.</string>
+    <string name="legacy_the_connection_to_your_motorcycle_is_fine_the_da_2a93ff2b">Motosikletinizle bağlantı sorunsuz - gösterge paneli yalnızca görüntüyü gönderildiği biçimde kabul etmiyor. Farklı bir profil o biçimi değiştirir. Birini seçmek hemen yeniden bağlanır ve gösterge paneli görüntüyü göstermeye başlarsa MotoVisor size onu tutmak isteyip istemediğinizi sorar.</string>
     <string name="legacy_your_dashboard_is_not_showing_this_9765fbe3">GÖSTERGE PANELİNİZ BUNU GÖSTERMİYOR</string>
     <string name="legacy_connected_but_the_picture_is_being_refused_tap_t_b17b1097">Bağlı, ancak görüntü kabul edilmiyor. Başka bir profil denemek için dokunun.</string>
     <string name="legacy_connected_not_displaying_53b322ca">BAĞLI, GÖSTERMİYOR</string>
@@ -1951,7 +1951,7 @@
     <string name="legacy_show_button_presses_on_the_dashboard_4ed2cd5e">Düğme basışlarını gösterge panelinde göster</string>
 
     <!-- Source: feature/controls — the handlebar page after the Bluetooth controller was removed -->
-    <string name="legacy_your_motorcycle_s_own_handlebar_drives_moto_hub__f19519f3">MOTO-HUB\'u motosikletinizin kendi gidonu kullanır. Bir kez öğretin, sonra her düğmeye istediğiniz eylemi verin.</string>
+    <string name="legacy_your_motorcycle_s_own_handlebar_drives_motovisor_362a1496">MotoVisor\'u motosikletinizin kendi gidonu kullanır. Bir kez öğretin, sonra her düğmeye istediğiniz eylemi verin.</string>
     <string name="legacy_presses_still_arrive_and_still_show_up_on_this_p_62dfa27d">Basışlar yine gelir ve bu sayfada yine görünür - onlarla hiçbir şey yapılmaz.</string>
     <string name="legacy_every_handlebar_press_432fb397">Her gidon basışı </string>
     <!-- Home: MOTO-HUB ADVANCED promo card and dialog -->
@@ -1981,13 +1981,13 @@
     <string name="legacy_1_s_is_holding_the_dashboard_connection_f85acc07">%1$s gösterge paneli bağlantısını tutuyor</string>
     <string name="legacy_another_app_is_holding_the_dashboard_connection_2f8f3870">Başka bir uygulama gösterge paneli bağlantısını tutuyor</string>
     <string name="legacy_force_stop_your_motorcycle_s_own_companion_app_f_47bc5899">Motosikletinizin kendi eşlik eden uygulamasını Uygulama bilgisi sayfasından zorla durdurup yeniden deneyin - Android bir uygulamanın başka bir uygulamanın bağlantısını bırakmasına izin vermez.</string>
-    <string name="legacy_if_it_stayed_on_the_pairing_screen_moto_hub_keep_74219a6">Eşleştirme ekranında kaldıysa, MOTO-HUB biri çalışana kadar video biçimlerini denemeyi sürdürür. Aynı gösterge paneline sahip başka sürücüler bunu zaten doğruladıysa, ilerlemeden önce size bir kez daha sorar.</string>
+    <string name="legacy_if_it_stayed_on_the_pairing_screen_motovisor_kee_2fbe3f89">Eşleştirme ekranında kaldıysa, MotoVisor biri çalışana kadar video biçimlerini denemeyi sürdürür. Aynı gösterge paneline sahip başka sürücüler bunu zaten doğruladıysa, ilerlemeden önce size bir kez daha sorar.</string>
     <string name="legacy_if_your_other_moto_hub_app_is_running_a_session__263cbf82">Diğer MOTO-HUB uygulamanız bu telefonda bir oturum çalıştırıyorsa, onun yerine onu durdurun.</string>
     <string name="legacy_import_qr_from_an_image_65acae9a">Bir görüntüden QR içe aktar</string>
     <string name="legacy_moto_hub_will_connect_on_its_own_when_the_dashbo_9f3fe52b">Gösterge paneli açıldığında MOTO-HUB kendiliğinden bağlanacak.</string>
     <string name="legacy_on_this_phone_that_is_almost_always_1_s_force_st_26b6b463">Bu telefonda bu neredeyse her zaman %1$s olur. Uygulama bilgisi sayfasından zorla durdurup yeniden deneyin - Android bir uygulamanın başka bir uygulamanın bağlantısını bırakmasına izin vermez.</string>
     <string name="legacy_shown_while_moto_hub_watches_for_the_motorcycle__5410550d">MOTO-HUB motosikletin Wi-Fi ağını beklerken gösterilir.</string>
-    <string name="legacy_the_three_local_ports_moto_hub_needs_for_the_das_ac32b51a">MOTO-HUB\'un gösterge paneli için gereksindiği üç yerel bağlantı noktası (%1$s) şu anda kullanımda, bu yüzden bağlantı başarısız olurdu.</string>
+    <string name="legacy_the_three_local_ports_motovisor_needs_for_the_da_45d18c81">MotoVisor\'un gösterge paneli için gereksindiği üç yerel bağlantı noktası (%1$s) şu anda kullanımda, bu yüzden bağlantı başarısız olurdu.</string>
     <string name="legacy_try_anyway_909523a8">Yine de dene</string>
     <string name="legacy_waiting_for_s_c5c92cf8">%s bekleniyor</string>
     <string name="legacy_waiting_for_the_motorcycle_24d361aa">Motosiklet bekleniyor</string>
@@ -2003,12 +2003,12 @@
     <string name="legacy_free_app_that_replaces_this_one_dashboard_naviga_f14ef8b3">Bunun yerini alan ücretsiz uygulama: gösterge, navigasyon, sürüşler ve daha fazlası.</string>
     <string name="legacy_installed_on_this_phone_136503e7">BU TELEFONDA YÜKLÜ</string>
     <string name="legacy_free_app_d2eb824d">ÜCRETSİZ UYGULAMA</string>
-    <string name="legacy_everything_moto_hub_does_and_a_full_riding_compu_5afce456">MOTO-HUB\'ın yaptığı her şey ve tam bir sürüş bilgisayarı.</string>
+    <string name="legacy_everything_motovisor_does_and_a_full_riding_comp_81647d">MotoVisor\'ın yaptığı her şey ve tam bir sürüş bilgisayarı.</string>
     <string name="legacy_moto_hub_adv_solo_is_a_free_app_that_replaces_th_9d1bc46c">MOTO-HUB ADV-SOLO, bunun yerini alan ve TFT ekranınızı tam bir sürüş bilgisayarına dönüştüren ücretsiz bir uygulamadır: kendi göstergesi, navigasyon, kaydedilen sürüşler. Abonelik, hesap veya ek donanım yok - zaten sahip olduğunuz T-Box\'ı kullanır.</string>
     <string name="legacy_what_it_adds_cdd0b86b">NELER EKLİYOR</string>
     <string name="legacy_moving_to_adv_solo_21f5a90c">ADV-SOLO\'YA GEÇİŞ</string>
     <string name="legacy_adv_solo_connects_to_the_motorcycle_on_its_own_p_ad9d6a7e">ADV-SOLO motosiklete kendi başına bağlanır: eşleştirme, Wi-Fi bağlantısı, gidon düğmeleri ve Android Auto hepsi onun içinde çalışır. Bu uygulamaya ihtiyaç duymaz.</string>
-    <string name="legacy_install_it_and_connect_your_motorcycle_there_the_526ab2e">Yükleyip motosikletinizi orada bağlayın, ardından MOTO-HUB\'ı kaldırın - ADV-SOLO bunu önerir. Burada eşleştirilen motosikletler taşınmaz: ADV-SOLO\'da yeniden eşleştirin.</string>
+    <string name="legacy_install_it_and_connect_your_motorcycle_there_the_d1d1f4ad">Yükleyip motosikletinizi orada bağlayın, ardından MotoVisor\'ı kaldırın - ADV-SOLO bunu önerir. Burada eşleştirilen motosikletler taşınmaz: ADV-SOLO\'da yeniden eşleştirin.</string>
     <string name="legacy_links_4515799">BAĞLANTILAR</string>
     <string name="legacy_more_ways_to_start_dfa7360e">BAŞLAMANIN DİĞER YOLLARI</string>
     <string name="legacy_one_step_is_waiting_for_you_ad249079">Sizi bekleyen bir adım var</string>

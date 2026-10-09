@@ -2,7 +2,7 @@
 <resources>
     <!-- Locale: en-US. This is the fallback catalogue and identifier source of truth. -->
     <!-- Application identity -->
-    <string name="app_name">MOTO-HUB</string>
+    <string name="app_name">MotoVisor</string>
 
     <!-- Settings > General > Language. Names are kept in their native form. -->
     <string name="language_system_default">System default</string>
@@ -18,13 +18,13 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_russian">Русский</string>
     <string name="language_title">Language</string>
-    <string name="language_description">Choose the language used by MOTO-HUB</string>
-    <string name="language_detail_description">MOTO-HUB follows the phone language by default. Choose a language below to override it for this app.</string>
+    <string name="language_description">Choose the language used by MotoVisor</string>
+    <string name="language_detail_description">MotoVisor follows the phone language by default. Choose a language below to override it for this app.</string>
 
     <!-- Settings main page -->
     <string name="legacy_download_anyway_c17b27fb">Download anyway</string>
     <string name="legacy_download_over_1_s_23fdd550">Download over %1$s?</string>
-    <string name="legacy_moto_hub_1_s_is_2_s_and_right_now_the_only_conne_8ebbc51c">MOTO-HUB %1$s is %2$s, and right now the only connection that reaches the Internet is %3$s, which your operator charges for. On the motorcycle that is normal - the dashboard\'s Wi-Fi has no Internet at all.</string>
+    <string name="legacy_motovisor_1_s_is_2_s_and_right_now_the_only_conn_d746e81b">MotoVisor %1$s is %2$s, and right now the only connection that reaches the Internet is %3$s, which your operator charges for. On the motorcycle that is normal - the dashboard\'s Wi-Fi has no Internet at all.</string>
     <string name="legacy_waiting_for_wi_fi_costs_nothing_the_update_stays_3f38fec8">Waiting for Wi-Fi costs nothing: the update stays in this list.</string>
     <string name="settings_configuration">CONFIGURATION</string>
     <string name="settings_title">Settings</string>
@@ -43,7 +43,7 @@
     <string name="video_quality_smoother">Smoother</string>
     <string name="video_quality_smoother_description">Lower bitrate, less heat and network load.</string>
     <string name="video_quality_balanced">Balanced</string>
-    <string name="video_quality_balanced_description">Current MOTO-HUB quality and recommended default.</string>
+    <string name="video_quality_balanced_description">Current MotoVisor quality and recommended default.</string>
     <string name="video_quality_sharper">Sharper</string>
     <string name="video_quality_sharper_description">Higher bitrate for crisper maps and text.</string>
     <string name="video_power_auto">Auto</string>
@@ -57,7 +57,7 @@
     <string name="video_power_eco">Eco</string>
     <string name="video_power_eco_description">15 FPS for the lowest heat and battery use. Motion is visibly less smooth.</string>
     <string name="android_auto_resolution_auto">Auto</string>
-    <string name="android_auto_resolution_auto_description">Keep MOTO-HUB automatic orientation based on the learned T-Box geometry.</string>
+    <string name="android_auto_resolution_auto_description">Keep MotoVisor automatic orientation based on the learned T-Box geometry.</string>
     <string name="android_auto_resolution_landscape_sd">Landscape 800 x 480</string>
     <string name="android_auto_resolution_landscape_sd_description">Standard landscape Android Auto source.</string>
     <string name="android_auto_resolution_landscape_hd">Landscape 1280 x 720</string>
@@ -106,9 +106,9 @@
     <string name="core_bridge_notification_text">Serving MOTO-HUB Pro.</string>
 
     <!-- Projection notifications -->
-    <string name="projection_channel_name">MOTO-HUB projection</string>
+    <string name="projection_channel_name">MotoVisor projection</string>
     <string name="projection_channel_description">Streaming status for the motorcycle display</string>
-    <string name="projection_notification_title">MOTO-HUB is active</string>
+    <string name="projection_notification_title">MotoVisor is active</string>
     <string name="projection_notification_text">Screen projection is active.</string>
     <string name="projection_notification_dimmed_text">Projection active, phone display dimmed.</string>
     <string name="stop_projection">Stop</string>
@@ -116,9 +116,9 @@
     <string name="restore_phone_display">Restore display</string>
 
     <!-- Android Auto notifications -->
-    <string name="android_auto_channel_name">MOTO-HUB Android Auto</string>
-    <string name="android_auto_notification_title">MOTO-HUB Android Auto session</string>
-    <string name="android_auto_notification_text">Session active. Open MOTO-HUB for live projection status.</string>
+    <string name="android_auto_channel_name">MotoVisor Android Auto</string>
+    <string name="android_auto_notification_title">MotoVisor Android Auto session</string>
+    <string name="android_auto_notification_text">Session active. Open MotoVisor for live projection status.</string>
     <string name="stop_android_auto">Stop Android Auto</string>
 
     <!-- Ride Dashboard notifications -->
@@ -128,7 +128,7 @@
     <string name="ride_dashboard_notification_text">GPS telemetry and dashboard streaming are active.</string>
     <string name="stop_ride_dashboard">Stop dashboard</string>
     <!-- Source: MainActivity.kt -->
-    <string name="legacy_moto_hub_diagnostics_ba6420b1">MOTO-HUB diagnostics</string>
+    <string name="legacy_motovisor_diagnostics_90af08d2">MotoVisor diagnostics</string>
     <!-- Source: feature/about/AboutScreen.kt -->
     <string name="legacy_about_the_project_2feef1f7">ABOUT THE PROJECT</string>
     <!-- Source: feature/about/AboutScreen.kt -->
@@ -280,9 +280,9 @@
     <!-- Source: feature/garage/MotorcycleDetailsScreen.kt -->
     <string name="legacy_the_wi_fi_password_is_stored_securely_on_this_ph_b6fb6382">The Wi-Fi password is stored securely on this phone.</string>
     <!-- Source: feature/garage/MotorcycleDetailsScreen.kt -->
-    <string name="legacy_the_name_is_only_used_inside_moto_hub_10a5f3a4">The name is only used inside MOTO-HUB.</string>
+    <string name="legacy_the_name_is_only_used_inside_motovisor_6d69728d">The name is only used inside MotoVisor.</string>
     <!-- Source: feature/garage/MotorcycleDetailsScreen.kt -->
-    <string name="legacy_the_saved_connection_profile_and_its_photo_will__c6d581e2">The saved connection profile and its photo will be removed from MOTO-HUB.</string>
+    <string name="legacy_the_saved_connection_profile_and_its_photo_will__7d2bac0f">The saved connection profile and its photo will be removed from MotoVisor.</string>
     <!-- Source: feature/garage/TBoxCapabilityScreen.kt -->
     <string name="legacy_could_not_derive_a_peer_ip_this_network_may_not__3fa3f2d0">Could not derive a peer IP - this network may not have a usable route yet.</string>
     <!-- Source: feature/garage/TBoxCapabilityScreen.kt -->
@@ -526,7 +526,7 @@
     <!-- Source: feature/settings/SettingsScreen.kt -->
     <string name="legacy_android_auto_content_insets_7046c7dd">ANDROID AUTO CONTENT INSETS</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
-    <string name="legacy_choose_image_detail_and_how_moto_hub_balances_sm_577123e1">Choose image detail and how MOTO-HUB balances smoothness, heat, battery, and Wi-Fi load.</string>
+    <string name="legacy_choose_image_detail_and_how_motovisor_balances_s_22f12d4e">Choose image detail and how MotoVisor balances smoothness, heat, battery, and Wi-Fi load.</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
     <string name="legacy_default_route_type_b528b630">DEFAULT ROUTE TYPE</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
@@ -600,7 +600,7 @@
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
     <string name="legacy_checking_github_releases_7e509ccb">Checking GitHub releases...</string>
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
-    <string name="legacy_moto_hub_updates_c98ab24f">MOTO-HUB updates</string>
+    <string name="legacy_motovisor_updates_c308d2f0">MotoVisor updates</string>
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
     <string name="legacy_no_apk_asset_attached_to_this_release_7a89904d">No APK asset attached to this release.</string>
     <!-- Source: feature/update/GithubUpdateDialog.kt -->
@@ -694,7 +694,7 @@
     <!-- Source: feature/navigation/NavigationScreen.kt -->
     <string name="legacy_take_me_home_bb1e43ee">Take me home</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
-    <string name="legacy_about_moto_hub_6966e1f8">About MOTO-HUB</string>
+    <string name="legacy_about_motovisor_954eaf53">About MotoVisor</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
     <string name="legacy_android_auto_cb210d00">Android Auto</string>
     <!-- Source: feature/settings/SettingsScreen.kt -->
@@ -778,7 +778,7 @@
     <!-- Source: feature/trips/TripRecordingService.kt -->
     <string name="legacy_gps_ride_recording_and_trip_statistics_28992d34">GPS ride recording and trip statistics</string>
     <!-- Source: session/PhoneDisplayDimmer.kt -->
-    <string name="legacy_moto_hub_display_dimmer_57b6244b">MOTO-HUB display dimmer</string>
+    <string name="legacy_motovisor_display_dimmer_ceb13c8a">MotoVisor display dimmer</string>
     <!-- Dynamic UI templates. Keep positional placeholders unchanged. -->
     <string name="legacy_filter_1_d_497daa14">FILTER %1$d</string>
     <string name="legacy_recording_1_s_b01f3573">RECORDING · %1$s</string>
@@ -793,9 +793,9 @@
     <string name="legacy_1_d_km_h_6ce8c40f">%1$d KM/H</string>
     <!-- Weather forecast wind speed when the rider selects miles. -->
     <string name="legacy_1_d_mph_669c2f51">%1$d MPH</string>
-    <string name="legacy_moto_hub_258caaa5">MOTO-HUB</string>
+    <string name="legacy_motovisor_5de1fc46">MotoVisor</string>
     <string name="legacy_recording_this_ride_1aceedab">Recording this ride</string>
-    <string name="legacy_moto_hub_controls_f72ba5d1">MOTO-HUB controls</string>
+    <string name="legacy_motovisor_controls_2d719950">MotoVisor controls</string>
     <!-- Source: localized UI literal / enum label -->
     <string name="legacy_1_d_available_e7e32615">%1$d available</string>
     <!-- Source: localized UI literal / enum label -->
@@ -1197,7 +1197,7 @@
     <!-- Source: localized UI literal / enum label -->
     <string name="legacy_1_s_is_ready_to_connect_6b95609b">%1$s is ready to connect.</string>
     <!-- Source: localized UI literal / enum label -->
-    <string name="legacy_allow_moto_hub_notifications_to_keep_streaming_v_4700fc1e">Allow MOTO-HUB notifications to keep streaming visible and controllable.</string>
+    <string name="legacy_allow_motovisor_notifications_to_keep_streaming__83643cb1">Allow MotoVisor notifications to keep streaming visible and controllable.</string>
     <!-- Source: localized UI literal / enum label -->
     <string name="legacy_allow_nearby_devices_and_location_to_detect_the__a4c1fa2c">Allow Nearby devices and Location to detect the T-Box Wi-Fi network.</string>
     <!-- Source: localized UI literal / enum label -->
@@ -1305,7 +1305,7 @@
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
     <string name="legacy_unfamiliar_pairing_code_714f8ce7">Unfamiliar pairing code</string>
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
-    <string name="legacy_this_code_carries_wi_fi_details_for_1_s_but_it_w_422a5994">This code carries Wi-Fi details for %1$s, but it was not issued by a Carbit address like the dashboards MOTO-HUB knows.</string>
+    <string name="legacy_this_code_carries_wi_fi_details_for_1_s_but_it_w_29b6478d">This code carries Wi-Fi details for %1$s, but it was not issued by a Carbit address like the dashboards MotoVisor knows.</string>
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
     <string name="legacy_several_manufacturers_ship_the_same_dashboard_so_49305d38">Several manufacturers ship the same dashboard software under their own branding, so this may well be your motorcycle. Continue only if you scanned it from your own dashboard.</string>
     <!-- Source: feature/pairing/UnverifiedQrDialog.kt -->
@@ -1334,11 +1334,11 @@
     <string name="legacy_android_auto_17_4_removed_the_way_an_app_can_ask_890c8f24">Android Auto 17.4 removed the way an app can ask it to project. MOTO-HUB still tries, and on older versions it works — but when it does not, Android Auto can be started from its own developer menu instead. You do not need to install anything.</string>
     <string name="legacy_android_auto_does_not_start_2266b70e">Android Auto does not start</string>
     <string name="legacy_every_time_android_auto_will_not_start_18ff3ab9">EVERY TIME ANDROID AUTO WILL NOT START</string>
-    <string name="legacy_go_back_to_moto_hub_and_start_android_auto_it_co_ff8cc50d">Go back to MOTO-HUB and start Android Auto. It connects on its own within a couple of seconds — there is nothing else to press.</string>
+    <string name="legacy_go_back_to_motovisor_and_start_android_auto_it_c_d4c74e6">Go back to MotoVisor and start Android Auto. It connects on its own within a couple of seconds — there is nothing else to press.</string>
     <string name="legacy_in_android_auto_s_developer_settings_open_the_me_1ea3a8cf">In Android Auto\'s Developer settings, open the ⋮ menu at the top right and choose \"Start head unit server\". It is in that menu, not in the list of settings below it.</string>
     <string name="legacy_in_developer_settings_turn_on_add_new_cars_to_an_19f79566">In Developer settings, turn on \"Add new cars to Android Auto\" (older versions call it \"Unknown sources\").</string>
     <string name="legacy_jumps_straight_to_the_app_where_the_menu_above_l_7c8b2093">Jumps straight to the app where the menu above lives</string>
-    <string name="legacy_normally_moto_hub_waits_and_asks_android_auto_to_6c183bab">Normally MOTO-HUB waits and asks Android Auto to connect to it. Version 17.4 closed that door for every app of this kind, not just this one. The head unit server reverses the direction — Android Auto waits and MOTO-HUB connects to it — which is a door Google left open for its own testing tools.</string>
+    <string name="legacy_normally_motovisor_waits_and_asks_android_auto_t_5cc1e93b">Normally MotoVisor waits and asks Android Auto to connect to it. Version 17.4 closed that door for every app of this kind, not just this one. The head unit server reverses the direction — Android Auto waits and MotoVisor connects to it — which is a door Google left open for its own testing tools.</string>
     <string name="legacy_one_time_setup_ca24c531">ONE-TIME SETUP</string>
     <string name="legacy_open_android_auto_settings_48a5120d">Open Android Auto settings</string>
     <string name="legacy_open_the_android_auto_app_scroll_to_the_bottom_a_69ae9e53">Open the Android Auto app, scroll to the bottom and tap \"Version\" ten times. Developer settings appear.</string>
@@ -1431,20 +1431,20 @@
     <string name="legacy_requires_the_phone_paired_to_the_motorcycle_s_bl_dda6960a">Requires the phone paired to the motorcycle\'s Bluetooth. Music keeps playing but its buttons are captured while a session runs.</string>
     <string name="legacy_set_the_dash_clock_over_bluetooth_experimental_3431b284">Set the dash clock over Bluetooth (experimental)</string>
     <string name="legacy_set_the_dash_clock_over_wi_fi_292a2ca5">Set the dash clock over Wi-Fi</string>
-    <string name="legacy_on_by_default_and_what_sets_the_time_on_most_das_6234cd82">On by default, and what sets the time on most dashboards. Turn it off only if your dash asks MOTO-HUB for the time, ignores the answer, and shows 01.01.1970 anyway: on those units writing the clock changes nothing and can overwrite a time you set by hand on the dashboard itself. With this off the bike connects normally, it is simply never told what time it is.</string>
+    <string name="legacy_on_by_default_and_what_sets_the_time_on_most_das_6f81e1b7">On by default, and what sets the time on most dashboards. Turn it off only if your dash asks MotoVisor for the time, ignores the answer, and shows 01.01.1970 anyway: on those units writing the clock changes nothing and can overwrite a time you set by hand on the dashboard itself. With this off the bike connects normally, it is simply never told what time it is.</string>
     <string name="legacy_your_dashboard_has_been_seen_asking_for_the_time_c02f4d97">Your dashboard has been seen asking for the time, being answered, and going on counting from its own power-on regardless. This switch changes nothing on it in either position: that clock is kept by the dashboard, not by the phone.</string>
     <string name="legacy_settings_595d2043">Settings</string>
-    <string name="legacy_some_dashboards_ask_for_the_time_over_bluetooth__b44ce43b">Some dashboards ask for the time over Bluetooth instead of Wi-Fi, and sit at 00:00 without it. Needs the bike already paired to this phone in Android\'s Bluetooth settings. Off by default; MOTO-HUB only ever replies to a device that asks in the dashboard\'s own protocol.</string>
+    <string name="legacy_some_dashboards_ask_for_the_time_over_bluetooth__6c2af1b0">Some dashboards ask for the time over Bluetooth instead of Wi-Fi, and sit at 00:00 without it. Needs the bike already paired to this phone in Android\'s Bluetooth settings. Off by default; MotoVisor only ever replies to a device that asks in the dashboard\'s own protocol.</string>
     <string name="legacy_some_dashboards_forget_settings_like_the_clock_w_76d95842">Some dashboards forget settings like the clock when the Wi-Fi Direct link fully drops. Keeps the phone associated to the bike\'s network until you leave the app or turn Wi-Fi off. Off by default; only turn on if your dash loses the time after disconnecting.</string>
     <string name="legacy_start_automatically_2cb44c45">Start automatically</string>
     <string name="legacy_start_on_connect_94487a47">Start on connect</string>
     <string name="legacy_stay_linked_to_the_bike_s_wi_fi_after_disconnect_81b0e941">Stay linked to the bike\'s Wi-Fi after disconnecting</string>
-    <string name="legacy_the_motorcycle_s_buttons_reach_the_phone_over_bl_356cbf0d">The motorcycle\'s buttons reach the phone over Bluetooth as media keys. While a session is streaming, MOTO-HUB can capture them and drive Android Auto navigation instead of the music player.</string>
+    <string name="legacy_the_motorcycle_s_buttons_reach_the_phone_over_bl_6649e638">The motorcycle\'s buttons reach the phone over Bluetooth as media keys. While a session is streaming, MotoVisor can capture them and drive Android Auto navigation instead of the music player.</string>
     <string name="legacy_what_each_press_double_press_and_hold_does_97201ad9">What each press, double press and hold does</string>
     <string name="legacy_what_to_do_when_android_auto_refuses_to_project_fa692d1b">What to do when Android Auto refuses to project</string>
     <string name="legacy_what_to_start_5b78fc39">WHAT TO START</string>
     <string name="legacy_while_capture_is_on_the_volume_buttons_navigate__9e410bf">While capture is on, the volume buttons navigate instead of changing volume — set your listening level here.</string>
-    <string name="legacy_with_this_on_moto_hub_skips_the_what_should_i_sh_498b0614">With this on, MOTO-HUB skips the \"what should I show?\" screen and puts the chosen screen on the TFT as soon as the motorcycle link comes up. It runs once per app launch - stop a screen and you are back in control.</string>
+    <string name="legacy_with_this_on_motovisor_skips_the_what_should_i_s_ba70b7e9">With this on, MotoVisor skips the \"what should I show?\" screen and puts the chosen screen on the TFT as soon as the motorcycle link comes up. It runs once per app launch - stop a screen and you are back in control.</string>
 
     <!-- Source: ui/components/SystemKillNotice.kt -->
     <string name="legacy_dismiss_c6dc4a6a">Dismiss</string>
@@ -1571,7 +1571,7 @@
     <string name="legacy_gps_only_e6f03982">GPS ONLY</string>
          description; rendered outside the app's own Compose runtime, so it is a plain string
          resource rather than a motoHubText() call). -->
-    <string name="handlebar_hid_capture_description">Lets MOTO-HUB read D-pad presses from a Bluetooth HID handlebar remote while HID mode is selected in Handlebar buttons settings.</string>
+    <string name="handlebar_hid_capture_description">Lets MotoVisor read D-pad presses from a Bluetooth HID handlebar remote while HID mode is selected in Handlebar buttons settings.</string>
 
     <!-- ==================================================================
          Handlebar HID mode, phone-only Android Auto and the teach
@@ -1588,19 +1588,19 @@
     <string name="legacy_android_auto_straight_to_your_phone_f0cc540c">Android Auto — straight to your phone</string>
     <string name="legacy_input_protocol_8ff4fe4e">INPUT PROTOCOL</string>
     <string name="legacy_most_dashboards_send_buttons_as_avrcp_media_keys_6e1dd82c">Most dashboards send buttons as AVRCP media keys — leave this on AVRCP. Pick HID only if the remote pairs as a Bluetooth keyboard and its presses never register below.</string>
-    <string name="legacy_hid_mode_also_needs_moto_hub_s_accessibility_ser_c0cdf4cc">HID mode also needs MOTO-HUB\'s Accessibility Service turned on, or presses will not be seen.</string>
+    <string name="legacy_hid_mode_also_needs_motovisor_s_accessibility_se_54bb7675">HID mode also needs MotoVisor\'s Accessibility Service turned on, or presses will not be seen.</string>
     <string name="legacy_open_accessibility_settings_a01c954b">Open Accessibility settings</string>
-    <string name="legacy_turn_on_moto_hub_so_handlebar_presses_reach_the__b41c5310">Turn on MOTO-HUB so handlebar presses reach the app from any screen</string>
-    <string name="legacy_was_moto_hub_s_switch_greyed_out_android_blocks__b5233420">Was MOTO-HUB\'s switch greyed out? Android blocks it for apps that were not installed from a store, and MOTO-HUB is downloaded from GitHub. Open App info, tap ⋮ at the top right, choose \"Allow restricted settings\", then come back and turn the switch on.</string>
+    <string name="legacy_turn_on_motovisor_so_handlebar_presses_reach_the_d15fa1cb">Turn on MotoVisor so handlebar presses reach the app from any screen</string>
+    <string name="legacy_was_motovisor_s_switch_greyed_out_android_blocks_a7780e44">Was MotoVisor\'s switch greyed out? Android blocks it for apps that were not installed from a store, and MotoVisor is downloaded from GitHub. Open App info, tap ⋮ at the top right, choose \"Allow restricted settings\", then come back and turn the switch on.</string>
     <string name="legacy_open_app_info_7c77c863">Open App info</string>
     <string name="legacy_where_allow_restricted_settings_lives_8f29fea1">Where \"Allow restricted settings\" lives</string>
     <string name="legacy_avrcp_media_keys_f50e20c7">AVRCP (media keys)</string>
     <string name="legacy_hid_d_pad_a247f04a">HID (D-pad)</string>
     <string name="legacy_default_the_dashboard_sends_bluetooth_media_key__ccbdfbf7">Default. The dashboard sends Bluetooth media-key commands for play/pause, track and volume.</string>
-    <string name="legacy_for_remotes_that_pair_as_a_bluetooth_keyboard_an_25055a66">For remotes that pair as a Bluetooth keyboard and send D-pad presses. Requires turning on MOTO-HUB\'s Accessibility Service below.</string>
+    <string name="legacy_for_remotes_that_pair_as_a_bluetooth_keyboard_an_86ec244b">For remotes that pair as a Bluetooth keyboard and send D-pad presses. Requires turning on MotoVisor\'s Accessibility Service below.</string>
 
     <!-- External display service (USB AOA) - notification channel and ongoing notification -->
-    <string name="legacy_moto_hub_external_display_streaming_1be823ca">MOTO-HUB external display streaming</string>
+    <string name="legacy_motovisor_external_display_streaming_ed3dd589">MotoVisor external display streaming</string>
     <string name="legacy_streaming_to_external_display_via_usb_ab5c31c6">Streaming to external display via USB</string>
     <string name="legacy_stop_external_display_c050e9ab">Stop external display</string>
     <string name="legacy_aap_accessory_probe_running_bcf6ccd1">AAP accessory probe running</string>
@@ -1608,7 +1608,7 @@
     <!-- About screen -->
     <string name="legacy_your_phone_your_motorcycle_display_c5956fcb">Your phone.\nYour motorcycle display.</string>
     <string name="legacy_follow_development_join_our_community_report_iss_b8b8fffa">Follow development, join our community, report issues, and download releases.</string>
-    <string name="legacy_moto_hub_is_an_independent_project_it_is_not_aff_9e4c2633">MOTO-HUB is an independent project. It is not affiliated with, endorsed by, or sponsored by Carbit, CFMOTO, any other manufacturer whose dashboard uses EasyConn, Google, or Android Auto. All product names and marks belong to their respective owners.</string>
+    <string name="legacy_motovisor_is_an_independent_project_it_is_not_af_e24e06b2">MotoVisor is an independent project. It is not affiliated with, endorsed by, or sponsored by Carbit, CFMOTO, any other manufacturer whose dashboard uses EasyConn, Google, or Android Auto. All product names and marks belong to their respective owners.</string>
     <string name="legacy_motovisor_is_a_modified_version_of_moto_hub_core_95293cd0">MotoVisor is a modified version of MOTO-HUB CORE, maintained at github.com/jlalcazar/MOTO-HUB. It is not the original app and its original author does not support it. Its Android Auto feature has no support, approval or warranty from Google.</string>
     <string name="legacy_save_debug_files_automatically_563a4baa">Save debug files automatically</string>
     <string name="legacy_copies_the_log_to_download_motovisor_when_a_sess_96da979b">Copies the log to Download/MotoVisor when a session ends or the app is left. Keeps the latest and the last 10 sessions.</string>
@@ -1620,7 +1620,7 @@
     <string name="legacy_hold_the_phone_screen_awake_while_this_app_is_in_358a4269">Hold the phone screen awake while this app is in front. Uses more battery.</string>
     <string name="legacy_distance_units_3cd36364">DISTANCE UNITS</string>
     <string name="legacy_used_for_the_tank_range_in_the_motorcycle_profil_ad68d85a">Used for the tank range in the motorcycle profile.</string>
-    <string name="legacy_moto_hub_is_an_experimental_proof_of_concept_not_34b4b321">MOTO-HUB is an experimental proof-of-concept, not a production-grade product.</string>
+    <string name="legacy_motovisor_is_an_experimental_proof_of_concept_no_d52ec620">MotoVisor is an experimental proof-of-concept, not a production-grade product.</string>
     <string name="legacy_development_and_testing_happen_on_a_cfmoto_700mt_ac58afbf">Development and testing happen on a CFMOTO 700MT-ADV dashboard with OnePlus 13 / Galaxy Z Fold4 phones. Other motorcycles, brands, T-Box firmware versions and phones are untested here: expect different behaviour, retries, or no connection at all. If the dashboard shows a pairing QR code, it is worth trying.</string>
     <string name="legacy_do_not_rely_on_it_as_your_only_source_of_critica_39775433">Do not rely on it as your only source of critical navigation. Configure navigation while parked and use the software at your own risk.</string>
 
@@ -1663,7 +1663,7 @@
     <string name="legacy_head_unit_name_1d44c987">Head unit name</string>
     <string name="legacy_vehicle_brand_1ca30d73">Vehicle brand</string>
     <string name="legacy_vehicle_model_1d3cbd15">Vehicle model</string>
-    <string name="legacy_these_values_are_shown_exactly_as_reported_by_th_16427b8c">These values are shown exactly as reported by the T-Box. MOTO-HUB does not infer a motorcycle model from the QR code or network name.</string>
+    <string name="legacy_these_values_are_shown_exactly_as_reported_by_th_2ef15817">These values are shown exactly as reported by the T-Box. MotoVisor does not infer a motorcycle model from the QR code or network name.</string>
     <string name="legacy_software_protocol_2108716b">SOFTWARE &amp; PROTOCOL</string>
     <string name="legacy_pxc_version_5fba84f3">PXC version</string>
     <string name="legacy_sdk_version_aacf3ed2">SDK version</string>
@@ -1713,9 +1713,9 @@
 
     <!-- Safety disclaimer shown on first launch -->
     <string name="legacy_safety_warning_243ef82e">SAFETY WARNING</string>
-    <string name="legacy_riding_requires_your_full_attention_never_intera_96038a24">Riding requires your full attention. Never interact with MOTO-HUB, Android Auto, navigation, mirroring, trip recording, or any on-screen control while the motorcycle is moving.</string>
+    <string name="legacy_riding_requires_your_full_attention_never_intera_f95090d5">Riding requires your full attention. Never interact with MotoVisor, Android Auto, navigation, mirroring, trip recording, or any on-screen control while the motorcycle is moving.</string>
     <string name="legacy_configure_and_verify_everything_only_while_parke_57e1b31b">Configure and verify everything only while parked. Use this application only in a completely safe and controlled situation. If conditions are not completely safe, do not use it.</string>
-    <string name="legacy_moto_hub_is_not_a_safety_device_and_cannot_preve_a3d43f2f">MOTO-HUB is not a safety device and cannot prevent distraction, crashes, injury, or damage. You are solely responsible for riding safely and obeying all applicable laws.</string>
+    <string name="legacy_motovisor_is_not_a_safety_device_and_cannot_prev_2b8075ae">MotoVisor is not a safety device and cannot prevent distraction, crashes, injury, or damage. You are solely responsible for riding safely and obeying all applicable laws.</string>
     <string name="legacy_i_understand_do_not_show_this_warning_again_e4526192">I understand — do not show this warning again</string>
 
     <!-- GitHub update dialog -->
@@ -1746,23 +1746,23 @@
     <!-- The "MOTO-HUB is still looking" notification shown while a connection attempt runs,
          and the hosted-network wording that tells the rider not to close the app. %1$s is
          the motorcycle network name. -->
-    <string name="legacy_moto_hub_connection_progress_c260af34">MOTO-HUB connection progress</string>
+    <string name="legacy_motovisor_connection_progress_d015e655">MotoVisor connection progress</string>
     <string name="legacy_looking_for_1_s_9983a22f">Looking for %1$s</string>
     <string name="legacy_connecting_to_1_s_2f10e3b8">Connecting to %1$s</string>
-    <string name="legacy_keep_moto_hub_open_closing_it_stops_the_search_54ec507">Keep MOTO-HUB open - closing it stops the search.</string>
-    <string name="legacy_hotspot_is_up_searching_it_for_the_dashboard_thi_caab4cd3">Hotspot is up. Searching it for the dashboard - this can take up to 90 seconds, so keep MOTO-HUB open.</string>
+    <string name="legacy_keep_motovisor_open_closing_it_stops_the_search_7113fc52">Keep MotoVisor open - closing it stops the search.</string>
+    <string name="legacy_hotspot_is_up_searching_it_for_the_dashboard_thi_f0a60920">Hotspot is up. Searching it for the dashboard - this can take up to 90 seconds, so keep MotoVisor open.</string>
     <!-- Asked once per video format tried, after a session that looked healthy from the phone:
          only the rider can see whether the dashboard actually displayed it. %1$s is the
          motorcycle name. -->
     <string name="legacy_did_it_show_up_on_the_dashboard_f341c05">Did it show up on the dashboard?</string>
-    <string name="legacy_last_time_you_connected_to_1_s_everything_looked_46fc9a09">Last time you connected to %1$s, everything looked right from this phone. MOTO-HUB has no way to see the dashboard\'s screen, so this is the one thing it has to ask you.</string>
+    <string name="legacy_last_time_you_connected_to_1_s_everything_looked_cabe6d9a">Last time you connected to %1$s, everything looked right from this phone. MotoVisor has no way to see the dashboard\'s screen, so this is the one thing it has to ask you.</string>
     <string name="legacy_if_it_stayed_on_the_pairing_screen_moto_hub_will_40398b69">If it stayed on the pairing screen, MOTO-HUB will try a different video format on the next ride and keep going until one works.</string>
     <string name="legacy_yes_i_saw_it_625527f4">Yes, I saw it</string>
     <string name="legacy_no_nothing_appeared_f92c88fc">No, nothing appeared</string>
     <!-- Shown when the video-format search cannot progress because every session so far ran the
          Ride Dashboard, which sends its own format. -->
     <string name="legacy_the_video_format_search_is_waiting_ac28c9a">The video format search is waiting</string>
-    <string name="legacy_moto_hub_is_still_looking_for_a_video_format_you_44b4c53c">MOTO-HUB is still looking for a video format your dashboard can display, but it can only test one while Android Auto is running - the Ride Dashboard always sends its own format.</string>
+    <string name="legacy_motovisor_is_still_looking_for_a_video_format_yo_5dbe0cbb">MotoVisor is still looking for a video format your dashboard can display, but it can only test one while Android Auto is running - the Ride Dashboard always sends its own format.</string>
     <string name="legacy_connect_once_with_android_auto_and_the_search_mo_71871380">Connect once with Android Auto and the search moves on by itself.</string>
     <string name="legacy_got_it_7f79855f">Got it</string>
 
@@ -1786,7 +1786,7 @@
     <string name="legacy_take_a_photo_cefc733a">Take a photo</string>
 
     <!-- Source: feature/about/AboutScreen.kt -->
-    <string name="legacy_moto_hub_connects_an_android_12_phone_to_a_motor_b791c32e">MOTO-HUB connects an Android 12+ phone to a motorcycle dashboard that pairs over EasyConn — the Carbit software several manufacturers ship, CFMOTO among them. It supports screen and app mirroring, Android Auto projection, saved motorcycle profiles, and on-device diagnostics.</string>
+    <string name="legacy_motovisor_connects_an_android_12_phone_to_a_moto_6a32f2ed">MotoVisor connects an Android 12+ phone to a motorcycle dashboard that pairs over EasyConn — the Carbit software several manufacturers ship, CFMOTO among them. It supports screen and app mirroring, Android Auto projection, saved motorcycle profiles, and on-device diagnostics.</string>
 
     <!-- Source: feature/controls — a controller button stands in for a handlebar press -->
     <string name="legacy_handlebar_presses_32db65bc">HANDLEBAR PRESSES</string>
@@ -1858,7 +1858,7 @@
 
     <!-- Source: feature/controls — the three input sources, and which one is live -->
     <string name="legacy_motorcycle_handlebar_dc90fcfc">MOTORCYCLE HANDLEBAR</string>
-    <string name="legacy_android_auto_17_4_removed_the_way_an_app_can_ask_217ec1b2">Android Auto 17.4 removed the way an app can ask it to project. MOTO-HUB still tries, and on older versions it works — but when it does not, the four steps below start Android Auto from its own developer menu instead. This is the part that works when nothing else does, and you do not need to install anything.</string>
+    <string name="legacy_android_auto_17_4_removed_the_way_an_app_can_ask_5c8e73c7">Android Auto 17.4 removed the way an app can ask it to project. MotoVisor still tries, and on older versions it works — but when it does not, the four steps below start Android Auto from its own developer menu instead. This is the part that works when nothing else does, and you do not need to install anything.</string>
     <string name="legacy_start_android_auto_yourself_3b0dffe1">START ANDROID AUTO YOURSELF</string>
     <string name="legacy_open_the_android_auto_app_s_settings_scroll_to_t_4ef36207">Open the Android Auto app\'s settings, scroll to the bottom and tap \"Version\" ten times. That unlocks its developer options — you only have to do it once.</string>
     <string name="legacy_stay_on_that_same_android_auto_settings_screen_o_2c08cebc">Stay on that same Android Auto settings screen, open the three-dot menu at the top right and choose \"Start head unit server\". It is in that menu, not inside Developer settings. This is the step that does it.</string>
@@ -1881,10 +1881,10 @@
 
     <!-- Source: failure text the home screen's error banner draws. Declared as constants and compared by
          identity on the way there, so the catalogue is the only place they can be translated -->
-    <string name="legacy_google_android_auto_never_connected_to_moto_hub__bd46b5a3">Google Android Auto never connected to MOTO-HUB. Newer Android Auto releases removed the way apps ask it to project, so start it from Android Auto itself. Open the Android Auto app\'s settings, scroll to the bottom and tap \"Version\" ten times to unlock its developer options. Then, on that same settings screen, open the three-dot menu at the top right and choose \"Start head unit server\" - the menu is on Android Auto\'s normal settings screen, not inside Developer settings. Leave MOTO-HUB running: it connects on its own within a couple of seconds, and you can leave the server running for next time.</string>
-    <string name="legacy_google_android_auto_took_moto_hub_s_request_and__ae0978d0">Google Android Auto took MOTO-HUB\'s request and then ignored it. That is what it does with a head unit it has not been told to trust. Open the Android Auto app\'s settings, scroll to the bottom and tap \"Version\" ten times to unlock its developer options, open Developer settings and turn on \"Add new cars to Android Auto\" (older builds call it \"Unknown sources\"), then start Android Auto from MOTO-HUB again. If it still does nothing, go back to the Android Auto settings screen and use the three-dot menu at the top right: \"Start head unit server\".</string>
-    <string name="legacy_google_android_auto_took_moto_hub_s_request_and__3e12afc0">Google Android Auto took MOTO-HUB\'s request and then ignored it, which is all this release does with it: Android Auto 17.3 and newer removed the way an app can ask it to project. Start it from Android Auto instead. Open the Android Auto app\'s settings, scroll to the bottom and tap \"Version\" ten times to unlock its developer options, then open the three-dot menu at the top right of that same settings screen and choose \"Start head unit server\". Leave MOTO-HUB running: it connects on its own within a couple of seconds. While you are in there, \"Add new cars to Android Auto\" in Developer settings should be on too.</string>
-    <string name="legacy_another_easyconn_session_is_already_using_the_lo_fa50b26f">Another EasyConn session is already using the local connection ports (10920-10922). Stop any active MOTO-HUB session, or force-stop your motorcycle\'s own companion app (CFMOTO, Zontes Smart, Carbit Ride and the equivalents other brands ship), then retry the connection.</string>
+    <string name="legacy_google_android_auto_never_connected_to_motovisor_cb33ff3">Google Android Auto never connected to MotoVisor. Newer Android Auto releases removed the way apps ask it to project, so start it from Android Auto itself. Open the Android Auto app\'s settings, scroll to the bottom and tap \"Version\" ten times to unlock its developer options. Then, on that same settings screen, open the three-dot menu at the top right and choose \"Start head unit server\" - the menu is on Android Auto\'s normal settings screen, not inside Developer settings. Leave MotoVisor running: it connects on its own within a couple of seconds, and you can leave the server running for next time.</string>
+    <string name="legacy_google_android_auto_took_motovisor_s_request_and_4ecfaa3c">Google Android Auto took MotoVisor\'s request and then ignored it. That is what it does with a head unit it has not been told to trust. Open the Android Auto app\'s settings, scroll to the bottom and tap \"Version\" ten times to unlock its developer options, open Developer settings and turn on \"Add new cars to Android Auto\" (older builds call it \"Unknown sources\"), then start Android Auto from MotoVisor again. If it still does nothing, go back to the Android Auto settings screen and use the three-dot menu at the top right: \"Start head unit server\".</string>
+    <string name="legacy_google_android_auto_took_motovisor_s_request_and_5ebb3be0">Google Android Auto took MotoVisor\'s request and then ignored it, which is all this release does with it: Android Auto 17.3 and newer removed the way an app can ask it to project. Start it from Android Auto instead. Open the Android Auto app\'s settings, scroll to the bottom and tap \"Version\" ten times to unlock its developer options, then open the three-dot menu at the top right of that same settings screen and choose \"Start head unit server\". Leave MotoVisor running: it connects on its own within a couple of seconds. While you are in there, \"Add new cars to Android Auto\" in Developer settings should be on too.</string>
+    <string name="legacy_another_easyconn_session_is_already_using_the_lo_57b41478">Another EasyConn session is already using the local connection ports (10920-10922). Stop any active MotoVisor session, or force-stop your motorcycle\'s own companion app (CFMOTO, Zontes Smart, Carbit Ride and the equivalents other brands ship), then retry the connection.</string>
     <string name="legacy_phone_wi_fi_is_off_turn_it_on_then_tap_connect_a_5fd21cc0">Phone Wi-Fi is off. Turn it on, then tap Connect again.</string>
     <string name="legacy_phone_hotspot_is_off_turn_it_on_then_tap_connect_683a58f1">Phone hotspot is off. Turn it on, then tap Connect again.</string>
     <string name="legacy_action_needed_a446e8df">ACTION NEEDED</string>
@@ -1925,13 +1925,13 @@
     <string name="legacy_a_report_sent_now_carries_that_log_so_it_says_no_cb65d9dc">A report sent now carries that log, so it says nothing about what the app is doing today. To report a problem, turn Enable logging back on, make it happen again, then send.</string>
     <string name="legacy_that_worked_keep_it_b0100883">That worked - keep it?</string>
     <string name="legacy_your_dashboard_is_now_accepting_the_picture_on_t_a2e41389">Your dashboard is now accepting the picture on the %1$s profile. Keep using it for this motorcycle?</string>
-    <string name="legacy_you_have_just_found_out_something_moto_hub_could_5d173f67">You have just found out something MOTO-HUB could not work out by itself: which profile this dashboard actually accepts. Sending your log shares that, so the next rider with your motorcycle gets it right the first time.</string>
+    <string name="legacy_you_have_just_found_out_something_motovisor_coul_8f344c42">You have just found out something MotoVisor could not work out by itself: which profile this dashboard actually accepts. Sending your log shares that, so the next rider with your motorcycle gets it right the first time.</string>
     <string name="legacy_send_my_log_now_80f590fe">Send my log now</string>
     <string name="legacy_send_logs_automatically_from_now_on_1efdfbe9">Send logs automatically from now on</string>
     <string name="legacy_keep_it_318f8786">Keep it</string>
     <string name="legacy_undo_284d04">Undo</string>
     <string name="legacy_try_another_profile_2632e907">Try another profile</string>
-    <string name="legacy_the_connection_to_your_motorcycle_is_fine_the_da_6a78bba4">The connection to your motorcycle is fine - the dashboard is simply refusing the picture in the format it is being sent. A different profile changes that format. Picking one reconnects straight away, and if the dashboard starts showing it, MOTO-HUB will ask whether to keep it.</string>
+    <string name="legacy_the_connection_to_your_motorcycle_is_fine_the_da_2a93ff2b">The connection to your motorcycle is fine - the dashboard is simply refusing the picture in the format it is being sent. A different profile changes that format. Picking one reconnects straight away, and if the dashboard starts showing it, MotoVisor will ask whether to keep it.</string>
     <string name="legacy_your_dashboard_is_not_showing_this_9765fbe3">YOUR DASHBOARD IS NOT SHOWING THIS</string>
     <string name="legacy_connected_but_the_picture_is_being_refused_tap_t_b17b1097">Connected, but the picture is being refused. Tap to try another profile.</string>
     <string name="legacy_connected_not_displaying_53b322ca">CONNECTED, NOT DISPLAYING</string>
@@ -1951,7 +1951,7 @@
     <string name="legacy_show_button_presses_on_the_dashboard_4ed2cd5e">Show button presses on the dashboard</string>
 
     <!-- Source: feature/controls — the handlebar page after the Bluetooth controller was removed -->
-    <string name="legacy_your_motorcycle_s_own_handlebar_drives_moto_hub__f19519f3">Your motorcycle\'s own handlebar drives MOTO-HUB. Teach it once, then give each button the action you want.</string>
+    <string name="legacy_your_motorcycle_s_own_handlebar_drives_motovisor_362a1496">Your motorcycle\'s own handlebar drives MotoVisor. Teach it once, then give each button the action you want.</string>
     <string name="legacy_presses_still_arrive_and_still_show_up_on_this_p_62dfa27d">Presses still arrive and still show up on this page - nothing is performed with them.</string>
     <string name="legacy_every_handlebar_press_432fb397">Every handlebar press </string>
     <!-- Home: MOTO-HUB ADVANCED promo card and dialog -->
@@ -1981,13 +1981,13 @@
     <string name="legacy_1_s_is_holding_the_dashboard_connection_f85acc07">%1$s is holding the dashboard connection</string>
     <string name="legacy_another_app_is_holding_the_dashboard_connection_2f8f3870">Another app is holding the dashboard connection</string>
     <string name="legacy_force_stop_your_motorcycle_s_own_companion_app_f_47bc5899">Force-stop your motorcycle\'s own companion app from its App info page and try again - Android does not let one app release another one\'s connection.</string>
-    <string name="legacy_if_it_stayed_on_the_pairing_screen_moto_hub_keep_74219a6">If it stayed on the pairing screen, MOTO-HUB keeps trying video formats until one works. When other riders with the same dashboard have already confirmed this one, it asks you once more before moving on.</string>
+    <string name="legacy_if_it_stayed_on_the_pairing_screen_motovisor_kee_2fbe3f89">If it stayed on the pairing screen, MotoVisor keeps trying video formats until one works. When other riders with the same dashboard have already confirmed this one, it asks you once more before moving on.</string>
     <string name="legacy_if_your_other_moto_hub_app_is_running_a_session__263cbf82">If your other MOTO-HUB app is running a session on this phone, stop that one instead.</string>
     <string name="legacy_import_qr_from_an_image_65acae9a">Import QR from an image</string>
     <string name="legacy_moto_hub_will_connect_on_its_own_when_the_dashbo_9f3fe52b">MOTO-HUB will connect on its own when the dashboard comes up.</string>
     <string name="legacy_on_this_phone_that_is_almost_always_1_s_force_st_26b6b463">On this phone that is almost always %1$s. Force-stop it from its App info page and try again - Android does not let one app release another one\'s connection.</string>
     <string name="legacy_shown_while_moto_hub_watches_for_the_motorcycle__5410550d">Shown while MOTO-HUB watches for the motorcycle\'s Wi-Fi.</string>
-    <string name="legacy_the_three_local_ports_moto_hub_needs_for_the_das_ac32b51a">The three local ports MOTO-HUB needs for the dashboard (%1$s) are in use right now, so the connection would fail.</string>
+    <string name="legacy_the_three_local_ports_motovisor_needs_for_the_da_45d18c81">The three local ports MotoVisor needs for the dashboard (%1$s) are in use right now, so the connection would fail.</string>
     <string name="legacy_try_anyway_909523a8">Try anyway</string>
     <string name="legacy_waiting_for_s_c5c92cf8">Waiting for %s</string>
     <string name="legacy_waiting_for_the_motorcycle_24d361aa">Waiting for the motorcycle</string>
@@ -2003,12 +2003,12 @@
     <string name="legacy_free_app_that_replaces_this_one_dashboard_naviga_f14ef8b3">Free app that replaces this one: dashboard, navigation, trips and more.</string>
     <string name="legacy_installed_on_this_phone_136503e7">INSTALLED ON THIS PHONE</string>
     <string name="legacy_free_app_d2eb824d">FREE APP</string>
-    <string name="legacy_everything_moto_hub_does_and_a_full_riding_compu_5afce456">Everything MOTO-HUB does, and a full riding computer.</string>
+    <string name="legacy_everything_motovisor_does_and_a_full_riding_comp_81647d">Everything MotoVisor does, and a full riding computer.</string>
     <string name="legacy_moto_hub_adv_solo_is_a_free_app_that_replaces_th_9d1bc46c">MOTO-HUB ADV-SOLO is a free app that replaces this one and turns your TFT into a full riding computer: its own dashboard, navigation, recorded trips. No subscription, no account, and no extra hardware - it uses the T-Box you already have.</string>
     <string name="legacy_what_it_adds_cdd0b86b">WHAT IT ADDS</string>
     <string name="legacy_moving_to_adv_solo_21f5a90c">MOVING TO ADV-SOLO</string>
     <string name="legacy_adv_solo_connects_to_the_motorcycle_on_its_own_p_ad9d6a7e">ADV-SOLO connects to the motorcycle on its own: pairing, the Wi-Fi connection, the handlebar buttons and Android Auto all run inside it. It does not need this app.</string>
-    <string name="legacy_install_it_and_connect_your_motorcycle_there_the_526ab2e">Install it and connect your motorcycle there, then remove MOTO-HUB - ADV-SOLO offers to do it. Motorcycles paired here do not move across: pair them again in ADV-SOLO.</string>
+    <string name="legacy_install_it_and_connect_your_motorcycle_there_the_d1d1f4ad">Install it and connect your motorcycle there, then remove MotoVisor - ADV-SOLO offers to do it. Motorcycles paired here do not move across: pair them again in ADV-SOLO.</string>
     <string name="legacy_links_4515799">LINKS</string>
     <string name="legacy_more_ways_to_start_dfa7360e">MORE WAYS TO START</string>
     <string name="legacy_one_step_is_waiting_for_you_ad249079">One step is waiting for you</string>

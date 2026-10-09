@@ -57,7 +57,7 @@ enum class HandlebarInputMode(val id: String, val label: String, val description
         "hid",
         "HID (D-pad)",
         "For remotes that pair as a Bluetooth keyboard and send D-pad presses. Requires turning " +
-            "on MOTO-HUB's Accessibility Service below."
+            "on MotoVisor's Accessibility Service below."
     )
 }
 
