@@ -23,7 +23,7 @@ For a local Android Auto build:
 ./gradlew -PincludeAndroidAutoIdentity=true assembleDebug
 ```
 
-The APK is generated under `app/build/outputs/apk/debug/`. A default `./gradlew assembleDebug` build excludes the identity and therefore cannot start Android Auto. See the root [`documentation/PUBLIC_RELEASE.md`](../../documentation/PUBLIC_RELEASE.md) for the maintainer release process.
+The APK is generated under `app/build/outputs/apk/debug/`. A default `./gradlew assembleDebug` build excludes the identity and therefore cannot start Android Auto. An APK built with the identity is for your own phone and must not be published; the root README explains the file formats under *Building with Android Auto*, and [`documentation/PUBLIC_RELEASE.md`](../../documentation/PUBLIC_RELEASE.md) describes the release process.
 
 ## Transport Status
 

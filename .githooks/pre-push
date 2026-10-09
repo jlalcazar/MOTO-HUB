@@ -38,7 +38,7 @@ while read -r _local_ref local_sha _remote_ref remote_sha; do
                 reason="same content as a file in tooling/private/"
             fi
             if [ -z "$reason" ] && git cat-file -p "$id" 2>/dev/null \
-                | grep -qaE -e '-----BEGIN ([A-Z]+ )?PRIVATE KEY-----'; then
+                | grep -qaE -e '^-----BEGIN ([A-Z]+ )?PRIVATE KEY-----[[:space:]]*$'; then
                 reason="contains a PEM private key"
             fi
             [ -n "$reason" ] && blocked+=("${commit:0:7} $path ($reason)")

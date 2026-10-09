@@ -1,111 +1,118 @@
 # Public Release Process
 
-MOTO-HUB keeps Android Auto identity files and the APK-signing keystore out of Git history. Release APKs may be published manually as GitHub release assets without publishing new source changes at the same time. Automated workflow notes are retained for a future controlled release pipeline.
+Status: describes the jlalcazar/MOTO-HUB fork (MotoVisor)
+Last updated: 9 October 2026
 
-## User Experience
+Release APKs are built and published by hand. They are signed with this fork's own key and carry
+**no Android Auto head-unit identity**.
 
-Users download the APK attached to the latest GitHub release and install it directly. The release APK includes Android Auto support and does not require users to import certificates, configure developer tools, or understand the identity mechanism.
+## What A Release Contains
 
-The in-app updater reads GitHub releases and pre-releases, selects only the
-latest APK release newer than the installed build, shows the release notes, and
-labels pre-releases before installation.
-
-The expected release asset name is:
+The release asset is named:
 
 ```text
-MOTO-HUB-<versionName>-<versionCode>-android-auto.apk
+MOTO-HUB-<versionName>-<versionCode>-public.apk
 ```
 
-Every release also contains a matching `.sha256` checksum file.
+with a matching `.sha256` checksum file. It is the obfuscated `release` variant, arm64 only.
 
-## Source And Binary Separation
+A release APK pairs with the dashboard, mirrors the screen, drives the USB external display and
+reads the handlebar buttons. Android Auto does not start in it: the app reports that its identity
+is not included in this build.
 
-The public repository excludes:
+The in-app updater reads this repository's GitHub releases and pre-releases, selects the latest
+APK newer than the installed build, and shows the release notes before installing.
 
-- `aa_cert`;
-- `aa_identity_data`;
-- the APK-signing keystore;
-- passwords used to access the signing keystore;
-- the local `tooling/private/` directory;
+## Why The Identity Is Left Out
+
+Android Auto only projects to a head unit that presents a certificate it accepts, with the matching
+private key. Anything packaged in an APK can be extracted from it, so a public APK that contains
+the identity publishes that private key. This fork has no identity of its own to publish and does
+not redistribute anyone else's.
+
+Building an APK with an identity for personal use is described in the README, under *Building with
+Android Auto*. That APK must not be attached to a release.
+
+## What Stays Out Of Git
+
+- `aa_cert` and `aa_identity_data`;
+- the APK-signing keystore and `release-signing.properties`;
+- the whole `tooling/private/` directory;
 - locally generated APKs under `artifacts/`.
 
-The release APK necessarily contains the runtime Android Auto identity. Keeping its source files in GitHub Actions secrets prevents accidental inclusion in source history or workflow logs, but it does not make material packaged inside a public APK confidential.
+`.gitignore` ignores these by name anywhere in the tree. The hooks in `.githooks/` refuse a commit
+or a push that carries them, including a copy saved under another name. Enable them once per clone:
 
-## Required GitHub Actions Secrets
+```bash
+git config core.hooksPath .githooks
+```
 
-Configure these repository-level Actions secrets before pushing a release tag:
+## Signing Key
 
-| Secret | Content |
-|---|---|
-| `ANDROID_AUTO_CERT_B64` | Base64 encoding of `aa_cert` |
-| `ANDROID_AUTO_IDENTITY_B64` | Base64 encoding of `aa_identity_data` |
-| `MOTOHUB_KEYSTORE_B64` | Base64 encoding of the APK-signing JKS file |
-| `MOTOHUB_KEYSTORE_PASSWORD` | Signing keystore password |
-| `MOTOHUB_KEY_ALIAS` | Signing key alias |
+The release build reads `tooling/private/android-auto/release-signing.properties`:
 
-The current JKS uses the keystore password for its signing-key entry as well. GitHub does not expose secret values after they are stored. Rotate the APK-signing key only as a deliberate migration: Android will reject an update signed by a different key unless a supported signing-key rotation process is used.
+```properties
+storeFile=tooling/private/android-auto/motohub-release.jks
+storePassword=...
+keyAlias=...
+keyPassword=...
+```
 
-## Manual APK Release
+Keep a backup of the keystore and its password outside this machine. Android rejects an update
+signed with a different key, so losing it means every rider has to uninstall before upgrading.
 
-Current project practice is manual release publication:
+## Publishing A Release
 
-1. Increment `versionName` and `versionCode` before building a public APK.
-2. Build with Android Auto identity included:
+1. Update `versionName` and increment `versionCode` in `apps/android/app/build.gradle.kts`.
+2. Run the quality gates from `apps/android/`:
 
    ```bash
-   ./gradlew -PincludeAndroidAutoIdentity=true testDebugUnitTest assembleDebug
+   ./gradlew lintDebug testDebugUnitTest assembleDebug
    ```
 
-   Use the release variant only after explicit signing and release validation.
-3. Verify the APK contains `res/raw/aa_cert` and `res/raw/aa_identity_data`.
-4. Verify the SHA-256 checksum.
-5. Test the exact APK on target motorcycle hardware.
-6. Create a GitHub release or pre-release with a tag greater than the installed
-   app version, for example `v0.9.0-beta.10-build.60`.
-7. Upload the APK asset and include concise release notes.
+3. Build the public APK, with no identity flag:
 
-GitHub may automatically attach source archives for the repository commit that
-the release points to. Those archives are generated by GitHub and are separate
-from the uploaded APK asset.
+   ```bash
+   ./gradlew exportPublicApk
+   ```
 
-Do not commit or push source changes as part of release publication unless the
-maintainer explicitly asks for that operation.
+   The task writes the APK to `artifacts/`. It refuses to run if `-PincludeAndroidAutoIdentity`
+   is set, and checks the exported file for the identity resources.
+4. Test that exact APK on a phone and on the target motorcycle.
+5. Commit and push the source, then create the GitHub release with a tag matching `versionName`,
+   for example `v1.1.121`, and hand-written notes.
+6. Attach the APK with the helper, which verifies once more that it carries no identity and
+   uploads it with its checksum:
+
+   ```bash
+   tooling/publish-release.sh v1.1.121 artifacts/MOTO-HUB-1.1.121-215-public.apk
+   ```
+
+Do not upload an APK with `gh release upload` directly: that command attaches whatever file it is
+given.
 
 ## Release Workflow Gate
 
-The workflow in `.github/workflows/release-android.yml` runs only for tags matching `v*` and performs the following checks:
+`.github/workflows/release-android.yml` runs for tags matching `v*`. It does not create the
+release; it proves that the tagged commit builds, signs and verifies away from a laptop, and
+leaves the APK as a workflow artifact for comparison. It:
 
-1. Validates that all required secrets exist.
-2. Reconstructs build inputs on the ephemeral runner.
-3. Confirms that the Android Auto certificate and private key are a matching pair.
+1. Validates that the signing secrets exist.
+2. Reconstructs the signing keystore on the ephemeral runner.
+3. Refuses to build if an identity directory is present in the checkout.
 4. Installs Android SDK platform 36 and Build Tools 36.0.0.
-5. Runs unit tests, release lint, and a clean release build.
-6. Confirms that both Android Auto raw resources are packaged.
+5. Runs unit tests, release lint, and a clean release build without the identity flag.
+6. Fails if either Android Auto identity resource is packaged in the APK.
 7. Requires the Git tag version to match the Android `versionName`.
-8. Aligns and signs the APK with the persistent MOTO-HUB signing key.
-9. Verifies APK alignment, signature, version code, and version name.
-10. Publishes the APK and SHA-256 checksum as GitHub release assets.
-11. Removes reconstructed private material even when an earlier step fails.
+8. Aligns and signs the APK, then verifies alignment, signature, version code and version name.
+9. Removes the reconstructed keystore even when an earlier step fails.
 
-The release is not created when any gate fails.
+It needs these repository-level Actions secrets:
 
-## Creating An Automated Release
+| Secret | Content |
+|---|---|
+| `MOTOHUB_KEYSTORE_B64` | Base64 encoding of the APK-signing JKS file |
+| `MOTOHUB_KEYSTORE_PASSWORD` | Signing keystore password, also used for the key entry |
+| `MOTOHUB_KEY_ALIAS` | Signing key alias |
 
-1. Update `versionName` and increment `versionCode` in `apps/android/app/build.gradle.kts`.
-2. Build and test the exact candidate on real motorcycle hardware.
-3. Commit and push the validated source to `main`.
-4. Create and push an annotated tag matching `versionName`, for example `v0.8.1`.
-5. Monitor the `Release Android APK` workflow until it completes.
-6. Download the published APK and verify its checksum and signing certificate before announcing the release.
-
-Do not create or move the release tag before the hardware test is complete.
-
-## Local Builds
-
-For a local Android Auto build, place `aa_cert` and `aa_identity_data` under `tooling/private/android-auto/` and run from `apps/android/`:
-
-```bash
-./gradlew -PincludeAndroidAutoIdentity=true testDebugUnitTest lintRelease assembleRelease
-```
-
-A default build without `-PincludeAndroidAutoIdentity=true` excludes the identity. Pairing, T-Box streaming, mirroring, and diagnostics remain available, while Android Auto reports that its identity is unavailable.
+Without them the workflow fails at its first step; local releases do not depend on it.

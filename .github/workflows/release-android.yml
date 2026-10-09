@@ -33,18 +33,17 @@ jobs:
         with:
           cache-provider: basic
 
+      # The public release carries no Android Auto head-unit identity. This workflow therefore asks
+      # for no identity secret and never passes -PincludeAndroidAutoIdentity; the packaging step
+      # below fails if either identity resource is found in the APK anyway.
       - name: Validate required release secrets
         env:
-          ANDROID_AUTO_CERT_B64: ${{ secrets.ANDROID_AUTO_CERT_B64 }}
-          ANDROID_AUTO_IDENTITY_B64: ${{ secrets.ANDROID_AUTO_IDENTITY_B64 }}
           MOTOHUB_KEYSTORE_B64: ${{ secrets.MOTOHUB_KEYSTORE_B64 }}
           MOTOHUB_KEYSTORE_PASSWORD: ${{ secrets.MOTOHUB_KEYSTORE_PASSWORD }}
           MOTOHUB_KEY_ALIAS: ${{ secrets.MOTOHUB_KEY_ALIAS }}
         run: |
           set -euo pipefail
           for name in \
-            ANDROID_AUTO_CERT_B64 \
-            ANDROID_AUTO_IDENTITY_B64 \
             MOTOHUB_KEYSTORE_B64 \
             MOTOHUB_KEYSTORE_PASSWORD \
             MOTOHUB_KEY_ALIAS; do
@@ -54,37 +53,16 @@ jobs:
             fi
           done
 
-      - name: Provision Android Auto identity and signing key
+      - name: Provision signing key
         env:
-          ANDROID_AUTO_CERT_B64: ${{ secrets.ANDROID_AUTO_CERT_B64 }}
-          ANDROID_AUTO_IDENTITY_B64: ${{ secrets.ANDROID_AUTO_IDENTITY_B64 }}
           MOTOHUB_KEYSTORE_B64: ${{ secrets.MOTOHUB_KEYSTORE_B64 }}
         run: |
           set -euo pipefail
-          identity_dir="tooling/private/android-auto"
-          mkdir -p "$identity_dir" "$RUNNER_TEMP/motohub-release"
-          printf '%s' "$ANDROID_AUTO_CERT_B64" | base64 --decode > "$identity_dir/aa_cert"
-          printf '%s' "$ANDROID_AUTO_IDENTITY_B64" | base64 --decode > "$identity_dir/aa_identity_data"
+          mkdir -p "$RUNNER_TEMP/motohub-release"
           printf '%s' "$MOTOHUB_KEYSTORE_B64" | base64 --decode > "$RUNNER_TEMP/motohub-release/motohub-release.jks"
-
-          test -s "$identity_dir/aa_cert"
-          test -s "$identity_dir/aa_identity_data"
           test -s "$RUNNER_TEMP/motohub-release/motohub-release.jks"
-
-          openssl x509 -in "$identity_dir/aa_cert" -pubkey -noout \
-            | openssl pkey -pubin -outform DER \
-            > "$RUNNER_TEMP/motohub-release/certificate-public-key.der"
-          base64 --decode "$identity_dir/aa_identity_data" \
-            > "$RUNNER_TEMP/motohub-release/android-auto-private-key.der"
-          openssl pkey \
-            -inform DER \
-            -in "$RUNNER_TEMP/motohub-release/android-auto-private-key.der" \
-            -pubout \
-            -outform DER \
-            > "$RUNNER_TEMP/motohub-release/private-public-key.der"
-          cmp \
-            "$RUNNER_TEMP/motohub-release/certificate-public-key.der" \
-            "$RUNNER_TEMP/motohub-release/private-public-key.der"
+          # A checkout never contains this directory; refuse to build if something put it there.
+          test ! -e tooling/private/android-auto
 
       - name: Install Android SDK components
         run: |
@@ -102,7 +80,6 @@ jobs:
           ./gradlew \
             --no-daemon \
             clean \
-            -PincludeAndroidAutoIdentity=true \
             testDebugUnitTest \
             lintRelease \
             assembleRelease
@@ -130,12 +107,14 @@ jobs:
           fi
 
           "$build_tools/aapt" dump resources "$unsigned_apk" > "$resources_dump"
-          grep -q 'raw/aa_cert' "$resources_dump"
-          grep -q 'raw/aa_identity_data' "$resources_dump"
+          if grep -q -E 'raw/aa_(cert|identity_data)' "$resources_dump"; then
+            echo "The release APK contains an Android Auto identity and must not be published." >&2
+            exit 1
+          fi
 
           release_dir="$RUNNER_TEMP/motohub-release/assets"
           mkdir -p "$release_dir"
-          apk_name="MOTO-HUB-${version_name}-${version_code}-android-auto.apk"
+          apk_name="MOTO-HUB-${version_name}-${version_code}-public.apk"
           apk_path="$release_dir/$apk_name"
 
           "$build_tools/zipalign" -p -f 4 "$unsigned_apk" "$aligned_apk"
@@ -186,5 +165,4 @@ jobs:
       - name: Remove provisioned private material
         if: always()
         run: |
-          rm -rf tooling/private/android-auto
           rm -rf "$RUNNER_TEMP/motohub-release"

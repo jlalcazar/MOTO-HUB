@@ -1,8 +1,9 @@
 > [!IMPORTANT]
 > **This is MotoVisor, a modified version of MOTO-HUB CORE.** It is a fork maintained at [jlalcazar/MOTO-HUB](https://github.com/jlalcazar/MOTO-HUB) since 9 October 2026, based on [vincenzobpt/MOTO-HUB](https://github.com/vincenzobpt/MOTO-HUB) 1.1.120 by Vincenzo Buonomano and the MOTO-HUB contributors. It is not the original app, and the original author does not support it.
 >
-> - **What changed:** the app is named `MotoVisor` and installs as `io.motohup.android`, beside the original instead of over it. It is signed with a different key, so it cannot update an official MOTO-HUB install. A few unused settings were removed and the documentation was brought up to date; see the [commit history](https://github.com/jlalcazar/MOTO-HUB/commits/main).
-> - **No support from Google.** Android Auto, when a build includes it, works through an open-source head-unit receiver. Google has not certified, approved or licensed this app, gives no support or warranty for it, and may stop accepting it in any Android Auto update.
+> - **What changed:** the app is named `MotoVisor` and installs as `io.motovisor.android`, beside the original instead of over it. It is signed with a different key, so it cannot update an official MOTO-HUB install. A few unused settings were removed and the documentation was brought up to date; see the [commit history](https://github.com/jlalcazar/MOTO-HUB/commits/main).
+> - **Android Auto is not in the release APK.** The APKs published here carry no Android Auto identity, so Android Auto does not start in them; building one that does is described under *Build from source*.
+> - **No support from Google.** Android Auto, in a build that includes it, works through an open-source head-unit receiver. Google has not certified, approved or licensed this app, gives no support or warranty for it, and may stop accepting it in any Android Auto update.
 > - **No warranty.** The software is provided as is, under the [AGPL-3.0](LICENSE).
 >
 > The rest of this README is the original project's, and still says MOTO-HUB where it describes the app.
@@ -331,7 +332,7 @@ Like the Sentry DSN, the collector address is supplied at build time. A build fr
 
 Review [Security and Privacy](documentation/SECURITY_AND_PRIVACY.md) before distributing an APK outside personal use.
 
-The public source does not include the Android Auto identity or APK-signing keystore. APKs attached to official MOTO-HUB releases are complete runtime builds and include Android Auto support.
+Neither the source nor the APKs attached to this repository's releases include an Android Auto identity or the APK-signing keystore. See *Building with Android Auto* under *Build from source*.
 
 </details>
 
@@ -389,25 +390,48 @@ gomobile bind -target=android -androidapi 31 -o ../MOTO-HUB/apps/android/app/lib
 
 The source commit and AAR checksum must be updated in [`tooling/ridedaemon.lock`](tooling/ridedaemon.lock) whenever the artifact changes.
 
-### Android Auto release builds
+### Building with Android Auto
 
-The public source intentionally does **not** contain the static Android Auto head-unit identity (`aa_cert` and `aa_identity_data`) or the APK-signing keystore. Maintainer-built release APKs include Android Auto support and require no certificate setup or technical configuration from the user.
+The source does **not** contain an Android Auto head-unit identity, and neither do the APKs attached to this repository's releases. A release APK pairs, mirrors the screen, drives the USB external display and reads the handlebar buttons; when asked to start Android Auto it reports that its identity is unavailable.
 
-A normal source build without those inputs remains usable for pairing, T-Box streaming, mirroring, and diagnostics, but Android Auto reports that its identity is unavailable. This separation keeps private build inputs out of Git history; it does not make identity material embedded in a publicly downloadable APK confidential.
+Android Auto only projects to a head unit that presents a certificate it accepts, together with the matching private key. This project does not provide one, cannot tell you where to obtain one, and does not publish builds that contain one. If you have an identity you are entitled to use, you can build an APK that includes it for your own phone.
 
-For a local Android Auto build, place the two identity files in `tooling/private/android-auto/` and run:
+**1. Prepare the two files.** Both go in `tooling/private/android-auto/`, a directory Git ignores:
+
+| File | Content |
+| --- | --- |
+| `aa_cert` | The head-unit certificate: X.509, PEM encoded, including its `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` lines. |
+| `aa_identity_data` | The matching RSA private key: PKCS#8, as base64 text only. Remove the `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` lines; line breaks do not matter. |
+
+To turn a PEM private key into the second file:
+
+```bash
+grep -v -- '-----' private-key.pem | tr -d ' \r\n' > tooling/private/android-auto/aa_identity_data
+```
+
+**2. Check that they are a pair.** The two commands must print the same hash:
+
+```bash
+cd tooling/private/android-auto
+openssl x509 -in aa_cert -pubkey -noout | openssl pkey -pubin -outform DER | sha256sum
+base64 --decode aa_identity_data | openssl pkey -inform DER -pubout -outform DER | sha256sum
+```
+
+**3. Build.** From `apps/android/`:
 
 ```bash
 ./gradlew -PincludeAndroidAutoIdentity=true assembleDebug
 ```
 
-For a local build without Android Auto identity files, use the default build:
+Without the flag, or without both files, the build leaves the identity out even if the files are present.
 
-```bash
-./gradlew assembleDebug
-```
+**Keep that APK to yourself.** Whatever is packaged in an APK can be extracted from it, so publishing the APK publishes the private key. Three things in this repository are there to stop that happening by accident:
 
-Maintainers can find the complete release process and required GitHub secret names in [`documentation/PUBLIC_RELEASE.md`](documentation/PUBLIC_RELEASE.md).
+- `.gitignore` ignores the identity files by name anywhere in the tree, and the hooks in `.githooks/` refuse a commit or push that carries them. Enable the hooks once per clone with `git config core.hooksPath .githooks`.
+- `./gradlew exportPublicApk` refuses to export a release APK that was built with the identity.
+- [`tooling/publish-release.sh`](tooling/publish-release.sh) refuses to attach an APK that contains the identity to a GitHub release, and the release workflow fails if it finds one.
+
+The release process is described in [`documentation/PUBLIC_RELEASE.md`](documentation/PUBLIC_RELEASE.md).
 
 </details>
 

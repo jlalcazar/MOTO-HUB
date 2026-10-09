@@ -40,7 +40,7 @@ Status: active threat model, not legal advice
 | Local video interception | disclose risk; verify protocol before promising encryption |
 | Android components invoked by third parties | non-exported service; explicit intents |
 | AAR supply chain | reproducible build, commit SHA and artifact checksum |
-| Android Auto head-unit identity | keep source files out of Git history; include only in maintainer-built APKs; disclose that packaged APK material is extractable | manual or controlled release workflow |
+| Android Auto head-unit identity | keep it out of Git history and out of every published APK, since packaged APK material is extractable; include it only in builds for personal use | `.gitignore`, the `.githooks/` commit and push hooks, the `exportPublicApk` check, `tooling/publish-release.sh`, and the release workflow gate |
 | Overlay/tapjacking over consent | rely on the system dialog, no deceptive UI |
 | AAP TLS peer certificate not validated (`NoCheckTrustManager`) | acceptable only because the session is loopback-only (`127.0.0.1`) with no real network path for a MITM; never bind the AAP listener to a non-loopback interface, and treat that change as re-opening this threat |
 
@@ -100,9 +100,9 @@ Before distribution:
 - decide the source publication policy for each release before distribution;
 - document the AAR build procedure;
 - avoid marks or descriptions suggesting official CFMoto affiliation.
-- never commit Android Auto identity source files or signing credentials;
-  provision them only for maintainer builds and document that a public APK
-  contains its runtime identity.
+- never commit Android Auto identity source files or signing credentials, and
+  never publish an APK that contains the identity: provision it only for a
+  build installed on your own phone.
 
 This section identifies a technical and organizational constraint and requires
 legal review before commercial distribution.
