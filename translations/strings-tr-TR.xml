@@ -54,6 +54,8 @@
     <string name="video_power_balanced_description">Seçilen video kalitesiyle sabit 24 FPS.</string>
     <string name="video_power_saver">Tasarruf</string>
     <string name="video_power_saver_description">Daha az ısı ve pil tüketimi için 20 FPS.</string>
+    <string name="video_power_eco">Eko</string>
+    <string name="video_power_eco_description">En düşük ısı ve pil tüketimi için 15 FPS. Hareket gözle görülür biçimde daha az akıcıdır.</string>
     <string name="android_auto_resolution_auto">Otomatik</string>
     <string name="android_auto_resolution_auto_description">Öğrenilen T-Box geometrisine dayanan otomatik MOTO-HUB yönlendirmesini koru.</string>
     <string name="android_auto_resolution_landscape_sd">Yatay 800 x 480</string>

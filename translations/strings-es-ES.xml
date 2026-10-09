@@ -54,6 +54,8 @@
     <string name="video_power_balanced_description">24 FPS estables con la calidad de vídeo seleccionada.</string>
     <string name="video_power_saver">Ahorro</string>
     <string name="video_power_saver_description">20 FPS para reducir el calor y el consumo de batería.</string>
+    <string name="video_power_eco">Eco</string>
+    <string name="video_power_eco_description">15 FPS para el mínimo calor y consumo de batería. El movimiento se ve menos fluido.</string>
     <string name="android_auto_resolution_auto">Automático</string>
     <string name="android_auto_resolution_auto_description">Mantiene la orientación automática de MOTO-HUB según la geometría del T-Box aprendida.</string>
     <string name="android_auto_resolution_landscape_sd">Horizontal 800 x 480</string>

@@ -32,7 +32,11 @@ enum class VideoPowerMode(
     AUTO("Auto", "Adapt bitrate and frame rate to phone temperature, Battery Saver and Wi-Fi quality.", R.string.video_power_auto, R.string.video_power_auto_description, 30),
     SMOOTH("Smooth", "30 FPS with the selected video quality.", R.string.video_power_smooth, R.string.video_power_smooth_description, 30),
     BALANCED("Balanced", "Stable 24 FPS with the selected video quality.", R.string.video_power_balanced, R.string.video_power_balanced_description, 24),
-    SAVER("Saver", "20 FPS for reduced heat and battery use.", R.string.video_power_saver, R.string.video_power_saver_description, 20)
+    SAVER("Saver", "20 FPS for reduced heat and battery use.", R.string.video_power_saver, R.string.video_power_saver_description, 20),
+
+    // Last on purpose: stored by name, so the order is free, and the picker lists the modes from
+    // the smoothest down to this one.
+    ECO("Eco", "15 FPS for the lowest heat and battery use. Motion is visibly less smooth.", R.string.video_power_eco, R.string.video_power_eco_description, 15)
 }
 
 /**

@@ -54,6 +54,8 @@
     <string name="video_power_balanced_description">선택한 비디오 품질로 안정적인 24FPS를 제공합니다.</string>
     <string name="video_power_saver">절전</string>
     <string name="video_power_saver_description">발열과 배터리 사용을 줄이기 위한 20FPS.</string>
+    <string name="video_power_eco">에코</string>
+    <string name="video_power_eco_description">발열과 배터리 사용을 최소화하는 15FPS. 움직임이 눈에 띄게 덜 부드럽습니다.</string>
     <string name="android_auto_resolution_auto">자동</string>
     <string name="android_auto_resolution_auto_description">학습된 T-Box 형상을 기반으로 MOTO-HUB 자동 방향을 유지합니다.</string>
     <string name="android_auto_resolution_landscape_sd">가로 800x480</string>

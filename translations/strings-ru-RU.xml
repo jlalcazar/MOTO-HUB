@@ -54,6 +54,8 @@
     <string name="video_power_balanced_description">Стабильные 24 кадра/с при выбранном качестве видео.</string>
     <string name="video_power_saver">Экономия</string>
     <string name="video_power_saver_description">20 кадров/с для снижения нагрева и расхода аккумулятора.</string>
+    <string name="video_power_eco">Эко</string>
+    <string name="video_power_eco_description">15 кадров/с для минимального нагрева и расхода аккумулятора. Движение заметно менее плавное.</string>
     <string name="android_auto_resolution_auto">Авто</string>
     <string name="android_auto_resolution_auto_description">Оставить автоматическую ориентацию MOTO-HUB на основе изученной геометрии T-Box.</string>
     <string name="android_auto_resolution_landscape_sd">Альбомная 800 x 480</string>

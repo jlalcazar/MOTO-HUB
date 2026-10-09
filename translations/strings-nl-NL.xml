@@ -54,6 +54,8 @@
     <string name="video_power_balanced_description">Stabiele 24 FPS met de gekozen videokwaliteit.</string>
     <string name="video_power_saver">Zuinig</string>
     <string name="video_power_saver_description">20 FPS voor minder warmte en batterijverbruik.</string>
+    <string name="video_power_eco">Eco</string>
+    <string name="video_power_eco_description">15 FPS voor de minste warmte en het laagste batterijverbruik. Beweging is zichtbaar minder vloeiend.</string>
     <string name="android_auto_resolution_auto">Auto</string>
     <string name="android_auto_resolution_auto_description">MOTO-HUB de oriëntatie automatisch laten bepalen uit de geleerde T-Box-geometrie.</string>
     <string name="android_auto_resolution_landscape_sd">Liggend 800 x 480</string>

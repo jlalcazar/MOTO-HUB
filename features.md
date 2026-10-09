@@ -132,7 +132,7 @@ standalone app. CORE has no GPS features and requests no location updates.
 - Select `Smoother` for reduced bitrate, heat, network load, and phone workload.
 - Select `Balanced` for the recommended default quality.
 - Select `Sharper` for clearer maps and text at a higher bitrate.
-- Select a power mode: `Smooth` (30 FPS), `Balanced` (24 FPS), `Saver` (20 FPS), or `Auto`, which
+- Select a power mode: `Smooth` (30 FPS), `Balanced` (24 FPS), `Saver` (20 FPS), `Eco` (15 FPS), or `Auto`, which
   adapts bitrate and frame rate to phone temperature and Wi-Fi quality.
 - In `Auto`, follow Android's Battery Saver: while it is on, stream at the `Saver` pace (20 FPS) with
   a reduced bitrate.

@@ -243,7 +243,7 @@ Music volume is expressed in **presses**, not steps, because that is how the das
 
 ### Settings
 
-`Video quality` sets image detail against the negotiated base bitrate: `Balanced` is the recommended default, `Smoother` uses 70% and `Sharper` 160%. `Power mode` selects `Auto` (adapt bitrate and frame rate to phone temperature and Wi-Fi quality, and drop to the `Saver` pace while Android's Battery Saver is on), `Smooth` (30 FPS), `Balanced` (24 FPS) or `Saver` (20 FPS). `Disable touchscreen` lets the rider use focus and handlebar controls even on a dashboard that reports a touch display.
+`Video quality` sets image detail against the negotiated base bitrate: `Balanced` is the recommended default, `Smoother` uses 70% and `Sharper` 160%. `Power mode` selects `Auto` (adapt bitrate and frame rate to phone temperature and Wi-Fi quality, and drop to the `Saver` pace while Android's Battery Saver is on), `Smooth` (30 FPS), `Balanced` (24 FPS), `Saver` (20 FPS) or `Eco` (15 FPS). `Disable touchscreen` lets the rider use focus and handlebar controls even on a dashboard that reports a touch display.
 
 `Android Auto` selects the source resolution — `Auto` (dynamic orientation from the learned T-Box geometry), or a fixed landscape or portrait source from 800 x 480 up to 3840 x 2160 — the interface size, from 120 to 480 dpi, and how content insets are advertised. `Auto` only ever picks 800 x 480, 1280 x 720, 720 x 1280 or 1080 x 1920; the larger sources are marked experimental and have not been validated on any known dashboard. The T-Box output canvas is still negotiated at runtime and is not replaced by the Android Auto source resolution.
 
