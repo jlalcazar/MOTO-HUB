@@ -529,9 +529,25 @@ class AaCompositor(
             pendingFrame = false
             drawFrame()
         } else {
-            // SurfaceTexture already contains the newest frame; flush it on the next pacing tick.
+            // SurfaceTexture already contains the newest frame; flush it the moment its pacing
+            // slot opens. Waiting for the 150ms keep-alive tick instead held a frame that came in
+            // a millisecond early for up to five frame times - or lost it to the next one, which
+            // on a jittery 30fps Android Auto source read as judder on the TFT at no saving: the
+            // draws per second are still bounded by the cap either way.
+            if (!pendingFrame) {
+                val remainingMs = (interval / 1_000_000L - idleMs).coerceAtLeast(1L)
+                handler.postDelayed(flushPendingFrame, remainingMs)
+            }
             pendingFrame = true
             framesCoalesced++
+        }
+    }
+
+    private val flushPendingFrame = Runnable {
+        if (pendingFrame && hasContent && encoderWindowSurface != EGL14.EGL_NO_SURFACE) {
+            lastSourceFrameNanos = System.nanoTime()
+            pendingFrame = false
+            drawFrame()
         }
     }
 
@@ -714,6 +730,7 @@ class AaCompositor(
 
     fun release() {
         handler.removeCallbacks(keepAlive)
+        handler.removeCallbacks(flushPendingFrame)
         handler.post {
             runCatching { inputSurface?.release() }
             inputSurface = null

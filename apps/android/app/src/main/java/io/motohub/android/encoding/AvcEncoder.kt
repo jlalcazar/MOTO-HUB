@@ -108,7 +108,7 @@ class AvcEncoder(
     private var recoverySyncRunCount = 0
     private var recoverySyncRunStartedNanos = 0L
     private var recoverySyncLastLogNanos = 0L
-    private var nextFrameDeadlineNanos = 0L
+    private val framePacer = EncodedFramePacer()
     var inputSurface: Surface? = null
         private set
 
@@ -143,6 +143,7 @@ class AvcEncoder(
             inputSurface = configuredCodec.createInputSurface()
             configuredCodec.start()
             ProjectionEventLog.record("ENCODER", "AVC codec ${configuredCodec.name} started with surface input.")
+            framePacer.reset()
             drainThread = Thread(::drainLoop, "MotoHubAvcDrain").also { it.start() }
         } catch (failure: Throwable) {
             ProjectionEventLog.error("ENCODER", "AVC encoder startup failed.", failure)
@@ -324,6 +325,12 @@ class AvcEncoder(
             // degrades to all-intra on a codec without intra refresh, and it is the shape the
             // stream really has that decides what a repeated frame costs.
             setLong(MediaFormat.KEY_REPEAT_PREVIOUS_FRAME_AFTER, repeatFrameAfterUs(streamInterval))
+            // A virtual display follows the phone's own refresh rate, and on a 90/120 Hz phone
+            // that is three or four times what the dash is negotiated for. Every one of those
+            // frames used to be encoded - as a full IDR on an all-intra stream - only for most of
+            // them to be thrown away after the fact. Dropping them at the codec input costs
+            // nothing on the wire and is safe for a GOP too, because nothing has been coded yet.
+            setFloat(MediaFormat.KEY_MAX_FPS_TO_ENCODER, profile.frameRate.toFloat())
             if (attempt.forceBaseline) {
                 setInteger(
                     MediaFormat.KEY_PROFILE,
@@ -465,6 +472,8 @@ class AvcEncoder(
 
     fun requestSyncFrame(reason: String) {
         val activeCodec = codec ?: return
+        // A consumer that just asked for video gets the next frame whatever the cap says.
+        framePacer.forceNextKeyFrame()
         applySyncFrameRequest(activeCodec)
             .onSuccess {
                 ProjectionEventLog.record("ENCODER", "Requested AVC sync frame: $reason.")
@@ -497,7 +506,7 @@ class AvcEncoder(
     /** Cap forwarded access units; the encoder remains surface-driven and the cap is live. */
     fun setFrameCap(frameRate: Int) {
         frameCap = frameRate.coerceIn(1, profile.frameRate)
-        nextFrameDeadlineNanos = 0L
+        framePacer.restartPacing()
         frameCapListener?.invoke(frameCap)
     }
 
@@ -669,25 +678,13 @@ class AvcEncoder(
         codec = null
     }
 
-    private fun shouldForwardFrame(isKeyFrame: Boolean): Boolean {
-        // GOP streams must forward every frame: dropping a P-frame corrupts the decode until
-        // the next keyframe. Their frame pacing happens at the input surface instead, via the
-        // frame-cap listener (dashboard renderer / AA compositor).
-        if (streamKeyframeIntervalSeconds > 0) return true
-        // Never pace out a sync frame: after a reconnect the T-Box decoder needs the next keyframe
-        // immediately or the resumed stream can remain black until the next codec refresh.
-        if (isKeyFrame) {
-            nextFrameDeadlineNanos = System.nanoTime() +
-                1_000_000_000L / frameCap.coerceIn(1, profile.frameRate)
-            return true
-        }
-        val cap = frameCap.coerceIn(1, profile.frameRate)
-        if (cap >= profile.frameRate) return true
-        val now = System.nanoTime()
-        if (now < nextFrameDeadlineNanos) return false
-        nextFrameDeadlineNanos = now + 1_000_000_000L / cap
-        return true
-    }
+    private fun shouldForwardFrame(isKeyFrame: Boolean): Boolean = framePacer.shouldForward(
+        isKeyFrame = isKeyFrame,
+        gopStream = streamKeyframeIntervalSeconds > 0,
+        frameCap = frameCap.coerceIn(1, profile.frameRate),
+        baseFrameRate = profile.frameRate,
+        nowNanos = System.nanoTime()
+    )
 
     private fun ByteBuffer.copyRange(offset: Int, size: Int): ByteArray {
         val duplicate = duplicate()
