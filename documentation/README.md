@@ -1,12 +1,14 @@
 # MOTO-HUB - Documentation
 
 Status: active project documentation
-Last updated: 19 July 2026
+Last updated: 9 October 2026
 
 MOTO-HUB is an Android app that connects to a motorcycle T-Box and can stream
-screen mirroring, Android Auto, or a native Ride Dashboard to the motorcycle
-TFT. It also provides trip recording, local diagnostics, handlebar-control
-mapping, GitHub APK update checks, and a macOS T-Box simulator for development.
+screen mirroring or Android Auto to the motorcycle TFT. It also provides a USB
+external display mode, local diagnostics, handlebar-control mapping, and GitHub
+APK update checks. The Ride Dashboard, navigation and trip recording belong to
+MOTO-HUB ADV-SOLO, a separate app, and are not part of this repository. The
+macOS T-Box simulator that some documents refer to is kept privately.
 
 This folder is the source of truth for the product to be built. The repositories
 in `external upstream repositories` are technical references and are not the

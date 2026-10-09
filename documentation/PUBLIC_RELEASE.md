@@ -59,7 +59,7 @@ Current project practice is manual release publication:
    Use the release variant only after explicit signing and release validation.
 3. Verify the APK contains `res/raw/aa_cert` and `res/raw/aa_identity_data`.
 4. Verify the SHA-256 checksum.
-5. Test the exact APK on the simulator and target motorcycle hardware.
+5. Test the exact APK on target motorcycle hardware.
 6. Create a GitHub release or pre-release with a tag greater than the installed
    app version, for example `v0.9.0-beta.10-build.60`.
 7. Upload the APK asset and include concise release notes.
@@ -71,9 +71,9 @@ from the uploaded APK asset.
 Do not commit or push source changes as part of release publication unless the
 maintainer explicitly asks for that operation.
 
-## Future Workflow Gate
+## Release Workflow Gate
 
-If the workflow in `.github/workflows/release-android.yml` is used, it runs only for tags matching `v*` and performs the following checks:
+The workflow in `.github/workflows/release-android.yml` runs only for tags matching `v*` and performs the following checks:
 
 1. Validates that all required secrets exist.
 2. Reconstructs build inputs on the ephemeral runner.

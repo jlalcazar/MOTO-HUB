@@ -62,138 +62,78 @@ With the drain thread stalled, any response processing is delayed. The 10-minute
 
 ---
 
-## Solution: Non-Blocking pushFrame() with Timeout
+## Solution: Bounded pushFrame() Queue with Timeout
 
-### Changes Made
+Implemented in `RideDaemonTransport.kt`. The encoder drain thread no longer calls the native
+`pushFrame()` itself.
 
-**File**: `RideDaemonTransport.kt`
-
-#### 1. Added imports
-```kotlin
-import java.util.concurrent.TimeUnit
-```
-
-#### 2. Created dedicated executor for pushFrame()
-```kotlin
-private val pushFrameExecutor = java.util.concurrent.Executors.newSingleThreadExecutor { runnable ->
-    Thread(runnable, "MotoHubPushFrame").apply { isDaemon = true }
-}
-private const val PUSH_FRAME_TIMEOUT_MS = 5_000L
-```
-
-#### 3. Added timeout tracking
-```kotlin
-private val framesTimedOut = AtomicLong(0L)
-```
-
-#### 4. Modified offerAccessUnit() to use timeout
-```kotlin
-override fun offerAccessUnit(avcc: ByteArray): Boolean {
-    val activeSession = session ?: return false
-    if (!activeSession.isRunning) return false
-    return runCatching {
-        val future = pushFrameExecutor.submit {
-            activeSession.pushFrame(avcc)
-        }
-        try {
-            future.get(PUSH_FRAME_TIMEOUT_MS, TimeUnit.MILLISECONDS)
-            framesOffered.incrementAndGet()
-            lastFrameOfferedElapsed.set(SystemClock.elapsedRealtime())
-            true
-        } catch (timeout: java.util.concurrent.TimeoutException) {
-            framesTimedOut.incrementAndGet()
-            ProjectionEventLog.warning(
-                "TBOX",
-                "AVC frame dropped: pushFrame() exceeded ${PUSH_FRAME_TIMEOUT_MS}ms timeout. " +
-                    "The T-Box may be unresponsive. Timeouts: ${framesTimedOut.get()}"
-            )
-            false
-        }
-    }.getOrElse {
-        Log.w(TAG, "Unable to offer AVC access unit", it)
-        ProjectionEventLog.error("TBOX", "Unable to push an AVC access unit to RideDaemon.", it)
-        false
-    }
-}
-```
-
-#### 5. Updated protocol snapshot to include timeouts
-```kotlin
-private fun protocolSnapshot(): String {
-    // ...
-    return "protocolStats=" +
-        "pxcRx=${pxcEvents.get()} (last=${age(lastPxcEventElapsed)}), " +
-        "mediaCtrlRx=${mediaControlEvents.get()} (last=${age(lastMediaControlEventElapsed)}), " +
-        "framesOffered=${framesOffered.get()} (last=${age(lastFrameOfferedElapsed)}), " +
-        "frameTimeouts=${framesTimedOut.get()}"
-}
-```
-
-#### 6. Cleanup executor on stop
-```kotlin
-private fun stopSession() {
-    // ...
-    pushFrameExecutor.shutdownNow()
-}
-```
+- **Dedicated push thread.** `pushFrameExecutor` is a single-threaded `ThreadPoolExecutor`
+  (`MotoHubPushFrame`) with an `ArrayBlockingQueue(1)`: one native call in flight and at most one
+  access unit waiting behind it. The first version used an unbounded single-thread executor; an
+  intermediate zero-capacity queue made a short `pushFrame()` overlap look like a dead session, so
+  the queue holds exactly one.
+- **Submission grace period.** `submitToPushQueue()` retries a rejected submission every
+  `PUSH_FRAME_SUBMIT_RETRY_DELAY_MS` (5 ms) for up to `PUSH_FRAME_SUBMIT_WAIT_MS` (1 s). Only a
+  queue that stays blocked for the whole period is reported to the caller as a failure. Each
+  rejection is counted in `framesRejected`.
+- **Push timeout.** `offerAccessUnit()` waits on the submitted call for at most
+  `PUSH_FRAME_TIMEOUT_MS` (5 s). On timeout the frame is dropped, `framesTimedOut` is incremented
+  and a `TBOX` warning is logged.
+- **Stills share the path.** `offerStillFrame()` pushes JPEG stills through the same queue, grace
+  period and counters, for dashboards that are sent still images instead of H.264.
+- **Diagnostics.** `protocolSnapshot()` reports `frameTimeouts` and `frameRejections` next to
+  `pxcRx`, `mediaCtrlRx` and `framesOffered`.
 
 ---
 
 ## How This Fixes the Crash
 
-1. **Non-blocking**: `pushFrame()` now runs on a separate thread with a 5-second timeout
-   - The drain thread is NOT blocked indefinitely
-   - If T-Box doesn't accept within 5 seconds, the frame is dropped (not lost forever)
-
-2. **Prevents socket timeout**: Since the drain thread can't stall the socket reader, the socket reader remains responsive
-   - Heartbeats continue flowing
-   - Socket read timeout never triggers
-   - No EOF error
-
-3. **Diagnostics**: `frameTimeouts` counter lets us see when T-Box is unresponsive
-   - If this counter climbs, we know the link is congested
-   - Watchdog can use this to trigger recovery earlier (before 30-second timeout)
+1. **The drain thread cannot stall indefinitely.** It waits at most 1 s to submit and 5 s for the
+   native call, then drops the frame and returns.
+2. **The socket reader stays responsive.** Heartbeats keep flowing, so the 30-second read timeout
+   that produced the EOF is not reached through this path.
+3. **Congestion is visible.** A climbing `frameTimeouts` or `frameRejections` in the protocol
+   stats means the T-Box is not accepting frames.
 
 ---
 
-## Expected Behavior After Fix
+## Expected Behavior
 
-**Before crash**:
+Normal streaming:
 ```
-framesOffered=11553, frameTimeouts=0     ← All frames accepted normally
-```
-
-**If T-Box congests**:
-```
-framesOffered=11600, frameTimeouts=15    ← Some frames timeout and are dropped
+framesOffered=11553, frameTimeouts=0, frameRejections=0
 ```
 
-**In logs**:
+T-Box congested:
 ```
-WARNING  TBOX: AVC frame dropped: pushFrame() exceeded 5000ms timeout. 
+framesOffered=11600, frameTimeouts=15, frameRejections=40
+```
+
+In the log:
+```
+WARNING  TBOX: AVC frame dropped: pushFrame() exceeded 5000ms timeout.
                The T-Box may be unresponsive. Timeouts: 15
 ```
 
-The app continues streaming (with some frame loss) rather than crashing.
+The app keeps streaming with some frame loss instead of crashing.
 
 ---
 
-## Further Improvements (Optional)
+## Open Improvements
 
-1. **Reduce PUSH_FRAME_TIMEOUT_MS to 3000** if T-Box link is consistently faster
-2. **Add watchdog check** for `frameTimeouts > threshold` to trigger recovery sooner
-3. **Increase executor thread pool** if we want multiple concurrent frame pushes
-4. **Add metrics export** for `frameTimeouts` to understand real-world congestion patterns
+1. **Watchdog check** on `frameTimeouts` crossing a threshold, to trigger recovery before the
+   stream has visibly stalled. The counters are reported but nothing acts on them yet.
+2. **Tune `PUSH_FRAME_TIMEOUT_MS`** down if field logs show the T-Box link is consistently faster.
 
 ---
 
 ## Testing
 
-**Manual test**:
-1. Start Android Auto projection
-2. Simulate T-Box congestion (e.g., reduce WiFi bandwidth)
-3. Observe: FPS may drop slightly, but no EOF crash
-4. Check logs: `frameTimeouts` should increase
-5. When congestion clears: streaming resumes normally
+Manual test:
+1. Start Android Auto projection.
+2. Congest the T-Box link, for example by reducing Wi-Fi bandwidth.
+3. Observe that FPS may drop but no EOF crash occurs.
+4. Check the log: `frameTimeouts` or `frameRejections` should increase.
+5. When congestion clears, streaming resumes normally.
 
-**CI test**: Existing crash should no longer reproduce with the stress test that triggered it.
+There is no automated test that reproduces the original deadlock.
