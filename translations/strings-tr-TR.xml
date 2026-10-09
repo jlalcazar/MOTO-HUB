@@ -96,10 +96,6 @@
     <string name="distance_units_kilometers_description">Mesafeler ve hızlar km ve km/s cinsinden.</string>
     <string name="distance_units_miles">Mil</string>
     <string name="distance_units_miles_description">Mesafeler ve hızlar mi ve mph cinsinden.</string>
-    <string name="route_preference_fastest">En hızlı</string>
-    <string name="route_preference_fastest_description">En kısa süreli rota, otoyollara izin verilir.</string>
-    <string name="route_preference_scenic">Manzaralı</string>
-    <string name="route_preference_scenic_description">Tali yolları tercih eder, otoyollardan kaçınır.</string>
 
     <!-- Core/Pro bridge notification -->
     <string name="core_bridge_channel_name">MOTO-HUB Core köprüsü</string>

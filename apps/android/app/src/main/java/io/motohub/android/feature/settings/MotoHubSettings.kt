@@ -257,11 +257,6 @@ enum class DistanceUnits(val label: String, val description: String, val labelRe
     MILES("Miles", "Distances and speeds in mi and mph.", R.string.distance_units_miles, R.string.distance_units_miles_description)
 }
 
-enum class RoutePreference(val label: String, val description: String, val labelRes: Int, val descriptionRes: Int) {
-    FASTEST("Fastest", "Quickest route, motorways allowed.", R.string.route_preference_fastest, R.string.route_preference_fastest_description),
-    SCENIC("Scenic", "Bias toward back roads and away from motorways.", R.string.route_preference_scenic, R.string.route_preference_scenic_description)
-}
-
 object MotoHubSettings {
     private const val PREFERENCES = "moto_hub_settings"
     private const val KEY_VIDEO_QUALITY = "video_quality"
@@ -278,12 +273,7 @@ object MotoHubSettings {
     private const val KEY_KEEP_WIFI_DIRECT_ON_DISCONNECT = "keep_wifi_direct_on_disconnect"
     private const val KEY_BLUETOOTH_CLOCK_SYNC = "bluetooth_clock_sync"
     private const val KEY_DASH_CLOCK_SYNC = "dash_clock_sync"
-    private const val KEY_AUTO_RECORD_TRIPS = "auto_record_trips"
-    private const val KEY_SHOW_RECORDED_TRACK = "show_recorded_track_on_dashboard"
     private const val KEY_DISTANCE_UNITS = "distance_units"
-    private const val KEY_ROUTE_PREFERENCE = "route_preference"
-    private const val KEY_NAV_VOICE_ENABLED = "nav_voice_enabled"
-    private const val KEY_USE_DEMO_ROUTING_SERVER = "use_demo_routing_server"
     private const val KEY_SKIPPED_UPDATE_TAG = "skipped_update_tag"
     private const val KEY_AUTO_UPDATE_CHECKS = "auto_update_checks"
     private const val KEY_KEEP_SCREEN_ON = "keep_screen_on"
@@ -301,35 +291,6 @@ object MotoHubSettings {
 
     fun setDistanceUnits(context: Context, units: DistanceUnits) {
         preferences(context).edit().putString(KEY_DISTANCE_UNITS, units.name).apply()
-    }
-
-    fun routePreference(context: Context): RoutePreference = enumPreference(
-        context = context,
-        key = KEY_ROUTE_PREFERENCE,
-        default = RoutePreference.FASTEST
-    )
-
-    fun setRoutePreference(context: Context, preference: RoutePreference) {
-        preferences(context).edit().putString(KEY_ROUTE_PREFERENCE, preference.name).apply()
-    }
-
-    fun navVoiceEnabled(context: Context): Boolean =
-        preferences(context).getBoolean(KEY_NAV_VOICE_ENABLED, true)
-
-    fun setNavVoiceEnabled(context: Context, enabled: Boolean) {
-        preferences(context).edit().putBoolean(KEY_NAV_VOICE_ENABLED, enabled).apply()
-    }
-
-    /**
-     * Route with FOSSGIS's free public Valhalla demo server instead of
-     * requiring a personal Stadia Maps key. Only takes effect while no key is
-     * configured - see the advanced routing implementation.
-     */
-    fun useDemoRoutingServer(context: Context): Boolean =
-        preferences(context).getBoolean(KEY_USE_DEMO_ROUTING_SERVER, false)
-
-    fun setUseDemoRoutingServer(context: Context, enabled: Boolean) {
-        preferences(context).edit().putBoolean(KEY_USE_DEMO_ROUTING_SERVER, enabled).apply()
     }
 
     fun videoQuality(context: Context): VideoQuality = enumPreference(
@@ -521,20 +482,6 @@ object MotoHubSettings {
 
     fun setLoggingEnabled(context: Context, enabled: Boolean) {
         preferences(context).edit().putBoolean(KEY_LOGGING_ENABLED, enabled).apply()
-    }
-
-    fun autoRecordTrips(context: Context): Boolean =
-        preferences(context).getBoolean(KEY_AUTO_RECORD_TRIPS, true)
-
-    fun setAutoRecordTrips(context: Context, enabled: Boolean) {
-        preferences(context).edit().putBoolean(KEY_AUTO_RECORD_TRIPS, enabled).apply()
-    }
-
-    fun showRecordedTrackOnDashboard(context: Context): Boolean =
-        preferences(context).getBoolean(KEY_SHOW_RECORDED_TRACK, true)
-
-    fun setShowRecordedTrackOnDashboard(context: Context, enabled: Boolean) {
-        preferences(context).edit().putBoolean(KEY_SHOW_RECORDED_TRACK, enabled).apply()
     }
 
     /** The GitHub release tag the rider chose to skip, or null if none/cleared. */

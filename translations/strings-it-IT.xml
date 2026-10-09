@@ -94,10 +94,6 @@
     <string name="distance_units_kilometers_description">Distanze e velocità in km e km/h.</string>
     <string name="distance_units_miles">Miglia</string>
     <string name="distance_units_miles_description">Distanze e velocità in mi e mph.</string>
-    <string name="route_preference_fastest">Più veloce</string>
-    <string name="route_preference_fastest_description">Percorso più rapido, autostrade consentite.</string>
-    <string name="route_preference_scenic">Panoramico</string>
-    <string name="route_preference_scenic_description">Preferisce strade secondarie evitando le autostrade.</string>
 
     <!-- Bridge Core/Pro -->
     <string name="core_bridge_channel_name">Bridge MOTO-HUB Core</string>

@@ -96,10 +96,6 @@
     <string name="distance_units_kilometers_description">거리와 속도(km 및 km/h)</string>
     <string name="distance_units_miles">마일</string>
     <string name="distance_units_miles_description">mi와 mph 단위의 거리와 속도입니다.</string>
-    <string name="route_preference_fastest">가장 빠른</string>
-    <string name="route_preference_fastest_description">가장 빠른 경로, 고속도로 허용.</string>
-    <string name="route_preference_scenic">경치 우선</string>
-    <string name="route_preference_scenic_description">뒷길을 향하고 고속도로에서 멀리 떨어져 있습니다.</string>
 
     <!-- Core/Pro bridge -->
     <string name="core_bridge_channel_name">MOTO-HUB Core 브리지</string>
