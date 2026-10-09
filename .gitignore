@@ -11,6 +11,21 @@ local.properties
 *.zip
 /artifacts/
 /tooling/private/
+
+# Private key material: the Android Auto head-unit identity, signing keys and their passwords.
+# Ignored by name anywhere in the tree, not only in tooling/private/, so a copy dropped in the
+# wrong folder is not picked up by `git add .`. The pre-commit hook in .githooks/ is the second
+# line of defence: it also refuses these files when they are added with `git add -f`.
+aa_cert
+aa_identity_data
+privkey
+*.pem
+*.key
+*.p12
+*.pfx
+*.der
+release-signing.properties
+sentry.properties
 /archive/cfmoto-cloud-client-poc/
 apps/android/app/src/main/res/raw/aa_cert
 apps/android/app/src/main/res/raw/aa_identity_data

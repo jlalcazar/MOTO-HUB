@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# Refuses a push whose new commits carry private key material.
+#
+# Same rules as the pre-commit hook, applied to what is about to leave the machine, so a commit
+# made with --no-verify or before the hooks were enabled is still stopped here.
+set -euo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+private_dir="$root/tooling/private"
+zero="0000000000000000000000000000000000000000"
+private_ids=""
+if [ -d "$private_dir" ]; then
+    private_ids="$(find "$private_dir" -type f -exec git hash-object {} + 2>/dev/null || true)"
+fi
+blocked=()
+
+while read -r _local_ref local_sha _remote_ref remote_sha; do
+    [ "$local_sha" = "$zero" ] && continue
+    if [ "$remote_sha" = "$zero" ]; then
+        range=("$local_sha" --not --remotes)
+    else
+        range=("$remote_sha..$local_sha")
+    fi
+    while read -r commit; do
+        while IFS=$'\t' read -r meta path; do
+            [ -n "$path" ] || continue
+            id="$(awk '{print $4}' <<<"$meta")"
+            name="$(basename "$path")"
+            reason=""
+            case "$name" in
+                aa_cert|aa_identity_data|privkey|release-signing.properties|sentry.properties)
+                    reason="private file name" ;;
+                *.jks|*.keystore|*.pem|*.key|*.p12|*.pfx|*.der)
+                    reason="key or keystore file" ;;
+            esac
+            case "$path" in tooling/private/*) reason="inside tooling/private/" ;; esac
+            if [ -z "$reason" ] && [ -n "$private_ids" ] && grep -qxF "$id" <<<"$private_ids"; then
+                reason="same content as a file in tooling/private/"
+            fi
+            if [ -z "$reason" ] && git cat-file -p "$id" 2>/dev/null \
+                | grep -qaE -e '-----BEGIN ([A-Z]+ )?PRIVATE KEY-----'; then
+                reason="contains a PEM private key"
+            fi
+            [ -n "$reason" ] && blocked+=("${commit:0:7} $path ($reason)")
+        done < <(git diff-tree --no-commit-id -r --diff-filter=ACMR "$commit")
+    done < <(git rev-list "${range[@]}")
+done
+
+if [ "${#blocked[@]}" -gt 0 ]; then
+    echo "Push refused: these commits carry private key material." >&2
+    printf '  %s\n' "${blocked[@]}" >&2
+    echo "Remove the file from history before pushing (for example with git rebase)." >&2
+    exit 1
+fi

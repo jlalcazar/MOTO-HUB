@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# Refuses a commit that carries private key material.
+#
+# .gitignore already keeps these files out of `git add .`; this catches what .gitignore cannot:
+# a file added with `git add -f`, a copy saved under another name, or a key pasted into a file.
+# Enable once per clone with:  git config core.hooksPath .githooks
+set -euo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+private_dir="$root/tooling/private"
+blocked=()
+
+# Blob ids of everything under tooling/private/, so a renamed copy is recognised by content.
+private_ids=""
+if [ -d "$private_dir" ]; then
+    private_ids="$(find "$private_dir" -type f -exec git hash-object {} + 2>/dev/null || true)"
+fi
+
+while IFS= read -r -d '' path; do
+    name="$(basename "$path")"
+    case "$name" in
+        aa_cert|aa_identity_data|privkey|release-signing.properties|sentry.properties)
+            blocked+=("$path (private file name)"); continue ;;
+        *.jks|*.keystore|*.pem|*.key|*.p12|*.pfx|*.der)
+            blocked+=("$path (key or keystore file)"); continue ;;
+    esac
+    case "$path" in
+        tooling/private/*) blocked+=("$path (inside tooling/private/)"); continue ;;
+    esac
+    id="$(git rev-parse ":$path" 2>/dev/null || true)"
+    if [ -n "$id" ] && [ -n "$private_ids" ] && grep -qxF "$id" <<<"$private_ids"; then
+        blocked+=("$path (same content as a file in tooling/private/)"); continue
+    fi
+    if git cat-file -p ":$path" 2>/dev/null | grep -qaE -e '-----BEGIN ([A-Z]+ )?PRIVATE KEY-----'; then
+        blocked+=("$path (contains a PEM private key)")
+    fi
+done < <(git diff --cached --name-only --diff-filter=ACMR -z)
+
+if [ "${#blocked[@]}" -gt 0 ]; then
+    echo "Commit refused: private key material is staged." >&2
+    printf '  %s\n' "${blocked[@]}" >&2
+    echo "Unstage it with: git restore --staged <file>" >&2
+    exit 1
+fi
