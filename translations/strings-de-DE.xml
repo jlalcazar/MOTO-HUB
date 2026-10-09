@@ -47,7 +47,7 @@
     <string name="video_quality_sharper">Schärfer</string>
     <string name="video_quality_sharper_description">Höhere Bitrate für klarere Karten und Schrift.</string>
     <string name="video_power_auto">Auto</string>
-    <string name="video_power_auto_description">Bitrate und Bildrate an Telefontemperatur und WLAN-Qualität anpassen.</string>
+    <string name="video_power_auto_description">Bitrate und Bildrate an Telefontemperatur, Energiesparmodus und WLAN-Qualität anpassen.</string>
     <string name="video_power_smooth">Flüssig</string>
     <string name="video_power_smooth_description">30 FPS mit der gewählten Videoqualität.</string>
     <string name="video_power_balanced">Ausgewogen</string>

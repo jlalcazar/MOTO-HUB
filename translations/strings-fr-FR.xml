@@ -47,7 +47,7 @@
     <string name="video_quality_sharper">Plus net</string>
     <string name="video_quality_sharper_description">Débit plus élevé pour des cartes et un texte plus nets.</string>
     <string name="video_power_auto">Auto</string>
-    <string name="video_power_auto_description">Adapter le débit et la fréquence d\'images à la température du téléphone et à la qualité du Wi-Fi.</string>
+    <string name="video_power_auto_description">Adapter le débit et la fréquence d\'images à la température du téléphone, à l\'économiseur de batterie et à la qualité du Wi-Fi.</string>
     <string name="video_power_smooth">Fluide</string>
     <string name="video_power_smooth_description">30 IPS avec la qualité vidéo sélectionnée.</string>
     <string name="video_power_balanced">Équilibré</string>

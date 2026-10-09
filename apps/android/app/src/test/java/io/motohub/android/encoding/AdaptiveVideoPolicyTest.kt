@@ -69,4 +69,33 @@ class AdaptiveVideoPolicyTest {
             AdaptiveVideoPolicy.linkFrameRateCap(baseFrameRate = 24, linkFactor = factor)
         )
     }
+
+    @Test
+    fun `battery saver paces the stream like the Saver mode`() {
+        val decision = AdaptiveVideoPolicy.decide(
+            baseBitrate = 4_000_000,
+            baseFrameRate = 30,
+            thermalStatus = PowerManager.THERMAL_STATUS_NONE,
+            previousLinkFactor = AdaptiveVideoPolicy.LINK_MAX,
+            lostFrames = 0,
+            powerSave = true
+        )
+        assertEquals(AdaptiveVideoPolicy.POWER_SAVE_FRAME_RATE, decision.frameRate)
+        assertEquals(3_200_000, decision.bitrate)
+    }
+
+    @Test
+    fun `battery saver never raises a ceiling that is already lower`() {
+        val decision = AdaptiveVideoPolicy.decide(
+            baseBitrate = 4_000_000,
+            baseFrameRate = 15,
+            thermalStatus = PowerManager.THERMAL_STATUS_SEVERE,
+            previousLinkFactor = AdaptiveVideoPolicy.LINK_MAX,
+            lostFrames = 0,
+            powerSave = true
+        )
+        assertEquals(15, decision.frameRate)
+        // Severe heat already asks for a deeper cut than Battery Saver does; the deeper one wins.
+        assertEquals(2_400_000, decision.bitrate)
+    }
 }

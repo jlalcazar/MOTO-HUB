@@ -47,7 +47,7 @@
     <string name="video_quality_sharper">Чётче</string>
     <string name="video_quality_sharper_description">Более высокий битрейт для чёткости карт и текста.</string>
     <string name="video_power_auto">Авто</string>
-    <string name="video_power_auto_description">Подстраивает битрейт и частоту кадров под температуру телефона и качество Wi-Fi.</string>
+    <string name="video_power_auto_description">Подстраивает битрейт и частоту кадров под температуру телефона, режим энергосбережения и качество Wi-Fi.</string>
     <string name="video_power_smooth">Плавно</string>
     <string name="video_power_smooth_description">30 кадров/с при выбранном качестве видео.</string>
     <string name="video_power_balanced">Сбалансированно</string>

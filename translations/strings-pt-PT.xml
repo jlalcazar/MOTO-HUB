@@ -45,7 +45,7 @@
     <string name="video_quality_sharper">Mais nítido</string>
     <string name="video_quality_sharper_description">Bitrate mais elevado para mapas e texto mais nítidos.</string>
     <string name="video_power_auto">Automático</string>
-    <string name="video_power_auto_description">Adapta o bitrate e a taxa de frames à temperatura do telefone e à qualidade do Wi-Fi.</string>
+    <string name="video_power_auto_description">Adapta o bitrate e a taxa de frames à temperatura do telefone, à poupança de bateria e à qualidade do Wi-Fi.</string>
     <string name="video_power_smooth">Suave</string>
     <string name="video_power_smooth_description">30 FPS com a qualidade de vídeo selecionada.</string>
     <string name="video_power_balanced">Equilibrado</string>

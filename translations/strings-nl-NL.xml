@@ -47,7 +47,7 @@
     <string name="video_quality_sharper">Scherper</string>
     <string name="video_quality_sharper_description">Hogere bitrate voor scherpere kaarten en tekst.</string>
     <string name="video_power_auto">Auto</string>
-    <string name="video_power_auto_description">Bitrate en framerate aanpassen aan telefoontemperatuur en wifikwaliteit.</string>
+    <string name="video_power_auto_description">Bitrate en framerate aanpassen aan telefoontemperatuur, batterijbesparing en wifikwaliteit.</string>
     <string name="video_power_smooth">Vloeiend</string>
     <string name="video_power_smooth_description">30 FPS met de gekozen videokwaliteit.</string>
     <string name="video_power_balanced">Gebalanceerd</string>

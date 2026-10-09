@@ -47,7 +47,7 @@
     <string name="video_quality_sharper">Daha keskin</string>
     <string name="video_quality_sharper_description">Daha net harita ve yazı için daha yüksek bit hızı.</string>
     <string name="video_power_auto">Otomatik</string>
-    <string name="video_power_auto_description">Bit hızını ve kare hızını telefon sıcaklığına ve Wi-Fi kalitesine göre ayarla.</string>
+    <string name="video_power_auto_description">Bit hızını ve kare hızını telefon sıcaklığına, pil tasarrufuna ve Wi-Fi kalitesine göre ayarla.</string>
     <string name="video_power_smooth">Akıcı</string>
     <string name="video_power_smooth_description">Seçilen video kalitesiyle 30 FPS.</string>
     <string name="video_power_balanced">Dengeli</string>

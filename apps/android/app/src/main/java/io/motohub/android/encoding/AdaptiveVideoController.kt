@@ -13,7 +13,10 @@ import kotlin.math.min
  * Adjusts a live encoder to what the phone and the bike link can actually carry.
  *
  * Thermal pressure protects the phone from sustained encoder throttling, and stays a Power mode
- * AUTO courtesy: a rider who picked a fixed mode asked for that frame rate and gets it.
+ * AUTO courtesy: a rider who picked a fixed mode asked for that frame rate and gets it. Android's
+ * Battery Saver is read the same way and under the same rule: with it on, AUTO streams at the
+ * Saver mode's pace, because a rider who told the phone to save power has already answered the
+ * question AUTO exists to ask.
  *
  * Lost frames are the downstream signal, and they are not a preference - a link that is discarding
  * frames wastes the bitrate spent on them and, on a GOP stream, smears the TFT until the next
@@ -41,6 +44,11 @@ object AdaptiveVideoPolicy {
     /** The slowest the link backoff may pace a stream. Below this the TFT reads as a slideshow,
      *  and a link that cannot carry 12fps has a problem no encoder setting is going to solve. */
     const val MIN_FRAME_RATE = 12
+
+    /** What AUTO runs at while Android's Battery Saver is on: the Saver mode's frame rate, and the
+     *  bitrate cut a moderately warm phone already gets. */
+    const val POWER_SAVE_FRAME_RATE = 20
+    const val POWER_SAVE_BITRATE_FACTOR = 0.8f
 
     fun thermalBitrateFactor(status: Int): Float = when {
         status <= PowerManager.THERMAL_STATUS_LIGHT -> 1.0f
@@ -76,23 +84,28 @@ object AdaptiveVideoPolicy {
      * mode AUTO, the mode's rate otherwise.
      * @param thermalStatus always `THERMAL_STATUS_NONE` outside AUTO, so a fixed mode never gets
      * throttled for heat behind the rider's back.
+     * @param powerSave whether Android's Battery Saver is on; always false outside AUTO, for the
+     * same reason.
      */
     fun decide(
         baseBitrate: Int,
         baseFrameRate: Int,
         thermalStatus: Int,
         previousLinkFactor: Float,
-        lostFrames: Int
+        lostFrames: Int,
+        powerSave: Boolean = false
     ): AdaptiveVideoDecision {
         val linkFactor = nextLinkFactor(previousLinkFactor, lostFrames)
-        val factor = min(thermalBitrateFactor(thermalStatus), linkFactor)
+        val powerSaveFactor = if (powerSave) POWER_SAVE_BITRATE_FACTOR else 1.0f
+        val powerSaveFrameRate = if (powerSave) min(baseFrameRate, POWER_SAVE_FRAME_RATE) else baseFrameRate
+        val factor = min(min(thermalBitrateFactor(thermalStatus), linkFactor), powerSaveFactor)
         return AdaptiveVideoDecision(
             bitrate = (baseBitrate * factor).toInt().coerceIn(
                 MIN_BITRATE.coerceAtMost(baseBitrate),
                 baseBitrate
             ),
             frameRate = min(
-                thermalFrameRateCap(thermalStatus, baseFrameRate),
+                min(thermalFrameRateCap(thermalStatus, baseFrameRate), powerSaveFrameRate),
                 linkFrameRateCap(baseFrameRate, linkFactor)
             ),
             linkFactor = linkFactor
@@ -154,6 +167,7 @@ class AdaptiveVideoController(
         } else {
             PowerManager.THERMAL_STATUS_NONE
         }
+        val powerSave = autoMode && runCatching { powerManager?.isPowerSaveMode }.getOrNull() == true
         val totalLost = lostFramesTotal(activeEncoder)
         val lostThisTick = (totalLost - lastLostFrames)
             .coerceAtLeast(0L)
@@ -164,7 +178,8 @@ class AdaptiveVideoController(
             baseFrameRate = ceilingFrameRate,
             thermalStatus = thermalStatus,
             previousLinkFactor = linkFactor,
-            lostFrames = lostThisTick
+            lostFrames = lostThisTick,
+            powerSave = powerSave
         )
         linkFactor = decision.linkFactor
         if (decision.bitrate != appliedBitrate) {
@@ -172,6 +187,7 @@ class AdaptiveVideoController(
             appliedBitrate = decision.bitrate
             log(
                 "[adaptive] ${mode.label} thermal=${thermalLabel(thermalStatus)} " +
+                    "batterySaver=${if (powerSave) "on" else "off"} " +
                     "lost/tick=$lostThisTick link=${(linkFactor * 100).toInt()}% " +
                     "bitrate=${decision.bitrate / 1000}kbps"
             )
@@ -181,6 +197,7 @@ class AdaptiveVideoController(
             appliedFrameRate = decision.frameRate
             log(
                 "[adaptive] ${mode.label} thermal=${thermalLabel(thermalStatus)} " +
+                    "batterySaver=${if (powerSave) "on" else "off"} " +
                     "link=${(linkFactor * 100).toInt()}% fps=${decision.frameRate}"
             )
         }

@@ -123,6 +123,8 @@ standalone app. CORE has no GPS features and requests no location updates.
 - Enable or disable handlebar control capture, per motorcycle.
 - Preserve normal media controls when handlebar capture is disabled.
 - Reset handlebar mappings to their defaults.
+- Offer only actions this app can run: the Ride Dashboard actions a companion app may have mapped
+  are shown but cannot be picked here.
 
 ## Video Quality
 
@@ -132,6 +134,8 @@ standalone app. CORE has no GPS features and requests no location updates.
 - Select `Sharper` for clearer maps and text at a higher bitrate.
 - Select a power mode: `Smooth` (30 FPS), `Balanced` (24 FPS), `Saver` (20 FPS), or `Auto`, which
   adapts bitrate and frame rate to phone temperature and Wi-Fi quality.
+- In `Auto`, follow Android's Battery Saver: while it is on, stream at the `Saver` pace (20 FPS) with
+  a reduced bitrate.
 
 ## Reliability And Recovery
 

@@ -47,7 +47,7 @@
     <string name="video_quality_sharper">Sharper</string>
     <string name="video_quality_sharper_description">Higher bitrate for crisper maps and text.</string>
     <string name="video_power_auto">Auto</string>
-    <string name="video_power_auto_description">Adapt bitrate and frame rate to phone temperature and Wi-Fi quality.</string>
+    <string name="video_power_auto_description">Adapt bitrate and frame rate to phone temperature, Battery Saver and Wi-Fi quality.</string>
     <string name="video_power_smooth">Smooth</string>
     <string name="video_power_smooth_description">30 FPS with the selected video quality.</string>
     <string name="video_power_balanced">Balanced</string>

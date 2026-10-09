@@ -47,7 +47,7 @@
     <string name="video_quality_sharper">더 선명하게</string>
     <string name="video_quality_sharper_description">더 선명한 지도와 텍스트를 위한 더 높은 비트 전송률.</string>
     <string name="video_power_auto">자동</string>
-    <string name="video_power_auto_description">휴대전화 온도와 Wi-Fi 품질에 맞게 비트 전송률과 프레임 속도를 조정하세요.</string>
+    <string name="video_power_auto_description">휴대전화 온도, 절전 모드, Wi-Fi 품질에 맞게 비트 전송률과 프레임 속도를 조정하세요.</string>
     <string name="video_power_smooth">부드럽게</string>
     <string name="video_power_smooth_description">선택한 비디오 품질의 경우 30FPS입니다.</string>
     <string name="video_power_balanced">균형 잡힌</string>

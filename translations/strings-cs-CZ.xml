@@ -47,7 +47,7 @@
     <string name="video_quality_sharper">Ostřejší</string>
     <string name="video_quality_sharper_description">Vyšší datový tok pro čistší mapy a text.</string>
     <string name="video_power_auto">Automaticky</string>
-    <string name="video_power_auto_description">Přizpůsobit datový tok a snímkovou frekvenci teplotě telefonu a kvalitě Wi-Fi.</string>
+    <string name="video_power_auto_description">Přizpůsobit datový tok a snímkovou frekvenci teplotě telefonu, spořiči baterie a kvalitě Wi-Fi.</string>
     <string name="video_power_smooth">Plynulý</string>
     <string name="video_power_smooth_description">30 FPS s vybranou kvalitou videa.</string>
     <string name="video_power_balanced">Vyvážený</string>
