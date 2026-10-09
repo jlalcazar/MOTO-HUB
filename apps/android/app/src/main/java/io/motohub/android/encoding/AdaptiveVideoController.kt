@@ -4,6 +4,7 @@
 package io.motohub.android.encoding
 
 import android.content.Context
+import android.os.BatteryManager
 import android.os.PowerManager
 import io.motohub.android.feature.settings.MotoHubSettings
 import io.motohub.android.feature.settings.VideoPowerMode
@@ -16,7 +17,9 @@ import kotlin.math.min
  * AUTO courtesy: a rider who picked a fixed mode asked for that frame rate and gets it. Android's
  * Battery Saver is read the same way and under the same rule: with it on, AUTO streams at the
  * Saver mode's pace, because a rider who told the phone to save power has already answered the
- * question AUTO exists to ask.
+ * question AUTO exists to ask. A battery that is nearly empty and not being charged is treated the
+ * same way without being asked: at that point the stream surviving the ride matters more than how
+ * smooth it looks.
  *
  * Lost frames are the downstream signal, and they are not a preference - a link that is discarding
  * frames wastes the bitrate spent on them and, on a GOP stream, smears the TFT until the next
@@ -49,6 +52,19 @@ object AdaptiveVideoPolicy {
      *  bitrate cut a moderately warm phone already gets. */
     const val POWER_SAVE_FRAME_RATE = 20
     const val POWER_SAVE_BITRATE_FACTOR = 0.8f
+
+    /** At or below this charge, and only while discharging, AUTO saves power by itself. */
+    const val LOW_BATTERY_PERCENT = 20
+
+    /**
+     * Whether the battery alone is reason to save power.
+     *
+     * [percent] is null when the phone does not report a level, and that is never "low": a phone
+     * that cannot answer must not be throttled on a guess. A charging phone is not low either,
+     * whatever the level - on a motorcycle's USB socket the charge is going up, not down.
+     */
+    fun isLowBattery(percent: Int?, charging: Boolean): Boolean =
+        percent != null && percent in 1..LOW_BATTERY_PERCENT && !charging
 
     fun thermalBitrateFactor(status: Int): Float = when {
         status <= PowerManager.THERMAL_STATUS_LIGHT -> 1.0f
@@ -123,6 +139,7 @@ class AdaptiveVideoController(
     private val componentContext = context
     private val appContext by lazy { componentContext.applicationContext ?: componentContext }
     private val powerManager by lazy { appContext.getSystemService(PowerManager::class.java) }
+    private val batteryManager by lazy { appContext.getSystemService(BatteryManager::class.java) }
     private var linkFactor = AdaptiveVideoPolicy.LINK_MAX
     private var lastLostFrames = 0L
     private var appliedBitrate = -1
@@ -167,7 +184,14 @@ class AdaptiveVideoController(
         } else {
             PowerManager.THERMAL_STATUS_NONE
         }
-        val powerSave = autoMode && runCatching { powerManager?.isPowerSaveMode }.getOrNull() == true
+        val batterySaver = autoMode && runCatching { powerManager?.isPowerSaveMode }.getOrNull() == true
+        val lowBattery = autoMode && AdaptiveVideoPolicy.isLowBattery(
+            percent = runCatching {
+                batteryManager?.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+            }.getOrNull()?.takeIf { it in 0..100 },
+            charging = runCatching { batteryManager?.isCharging }.getOrNull() == true
+        )
+        val powerSave = batterySaver || lowBattery
         val totalLost = lostFramesTotal(activeEncoder)
         val lostThisTick = (totalLost - lastLostFrames)
             .coerceAtLeast(0L)
@@ -187,7 +211,8 @@ class AdaptiveVideoController(
             appliedBitrate = decision.bitrate
             log(
                 "[adaptive] ${mode.label} thermal=${thermalLabel(thermalStatus)} " +
-                    "batterySaver=${if (powerSave) "on" else "off"} " +
+                    "batterySaver=${if (batterySaver) "on" else "off"} " +
+                    "lowBattery=${if (lowBattery) "yes" else "no"} " +
                     "lost/tick=$lostThisTick link=${(linkFactor * 100).toInt()}% " +
                     "bitrate=${decision.bitrate / 1000}kbps"
             )
@@ -197,7 +222,8 @@ class AdaptiveVideoController(
             appliedFrameRate = decision.frameRate
             log(
                 "[adaptive] ${mode.label} thermal=${thermalLabel(thermalStatus)} " +
-                    "batterySaver=${if (powerSave) "on" else "off"} " +
+                    "batterySaver=${if (batterySaver) "on" else "off"} " +
+                    "lowBattery=${if (lowBattery) "yes" else "no"} " +
                     "link=${(linkFactor * 100).toInt()}% fps=${decision.frameRate}"
             )
         }

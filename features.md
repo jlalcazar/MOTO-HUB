@@ -136,6 +136,7 @@ standalone app. CORE has no GPS features and requests no location updates.
   adapts bitrate and frame rate to phone temperature and Wi-Fi quality.
 - In `Auto`, follow Android's Battery Saver: while it is on, stream at the `Saver` pace (20 FPS) with
   a reduced bitrate.
+- In `Auto`, do the same by itself when the battery is at 20% or less and not charging.
 
 ## Reliability And Recovery
 

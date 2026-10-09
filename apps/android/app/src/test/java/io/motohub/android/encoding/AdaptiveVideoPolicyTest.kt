@@ -5,6 +5,7 @@ package io.motohub.android.encoding
 
 import android.os.PowerManager
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -97,5 +98,21 @@ class AdaptiveVideoPolicyTest {
         assertEquals(15, decision.frameRate)
         // Severe heat already asks for a deeper cut than Battery Saver does; the deeper one wins.
         assertEquals(2_400_000, decision.bitrate)
+    }
+
+    @Test
+    fun `a nearly empty battery saves power only while it is discharging`() {
+        assertTrue(AdaptiveVideoPolicy.isLowBattery(percent = 20, charging = false))
+        assertTrue(AdaptiveVideoPolicy.isLowBattery(percent = 5, charging = false))
+        assertFalse(AdaptiveVideoPolicy.isLowBattery(percent = 21, charging = false))
+        // On the bike's USB socket the level is on its way up.
+        assertFalse(AdaptiveVideoPolicy.isLowBattery(percent = 5, charging = true))
+    }
+
+    @Test
+    fun `a phone that reports no battery level is never treated as low`() {
+        assertFalse(AdaptiveVideoPolicy.isLowBattery(percent = null, charging = false))
+        // Some devices answer 0 for "unknown"; a phone at a true 0 would not be running this.
+        assertFalse(AdaptiveVideoPolicy.isLowBattery(percent = 0, charging = false))
     }
 }
