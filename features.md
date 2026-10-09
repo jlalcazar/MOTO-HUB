@@ -161,6 +161,9 @@ standalone app. CORE has no GPS features and requests no location updates.
 - Record important connection, projection, control, settings, and UI operations.
 - Copy logs to the clipboard, share them, or clear them.
 - Share logs as a generated diagnostic text file instead of only copying text.
+- Save a debug file to `Download/MotoVisor` on the phone, with the log and the settings in force.
+- Keep an always-current debug file in the app's external files directory, rewritten when a session
+  ends or the app leaves the foreground, for retrieval over USB.
 - Redact IP and MAC addresses in exported logs.
 - Include the app version, build number, phone model, and Android version in exported diagnostics.
 - Turn all logging off with a master switch.

@@ -1610,6 +1610,10 @@
     <string name="legacy_follow_development_join_our_community_report_iss_b8b8fffa">Volg de ontwikkeling, sluit je aan bij onze community, meld problemen en download releases.</string>
     <string name="legacy_moto_hub_is_an_independent_project_it_is_not_aff_9e4c2633">MOTO-HUB is een onafhankelijk project. Het is niet verbonden aan, goedgekeurd door of gesponsord door Carbit, CFMOTO, enige andere fabrikant wiens display EasyConn gebruikt, Google of Android Auto. Alle productnamen en merken behoren toe aan hun respectieve eigenaren.</string>
     <string name="legacy_motovisor_is_a_modified_version_of_moto_hub_core_95293cd0">MotoVisor is een aangepaste versie van MOTO-HUB CORE, onderhouden op github.com/jlalcazar/MOTO-HUB. Het is niet de originele app en de oorspronkelijke auteur ondersteunt deze niet. De Android Auto-functie heeft geen ondersteuning, goedkeuring of garantie van Google.</string>
+    <string name="legacy_save_debug_file_dc10b98c">Debugbestand opslaan</string>
+    <string name="legacy_writes_the_full_log_to_download_motovisor_on_thi_3f27f">Schrijft het volledige logboek naar Download/MotoVisor op deze telefoon</string>
+    <string name="legacy_debug_file_saved_to_download_motovisor_fc07434">Debugbestand opgeslagen in Download/MotoVisor</string>
+    <string name="legacy_unable_to_save_the_debug_file_2de7a543">Kan het debugbestand niet opslaan</string>
     <string name="legacy_keep_the_screen_on_766cb7e9">Scherm aan houden</string>
     <string name="legacy_hold_the_phone_screen_awake_while_this_app_is_in_358a4269">Houdt het telefoonscherm aan zolang deze app op de voorgrond staat. Verbruikt meer batterij.</string>
     <string name="legacy_distance_units_3cd36364">AFSTANDSEENHEDEN</string>

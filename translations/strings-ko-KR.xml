@@ -1604,6 +1604,10 @@
     <string name="legacy_follow_development_join_our_community_report_iss_b8b8fffa">개발 상황을 확인하고, 커뮤니티에 참여하고, 문제를 보고하고, 릴리스를 내려받으세요.</string>
     <string name="legacy_moto_hub_is_an_independent_project_it_is_not_aff_9e4c2633">MOTO-HUB는 독립적인 프로젝트입니다. Carbit, CFMOTO, EasyConn을 사용하는 다른 제조사, Google 또는 Android Auto와 제휴하거나 이들의 승인 또는 후원을 받지 않았습니다. 모든 제품명과 상표는 각 소유자에게 귀속됩니다.</string>
     <string name="legacy_motovisor_is_a_modified_version_of_moto_hub_core_95293cd0">MotoVisor는 MOTO-HUB CORE의 수정 버전이며 github.com/jlalcazar/MOTO-HUB에서 관리됩니다. 원본 앱이 아니며 원 저작자는 이 앱을 지원하지 않습니다. Android Auto 기능에는 Google의 지원, 승인 또는 보증이 없습니다.</string>
+    <string name="legacy_save_debug_file_dc10b98c">디버그 파일 저장</string>
+    <string name="legacy_writes_the_full_log_to_download_motovisor_on_thi_3f27f">전체 로그를 이 휴대전화의 Download/MotoVisor에 기록합니다</string>
+    <string name="legacy_debug_file_saved_to_download_motovisor_fc07434">디버그 파일이 Download/MotoVisor에 저장되었습니다</string>
+    <string name="legacy_unable_to_save_the_debug_file_2de7a543">디버그 파일을 저장할 수 없습니다</string>
     <string name="legacy_keep_the_screen_on_766cb7e9">화면 켜진 상태 유지</string>
     <string name="legacy_hold_the_phone_screen_awake_while_this_app_is_in_358a4269">이 앱이 전면에 있는 동안 휴대전화 화면을 켜 둡니다. 배터리를 더 많이 사용합니다.</string>
     <string name="legacy_distance_units_3cd36364">거리 단위</string>

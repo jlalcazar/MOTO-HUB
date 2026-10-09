@@ -68,6 +68,12 @@ import io.motohub.android.ui.components.MotoHubRadioRow
 import io.motohub.android.feature.controls.HandlebarPressHud
 import io.motohub.android.ui.components.ToggleRow
 import io.motohub.android.session.applyKeepScreenOn
+import android.widget.Toast
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import io.motohub.android.session.DebugDump
 import io.motohub.android.session.findActivity
 
 private enum class SettingsDetail {
@@ -636,6 +642,7 @@ private fun DiagnosticsDetail(
     var loggingEnabled by remember { mutableStateOf(MotoHubSettings.loggingEnabled(context)) }
     var verboseLogging by remember { mutableStateOf(MotoHubSettings.verboseTBoxLogging(context)) }
     var pressBanner by remember { mutableStateOf(HandlebarPressHud.isEnabled(context)) }
+    val scope = rememberCoroutineScope()
 
     MotoHubDetailScreen(title = motoHubText("Diagnostics"), backLabel = motoHubText("‹ Settings"), onBack = onBack) {
         SupportIdSection(loggingEnabled = loggingEnabled)
@@ -659,6 +666,21 @@ private fun DiagnosticsDetail(
                 title = motoHubText("Application logs"),
                 description = motoHubText("Review, copy, share, or clear events"),
                 onClick = onOpenApplicationLogs
+            )
+            MotoHubActionRow(
+                title = motoHubText("Save debug file"),
+                description = motoHubText("Writes the full log to Download/MotoVisor on this phone"),
+                onClick = {
+                    val appContext = context.applicationContext
+                    val saved = motoHubText("Debug file saved to Download/MotoVisor")
+                    val failed = motoHubText("Unable to save the debug file")
+                    scope.launch {
+                        val result = withContext(Dispatchers.IO) { DebugDump.saveToDownloads(appContext) }
+                        result.onSuccess { path -> ProjectionEventLog.record("LOG", "Debug file saved: $path") }
+                            .onFailure { ProjectionEventLog.error("LOG", "Debug file could not be saved.", it) }
+                        Toast.makeText(appContext, if (result.isSuccess) saved else failed, Toast.LENGTH_LONG).show()
+                    }
+                }
             )
         }
         ToggleRow(

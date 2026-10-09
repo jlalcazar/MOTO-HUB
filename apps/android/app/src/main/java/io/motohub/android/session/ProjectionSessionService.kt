@@ -174,6 +174,7 @@ class ProjectionSessionService : Service() {
 
     override fun onDestroy() {
         ProjectionEventLog.record("SERVICE", "Projection foreground service onDestroy called.")
+        io.motohub.android.session.DebugDump.writeLatest(this)
         stopSession(stopProjection = true, reason = "Projection service stopped by Android.")
         // Cancel only after any T-Box teardown stopSession() just launched has finished -
         // cancelling serviceScope immediately would abort transport.stop()/disconnect() mid-flight.

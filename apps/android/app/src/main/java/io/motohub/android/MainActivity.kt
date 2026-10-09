@@ -2119,6 +2119,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onStop() {
         ProjectionEventLog.debug("UI", "Main activity stopped.")
+        io.motohub.android.session.DebugDump.writeLatest(this)
         super.onStop()
     }
 

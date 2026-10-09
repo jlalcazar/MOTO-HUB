@@ -1033,6 +1033,10 @@
     <string name="legacy_follow_development_join_our_community_report_iss_b8b8fffa">Segui lo sviluppo, entra nella community, segnala problemi e scarica le release.</string>
     <string name="legacy_moto_hub_is_an_independent_project_it_is_not_aff_9e4c2633">MOTO-HUB è un progetto indipendente. Non è affiliato, approvato né sponsorizzato da Carbit, CFMOTO, da altri costruttori il cui cruscotto usa EasyConn, da Google o da Android Auto. Tutti i nomi di prodotto e i marchi appartengono ai rispettivi proprietari.</string>
     <string name="legacy_motovisor_is_a_modified_version_of_moto_hub_core_95293cd0">MotoVisor è una versione modificata di MOTO-HUB CORE, mantenuta su github.com/jlalcazar/MOTO-HUB. Non è l\'app originale e il suo autore originale non la supporta. La funzione Android Auto non ha supporto, approvazione né garanzia da parte di Google.</string>
+    <string name="legacy_save_debug_file_dc10b98c">Salva file di debug</string>
+    <string name="legacy_writes_the_full_log_to_download_motovisor_on_thi_3f27f">Scrive il registro completo in Download/MotoVisor su questo telefono</string>
+    <string name="legacy_debug_file_saved_to_download_motovisor_fc07434">File di debug salvato in Download/MotoVisor</string>
+    <string name="legacy_unable_to_save_the_debug_file_2de7a543">Impossibile salvare il file di debug</string>
     <string name="legacy_keep_the_screen_on_766cb7e9">Mantieni lo schermo acceso</string>
     <string name="legacy_hold_the_phone_screen_awake_while_this_app_is_in_358a4269">Mantiene acceso lo schermo del telefono mentre questa app è in primo piano. Consuma più batteria.</string>
     <string name="legacy_distance_units_3cd36364">UNITÀ DI DISTANZA</string>

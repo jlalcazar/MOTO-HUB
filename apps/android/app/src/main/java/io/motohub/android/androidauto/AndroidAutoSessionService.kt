@@ -1532,6 +1532,7 @@ class AndroidAutoSessionService : Service(), AndroidAutoPreviewController {
 
     override fun onDestroy() {
         ProjectionEventLog.record("ANDROID AUTO", "Android Auto foreground service onDestroy called.")
+        io.motohub.android.session.DebugDump.writeLatest(this)
         // Whoever asked for this stop left its reason behind; only a destroy nobody in the app
         // asked for still reads as Android's doing.
         stopSession(AndroidAutoStopReason.take() ?: AndroidAutoStopReason.STOPPED_BY_ANDROID)

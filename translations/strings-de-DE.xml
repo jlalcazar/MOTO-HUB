@@ -1610,6 +1610,10 @@
     <string name="legacy_follow_development_join_our_community_report_iss_b8b8fffa">Verfolge die Entwicklung, tritt unserer Community bei, melde Probleme und lade Releases herunter.</string>
     <string name="legacy_moto_hub_is_an_independent_project_it_is_not_aff_9e4c2633">MOTO-HUB ist ein unabhängiges Projekt. Es steht in keiner Verbindung zu Carbit, CFMOTO, einem anderen Hersteller, dessen Display EasyConn nutzt, Google oder Android Auto, und wird von ihnen weder unterstützt noch gesponsert. Alle Produktnamen und Marken gehören ihren jeweiligen Eigentümern.</string>
     <string name="legacy_motovisor_is_a_modified_version_of_moto_hub_core_95293cd0">MotoVisor ist eine modifizierte Version von MOTO-HUB CORE, gepflegt unter github.com/jlalcazar/MOTO-HUB. Es ist nicht die Original-App und wird vom ursprünglichen Autor nicht unterstützt. Die Android-Auto-Funktion hat weder Support noch Freigabe oder Garantie von Google.</string>
+    <string name="legacy_save_debug_file_dc10b98c">Debug-Datei speichern</string>
+    <string name="legacy_writes_the_full_log_to_download_motovisor_on_thi_3f27f">Schreibt das vollständige Protokoll nach Download/MotoVisor auf diesem Telefon</string>
+    <string name="legacy_debug_file_saved_to_download_motovisor_fc07434">Debug-Datei in Download/MotoVisor gespeichert</string>
+    <string name="legacy_unable_to_save_the_debug_file_2de7a543">Debug-Datei konnte nicht gespeichert werden</string>
     <string name="legacy_keep_the_screen_on_766cb7e9">Bildschirm eingeschaltet lassen</string>
     <string name="legacy_hold_the_phone_screen_awake_while_this_app_is_in_358a4269">Hält den Telefonbildschirm an, solange diese App im Vordergrund ist. Verbraucht mehr Akku.</string>
     <string name="legacy_distance_units_3cd36364">ENTFERNUNGSEINHEITEN</string>
