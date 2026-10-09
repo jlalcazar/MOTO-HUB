@@ -286,6 +286,7 @@ object MotoHubSettings {
     private const val KEY_SAFETY_DISCLAIMER_ACKNOWLEDGED = "safety_disclaimer_acknowledged"
     private const val KEY_VERBOSE_TBOX_LOGGING = "verbose_tbox_logging"
     private const val KEY_LOGGING_ENABLED = "logging_enabled"
+    private const val KEY_AUTO_DEBUG_FILES = "auto_debug_files"
 
     fun distanceUnits(context: Context): DistanceUnits = enumPreference(
         context = context,
@@ -486,6 +487,18 @@ object MotoHubSettings {
 
     fun setLoggingEnabled(context: Context, enabled: Boolean) {
         preferences(context).edit().putBoolean(KEY_LOGGING_ENABLED, enabled).apply()
+    }
+
+    /**
+     * Copy the diagnostic log to Download/MotoVisor by itself; see
+     * [io.motohub.android.session.DebugDump]. On by default: the file that matters is the one from
+     * the session nobody expected to go wrong. Has no effect while logging is off.
+     */
+    fun autoDebugFiles(context: Context): Boolean =
+        preferences(context).getBoolean(KEY_AUTO_DEBUG_FILES, true)
+
+    fun setAutoDebugFiles(context: Context, enabled: Boolean) {
+        preferences(context).edit().putBoolean(KEY_AUTO_DEBUG_FILES, enabled).apply()
     }
 
     /** The GitHub release tag the rider chose to skip, or null if none/cleared. */

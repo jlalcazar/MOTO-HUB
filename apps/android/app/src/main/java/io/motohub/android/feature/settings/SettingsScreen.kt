@@ -642,6 +642,7 @@ private fun DiagnosticsDetail(
     var loggingEnabled by remember { mutableStateOf(MotoHubSettings.loggingEnabled(context)) }
     var verboseLogging by remember { mutableStateOf(MotoHubSettings.verboseTBoxLogging(context)) }
     var pressBanner by remember { mutableStateOf(HandlebarPressHud.isEnabled(context)) }
+    var autoDebugFiles by remember { mutableStateOf(MotoHubSettings.autoDebugFiles(context)) }
     val scope = rememberCoroutineScope()
 
     MotoHubDetailScreen(title = motoHubText("Diagnostics"), backLabel = motoHubText("‹ Settings"), onBack = onBack) {
@@ -702,6 +703,20 @@ private fun DiagnosticsDetail(
                     MotoHubSettings.setLoggingEnabled(context, false)
                     loggingEnabled = false
                 }
+            }
+        )
+        ToggleRow(
+            title = motoHubText("Save debug files automatically"),
+            description = motoHubText(
+                "Copies the log to Download/MotoVisor when a session ends or the app is left. " +
+                    "Keeps the latest and the last 10 sessions."
+            ),
+            checked = autoDebugFiles,
+            enabled = loggingEnabled,
+            onCheckedChange = {
+                autoDebugFiles = it
+                MotoHubSettings.setAutoDebugFiles(context, it)
+                ProjectionEventLog.record("SETTINGS", "Automatic debug files changed to enabled=$it.")
             }
         )
         ToggleRow(

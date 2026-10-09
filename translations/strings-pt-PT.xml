@@ -1033,6 +1033,8 @@
     <string name="legacy_follow_development_join_our_community_report_iss_b8b8fffa">Acompanhe o desenvolvimento, junte-se à comunidade, comunique problemas e transfira as versões.</string>
     <string name="legacy_moto_hub_is_an_independent_project_it_is_not_aff_9e4c2633">O MOTO-HUB é um projeto independente. Não é afiliado, aprovado nem patrocinado pela Carbit, pela CFMOTO, por qualquer outro fabricante cujo painel use EasyConn, pela Google ou pelo Android Auto. Todos os nomes de produtos e marcas pertencem aos respetivos proprietários.</string>
     <string name="legacy_motovisor_is_a_modified_version_of_moto_hub_core_95293cd0">MotoVisor é uma versão modificada do MOTO-HUB CORE, mantida em github.com/jlalcazar/MOTO-HUB. Não é a aplicação original e o seu autor original não lhe dá suporte. A função Android Auto não tem suporte, aprovação nem garantia da Google.</string>
+    <string name="legacy_save_debug_files_automatically_563a4baa">Guardar ficheiros de depuração automaticamente</string>
+    <string name="legacy_copies_the_log_to_download_motovisor_when_a_sess_96da979b">Copia o registo para Download/MotoVisor quando uma sessão termina ou se sai da aplicação. Mantém o mais recente e as últimas 10 sessões.</string>
     <string name="legacy_save_debug_file_dc10b98c">Guardar ficheiro de depuração</string>
     <string name="legacy_writes_the_full_log_to_download_motovisor_on_thi_3f27f">Escreve o registo completo em Download/MotoVisor neste telefone</string>
     <string name="legacy_debug_file_saved_to_download_motovisor_fc07434">Ficheiro de depuração guardado em Download/MotoVisor</string>

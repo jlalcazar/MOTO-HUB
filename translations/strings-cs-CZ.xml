@@ -1610,6 +1610,8 @@
     <string name="legacy_follow_development_join_our_community_report_iss_b8b8fffa">Sledujte vývoj, připojte se k naší komunitě, hlašte chyby a stahujte nová vydání.</string>
     <string name="legacy_moto_hub_is_an_independent_project_it_is_not_aff_9e4c2633">MOTO-HUB je nezávislý projekt. Není propojen, schválen ani sponzorován společností Carbit, CFMOTO, žádným jiným výrobcem, jehož přístrojová deska používá EasyConn, společností Google ani Android Auto. Všechny názvy produktů a ochranné známky patří jejich příslušným vlastníkům.</string>
     <string name="legacy_motovisor_is_a_modified_version_of_moto_hub_core_95293cd0">MotoVisor je upravená verze aplikace MOTO-HUB CORE, spravovaná na github.com/jlalcazar/MOTO-HUB. Nejde o původní aplikaci a její původní autor ji nepodporuje. Funkce Android Auto nemá žádnou podporu, schválení ani záruku od společnosti Google.</string>
+    <string name="legacy_save_debug_files_automatically_563a4baa">Ukládat ladicí soubory automaticky</string>
+    <string name="legacy_copies_the_log_to_download_motovisor_when_a_sess_96da979b">Kopíruje protokol do Download/MotoVisor po skončení relace nebo opuštění aplikace. Uchovává nejnovější soubor a posledních 10 relací.</string>
     <string name="legacy_save_debug_file_dc10b98c">Uložit ladicí soubor</string>
     <string name="legacy_writes_the_full_log_to_download_motovisor_on_thi_3f27f">Zapíše celý protokol do složky Download/MotoVisor v tomto telefonu</string>
     <string name="legacy_debug_file_saved_to_download_motovisor_fc07434">Ladicí soubor uložen do Download/MotoVisor</string>

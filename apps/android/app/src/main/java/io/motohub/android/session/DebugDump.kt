@@ -4,7 +4,9 @@
 package io.motohub.android.session
 
 import android.content.ContentValues
+import android.content.ContentUris
 import android.content.Context
+import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
 import io.motohub.android.feature.settings.MotoHubSettings
@@ -20,21 +22,29 @@ import java.util.concurrent.Executors
  * The log already lives in the app's private storage and can be shared from the log screen, but
  * both need a working app and a rider with a free hand. A session that went wrong on the road is
  * reviewed later, at a desk, often after the app has been reinstalled. So the same text is also
- * written to two places a cable or a file manager reaches:
+ * written, by itself, to `Download/MotoVisor` - a folder the phone's own Files app shows and a USB
+ * cable reaches:
  *
- * - [writeLatest] keeps one file, always the newest, in the app's external files directory. It is
- *   rewritten whenever a session ends or the app leaves the foreground, so it is there even when
- *   nobody asked for it. Read it with
- *   `adb pull /sdcard/Android/data/<application id>/files/debug/MotoVisor-debug-latest.txt`.
- * - [saveToDownloads] writes a timestamped copy to `Download/MotoVisor`, which the phone's own
- *   Files app shows, on request from Settings > Diagnostics.
+ * - `MotoVisor-debug-latest.txt` is rewritten whenever a session ends or the app leaves the
+ *   foreground ([writeLatest]). It is always the newest state of the log.
+ * - `MotoVisor-debug-<date>-<time>.txt` is added when a session ends ([onSessionEnded]), because
+ *   the log is a ring and a later session pushes an earlier one out of it. Only the newest
+ *   [KEPT_SESSION_FILES] are kept.
+ *
+ * The latest file is also kept in the app's external files directory, which survives a full
+ * Download folder and needs no MediaStore:
+ * `adb pull /sdcard/Android/data/<application id>/files/debug/MotoVisor-debug-latest.txt`.
  *
  * The text is [ProjectionEventLog.exportText], so it is redacted exactly as a shared log is, with
- * the settings that shape a stream added on top. Nothing is written while logging is switched off.
+ * the settings that shape a stream added on top. Nothing is written while logging is switched
+ * off, and the automatic copies stop when "Save debug files automatically" is turned off.
  */
 object DebugDump {
     const val DOWNLOADS_FOLDER = "MotoVisor"
+    const val KEPT_SESSION_FILES = 10
     private const val LATEST_FILE_NAME = "MotoVisor-debug-latest.txt"
+    private const val SESSION_FILE_PREFIX = "MotoVisor-debug-2"
+    private val relativePath = "${Environment.DIRECTORY_DOWNLOADS}/$DOWNLOADS_FOLDER"
     private val writer = Executors.newSingleThreadExecutor { runnable ->
         Thread(runnable, "MotoHubDebugDump").apply { isDaemon = true }
     }
@@ -48,6 +58,13 @@ object DebugDump {
         settings.forEach { (name, value) -> appendLine("  $name: $value") }
         appendLine("----------------------------------------")
     }
+
+    /**
+     * Which session files to delete so that only the newest [keep] remain. The names sort by time
+     * because the timestamp in them is written most-significant first. Pure, for a test.
+     */
+    internal fun <T> surplus(files: List<Pair<String, T>>, keep: Int = KEPT_SESSION_FILES): List<T> =
+        files.sortedByDescending { it.first }.drop(keep).map { it.second }
 
     fun text(context: Context): String {
         val appContext = context.applicationContext
@@ -71,26 +88,47 @@ object DebugDump {
      * callback: a failure is logged and otherwise ignored, because a debug aid must never be the
      * reason a session teardown goes wrong.
      */
-    fun writeLatest(context: Context) {
+    fun writeLatest(context: Context) = automatic(context, sessionEnded = false)
+
+    /** [writeLatest], plus a timestamped copy of the session that just ended. */
+    fun onSessionEnded(context: Context) = automatic(context, sessionEnded = true)
+
+    private fun automatic(context: Context, sessionEnded: Boolean) {
         val appContext = context.applicationContext
         if (!MotoHubSettings.loggingEnabled(appContext)) return
+        if (!MotoHubSettings.autoDebugFiles(appContext)) return
         writer.execute {
-            runCatching {
-                val directory = File(appContext.getExternalFilesDir(null) ?: return@execute, "debug")
-                directory.mkdirs()
-                // Written beside the target and renamed over it, so a pull that lands mid-write
-                // gets the previous complete file rather than half of the new one.
-                val pending = File(directory, "$LATEST_FILE_NAME.tmp")
-                pending.writeText(text(appContext), Charsets.UTF_8)
-                if (!pending.renameTo(File(directory, LATEST_FILE_NAME))) pending.delete()
-            }.onFailure { failure ->
-                ProjectionEventLog.debug("LOG", "Debug file not written: ${failure.message}")
+            val text = runCatching { text(appContext) }.getOrElse { return@execute }
+            report("app storage") { writeToAppStorage(appContext, text) }
+            report("Download/$DOWNLOADS_FOLDER") { writeToDownloads(appContext, LATEST_FILE_NAME, text) }
+            if (sessionEnded) {
+                report("Download/$DOWNLOADS_FOLDER") {
+                    writeToDownloads(appContext, fileName(System.currentTimeMillis()), text)
+                    pruneSessionFiles(appContext)
+                }
             }
         }
     }
 
+    private inline fun report(where: String, write: () -> Unit) {
+        runCatching(write).onFailure { failure ->
+            ProjectionEventLog.debug("LOG", "Debug file not written to $where: ${failure.message}")
+        }
+    }
+
+    private fun writeToAppStorage(context: Context, text: String) {
+        val directory = File(context.getExternalFilesDir(null) ?: return, "debug")
+        directory.mkdirs()
+        // Written beside the target and renamed over it, so a pull that lands mid-write gets the
+        // previous complete file rather than half of the new one.
+        val pending = File(directory, "$LATEST_FILE_NAME.tmp")
+        pending.writeText(text, Charsets.UTF_8)
+        if (!pending.renameTo(File(directory, LATEST_FILE_NAME))) pending.delete()
+    }
+
     /**
-     * Saves a timestamped copy under `Download/MotoVisor`. Blocking; call it off the main thread.
+     * Saves a timestamped copy under `Download/MotoVisor` on request. Blocking; call it off the
+     * main thread.
      *
      * @return the path as the rider will see it, relative to the phone's shared storage.
      */
@@ -98,25 +136,67 @@ object DebugDump {
         runCatching {
             val appContext = context.applicationContext
             val name = fileName(nowMillis)
-            val relativePath = "${Environment.DIRECTORY_DOWNLOADS}/$DOWNLOADS_FOLDER"
-            val resolver = appContext.contentResolver
-            val values = ContentValues().apply {
-                put(MediaStore.Downloads.DISPLAY_NAME, name)
-                put(MediaStore.Downloads.MIME_TYPE, "text/plain")
-                put(MediaStore.Downloads.RELATIVE_PATH, relativePath)
-                put(MediaStore.Downloads.IS_PENDING, 1)
-            }
-            val uri = checkNotNull(resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)) {
-                "Android did not create the file."
-            }
-            try {
-                checkNotNull(resolver.openOutputStream(uri)) { "Android did not open the file." }
-                    .use { it.write(text(appContext).toByteArray(Charsets.UTF_8)) }
-                resolver.update(uri, ContentValues().apply { put(MediaStore.Downloads.IS_PENDING, 0) }, null, null)
-            } catch (failure: Throwable) {
-                runCatching { resolver.delete(uri, null, null) }
-                throw failure
-            }
+            writeToDownloads(appContext, name, text(appContext))
             "$relativePath/$name"
         }
+
+    /**
+     * Writes [name] in the Downloads folder, replacing this app's earlier file of that name.
+     *
+     * Only files this install created are visible to it without a storage permission, which is
+     * all that is needed: after a reinstall the old "latest" is somebody else's file, Android
+     * names the new one "... (1)", and nothing is lost.
+     */
+    private fun writeToDownloads(context: Context, name: String, text: String) {
+        val resolver = context.contentResolver
+        val existing = ownedFiles(context, "${MediaStore.Downloads.DISPLAY_NAME} = ?", arrayOf(name))
+            .firstOrNull()?.second
+        val uri = existing ?: checkNotNull(
+            resolver.insert(
+                MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                ContentValues().apply {
+                    put(MediaStore.Downloads.DISPLAY_NAME, name)
+                    put(MediaStore.Downloads.MIME_TYPE, "text/plain")
+                    put(MediaStore.Downloads.RELATIVE_PATH, relativePath)
+                }
+            )
+        ) { "Android did not create the file." }
+        try {
+            // "wt": truncate, or a shorter log would leave the tail of the longer one behind it.
+            checkNotNull(resolver.openOutputStream(uri, "wt")) { "Android did not open the file." }
+                .use { it.write(text.toByteArray(Charsets.UTF_8)) }
+        } catch (failure: Throwable) {
+            if (existing == null) runCatching { resolver.delete(uri, null, null) }
+            throw failure
+        }
+    }
+
+    private fun pruneSessionFiles(context: Context) {
+        val sessionFiles = ownedFiles(
+            context,
+            "${MediaStore.Downloads.DISPLAY_NAME} LIKE ?",
+            arrayOf("$SESSION_FILE_PREFIX%")
+        )
+        surplus(sessionFiles).forEach { uri ->
+            runCatching { context.contentResolver.delete(uri, null, null) }
+        }
+    }
+
+    /** This install's files in `Download/MotoVisor` matching [selection], as name to Uri. */
+    private fun ownedFiles(context: Context, selection: String, arguments: Array<String>): List<Pair<String, Uri>> {
+        val found = mutableListOf<Pair<String, Uri>>()
+        context.contentResolver.query(
+            MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+            arrayOf(MediaStore.Downloads._ID, MediaStore.Downloads.DISPLAY_NAME),
+            "${MediaStore.Downloads.RELATIVE_PATH} = ? AND ($selection)",
+            arrayOf("$relativePath/") + arguments,
+            null
+        )?.use { cursor ->
+            while (cursor.moveToNext()) {
+                found += cursor.getString(1) to
+                    ContentUris.withAppendedId(MediaStore.Downloads.EXTERNAL_CONTENT_URI, cursor.getLong(0))
+            }
+        }
+        return found
+    }
 }
