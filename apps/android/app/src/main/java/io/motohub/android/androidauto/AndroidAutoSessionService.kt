@@ -1450,6 +1450,7 @@ class AndroidAutoSessionService : Service(), AndroidAutoPreviewController {
             "ANDROID AUTO",
             "Stopping session: reason=$reason, framesSent=${framesAccepted.get()}."
         )
+        adaptiveVideoController.consumePowerSummary()?.let { ProjectionEventLog.record("POWER", it) }
         transportEventsJob?.cancel()
         networkEventsJob?.cancel()
         receiverPreparationJob?.cancel()

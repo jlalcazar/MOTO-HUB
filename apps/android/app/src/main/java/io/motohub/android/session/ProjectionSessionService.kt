@@ -579,6 +579,7 @@ class ProjectionSessionService : Service() {
             "SERVICE",
             "Stopping mirroring session: stopProjection=$stopProjection, reason=$reason, frames=${framesAccepted.get()}."
         )
+        adaptiveVideoController.consumePowerSummary()?.let { ProjectionEventLog.record("POWER", it) }
         transportEventsJob?.cancel()
         transportEventsJob = null
         networkEventsJob?.cancel()

@@ -146,6 +146,8 @@ standalone app. CORE has no GPS features and requests no location updates.
 - Detect supported stream stalls, encoder failures, and T-Box network losses.
 - Detect an Android Auto stream the dashboard is starving, with frames refused and under one a second
   delivered for 15 seconds, and rebuild it.
+- Log what each session cost the phone when it ends: duration, battery change and drain per hour,
+  time on the charger, highest temperature state, and the average frame-rate cap and bitrate.
 - Reacquire the network, repeat EasyConn discovery and handshake, and rebuild the encoder when
   recovery is possible.
 - Optionally use seamless resume to park and resume a projection after longer T-Box interruptions.

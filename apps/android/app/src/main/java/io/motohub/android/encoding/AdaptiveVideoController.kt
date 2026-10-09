@@ -6,6 +6,7 @@ package io.motohub.android.encoding
 import android.content.Context
 import android.os.BatteryManager
 import android.os.PowerManager
+import android.os.SystemClock
 import io.motohub.android.feature.settings.MotoHubSettings
 import io.motohub.android.feature.settings.VideoPowerMode
 import kotlin.math.min
@@ -144,6 +145,17 @@ class AdaptiveVideoController(
     private var lastLostFrames = 0L
     private var appliedBitrate = -1
     private var appliedFrameRate = -1
+    private val powerStats = SessionPowerStats()
+
+    /**
+     * The session's cost so far as one log line, or null if it never streamed; the collection then
+     * starts again. Separate from [reset], which runs every time the encoder is rebuilt: a
+     * recovery in the middle of a ride is still the same session.
+     */
+    fun consumePowerSummary(): String? {
+        val mode = runCatching { MotoHubSettings.videoPowerMode(appContext).label }.getOrDefault("?")
+        return powerStats.summary(mode, ::thermalLabel).also { powerStats.reset() }
+    }
 
     fun reset() {
         linkFactor = AdaptiveVideoPolicy.LINK_MAX
@@ -185,12 +197,11 @@ class AdaptiveVideoController(
             PowerManager.THERMAL_STATUS_NONE
         }
         val batterySaver = autoMode && runCatching { powerManager?.isPowerSaveMode }.getOrNull() == true
-        val lowBattery = autoMode && AdaptiveVideoPolicy.isLowBattery(
-            percent = runCatching {
-                batteryManager?.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
-            }.getOrNull()?.takeIf { it in 0..100 },
-            charging = runCatching { batteryManager?.isCharging }.getOrNull() == true
-        )
+        val batteryPercent = runCatching {
+            batteryManager?.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+        }.getOrNull()?.takeIf { it in 0..100 }
+        val charging = runCatching { batteryManager?.isCharging }.getOrNull() == true
+        val lowBattery = autoMode && AdaptiveVideoPolicy.isLowBattery(batteryPercent, charging)
         val powerSave = batterySaver || lowBattery
         val totalLost = lostFramesTotal(activeEncoder)
         val lostThisTick = (totalLost - lastLostFrames)
@@ -206,6 +217,18 @@ class AdaptiveVideoController(
             powerSave = powerSave
         )
         linkFactor = decision.linkFactor
+        // Heat is recorded in every mode, including the fixed ones that do not act on it: how hot
+        // a fixed mode runs is exactly what the comparison is for.
+        powerStats.sample(
+            nowElapsed = SystemClock.elapsedRealtime(),
+            batteryPercent = batteryPercent?.takeIf { it > 0 },
+            charging = charging,
+            thermalStatus = runCatching { powerManager?.currentThermalStatus }.getOrNull()
+                ?: PowerManager.THERMAL_STATUS_NONE,
+            frameRate = decision.frameRate,
+            bitrate = decision.bitrate,
+            saving = powerSave
+        )
         if (decision.bitrate != appliedBitrate) {
             activeEncoder.setEncoderBitrate(decision.bitrate)
             appliedBitrate = decision.bitrate
