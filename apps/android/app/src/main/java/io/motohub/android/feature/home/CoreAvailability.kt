@@ -36,7 +36,7 @@ import io.motohub.android.BuildConfig
 import io.motohub.android.i18n.motoHubText
 
 private const val CORE_PACKAGE_NAME = "io.motohub.android"
-private const val CORE_RELEASES_URL = "https://github.com/vincenzobpt/MOTO-HUB/releases/latest"
+private const val CORE_RELEASES_URL = "https://github.com/jlalcazar/MOTO-HUB/releases/latest"
 
 /** Advanced-only: Core doesn't depend on itself, so this is always false in the Core flavor. */
 fun isCoreMissing(context: Context): Boolean {

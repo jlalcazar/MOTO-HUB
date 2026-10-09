@@ -10,8 +10,8 @@
 
 **Android Auto, live dashboards and motorcycle navigation on your bike's TFT display — free.**
 
-[![Latest release](https://img.shields.io/github/v/release/vincenzobpt/MOTO-HUB?label=release&color=44cc11)](https://github.com/vincenzobpt/MOTO-HUB/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/vincenzobpt/MOTO-HUB/total?color=44cc11)](https://github.com/vincenzobpt/MOTO-HUB/releases)
+[![Latest release](https://img.shields.io/github/v/release/jlalcazar/MOTO-HUB?label=release&color=44cc11)](https://github.com/jlalcazar/MOTO-HUB/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/jlalcazar/MOTO-HUB/total?color=44cc11)](https://github.com/jlalcazar/MOTO-HUB/releases)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
 [![Android 12+](https://img.shields.io/badge/Android-12%2B-3DDC84?logo=android&logoColor=white)](#requirements)
 [![6 languages](https://img.shields.io/badge/languages-6-orange)](#what-moto-hub-does)
@@ -28,7 +28,7 @@ and control it all from the **handlebar buttons** you already have.
 
 <br>
 
-[![Download MOTO-HUB](https://img.shields.io/badge/Download%20MOTO--HUB-free%20·%20open%20source-2ea44f?style=for-the-badge&logo=android&logoColor=white)](https://github.com/vincenzobpt/MOTO-HUB/releases/latest)
+[![Download MOTO-HUB](https://img.shields.io/badge/Download%20MOTO--HUB-free%20·%20open%20source-2ea44f?style=for-the-badge&logo=android&logoColor=white)](https://github.com/jlalcazar/MOTO-HUB/releases/latest)
 &nbsp;
 [![Get MOTO-HUB ADV-SOLO](https://img.shields.io/badge/Get%20MOTO--HUB%20ADV--SOLO-free%20·%20Android%2014%2B-e10600?style=for-the-badge&logo=android&logoColor=white)](https://github.com/vincenzobpt/MOTO-HUB-ADV-SOLO-releases/releases/latest)
 
@@ -51,7 +51,7 @@ and control it all from the **handlebar buttons** you already have.
 
 ## Get riding in three steps
 
-1. **Install** the MOTO-HUB APK from the [latest release](https://github.com/vincenzobpt/MOTO-HUB/releases/latest). Android will ask you to allow installs from this source — that is the normal prompt for apps outside Google Play.
+1. **Install** the MOTO-HUB APK from the [latest release](https://github.com/jlalcazar/MOTO-HUB/releases/latest). Android will ask you to allow installs from this source — that is the normal prompt for apps outside Google Play.
 2. **Pair** by scanning the QR code your dashboard shows (or import a photo of it, or enter the network manually). Your bike is saved to the garage.
 3. **Ride** — start Android Auto or mirror your phone on the TFT. For the Ride Dashboard, navigation, trips and everything below, get [MOTO-HUB ADV-SOLO](https://github.com/vincenzobpt/MOTO-HUB-ADV-SOLO-releases/releases/latest).
 

@@ -46,7 +46,7 @@ data class GithubRelease(
 
 /** Reads every published GitHub release, including prereleases. */
 class GithubUpdateRepository(
-    private val owner: String = "vincenzobpt",
+    private val owner: String = "jlalcazar",
     private val repository: String = "MOTO-HUB"
 ) {
     /**
